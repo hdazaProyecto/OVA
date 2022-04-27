@@ -27,76 +27,7 @@ namespace Proyecto.Funciones
 
         public Conexion()
         {
-            //this.DB = new SQLiteDataAdapter();
-            //this.DS = new DataSet();
-
-            //sql_con = new SQLiteConnection
-            //("Data Source=" + System.AppDomain.CurrentDomain.BaseDirectory + "\\BD.reg;Version=3;");
-
-            //if (!File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + "\\BD.reg"))
-            //    createDataBase();
-
-            //if (sql_con.State != ConnectionState.Open)
-            //    sql_con.Open();
         }
-
-        //private void createDataBase()
-        //{
-        //    SQLiteConnection.CreateFile(System.AppDomain.CurrentDomain.BaseDirectory + "\\BD.reg");
-        //    sql_con.Open();
-        //    sql_cmd = new SQLiteCommand(@"CREATE TABLE ConfigBD (
-	       //     cnfidbd varchar(80) NOT NULL,
-	       //     cnfnombre varchar(80) NOT NULL,
-	       //     cnfservidor varchar(40) NOT NULL,
-	       //     cnfusuario varchar(20) NOT NULL,
-	       //     cnfclave varchar(20) NOT NULL,
-	       //     cnfbasedatos varchar(20) NOT NULL,
-	       //     PRIMARY KEY(cnfidbd)
-        //    );
-        //    CREATE INDEX ConfigBD_cnfnombre_idx ON ConfigBD (cnfnombre);
-        //    CREATE INDEX ConfigBD_cnfbasedatos_idx ON ConfigBD (cnfbasedatos);
-
-        //    CREATE TABLE ConfigEmail (
-	       //     emlnombre varchar(80) NOT NULL,
-	       //     emlservidor varchar(40) NOT NULL,
-	       //     emlusuario varchar(20) NOT NULL,
-	       //     emlclave varchar(20) NOT NULL,
-	       //     emlpuerto INT NOT NULL,
-	       //     emlssl BIT NOT NULL,
-	       //     PRIMARY KEY(emlNombre)
-        //    );", sql_con);
-        //    sql_cmd.ExecuteNonQuery();
-        //}
-
-        //public SqlConnectionStringBuilder obtenerConexionSQLServer(string dbNombreDBServer)
-        //{
-        //    SqlConnectionStringBuilder con = null;
-
-        //    this.sqlTablas.Add("ConfigBD");
-        //    this.sqlCampos.Add("cnfservidor,cnfusuario,cnfclave,cnfbasedatos");
-        //    this.sqlCondicionesY.Add("lower(cnfnombre) = '" + dbNombreDBServer.ToLower() + "'");
-        //    this.select();
-        //    this.ejecutarSQL("ConfigBD");
-        //    DataTable dt = this.obtenerTabla("ConfigBD");
-        //    this.reiniciarSql();
-
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        if (!String.IsNullOrEmpty(dt.Rows[0].Field<string>("cnfservidor")))
-        //        {
-        //            con = new SqlConnectionStringBuilder();
-        //            con.DataSource = dt.Rows[0].Field<string>("cnfservidor");
-        //            con.InitialCatalog = dt.Rows[0].Field<string>("cnfbasedatos");
-        //            con.UserID = dt.Rows[0].Field<string>("cnfusuario");
-        //            con.Password = dt.Rows[0].Field<string>("cnfclave");
-        //        }
-        //    }
-        //    else
-        //    {
-        //    }
-
-        //    return con;
-        //}
 
         public SqlConnectionStringBuilder ConexionSQLServer()
         {
@@ -104,16 +35,16 @@ namespace Proyecto.Funciones
             this.reiniciarSql();
             con = new SqlConnectionStringBuilder();
 
-            //con.DataSource = "192.168.1.18";
-            //con.InitialCatalog = "db";
-            //con.UserID = "syscom";
-            //con.Password = "u.owner";
+            con.DataSource = "192.168.1.18";
+            con.InitialCatalog = "db";
+            con.UserID = "syscom";
+            con.Password = "u.owner";
 
 
-            con.DataSource = "(local)";
-            con.InitialCatalog = "dbproyecto";
-            con.UserID = "admin";
-            con.Password = "adminova";
+            //con.DataSource = "(local)";
+            //con.InitialCatalog = "dbproyecto";
+            //con.UserID = "admin";
+            //con.Password = "adminova";
 
             return con;
         }
