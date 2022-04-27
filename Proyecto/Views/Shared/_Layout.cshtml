@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,15 +31,17 @@
                     @if (Session["Usuario"] == null)
                     {
                         <li><a data-toggle="modal" data-target="#login">Login</a></li>
-                        <li>@Html.ActionLink("Registrarse", "RegistrarUsu", "Home")</li>
+                        @*<li>@Html.ActionLink("Registrarse", "RegistrarUsu", "Home")</li>*@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Cuenta", "Cuenta", "Home")</li>
+                        if (us.idRol == 1 || us.idRol == 2)
+                        {
+                            <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        }
                         <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Home")</li>
                     }
-
-
                 </ul>
             </div>
         </div>
@@ -104,7 +106,6 @@
                                 <label>
                                     Nombre <span class="req">*</span>
                                 </label>
-                                @*<input type="text" required>*@
                                 @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre" })
                             </div>
 
@@ -112,7 +113,6 @@
                                 <label>
                                     Apellido <span class="req">*</span>
                                 </label>
-                                @*<input type="text" required>*@
                                 @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos" })
                             </div>
                         </div>
@@ -120,34 +120,34 @@
                             <label>
                                 Usuario <span class="req">*</span>
                             </label>
-                            @*<input type="text" required>*@
-                            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName" })
+                            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName", required = "required" })
                         </div>
                         <div class="contenedor-input">
                             <label>
                                 Email <span class="req">*</span>
                             </label>
-                            @*<input type="email" required>*@
-                            @Html.TextBox("correoElectronico", "", new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico" })
+                            @Html.TextBox("correoElectronico", "", new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico", required = "required" })
                         </div>
                         <div class="contenedor-input">
                             <label>
                                 Contraseña <span class="req">*</span>
                             </label>
-                            @*<input type="password" required>*@
-                            @Html.TextBox("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword" })
+                            @Html.Password("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword", required = "required" })
                         </div>
 
                         <div class="contenedor-input">
                             <label>
                                 Repetir Contraseña <span class="req">*</span>
                             </label>
-                            @*<input type="password" required>*@
-                            @Html.TextBox("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword" })
+                            @Html.Password("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword", required = "required" })
                         </div>
-                        <input type="submit" class="button button-block" value="Registrarse">
+
+                        <div class="contenedor-input">
+                            <input type="submit" class="button button-block" value="Actualizar">
+                        </div>
+
                     }
-                </div>
+                        </div>
                 <div class="modal-footer">
                     <a href="#">Forgot Password?</a>
                 </div>
@@ -164,6 +164,12 @@
             $("#registrar").click(function () {
                 $("#login").modal('hide');
             });
+            @if (!String.IsNullOrWhiteSpace(ViewBag.Usuario))
+            {
+                <text>
+                alert('@Html.Raw(ViewBag.Usuario)');
+                </text>
+            }
         });
 
     </script>

@@ -12,30 +12,31 @@ namespace Proyecto.Controllers
     {
         public ActionResult Index()
         {
-            if (TempData["MessageRechazo"] != null)
-                ViewBag.MsjRechazo = TempData["MessageRechazo"];
-
-            if (TempData["MessageAprobada"] != null)
-                ViewBag.MsjAprobada = TempData["MessageAprobada"];
             return View();
         }
 
         [HttpPost]
         public ActionResult Index(Cuenta usuario)
         {
-            Usuario us = usuario.Existe();
-
-            if (us != null)
-            {
-                Session["Usuario"] = us;
-                Session["Logueado"] = true;
-                //return RedirectToAction("Index", "Resolucion", new { SinRes = true });
+            Usuario us = null;
+            if (ModelState.IsValid)
+            { 
+                us = usuario.Existe();
+                if (us != null)
+                {
+                    Session["Usuario"] = us;
+                    Session["Logueado"] = true;
+                    return RedirectToAction("Index");
+                } else
+                {
+                    @ViewBag.Usuario = "NO se pude acceder al sitio, usuario o password incorrectos vualva a intertar";
+                    us = null;
+                }
+                
             }
             else
-            {
-                @ViewBag.Usuario = "NO se pude acceder al sitio";
-
-                us = null;
+            {                
+                @ViewBag.Usuario = "El usuario y password son requeridos!";
             }
             return View(us);
         }
@@ -68,6 +69,13 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        public ActionResult Cuenta()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
         public ActionResult Logout()
         {
             try
@@ -94,7 +102,7 @@ namespace Proyecto.Controllers
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
             Usuario usu = usuario.registrarUsuario(usuario);
-            return PartialView("_Layout");
+            return RedirectToAction("Index");
         }
     }
 }

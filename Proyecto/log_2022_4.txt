@@ -1,0 +1,6 @@
+27/04/2022 8:16:59 a. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Infracción de la restricción PRIMARY KEY 'PK_Usuarios'. No se puede insertar una clave duplicada en el objeto 'dbo.Usuarios'. El valor de la clave duplicada es (hdaza).
+Se terminó la instrucción.]
+27/04/2022 8:17:00 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
