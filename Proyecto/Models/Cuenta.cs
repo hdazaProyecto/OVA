@@ -36,8 +36,8 @@ namespace Proyecto.Models
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
                 parametros.Add(new SqlParameter("@userName", this.userName));
-                //parametros.Add(new SqlParameter("@usuPass", Funcion.stringBase64(this.Clave)));
-                parametros.Add(new SqlParameter("@userPassword", this.userPassword));
+                parametros.Add(new SqlParameter("@userPassword", Funcion.stringBase64(this.userPassword)));
+                //parametros.Add(new SqlParameter("@userPassword", this.userPassword));
                 dsusuario = new DataSet();
                 server.ejecutarQuery("SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
                 server.close();

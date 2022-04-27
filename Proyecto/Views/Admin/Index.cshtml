@@ -3,5 +3,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Admin</h2>
+@using (Html.BeginForm("GuardarTema", "Admin", new AjaxOptions { HttpMethod = "POST" }))
+{
+    <div class="contenedor-input">
+        <label>
+            Nombre @Proyecto.Models.plataforma.nombre <span class="req">*</span>
+        </label>
+        @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value = @Proyecto.Models.plataforma.nombre })
+    </div>
+    <div class="contenedor-input">
+        <label>
+            Descripcion <span class="req">*</span>
+        </label>
+        @Html.TextBox("descripcion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @data_value = "descripcion" })
+    </div>
+}
 

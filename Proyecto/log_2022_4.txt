@@ -20,3 +20,38 @@ Se terminó la instrucción.]
 26/04/2022 12:24:36 : Error [mensaje: No se puede encontrar la tabla 0.]
 26/04/2022 12:27:01 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
 Nombre del parámetro: s]
+26/04/2022 10:18:01 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
+Se terminó la instrucción.]
+26/04/2022 10:18:01 : Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 10:22:54 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
+Se terminó la instrucción.]
+26/04/2022 10:22:54 : Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 10:38:19 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
+Se terminó la instrucción.]
+26/04/2022 10:38:21 : Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 10:42:37 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
+Nombre del parámetro: s]
+26/04/2022 10:43:42 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
+Se terminó la instrucción.]
+26/04/2022 10:44:16 : Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 10:47:04 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
+Se terminó la instrucción.]
+26/04/2022 10:47:05 : Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 10:51:36 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
+26/04/2022 10:52:56 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
+26/04/2022 10:55:41 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]

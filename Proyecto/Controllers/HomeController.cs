@@ -12,12 +12,17 @@ namespace Proyecto.Controllers
     {
         public ActionResult Index()
         {
-            if (TempData["MessageRechazo"] != null)
-                ViewBag.MsjRechazo = TempData["MessageRechazo"];
-
-            if (TempData["MessageAprobada"] != null)
-                ViewBag.MsjAprobada = TempData["MessageAprobada"];
+            //return Check(View());
             return View();
+        }
+
+        public ActionResult Check(ActionResult destino)
+        {
+            ActionResult act = RedirectToAction("Index");
+
+            if (Session["Usuario"] != null)
+                act = destino;
+            return act;
         }
 
         [HttpPost]
@@ -93,8 +98,9 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
-            Usuario usu = usuario.registrarUsuario(usuario);
-            return PartialView("_Layout");
+            Usuario us = usuario.registrarUsuario(usuario);
+            //return View(us);
+            return RedirectToAction("Index");
         }
     }
 }
