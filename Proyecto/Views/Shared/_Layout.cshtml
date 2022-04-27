@@ -1,0 +1,171 @@
+﻿@{Usuario us = (Usuario)Session["Usuario"];}
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @using Proyecto.Models
+	@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!--li>@Html.ActionLink("Inicio", "Index", "Home")</li-->
+                    <li>@Html.ActionLink("Contenido programatico", "Contenido", "Home")</li>
+                    <li>@Html.ActionLink("Plataforma", "Plataforma", "Home")</li>
+                    <li>@Html.ActionLink("Foro", "Foro", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @if (Session["Usuario"] == null)
+                    {
+                        <li><a data-toggle="modal" data-target="#login">Login</a></li>
+                        <li>@Html.ActionLink("Registrarse", "RegistrarUsu", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Home")</li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="login" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="avatar">
+                        <img src="~/Content/images/user.png" alt="">
+                    </div>
+                    <h4 class="modal-title">Iniciar Sesión</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "frmLogin" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite usuario", @Id = "txtIdUsuario" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Password("userPassword", "", new { @Class = "form-control", @placeholder = "Digite password", @Id = "pswClave" })
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" title="Ingresar al sitio">Acceder</button>
+                    }
+                    <a data-toggle="modal" data-target="#regis" id="registrar">Registrarse</a>
+                </div>
+                <div class="modal-footer">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML -->
+    <div id="regis" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="avatar">
+                        <img src="~/Content/images/user.png" alt="">
+                    </div>
+                    <h4 class="modal-title">Iniciar Sesión</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("RegistrarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
+                    {
+                        @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = 3 })
+                        @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = 1 })
+                        <div class="fila-arriba">
+                            <div class="contenedor-input">
+                                <label>
+                                    Nombre <span class="req">*</span>
+                                </label>
+                                @*<input type="text" required>*@
+                                @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre" })
+                            </div>
+
+                            <div class="contenedor-input">
+                                <label>
+                                    Apellido <span class="req">*</span>
+                                </label>
+                                @*<input type="text" required>*@
+                                @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos" })
+                            </div>
+                        </div>
+                        <div class="contenedor-input">
+                            <label>
+                                Usuario <span class="req">*</span>
+                            </label>
+                            @*<input type="text" required>*@
+                            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName" })
+                        </div>
+                        <div class="contenedor-input">
+                            <label>
+                                Email <span class="req">*</span>
+                            </label>
+                            @*<input type="email" required>*@
+                            @Html.TextBox("correoElectronico", "", new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico" })
+                        </div>
+                        <div class="contenedor-input">
+                            <label>
+                                Contraseña <span class="req">*</span>
+                            </label>
+                            @*<input type="password" required>*@
+                            @Html.TextBox("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword" })
+                        </div>
+
+                        <div class="contenedor-input">
+                            <label>
+                                Repetir Contraseña <span class="req">*</span>
+                            </label>
+                            @*<input type="password" required>*@
+                            @Html.TextBox("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword" })
+                        </div>
+                        <input type="submit" class="button button-block" value="Registrarse">
+                    }
+                </div>
+                <div class="modal-footer">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            $("#registrar").click(function () {
+                $("#login").modal('hide');
+            });
+        });
+
+    </script>
+</body>
+</html>

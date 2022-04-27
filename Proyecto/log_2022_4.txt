@@ -1,0 +1,22 @@
+25/04/2022 3:31:54 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Infracción de la restricción PRIMARY KEY 'PK_Usuarios'. No se puede insertar una clave duplicada en el objeto 'dbo.Usuarios'. El valor de la clave duplicada es (hdaza).
+Se terminó la instrucción.]
+25/04/2022 3:31:54 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+25/04/2022 3:40:11 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Infracción de la restricción PRIMARY KEY 'PK_Usuarios'. No se puede insertar una clave duplicada en el objeto 'dbo.Usuarios'. El valor de la clave duplicada es (hdaza).
+Se terminó la instrucción.]
+25/04/2022 3:40:25 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 12:17:19 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
+Nombre del parámetro: s]
+26/04/2022 12:24:36 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
+Se terminó la instrucción.]
+26/04/2022 12:24:36 : Error [mensaje: No se puede encontrar la tabla 0.]
+26/04/2022 12:27:01 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
+Nombre del parámetro: s]

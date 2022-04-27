@@ -1,0 +1,71 @@
+﻿@*@model Dictionary<string, Usuario[]>*@
+@model Usuario
+@{Usuario us = (Usuario)Session["Usuario"];}
+@using Proyecto.Models;
+@{
+    ViewBag.Title = "Registrar";
+}
+<script>
+    $(document).ready(function () {
+        $(this).val()
+
+    }
+</script>
+<h2>RegistarUsu</h2>
+
+<!-- Registrarse -->
+<div id="registrarse">
+    <h1>Registrarse</h1>
+    @using (Html.BeginForm("RegistrarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
+    {
+        @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = 3 })
+        @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = 1 })
+        <div class="fila-arriba">
+            <div class="contenedor-input">
+                <label>
+                    Nombre <span class="req">*</span>
+                </label>
+                @*<input type="text" required>*@
+                @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre" })
+            </div>
+
+            <div class="contenedor-input">
+                <label>
+                    Apellido <span class="req">*</span>
+                </label>
+                @*<input type="text" required>*@
+                @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos" })
+            </div>
+        </div>
+        <div class="contenedor-input">
+            <label>
+                Usuario <span class="req">*</span>
+            </label>
+            @*<input type="text" required>*@
+            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName" })
+        </div>
+        <div class="contenedor-input">
+            <label>
+                Email <span class="req">*</span>
+            </label>
+            @*<input type="email" required>*@
+            @Html.TextBox("correoElectronico", "", new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico" })
+        </div>
+        <div class="contenedor-input">
+            <label>
+                Contraseña <span class="req">*</span>
+            </label>
+            @*<input type="password" required>*@
+            @Html.TextBox("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword" })
+        </div>
+
+        <div class="contenedor-input">
+            <label>
+                Repetir Contraseña <span class="req">*</span>
+            </label>
+            @*<input type="password" required>*@
+            @Html.TextBox("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword" })
+        </div>
+        <input type="submit" class="button button-block" value="Registrarse">
+    }
+</div>
