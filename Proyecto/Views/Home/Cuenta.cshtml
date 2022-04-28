@@ -1,0 +1,47 @@
+﻿@using Proyecto.Models;
+@{
+    ViewBag.Title = "Cuenta";
+}
+@{Usuario us = (Usuario)Session["Usuario"];}
+<div>@us.nombre</div>
+
+@using (Html.BeginForm("RegistrarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
+{
+    @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = @us.idRol })
+    @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = @us.estado })
+    <div class="fila-arriba">
+        <div class="contenedor-input">
+            <label>
+                Nombre <span class="req">*</span>
+            </label>
+            @Html.TextBox("nombre", @us.nombre, new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre" })
+        </div>
+
+        <div class="contenedor-input">
+            <label>
+                Apellido <span class="req">*</span>
+            </label>
+            @Html.TextBox("apellidos", @us.apellidos, new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos"})
+        </div>
+    </div>
+    <div class="contenedor-input">
+        <label>
+            Usuario <span class="req">*</span>
+        </label>
+        @Html.TextBox("userName", @us.userName, new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName" })
+    </div>
+    <div class="contenedor-input">
+        <label>
+            Email <span class="req">*</span>
+        </label>
+        @Html.TextBox("correoElectronico", @us.correoElectronico, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico" })
+    </div>
+    <div class="contenedor-input">
+        <label>
+            Contraseña <span class="req">*</span>
+        </label>
+        @Html.Password("userPassword", @us.userPassword, new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword" })
+    </div>
+
+    <input type="submit" class="button button-block" value="Registrarse">
+}

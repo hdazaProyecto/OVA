@@ -182,6 +182,7 @@
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\RegistrarUsu.cshtml" />
+    <Content Include="Views\Home\Cuenta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
