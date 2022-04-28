@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\plataforma.cs" />
+    <Compile Include="Models\Tema.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

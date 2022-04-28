@@ -35,16 +35,16 @@ namespace Proyecto.Funciones
             this.reiniciarSql();
             con = new SqlConnectionStringBuilder();
 
-            con.DataSource = "192.168.1.18";
-            con.InitialCatalog = "db";
-            con.UserID = "syscom";
-            con.Password = "u.owner";
+            //con.DataSource = "192.168.1.18";
+            //con.InitialCatalog = "db";
+            //con.UserID = "syscom";
+            //con.Password = "u.owner";
 
 
-            //con.DataSource = "(local)";
-            //con.InitialCatalog = "dbproyecto";
-            //con.UserID = "admin";
-            //con.Password = "adminova";
+            con.DataSource = "(local)";
+            con.InitialCatalog = "dbproyecto";
+            con.UserID = "admin";
+            con.Password = "adminova";
 
             return con;
         }

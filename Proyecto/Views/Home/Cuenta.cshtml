@@ -1,47 +1,57 @@
 ﻿@using Proyecto.Models;
+@using Proyecto.Funciones;
 @{
     ViewBag.Title = "Cuenta";
 }
 @{Usuario us = (Usuario)Session["Usuario"];}
-<div>@us.nombre</div>
+<div>
+    <h1>Hola, <b>@us.nombre @us.apellidos</b></h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("ActualizarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
+        {
+            @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = @us.idRol })
+            @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = @us.estado })
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Nombre</label>
+                    @Html.TextBox("nombre", @us.nombre, new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", required = "required" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Apellido</label>
+                    @Html.TextBox("apellidos", @us.apellidos, new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos" })
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label>Email</label>
+                @Html.TextBox("correoElectronico", @us.correoElectronico, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Usuario</label>
+                @Html.TextBox("userName", @us.userName, new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName" })
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Contraseña</label>
+                    @Html.Password("userPassword", Funcion.base64String(@us.userPassword), new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword" })
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Confirmar Contraseña</label>
+                    @Html.Password("userPassword2", Funcion.base64String(@us.userPassword), new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+            
+        </form>
+        }
+    </div>
+    <div class="col-md-6" >
 
-@using (Html.BeginForm("RegistrarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
-{
-    @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = @us.idRol })
-    @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = @us.estado })
-    <div class="fila-arriba">
-        <div class="contenedor-input">
-            <label>
-                Nombre <span class="req">*</span>
-            </label>
-            @Html.TextBox("nombre", @us.nombre, new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre" })
-        </div>
+    </div>
+</div>
 
-        <div class="contenedor-input">
-            <label>
-                Apellido <span class="req">*</span>
-            </label>
-            @Html.TextBox("apellidos", @us.apellidos, new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos"})
-        </div>
-    </div>
-    <div class="contenedor-input">
-        <label>
-            Usuario <span class="req">*</span>
-        </label>
-        @Html.TextBox("userName", @us.userName, new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName" })
-    </div>
-    <div class="contenedor-input">
-        <label>
-            Email <span class="req">*</span>
-        </label>
-        @Html.TextBox("correoElectronico", @us.correoElectronico, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico" })
-    </div>
-    <div class="contenedor-input">
-        <label>
-            Contraseña <span class="req">*</span>
-        </label>
-        @Html.Password("userPassword", @us.userPassword, new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword" })
-    </div>
-
-    <input type="submit" class="button button-block" value="Registrarse">
-}

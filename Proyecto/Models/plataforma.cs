@@ -10,6 +10,7 @@ namespace Proyecto.Models
 {
     public class plataforma
     {
+        public static int idTema { get; set; }
         public static string nombre { get; set; }
         public static string descripcion { get; set; }
         public static string imagen { get; set; }
@@ -28,12 +29,13 @@ namespace Proyecto.Models
                 if (con != null)
                 {
                     ConSqlServer server = new ConSqlServer(con);
-                    server.ejecutarQuery("select * from Tema", parametros, out Tema);
+                    server.ejecutarQuery("select * from Tema where estado=1", parametros, out Tema);
                     server.close();
                 }
 
                 if (Tema.Rows.Count > 0)
                 {
+                    idTema = Tema.Rows[0].Field<int>("idTema");
                     nombre = Tema.Rows[0].Field<string>("nombre");
                     descripcion = Tema.Rows[0].Field<string>("descripcion");
                     imagen = Tema.Rows[0].Field<string>("imagen");
@@ -44,7 +46,8 @@ namespace Proyecto.Models
             }
             catch (Exception ex)
             {
-
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
             }
         }
     }
