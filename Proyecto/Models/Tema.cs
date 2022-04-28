@@ -16,7 +16,7 @@ namespace Proyecto.Models
         public string imagen { get; set; }
         public bool estado { get; set; }
         public DateTime fecha { get; set; }
-        public DateTime fechaModifica { get; set; }
+        public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
 
         private Conexion conexion;
@@ -41,28 +41,28 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@imagen", Ptema.imagen));
                 parametros.Add(new SqlParameter("@estado", Ptema.estado));
                 parametros.Add(new SqlParameter("@fecha", Ptema.fecha));
-                parametros.Add(new SqlParameter("@fechaModifica", Ptema.fechaModifica));
+                parametros.Add(new SqlParameter("@fechaModifica", Ptema.fechaModifica == null ? "NULL" : Ptema.fechaModifica.ToString()));
                 parametros.Add(new SqlParameter("@userName", Ptema.userName));
                 dtema = new DataSet();
                 server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
                                         BEGIN
                                            UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
                                              WHERE idTema=@idTema
                                         END
                                         ELSE
                                         BEGIN
                                             INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema", parametros, out dtema);
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1", parametros, out dtema);
                 server.close();
 
                 if (dtema != null && dtema.Tables[0].Rows.Count > 0)
@@ -93,7 +93,7 @@ namespace Proyecto.Models
 
         public Tema existe()
         {
-            Tema tema = null;
+            Tema tema = new Tema();
             try
             {
                 DataSet dtema;
@@ -118,11 +118,10 @@ namespace Proyecto.Models
                         descripcion = r.Field<string>("descripcion"),
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
-                        fecha = r.Field<DateTime>("fecha"),
-                        fechaModifica = r.Field<DateTime>("fechaModifica"),
+                        fecha = r.Field<DateTime>("fecha"),                        
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
-                }
+                }                
             }
             catch (Exception ex)
             {

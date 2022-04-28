@@ -10,9 +10,12 @@ namespace Proyecto.Controllers
     [FilterConfig.SessionTimeout]
     public class HomeController : Controller
     {
+        Tema tema = new Tema();
+
         public ActionResult Index()
         {
-            //return Check(View());
+            tema = tema.existe();
+            Session["tema"] = tema;
             return View();
         }
 
@@ -42,7 +45,7 @@ namespace Proyecto.Controllers
 
                 us = null;
             }
-            return View(us);
+            return View();
         }
 
         public ActionResult Plataforma()
@@ -60,6 +63,13 @@ namespace Proyecto.Controllers
         }
 
         public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Cuenta()
         {
             ViewBag.Message = "Your contact page.";
 

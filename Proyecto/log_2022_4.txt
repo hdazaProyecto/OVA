@@ -55,3 +55,146 @@ Se terminó la instrucción.]
 26/04/2022 10:51:36 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
 26/04/2022 10:52:56 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
 26/04/2022 10:55:41 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
+28/04/2022 8:27:56 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre
+                                                  ,descripcion = @descripcion,
+                                                  ,imagen = @imagen,
+                                                  ,estado = @estado,
+                                                  ,fecha = @fecha,
+                                                  ,fechaModifica = @fechaModifica,
+                                                  ,userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+28/04/2022 8:27:56 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 8:42:33 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre
+                                                  ,descripcion = @descripcion,
+                                                  ,imagen = @imagen,
+                                                  ,estado = @estado,
+                                                  ,fecha = @fecha,
+                                                  ,fechaModifica = @fechaModifica,
+                                                  ,userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+28/04/2022 8:42:44 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 8:48:22 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre
+                                                  ,descripcion = @descripcion,
+                                                  ,imagen = @imagen,
+                                                  ,estado = @estado,
+                                                  ,fecha = @fecha,
+                                                  ,fechaModifica = @fechaModifica,
+                                                  ,userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+28/04/2022 8:48:23 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 8:52:04 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre
+                                                  ,descripcion = @descripcion,
+                                                  ,imagen = @imagen,
+                                                  ,estado = @estado,
+                                                  ,fecha = @fecha,
+                                                  ,fechaModifica = @fechaModifica,
+                                                  ,userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+28/04/2022 8:52:04 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 8:52:37 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre
+                                                  ,descripcion = @descripcion,
+                                                  ,imagen = @imagen,
+                                                  ,estado = @estado,
+                                                  ,fecha = @fecha,
+                                                  ,fechaModifica = @fechaModifica,
+                                                  ,userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+28/04/2022 8:52:37 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 11:19:54 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+28/04/2022 11:25:40 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+28/04/2022 12:19:48 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre
+                                                  ,descripcion = @descripcion,
+                                                  ,imagen = @imagen,
+                                                  ,estado = @estado,
+                                                  ,fecha = @fecha,
+                                                  ,fechaModifica = @fechaModifica,
+                                                  ,userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Sintaxis incorrecta cerca de ','.]
+28/04/2022 12:20:00 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 12:25:03 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: La consulta con parámetros '(@idTema int,@nombre nvarchar(17),@descripcion nvarchar(20),@ima' espera el parámetro '@fechaModifica', que no se ha proporcionado.]
+28/04/2022 12:25:03 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 12:55:25 p. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]

@@ -1,13 +1,14 @@
 ﻿@{Usuario us = (Usuario)Session["Usuario"];}
+@model Tema
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @using Proyecto.Models
-	@Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -102,52 +103,48 @@
                         @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = 3 })
                         @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = 1 })
                         <div class="fila-arriba">
-                            <div class="contenedor-input">
+                            <div class="form-group">
                                 <label>
                                     Nombre <span class="req">*</span>
                                 </label>
                                 @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre" })
                             </div>
 
-                            <div class="contenedor-input">
+                            <div class="form-group">
                                 <label>
                                     Apellido <span class="req">*</span>
                                 </label>
                                 @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos" })
                             </div>
                         </div>
-                        <div class="contenedor-input">
+                        <div class="form-group">
                             <label>
                                 Usuario <span class="req">*</span>
                             </label>
                             @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName", required = "required" })
                         </div>
-                        <div class="contenedor-input">
+                        <div class="form-group">
                             <label>
                                 Email <span class="req">*</span>
                             </label>
                             @Html.TextBox("correoElectronico", "", new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico", required = "required" })
                         </div>
-                        <div class="contenedor-input">
+                        <div class="form-group">
                             <label>
                                 Contraseña <span class="req">*</span>
                             </label>
                             @Html.Password("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword", required = "required" })
                         </div>
 
-                        <div class="contenedor-input">
+                        <div class="form-group">
                             <label>
                                 Repetir Contraseña <span class="req">*</span>
                             </label>
                             @Html.Password("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword", required = "required" })
                         </div>
-
-                        <div class="contenedor-input">
-                            <input type="submit" class="button button-block" value="Actualizar">
-                        </div>
-
+                        <input type="submit" class="btn btn-primary btn-lg btn-block login-btn" value="Registrar">
                     }
-                        </div>
+                </div>
                 <div class="modal-footer">
                     <a href="#">Forgot Password?</a>
                 </div>
