@@ -10,31 +10,30 @@ namespace Proyecto.Controllers
     public class AdminController : Controller
     {
         string prueba;
-        Tema tema = new Tema();
+        //Tema tema = new Tema();
+        //Unidades unidad = new Unidades();
 
         // GET: Admin
         public ActionResult Index()
         {
-            if (!String.IsNullOrWhiteSpace(ViewBag.Message))
+            Tema tema = new Tema();
+            if(Session["Usuario"] != null)
             {
-                ViewBag.Message = prueba;
+                tema = tema.existe();
+                return View(tema);
             }
             else
             {
-                ViewBag.Message = "Prueba de envio Index.";
+                return RedirectToAction("Index", "Home");
             }
 
-            tema = tema.existe();
-            return View(tema);
         }
 
-        public ActionResult Check(ActionResult destino)
+        public ActionResult Unidades()
         {
-            ActionResult act = RedirectToAction("Index");
-
-            if (Session["Usuario"] != null)
-                act = destino;
-            return act;
+            Unidades unidad = new Unidades();
+            unidad = unidad.listarUnidades();
+            return View(unidad);
         }
 
 
@@ -46,5 +45,14 @@ namespace Proyecto.Controllers
             return RedirectToAction("Index");
             //return View(Tema);
         }
+        
+        [HttpPost]
+        public ActionResult GuardarUnidad(Unidades pUnidad)
+        {
+            prueba = "Prueba de envio.";
+            Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
+            return RedirectToAction("Unidades");
+        }
+
     }
 }

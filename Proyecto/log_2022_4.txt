@@ -1,192 +1,11 @@
-25/04/2022 3:31:54 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Infracción de la restricción PRIMARY KEY 'PK_Usuarios'. No se puede insertar una clave duplicada en el objeto 'dbo.Usuarios'. El valor de la clave duplicada es (hdaza).
-Se terminó la instrucción.]
-25/04/2022 3:31:54 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-25/04/2022 3:40:11 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Infracción de la restricción PRIMARY KEY 'PK_Usuarios'. No se puede insertar una clave duplicada en el objeto 'dbo.Usuarios'. El valor de la clave duplicada es (hdaza).
-Se terminó la instrucción.]
-25/04/2022 3:40:25 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 12:17:19 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
-Nombre del parámetro: s]
-26/04/2022 12:24:36 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
-Se terminó la instrucción.]
-26/04/2022 12:24:36 : Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 12:27:01 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
-Nombre del parámetro: s]
-26/04/2022 10:18:01 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
-Se terminó la instrucción.]
-26/04/2022 10:18:01 : Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 10:22:54 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
-Se terminó la instrucción.]
-26/04/2022 10:22:54 : Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 10:38:19 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
-Se terminó la instrucción.]
-26/04/2022 10:38:21 : Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 10:42:37 : Error [mensaje: Referencia a cadena no establecida como una instancia de cadena.
-Nombre del parámetro: s]
-26/04/2022 10:43:42 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
-Se terminó la instrucción.]
-26/04/2022 10:44:16 : Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 10:47:04 : Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
-                                        VALUES
-                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_Rol'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Rol', column 'idRol'.
-Se terminó la instrucción.]
-26/04/2022 10:47:05 : Error [mensaje: No se puede encontrar la tabla 0.]
-26/04/2022 10:51:36 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
-26/04/2022 10:52:56 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
-26/04/2022 10:55:41 : Error al ejecutar la consultaSELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@userPassword'.]
-28/04/2022 8:27:56 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
-                                        BEGIN
-                                           UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
-                                             WHERE idTema=@idTema
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
-28/04/2022 8:27:56 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 8:42:33 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
-                                        BEGIN
-                                           UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
-                                             WHERE idTema=@idTema
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
-28/04/2022 8:42:44 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 8:48:22 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
-                                        BEGIN
-                                           UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
-                                             WHERE idTema=@idTema
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
-28/04/2022 8:48:23 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 8:52:04 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
-                                        BEGIN
-                                           UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
-                                             WHERE idTema=@idTema
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
-28/04/2022 8:52:04 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 8:52:37 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
-                                        BEGIN
-                                           UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
-                                             WHERE idTema=@idTema
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
-28/04/2022 8:52:37 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 11:19:54 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
-28/04/2022 11:25:40 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
-28/04/2022 12:19:48 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
-                                        BEGIN
-                                           UPDATE Tema
-                                               SET nombre = @nombre
-                                                  ,descripcion = @descripcion,
-                                                  ,imagen = @imagen,
-                                                  ,estado = @estado,
-                                                  ,fecha = @fecha,
-                                                  ,fechaModifica = @fechaModifica,
-                                                  ,userName = @userName
-                                             WHERE idTema=@idTema
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,fechaModifica,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@fechaModifica,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: Sintaxis incorrecta cerca de ','.]
-28/04/2022 12:20:00 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 12:25:03 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+28/04/2022 7:00:08 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
                                         BEGIN
                                            UPDATE Tema
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
                                                   imagen = @imagen,
-                                                  estado = @estado,
-                                                  fecha = @fecha,
-                                                  fechaModifica = @fechaModifica,
-                                                  userName = @userName
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica,                                                  
                                              WHERE idTema=@idTema
                                         END
                                         ELSE
@@ -195,6 +14,85 @@ Se terminó la instrucción.]
                                                    (nombre,descripcion,imagen,estado,fecha,userName)
                                              VALUES
                                                    (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
-                                        END SELECT * FROM Tema WHERE idTema=@idTema [mensaje: La consulta con parámetros '(@idTema int,@nombre nvarchar(17),@descripcion nvarchar(20),@ima' espera el parámetro '@fechaModifica', que no se ha proporcionado.]
-28/04/2022 12:25:03 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/04/2022 12:55:25 p. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
+28/04/2022 7:01:16 : Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 7:01:28 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Error al convertir una cadena de caracteres en fecha y/u hora.]
+28/04/2022 9:36:36 : Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 9:37:06 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Error al convertir una cadena de caracteres en fecha y/u hora.]
+28/04/2022 9:38:48 : Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 9:40:30 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades WHERE estado=1 [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Unidades_Tema'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Tema', column 'idTema'.
+Se terminó la instrucción.]
+28/04/2022 9:40:30 : Error [mensaje: No se puede encontrar la tabla 0.]
+28/04/2022 9:47:52 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades WHERE estado=1 [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Unidades_Tema'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Tema', column 'idTema'.
+Se terminó la instrucción.]
+28/04/2022 9:47:52 : Error [mensaje: No se puede encontrar la tabla 0.]

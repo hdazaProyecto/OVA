@@ -71,9 +71,14 @@ namespace Proyecto.Controllers
 
         public ActionResult Cuenta()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (Session["Usuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Contenido()

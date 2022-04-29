@@ -134,6 +134,7 @@
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\plataforma.cs" />
     <Compile Include="Models\Tema.cs" />
+    <Compile Include="Models\Unidades.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -180,10 +181,10 @@
     <Content Include="Views\Home\Contenido.cshtml" />
     <Content Include="Views\Home\Plataforma.cshtml" />
     <Content Include="Views\Home\Foro.cshtml" />
-    <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\RegistrarUsu.cshtml" />
     <Content Include="Views\Home\Cuenta.cshtml" />
+    <Content Include="Views\Admin\Unidades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

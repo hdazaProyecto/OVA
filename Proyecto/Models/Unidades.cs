@@ -8,13 +8,14 @@ using System.Web;
 
 namespace Proyecto.Models
 {
-    public class Tema
+    public class Unidades
     {
-        public int idTema { get; set; }
+        public int idUnidad { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string imagen { get; set; }
         public bool estado { get; set; }
+        public int idTema { get; set; }        
         public DateTime fecha { get; set; }
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
@@ -23,57 +24,62 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
-        public Tema gestionarTema(Tema Ptema)
+        public Unidades gestionarUnidad(Unidades Punidad)
         {
-            Tema tema = null;
+            Unidades unidad = new Unidades();
             try
             {
-                DataSet dtema;
-                DataTable dttema;
+                DataSet dunidad;
+                DataTable dtunidad;
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                parametros.Add(new SqlParameter("@idTema", Ptema.idTema));
-                parametros.Add(new SqlParameter("@nombre", Ptema.nombre));
-                parametros.Add(new SqlParameter("@descripcion", Ptema.descripcion));
-                parametros.Add(new SqlParameter("@imagen", Ptema.imagen == null ? "" : Ptema.imagen));
-                parametros.Add(new SqlParameter("@estado", Ptema.estado));
-                parametros.Add(new SqlParameter("@fecha", Ptema.fecha.ToString()));
+                parametros.Add(new SqlParameter("@idUnidad", Punidad.idUnidad));
+                parametros.Add(new SqlParameter("@nombre", Punidad.nombre));
+                parametros.Add(new SqlParameter("@descripcion", Punidad.descripcion));
+                parametros.Add(new SqlParameter("@imagen", Punidad.imagen));
+                parametros.Add(new SqlParameter("@idTema", Punidad.idTema));
+                parametros.Add(new SqlParameter("@estado", Punidad.estado));
+                parametros.Add(new SqlParameter("@fecha", Punidad.fecha));
                 parametros.Add(new SqlParameter("@fechaModifica", DateTime.Now));
-                parametros.Add(new SqlParameter("@userName", Ptema.userName));
-                dtema = new DataSet();
-                server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                parametros.Add(new SqlParameter("@userName", Punidad.userName));
+                dunidad = new DataSet();
+                server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
                                         BEGIN
-                                           UPDATE Tema
+                                           UPDATE Unidades
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
                                                   imagen = @imagen,
-                                                  estado = @estado,                                                
-                                                  fechaModifica = @fechaModifica                                                 
-                                             WHERE idTema=@idTema
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
                                         END
                                         ELSE
                                         BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
-                                        END SELECT * FROM Tema WHERE estado=1", parametros, out dtema);
+                                                   (@nombre,@descripcion,@imagen,1,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
                 server.close();
 
-                if (dtema != null && dtema.Tables[0].Rows.Count > 0)
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
                 {
-                    dttema = new DataTable();
-                    dttema = dtema.Tables[0];
-                    tema = dttema.Rows.Cast<DataRow>().Select(r => new Tema
+                    dtunidad = new DataTable();
+                    dtunidad = dunidad.Tables[0];
+                    unidad = dtunidad.Rows.Cast<DataRow>().Select(r => new Unidades
                     {
-                        idTema = r.Field<int>("idTema"),
+                        idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
+                        idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),
                         fechaModifica = r.Field<DateTime>("fechaModifica"),
                         userName = r.Field<string>("userName"),
@@ -86,48 +92,49 @@ namespace Proyecto.Models
                 Funcion.write();
             }
 
-            return tema;
+            return unidad;
         }
 
-        public Tema existe()
+        public Unidades listarUnidades()
         {
-            Tema tema = new Tema();
+            Unidades unidad = new Unidades();
             try
             {
-                DataSet dtema;
-                DataTable dttema;
+                DataSet dunidad;
+                DataTable dtunidad;
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                dtema = new DataSet();
-                server.ejecutarQuery(@"SELECT * FROM Tema WHERE estado=1", parametros, out dtema);
+                server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
                 server.close();
 
-                if (dtema != null && dtema.Tables[0].Rows.Count > 0)
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
                 {
-                    dttema = new DataTable();
-                    dttema = dtema.Tables[0];
-                    tema = dttema.Rows.Cast<DataRow>().Select(r => new Tema
+                    dtunidad = new DataTable();
+                    dtunidad = dunidad.Tables[0];
+                    unidad = dtunidad.Rows.Cast<DataRow>().Select(r => new Unidades
                     {
-                        idTema = r.Field<int>("idTema"),
+                        idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
-                        fecha = r.Field<DateTime>("fecha"),                        
+                        idTema = r.Field<int>("idTema"),
+                        fecha = r.Field<DateTime>("fecha"),
+                        fechaModifica = r.Field<DateTime>("fechaModifica"),
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
-                }                
+                }
             }
             catch (Exception ex)
             {
                 Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
                 Funcion.write();
             }
-
-            return tema;
+            return unidad;
         }
+
     }
 }

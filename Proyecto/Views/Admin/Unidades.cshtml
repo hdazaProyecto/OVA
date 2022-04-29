@@ -1,6 +1,7 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
-@model Tema
+@{Tema tema = (Tema)Session["tema"];}
+@model List<Unidades>
 @{
     ViewBag.Title = "Index";
 }
@@ -14,31 +15,32 @@
         <a class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</a>
     </nav>
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">@Html.ActionLink("Unidad", "Unidades", "Admin")</span>
+        <span class="navbar-brand mb-0 h1">@Html.ActionLink("Unidades", "Unidades", "Admin")</span>
     </nav>
 </div>
 <div class="col-md-10">
     <div>
-        <h2><b>Tema</b></h2>
+        <h2><b>Unidad</b></h2>
     </div>
-    @using (Html.BeginForm("GuardarTema", "Admin", new AjaxOptions { HttpMethod = "POST" }))
+    @using (Html.BeginForm("GuardarUnidad", "Admin", new AjaxOptions { HttpMethod = "POST" }))
     {
         <form>
-            @Html.Hidden("idTema", @Model.idTema, new { @value_data = "idTema" })
+            @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
             @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
+            @Html.Hidden("idTema", tema.idTema, new { @value_data = "idTema" })
             @if (us != null)
             {
-                @Html.Hidden("userName", us.userName, new { })
+                @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
             }
             else
             {
-                @Html.Hidden("userName", @Model.userName, new { })
+                @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
             }
             <div class="form-group">
                 <label>
                     Nombre <span class="req">*</span>
                 </label>
-                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data= "nombre" })
+                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
             </div>
             <div class="form-group">
                 <label>
@@ -65,4 +67,3 @@
     }
 
 </div>
-
