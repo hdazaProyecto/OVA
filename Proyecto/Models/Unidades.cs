@@ -39,7 +39,7 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@idUnidad", Punidad.idUnidad));
                 parametros.Add(new SqlParameter("@nombre", Punidad.nombre));
                 parametros.Add(new SqlParameter("@descripcion", Punidad.descripcion));
-                parametros.Add(new SqlParameter("@imagen", Punidad.imagen));
+                parametros.Add(new SqlParameter("@imagen", Punidad.imagen == null ? "" : Punidad.imagen));
                 parametros.Add(new SqlParameter("@idTema", Punidad.idTema));
                 parametros.Add(new SqlParameter("@estado", Punidad.estado));
                 parametros.Add(new SqlParameter("@fecha", Punidad.fecha));
@@ -81,7 +81,6 @@ namespace Proyecto.Models
                         estado = r.Field<bool>("estado"),
                         idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),
-                        fechaModifica = r.Field<DateTime>("fechaModifica"),
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
                 }
@@ -95,9 +94,9 @@ namespace Proyecto.Models
             return unidad;
         }
 
-        public Unidades listarUnidades()
+        public List<Unidades> listarUnidades()
         {
-            Unidades unidad = new Unidades();
+           List<Unidades>  unidad = new List<Unidades>();
             try
             {
                 DataSet dunidad;
@@ -114,6 +113,49 @@ namespace Proyecto.Models
                 {
                     dtunidad = new DataTable();
                     dtunidad = dunidad.Tables[0];
+
+                    unidad = dtunidad.AsEnumerable().Select(r => new Unidades()
+                    {
+                        idUnidad = r.Field<int>("idUnidad"),
+                        nombre = r.Field<string>("nombre"),
+                        descripcion = r.Field<string>("descripcion"),
+                        imagen = r.Field<string>("imagen"),
+                        estado = r.Field<bool>("estado"),
+                        idTema = r.Field<int>("idTema"),
+                        fecha = r.Field<DateTime>("fecha"),
+                        userName = r.Field<string>("userName"),
+                    }).ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
+            }
+            return unidad;
+        }
+
+        public Unidades editarUnidades(int idUnidad)
+        {
+            Unidades unidad = new Unidades();
+            try
+            {
+                DataSet dunidad;
+                DataTable dtunidad;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@idUnidad", idUnidad));
+                server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1 AND idUnidad=@idUnidad", parametros, out dunidad);
+                server.close();
+
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                {
+                    dtunidad = new DataTable();
+                    dtunidad = dunidad.Tables[0];
                     unidad = dtunidad.Rows.Cast<DataRow>().Select(r => new Unidades
                     {
                         idUnidad = r.Field<int>("idUnidad"),
@@ -123,7 +165,6 @@ namespace Proyecto.Models
                         estado = r.Field<bool>("estado"),
                         idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),
-                        fechaModifica = r.Field<DateTime>("fechaModifica"),
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
                 }

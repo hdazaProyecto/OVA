@@ -9,10 +9,6 @@ namespace Proyecto.Controllers
 {
     public class AdminController : Controller
     {
-        string prueba;
-        //Tema tema = new Tema();
-        //Unidades unidad = new Unidades();
-
         // GET: Admin
         public ActionResult Index()
         {
@@ -31,16 +27,50 @@ namespace Proyecto.Controllers
 
         public ActionResult Unidades()
         {
-            Unidades unidad = new Unidades();
-            unidad = unidad.listarUnidades();
-            return View(unidad);
+            Unidades uni = new Unidades();
+            List<Unidades> unidad = new List<Unidades>();
+            if (Session["Usuario"] != null)
+            {
+                unidad = uni.listarUnidades();
+                return View(unidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
+        public ActionResult AgregarUnidades(Unidades unidad = null)
+        {
+            //Unidades unidad = new Unidades();
+            if (Session["Usuario"] != null)
+            {
+                return View(unidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult EditarUnidades(int idUnidad)
+        {
+            Unidades unidad = new Unidades();
+            if (Session["Usuario"] != null)
+            {
+                unidad = unidad.editarUnidades(idUnidad);
+                return View(unidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
 
         [HttpPost]
         public ActionResult GuardarTema(Tema pTema)
         {
-            prueba = "Prueba de envio.";
             Tema Tema = pTema.gestionarTema(pTema);
             return RedirectToAction("Index");
             //return View(Tema);
@@ -49,7 +79,6 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult GuardarUnidad(Unidades pUnidad)
         {
-            prueba = "Prueba de envio.";
             Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
             return RedirectToAction("Unidades");
         }

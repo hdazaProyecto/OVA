@@ -96,3 +96,46 @@ Se terminó la instrucción.]
                                         END SELECT * FROM Unidades WHERE estado=1 [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Unidades_Tema'. El conflicto ha aparecido en la base de datos 'dbproyecto', tabla 'dbo.Tema', column 'idTema'.
 Se terminó la instrucción.]
 28/04/2022 9:47:52 : Error [mensaje: No se puede encontrar la tabla 0.]
+29/04/2022 10:43:23 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades WHERE estado=1 [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(13),@descripcion nvarchar(14),@i' espera el parámetro '@imagen', que no se ha proporcionado.]
+29/04/2022 10:43:23 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+29/04/2022 10:46:21 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades WHERE estado=1 [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(13),@descripcion nvarchar(18),@i' espera el parámetro '@imagen', que no se ha proporcionado.]
+29/04/2022 10:46:22 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+29/04/2022 10:49:07 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]

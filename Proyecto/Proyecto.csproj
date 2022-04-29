@@ -185,6 +185,8 @@
     <Content Include="Views\Home\RegistrarUsu.cshtml" />
     <Content Include="Views\Home\Cuenta.cshtml" />
     <Content Include="Views\Admin\Unidades.cshtml" />
+    <Content Include="Views\Admin\AgregarUnidades.cshtml" />
+    <Content Include="Views\Admin\EditarUnidades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

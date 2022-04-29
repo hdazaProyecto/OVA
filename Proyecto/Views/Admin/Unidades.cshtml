@@ -18,52 +18,29 @@
         <span class="navbar-brand mb-0 h1">@Html.ActionLink("Unidades", "Unidades", "Admin")</span>
     </nav>
 </div>
-<div class="col-md-10">
-    <div>
-        <h2><b>Unidad</b></h2>
-    </div>
-    @using (Html.BeginForm("GuardarUnidad", "Admin", new AjaxOptions { HttpMethod = "POST" }))
-    {
-        <form>
-            @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
-            @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-            @Html.Hidden("idTema", tema.idTema, new { @value_data = "idTema" })
-            @if (us != null)
+<a>@Html.ActionLink("Agregar Unidad", "AgregarUnidades", "Admin")</a>
+<hr />
+<table class="table table-striped table-condensed table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>nombre</th>
+            <th>descripcion</th>
+            <th>estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (Unidades un in Model)
             {
-                @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
+                <tr class="table-active">
+                    <td>@un.nombre</td>
+                    <td>@un.descripcion</td>
+                    <td>@un.estado</td>
+                    <td><a class="btn btn-primary" href="@Url.Action("EditarUnidades", "Admin", new { idUnidad = un.idUnidad })" title="Editar">Editar</a></td>
+                </tr>
             }
-            else
-            {
-                @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
-            }
-            <div class="form-group">
-                <label>
-                    Nombre <span class="req">*</span>
-                </label>
-                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Descripcion <span class="req">*</span>
-                </label>
-                @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Imagen <span class="req">*</span>
-                </label>
-                @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Estado <span class="req">*</span>
-                </label>
-                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-    }
-
-</div>
+        }
+    </tbody>
+</table>
