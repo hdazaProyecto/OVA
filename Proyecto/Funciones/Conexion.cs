@@ -12,11 +12,11 @@ namespace Proyecto.Funciones
 {
     public class Conexion
     {
-        private SQLiteDataAdapter DB;
+        private SQLiteDataAdapter DB = new SQLiteDataAdapter();
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
-        private SQLiteConnection sql_con;
-        private SQLiteCommand sql_cmd;
+        private SQLiteConnection sql_con = new SQLiteConnection(); 
+        //private SQLiteCommand sql_cmd;
 
         public List<string> sqlTablas = new List<string>();
         public List<string> sqlCampos = new List<string>();

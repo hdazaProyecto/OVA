@@ -139,3 +139,69 @@ Se terminó la instrucción.]
                                         END SELECT * FROM Unidades WHERE estado=1 [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(13),@descripcion nvarchar(18),@i' espera el parámetro '@imagen', que no se ha proporcionado.]
 29/04/2022 10:46:22 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
 29/04/2022 10:49:07 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+29/04/2022 10:46:25 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Debe declarar la variable escalar '@recurso'.]
+29/04/2022 11:19:32 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+29/04/2022 11:19:33 : Error [mensaje: No se puede encontrar la tabla 0.]
+29/04/2022 11:48:04 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
+29/04/2022 11:48:04 : Error [mensaje: No se puede encontrar la tabla 0.]

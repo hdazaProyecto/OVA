@@ -3,7 +3,7 @@
 @{Tema tema = (Tema)Session["tema"];}
 @model Unidades
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Agregar Unidades";
 }
 <div>
     <h1><b>Administración del portal</b></h1>
@@ -12,10 +12,13 @@
 <div class="col-md-2">
     <!-- Menu lateral -->
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</a>
+        <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
     </nav>
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">@Html.ActionLink("Unidades", "Unidades", "Admin")</span>
+        <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
     </nav>
 </div>
 <div class="col-md-10">

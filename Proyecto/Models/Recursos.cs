@@ -8,14 +8,17 @@ using System.Web;
 
 namespace Proyecto.Models
 {
-    public class Unidades
+    public class Recursos
     {
-        public int idUnidad { get; set; }
+        //Variables
+        public int idRecurso { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
+        public string url { get; set; }
+        public string archivo { get; set; }
         public string imagen { get; set; }
         public bool estado { get; set; }
-        public int idTema { get; set; }        
+        public int idUnidad { get; set; }
         public DateTime fecha { get; set; }
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
@@ -24,34 +27,36 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
-        public List<Unidades> listarUnidades()
+        public List<Recursos> listarRecursos()
         {
-           List<Unidades>  unidad = new List<Unidades>();
+            List<Recursos> recurso = new List<Recursos>();
             try
             {
-                DataSet dunidad;
-                DataTable dtunidad;
+                DataSet drecurso;
+                DataTable dtrecurso;
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                server.ejecutarQuery(@"SELECT * FROM Unidades", parametros, out dunidad);
+                server.ejecutarQuery(@"SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
 
-                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
                 {
-                    dtunidad = new DataTable();
-                    dtunidad = dunidad.Tables[0];
+                    dtrecurso = new DataTable();
+                    dtrecurso = drecurso.Tables[0];
 
-                    unidad = dtunidad.AsEnumerable().Select(r => new Unidades()
+                    recurso = dtrecurso.AsEnumerable().Select(r => new Recursos()
                     {
-                        idUnidad = r.Field<int>("idUnidad"),
+                        idRecurso = r.Field<int>("idRecurso"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
+                        url = r.Field<string>("url"),
+                        archivo = r.Field<string>("archivo"),
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
-                        idTema = r.Field<int>("idTema"),
+                        idUnidad = r.Field<int>("idUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                     }).ToList();
@@ -63,65 +68,71 @@ namespace Proyecto.Models
                 Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
                 Funcion.write();
             }
-            return unidad;
+            return recurso;
         }
 
-        public Unidades gestionarUnidad(Unidades Punidad)
+        public Recursos gestionarUnidad(Recursos Precurso)
         {
-            Unidades unidad = new Unidades();
+            Recursos recurso = new Recursos();
             try
             {
-                DataSet dunidad;
-                DataTable dtunidad;
+                DataSet drecurso;
+                DataTable dtrecurso;
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                parametros.Add(new SqlParameter("@idUnidad", Punidad.idUnidad));
-                parametros.Add(new SqlParameter("@nombre", Punidad.nombre));
-                parametros.Add(new SqlParameter("@descripcion", Punidad.descripcion));
-                parametros.Add(new SqlParameter("@imagen", Punidad.imagen == null ? "" : Punidad.imagen));
-                parametros.Add(new SqlParameter("@idTema", Punidad.idTema));
-                parametros.Add(new SqlParameter("@estado", Punidad.estado));
-                parametros.Add(new SqlParameter("@fecha", Punidad.fecha));
+                parametros.Add(new SqlParameter("@idrecurso", Precurso.idRecurso));
+                parametros.Add(new SqlParameter("@nombre", Precurso.nombre));
+                parametros.Add(new SqlParameter("@descripcion", Precurso.descripcion == null ? "" : Precurso.descripcion));
+                parametros.Add(new SqlParameter("@url", Precurso.imagen == null ? "" : Precurso.imagen));
+                parametros.Add(new SqlParameter("@imagen", Precurso.url == null ? "" : Precurso.url));
+                parametros.Add(new SqlParameter("@archivo", Precurso.archivo == null ? "" : Precurso.archivo));
+                parametros.Add(new SqlParameter("@idUnidad", Precurso.idUnidad));
+                parametros.Add(new SqlParameter("@estado", Precurso.estado));
+                parametros.Add(new SqlParameter("@fecha", Precurso.fecha));
                 parametros.Add(new SqlParameter("@fechaModifica", DateTime.Now));
-                parametros.Add(new SqlParameter("@userName", Punidad.userName));
-                dunidad = new DataSet();
-                server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                parametros.Add(new SqlParameter("@userName", Precurso.userName));
+                drecurso = new DataSet();
+                server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
                                         BEGIN
-                                           UPDATE Unidades
+                                           UPDATE Recursos
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
                                                   imagen = @imagen,
                                                   estado = @estado,
-                                                  idTema = @idTema,
+                                                  idUnidad = @idUnidad,
                                                   fecha = @fecha,
                                                   fechaModifica = @fechaModifica,
                                                   userName = @userName
-                                             WHERE idUnidad=@idUnidad
+                                             WHERE idrecurso=@idrecurso
                                         END
                                         ELSE
                                         BEGIN
-                                            INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
-                                        END SELECT * FROM Unidades", parametros, out dunidad);
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
 
-                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
                 {
-                    dtunidad = new DataTable();
-                    dtunidad = dunidad.Tables[0];
-                    unidad = dtunidad.Rows.Cast<DataRow>().Select(r => new Unidades
+                    dtrecurso = new DataTable();
+                    dtrecurso = drecurso.Tables[0];
+                    recurso = dtrecurso.Rows.Cast<DataRow>().Select(r => new Recursos
                     {
-                        idUnidad = r.Field<int>("idUnidad"),
+                        idRecurso = r.Field<int>("idRecurso"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
+                        url = r.Field<string>("url"),
+                        archivo = r.Field<string>("archivo"),
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
-                        idTema = r.Field<int>("idTema"),
+                        idUnidad = r.Field<int>("idUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
@@ -132,38 +143,39 @@ namespace Proyecto.Models
                 Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
                 Funcion.write();
             }
-
-            return unidad;
+            return recurso;
         }
 
-        public Unidades editarUnidades(int idUnidad)
+        public Recursos BuscarRecursos(int idRecurso)
         {
-            Unidades unidad = new Unidades();
+            Recursos recurso = new Recursos();
             try
             {
-                DataSet dunidad;
-                DataTable dtunidad;
+                DataSet drecurso;
+                DataTable dtrecurso;
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                parametros.Add(new SqlParameter("@idUnidad", idUnidad));
-                server.ejecutarQuery(@"SELECT * FROM Unidades WHERE idUnidad=@idUnidad", parametros, out dunidad);
+                parametros.Add(new SqlParameter("@idrecurso", idRecurso));
+                server.ejecutarQuery(@"SELECT * FROM Recursos WHERE idRecurso=@idRecurso", parametros, out drecurso);
                 server.close();
 
-                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
                 {
-                    dtunidad = new DataTable();
-                    dtunidad = dunidad.Tables[0];
-                    unidad = dtunidad.Rows.Cast<DataRow>().Select(r => new Unidades
+                    dtrecurso = new DataTable();
+                    dtrecurso = drecurso.Tables[0];
+                    recurso = dtrecurso.Rows.Cast<DataRow>().Select(r => new Recursos
                     {
-                        idUnidad = r.Field<int>("idUnidad"),
+                        idRecurso = r.Field<int>("idRecurso"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
+                        url = r.Field<string>("url"),
+                        archivo = r.Field<string>("archivo"),
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
-                        idTema = r.Field<int>("idTema"),
+                        idUnidad = r.Field<int>("idUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
@@ -174,8 +186,7 @@ namespace Proyecto.Models
                 Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
                 Funcion.write();
             }
-            return unidad;
+            return recurso;
         }
-
     }
 }

@@ -25,7 +25,9 @@ namespace Proyecto.Controllers
 
         }
 
-        public ActionResult Unidades()
+        //Formularios
+
+        public ActionResult ListarUnidades()
         {
             Unidades uni = new Unidades();
             List<Unidades> unidad = new List<Unidades>();
@@ -68,6 +70,23 @@ namespace Proyecto.Controllers
             }
         }
 
+        public ActionResult listarRecursos()
+        {
+            List<Recursos> recursos = new List<Recursos>();
+            Recursos recurso = new Recursos();
+            if (Session["Usuario"] != null)
+            {
+                recursos = recurso.listarRecursos();
+                return View(recursos);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        //Acciones de formularios
+
         [HttpPost]
         public ActionResult GuardarTema(Tema pTema)
         {
@@ -80,7 +99,38 @@ namespace Proyecto.Controllers
         public ActionResult GuardarUnidad(Unidades pUnidad)
         {
             Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
-            return RedirectToAction("Unidades");
+            return RedirectToAction("ListarUnidades");
+        }
+
+        public ActionResult AgregarRecurso(Recursos recurso)
+        {
+            if (Session["Usuario"] != null)
+            {
+                if (recurso.nombre != null)
+                {
+                    recurso = recurso.gestionarUnidad(recurso);
+                    return RedirectToAction("listarRecursos");
+                }
+                return View(recurso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult EditarRecurso(int idRecurso)
+        {
+            Recursos recurso = new Recursos();           
+            if (Session["Usuario"] != null)
+            {
+                recurso = recurso.BuscarRecursos(idRecurso);
+                return View(recurso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
     }

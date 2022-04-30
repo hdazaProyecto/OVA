@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\plataforma.cs" />
+    <Compile Include="Models\Recursos.cs" />
     <Compile Include="Models\Tema.cs" />
     <Compile Include="Models\Unidades.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -187,6 +188,10 @@
     <Content Include="Views\Admin\Unidades.cshtml" />
     <Content Include="Views\Admin\AgregarUnidades.cshtml" />
     <Content Include="Views\Admin\EditarUnidades.cshtml" />
+    <Content Include="Views\Admin\listarRecursos.cshtml" />
+    <Content Include="Views\Admin\ListarUnidades.cshtml" />
+    <Content Include="Views\Admin\AgregarRecurso.cshtml" />
+    <Content Include="Views\Admin\EditarRecurso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

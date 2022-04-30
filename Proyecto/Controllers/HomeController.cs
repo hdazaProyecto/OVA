@@ -1,4 +1,5 @@
-﻿using Proyecto.Models;
+﻿using Proyecto.Funciones;
+using Proyecto.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,8 +99,10 @@ namespace Proyecto.Controllers
                 Dispose(true);
                 return RedirectToAction("Index", "Home");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                Funcion.tareas.Add("Sesion terminada");
+                Funcion.write();
                 return RedirectToAction("Index", "Home");
             }
         }

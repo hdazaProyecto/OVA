@@ -1,0 +1,52 @@
+﻿@using Proyecto.Models;
+@{Usuario us = (Usuario)Session["Usuario"];}
+@{Tema tema = (Tema)Session["tema"];}
+@model List<Unidades>
+@{
+    ViewBag.Title = "Listar Unidades";
+}
+<div>
+    <h1><b>Administración del portal</b></h1>
+</div>
+<hr />
+<div class="col-md-2">
+    <!-- Menu lateral -->
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
+    </nav>
+</div>
+<a>@Html.ActionLink("Agregar Unidad", "AgregarUnidades", "Admin")</a>
+<hr />
+<table class="table table-striped table-condensed table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>nombre</th>
+            <th>descripcion</th>
+            <th>estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (Unidades un in Model)
+            {
+                <tr class="table-active">
+                    <td>@un.idUnidad</td>
+                    <td>@un.nombre</td>
+                    <td>@un.descripcion</td>
+                    <td>@un.estado</td>
+                    <td><a class="btn btn-primary" href="@Url.Action("EditarUnidades", "Admin", new { idUnidad = un.idUnidad })" title="Editar">Editar</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

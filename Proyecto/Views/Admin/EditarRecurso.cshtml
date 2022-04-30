@@ -1,8 +1,9 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
-@model Tema
+@{Tema tema = (Tema)Session["tema"];}
+@model Recursos
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Agregar Recursos";
 }
 <div>
     <h1><b>Administración del portal</b></h1>
@@ -22,32 +23,45 @@
 </div>
 <div class="col-md-10">
     <div>
-        <h2><b>Tema</b></h2>
+        <h2><b>Unidad</b></h2>
     </div>
-    @using (Html.BeginForm("GuardarTema", "Admin", new AjaxOptions { HttpMethod = "POST" }))
+    @using (Html.BeginForm("AgregarRecurso", "Admin"))
     {
         <form>
-            @Html.Hidden("idTema", @Model.idTema, new { @value_data = "idTema" })
+            @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
             @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
+            @Html.Hidden("idUnidad", tema.idTema, new { @value_data = "idUnidad" })
             @if (us != null)
             {
-                @Html.Hidden("userName", us.userName, new { })
+                @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
             }
             else
             {
-                @Html.Hidden("userName", @Model.userName, new { })
+                @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
             }
             <div class="form-group">
                 <label>
                     Nombre <span class="req">*</span>
                 </label>
-                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data= "nombre" })
+                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", required = "required", @Id = "txtNombre", @value_data = "nombre" })
             </div>
             <div class="form-group">
                 <label>
                     Descripcion <span class="req">*</span>
                 </label>
                 @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+            </div>
+            <div class="form-group">
+                <label>
+                    Imagen <span class="req">*</span>
+                </label>
+                @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url" })
+            </div>
+            <div class="form-group">
+                <label>
+                    Imagen <span class="req">*</span>
+                </label>
+                @Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
             </div>
             <div class="form-group">
                 <label>
@@ -68,4 +82,3 @@
     }
 
 </div>
-
