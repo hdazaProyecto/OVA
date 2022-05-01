@@ -10,7 +10,7 @@ namespace Proyecto.Funciones
     public class Funcion
     {           
 
-        private static string dir = plataforma.RutaApp ?? HttpContext.Current.Server.MapPath("~/");
+        private static string dir = HttpContext.Current.Server.MapPath("~/");
         public static List<string> tareas = new List<string>();
 
         public static string stringBase64(string agValor)

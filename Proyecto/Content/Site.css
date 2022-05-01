@@ -119,3 +119,24 @@ body {
     margin: 100px auto;
 }
 /*************************************************************/
+/*tablas*/
+.tableContenido {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+    .tableContenido > thead > tr > th,
+    .tableContenido > tbody > tr > th,
+    .tableContenido > tfoot > tr > th,
+    .tableContenido > thead > tr > td,
+    .tableContenido > tbody > tr > td,
+    .tableContenido > tfoot > tr > td {
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+    }
+
+    .tableContenido > thead > tr > th {
+        vertical-align: bottom;
+    }

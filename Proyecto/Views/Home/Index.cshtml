@@ -1,13 +1,17 @@
 ﻿@using Proyecto.Models;
-@{Tema tema = (Tema)Session["tema"];}
+@model plataforma
 @{
     ViewBag.Title = "Proyecto OVA";
 }
-<div>
-    <hr />
-    <h1 class="tm-hero-title"><b>@tema.nombre</b></h1>
-    <hr />
-    <p class="tm-hero-subtitle">
-        @tema.descripcion
-    </p>
-</div>
+@if (Model != null)
+{
+    <div>
+        <hr />
+        <center>
+            <h1 class="tm-hero-title"><b>@Model.nombreTema</b></h1>
+        </center>        
+        <hr />
+        <p align="left"><h4>@Model.descripcionTema</h4></p>
+    </div>
+}
+

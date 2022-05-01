@@ -1,6 +1,5 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
-@{Tema tema = (Tema)Session["tema"];}
 @model Unidades
 @{
     ViewBag.Title = "Agregar Unidades";
@@ -30,7 +29,7 @@
         <form>
             @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
             @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-            @Html.Hidden("idTema", tema.idTema, new { @value_data = "idTema" })
+            @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
             @if (us != null)
             {
                 @Html.Hidden("userName", us.userName, new { @value_data = "userName" })

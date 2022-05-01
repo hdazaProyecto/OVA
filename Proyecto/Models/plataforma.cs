@@ -10,45 +10,89 @@ namespace Proyecto.Models
 {
     public class plataforma
     {
-        public static int idTema { get; set; }
-        public static string nombre { get; set; }
-        public static string descripcion { get; set; }
-        public static string imagen { get; set; }
-        public static bool estado { get; set; }
-        public static string RutaApp { get; set; }
+        public int idTema { get; set; }
+        public string nombreTema { get; set; }
+        public string descripcionTema { get; set; }
+        public string imagenTema { get; set; }
+        public List<Unidades> unidades { get; set; }
+        public List<Recursos> recursos { get; set; }
 
-        static plataforma()
+        private Conexion conexion;
+        private SqlConnectionStringBuilder con;
+        private List<SqlParameter> parametros;
+
+        public plataforma ModelPlataforma()
         {
+            plataforma Plataforma = new plataforma();
             try
             {
-                Conexion conSqlite = new Conexion();
-                SqlConnectionStringBuilder con = conSqlite.ConexionSQLServer();
-                List<SqlParameter> parametros = new List<SqlParameter>();
-                DataTable Tema = new DataTable();
+                DataSet dtema;
+                DataSet dunidad;
+                DataSet drecurso;
+                DataTable dttema;                
+                DataTable dtunidad;                
+                DataTable dtrecurso;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                server.ejecutarQuery(@"SELECT * FROM tema WHERE estado=1", parametros, out dtema);
+                server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
+                server.ejecutarQuery(@"SELECT * FROM recursos WHERE estado=1", parametros, out drecurso);
+                server.close();
 
-                if (con != null)
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
                 {
-                    ConSqlServer server = new ConSqlServer(con);
-                    server.ejecutarQuery("select * from Tema where estado=1", parametros, out Tema);
-                    server.close();
+                    dttema = new DataTable();
+                    dttema = dtema.Tables[0];
+                    Plataforma = dttema.Rows.Cast<DataRow>().Select(r => new plataforma
+                    {
+                        idTema = r.Field<int>("idTema"),
+                        nombreTema = r.Field<string>("nombre"),
+                        descripcionTema = r.Field<string>("descripcion"),
+                        imagenTema = r.Field<string>("imagen"),
+                    }).FirstOrDefault();
                 }
-
-                if (Tema.Rows.Count > 0)
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
                 {
-                    idTema = Tema.Rows[0].Field<int>("idTema");
-                    nombre = Tema.Rows[0].Field<string>("nombre");
-                    descripcion = Tema.Rows[0].Field<string>("descripcion");
-                    imagen = Tema.Rows[0].Field<string>("imagen");
-                    estado = Tema.Rows[0].Field<bool>("estado");
-                    RutaApp = HttpContext.Current.Server.MapPath("~/");
-                }
+                    dtunidad = new DataTable();
+                    dtunidad = dunidad.Tables[0];
 
+                    Plataforma.unidades = dtunidad.AsEnumerable().Select(r => new Unidades()
+                    {
+                        idUnidad = r.Field<int>("idUnidad"),
+                        nombre = r.Field<string>("nombre"),
+                        descripcion = r.Field<string>("descripcion"),
+                        imagen = r.Field<string>("imagen"),
+                        idTema = r.Field<int>("idTema"),
+                    }).ToList();
+
+                }
+                if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
+                {
+                    dtrecurso = new DataTable();
+                    dtrecurso = drecurso.Tables[0];
+
+                    Plataforma.recursos = dtrecurso.AsEnumerable().Select(r => new Recursos()
+                    {
+                        idRecurso = r.Field<int>("idRecurso"),
+                        nombre = r.Field<string>("nombre"),
+                        descripcion = r.Field<string>("descripcion"),
+                        url = r.Field<string>("url"),
+                        archivo = r.Field<string>("archivo"),
+                        imagen = r.Field<string>("imagen"),
+                        idUnidad = r.Field<int>("idUnidad"),
+                    }).ToList();
+
+                }
             }
             catch (Exception ex)
             {
                 Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
                 Funcion.write();
             }
+            return Plataforma;
         }
     }
 }

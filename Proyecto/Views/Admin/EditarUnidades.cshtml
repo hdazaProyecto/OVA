@@ -1,6 +1,5 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
-@{Tema tema = (Tema)Session["tema"];}
 @model Unidades
 @{
     ViewBag.Title = "Index";
@@ -9,62 +8,69 @@
     <h1><b>Administración del portal</b></h1>
 </div>
 <hr />
+@if (Model != null)
+{
 <div class="col-md-2">
     <!-- Menu lateral -->
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</a>
+        <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
     </nav>
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">@Html.ActionLink("Unidades", "Unidades", "Admin")</span>
+        <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+    </nav>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
     </nav>
 </div>
-<div class="col-md-10">
-    <div>
-        <h2><b>Unidad</b></h2>
-    </div>
-    @using (Html.BeginForm("GuardarUnidad", "Admin", new AjaxOptions { HttpMethod = "POST" }))
-    {
-        <form>
-            @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
-            @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-            @Html.Hidden("idTema", tema.idTema, new { @value_data = "idTema" })
-            @if (us != null)
-            {
-                @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
-            }
-            else
-            {
-                @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
-            }
-            <div class="form-group">
-                <label>
-                    Nombre <span class="req">*</span>
-                </label>
-                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Descripcion <span class="req">*</span>
-                </label>
-                @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Imagen <span class="req">*</span>
-                </label>
-                @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Estado <span class="req">*</span>
-                </label>
-                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-    }
+    <div class="col-md-10">
+        <div>
+            <h2><b>Unidad</b></h2>
+        </div>
+        @using (Html.BeginForm("GuardarUnidad", "Admin", new AjaxOptions { HttpMethod = "POST" }))
+        {
+            <form>
+                @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
+                @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
+                @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
+                @if (us != null)
+                {
+                    @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
+                }
+                else
+                {
+                    @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
+                }
+                <div class="form-group">
+                    <label>
+                        Nombre <span class="req">*</span>
+                    </label>
+                    @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Descripcion <span class="req">*</span>
+                    </label>
+                    @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Imagen <span class="req">*</span>
+                    </label>
+                    @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Estado <span class="req">*</span>
+                    </label>
+                    @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        }
 
-</div>
+    </div>
+}
+
 

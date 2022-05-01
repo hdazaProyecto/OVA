@@ -205,3 +205,24 @@ Se terminó la instrucción.]
                                                    (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
                                         END SELECT * FROM Recursos [mensaje: Desbordamiento de SqlDateTime. Debe estar entre 1/1/1753 12:00:00 AM y 12/31/9999 11:59:59 PM.]
 29/04/2022 11:48:04 : Error [mensaje: No se puede encontrar la tabla 0.]
+30/04/2022 3:24:40 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: Debe declarar la variable escalar '@recurso'.]
+30/04/2022 3:24:40 : Error [mensaje: No se puede encontrar la tabla 0.]

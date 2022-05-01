@@ -1,6 +1,5 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
-@{Tema tema = (Tema)Session["tema"];}
 @model Recursos
 @{
     ViewBag.Title = "Agregar Recursos";
@@ -30,7 +29,7 @@
         <form>
             @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
             @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-            @Html.Hidden("idUnidad", tema.idTema, new { @value_data = "idUnidad" })
+            @Html.Hidden("idUnidad", Model.idUnidad, new { @value_data = "idUnidad" })
             @if (us != null)
             {
                 @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
@@ -47,31 +46,31 @@
             </div>
             <div class="form-group">
                 <label>
-                    Descripcion <span class="req">*</span>
+                    Descripcion
                 </label>
                 @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
             </div>
             <div class="form-group">
                 <label>
-                    Imagen <span class="req">*</span>
+                    URL
                 </label>
                 @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url" })
             </div>
             <div class="form-group">
                 <label>
-                    Imagen <span class="req">*</span>
+                    Archivo
                 </label>
                 @Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
             </div>
             <div class="form-group">
                 <label>
-                    Imagen <span class="req">*</span>
+                    Imagen
                 </label>
                 @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
             </div>
             <div class="form-group">
                 <label>
-                    Estado <span class="req">*</span>
+                    Estado
                 </label>
                 @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
             </div>

@@ -11,13 +11,13 @@ namespace Proyecto.Controllers
     [FilterConfig.SessionTimeout]
     public class HomeController : Controller
     {
-        Tema tema = new Tema();
+        Recursos recurso = new Recursos();
 
         public ActionResult Index()
         {
-            tema = tema.existe();
-            Session["tema"] = tema;
-            return View();
+            plataforma p = new plataforma();
+            p = p.ModelPlataforma();
+            return View(p);
         }
 
         public ActionResult Check(ActionResult destino)
@@ -84,9 +84,9 @@ namespace Proyecto.Controllers
 
         public ActionResult Contenido()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            plataforma p = new plataforma();
+            p = p.ModelPlataforma();
+            return View(p);
         }
 
         public ActionResult Logout()
