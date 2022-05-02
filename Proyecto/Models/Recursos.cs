@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Proyecto.Models
 {
@@ -27,6 +28,16 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        public List<SelectListItem>  comUnidades()
+        {
+            DataTable _unidades = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            server.ejecutarQuery(@"select idUnidad,nombre unidades from unidades where estado=1", new List<SqlParameter>(), out _unidades);
+            return Combo(_unidades, "unidades", "idUnidad",null);
+        }
         public List<Recursos> listarRecursos()
         {
             List<Recursos> recurso = new List<Recursos>();
@@ -187,6 +198,16 @@ namespace Proyecto.Models
                 Funcion.write();
             }
             return recurso;
+        }
+
+        public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)
+        {
+            return agOrigenDatos.Rows.Cast<DataRow>().Select(r => new SelectListItem
+            {
+                Text = r[agDisplay].ToString(),
+                Value = r[agValue].ToString(),
+                Selected = r[agValue].ToString().Equals(agSelectedValue)
+            }).ToList();
         }
     }
 }
