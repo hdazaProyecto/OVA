@@ -12,11 +12,14 @@ namespace Proyecto.Controllers
     public class HomeController : Controller
     {
         Recursos recurso = new Recursos();
-
+        plataforma p = new plataforma();
         public ActionResult Index()
-        {
-            plataforma p = new plataforma();
+        {            
             p = p.ModelPlataforma();
+            if (p != null)
+            {
+                Session["plataforma"] = p;
+            }
             return View(p);
         }
 
@@ -33,12 +36,15 @@ namespace Proyecto.Controllers
         public ActionResult Index(Cuenta usuario)
         {
             Usuario us = usuario.Existe();
-
+            p = p.ModelPlataforma();
+            if (p != null)
+            {
+                Session["plataforma"] = p;
+            }
             if (us != null)
             {
                 Session["Usuario"] = us;
-                Session["Logueado"] = true;
-                //return RedirectToAction("Index", "Resolucion", new { SinRes = true });
+                Session["Logueado"] = true;                
             }
             else
             {
@@ -46,7 +52,7 @@ namespace Proyecto.Controllers
 
                 us = null;
             }
-            return View();
+            return View(p);
         }
 
         public ActionResult Plataforma()
@@ -119,6 +125,13 @@ namespace Proyecto.Controllers
             Usuario us = usuario.registrarUsuario(usuario);
             //return View(us);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult RecuperarContrasena(string usuario)
+        {
+            EnvioCorreo envio = new EnvioCorreo();
+            envio.envio();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

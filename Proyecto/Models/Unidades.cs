@@ -104,9 +104,9 @@ namespace Proyecto.Models
                                         ELSE
                                         BEGIN
                                             INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
                                         END SELECT * FROM Unidades", parametros, out dunidad);
                 server.close();
 

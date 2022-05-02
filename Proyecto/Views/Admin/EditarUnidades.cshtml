@@ -2,10 +2,10 @@
 @{Usuario us = (Usuario)Session["Usuario"];}
 @model Unidades
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Editar Unidades";
 }
 <div>
-    <h1><b>Administración del portal</b></h1>
+    <h1><b>Administración de portal</b></h1>
 </div>
 <hr />
 @if (Model != null)
@@ -24,7 +24,7 @@
 </div>
     <div class="col-md-10">
         <div>
-            <h2><b>Unidad</b></h2>
+            <h2><b>Editar Unidades</b></h2>
         </div>
         @using (Html.BeginForm("GuardarUnidad", "Admin", new AjaxOptions { HttpMethod = "POST" }))
         {

@@ -6,7 +6,7 @@
     ViewBag.Title = "Listar Recursos";
 }
 <div>
-    <h1><b>Administración del portal</b></h1>
+    <h1><b>Administración de portal</b></h1>
 </div>
 <hr />
 <div class="col-md-2">
@@ -21,31 +21,43 @@
         <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
     </nav>
 </div>
-<a>@Html.ActionLink("Agregar Recurso", "AgregarRecurso", "Admin")</a>
-<hr />
-<table class="table table-striped table-condensed table-hover">
-    <thead class="table-light">
-        <tr>
-            <th>#</th>
-            <th>nombre</th>
-            <th>descripcion</th>
-            <th>estado</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Count > 0)
-        {
-            foreach (Recursos re in Model)
+<div class="col-md-10">
+    <div>
+        <h2><b>Recursos</b></h2>
+    </div>
+    <a>@Html.ActionLink("Agregar Recurso", "AgregarRecurso", "Admin")</a>
+    <hr />
+    <table class="tableContenido table-striped table-condensed table-hover">
+        <thead class="table-light">
+            <tr>
+                @*<th>#</th>*@
+                <th>NOMBRE</th>
+                <th>DESCRIPCIÓN</th>
+                <th>ESTADO</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
             {
-                <tr class="table-active">
-                    <td>@re.idRecurso</td>
-                    <td>@re.nombre</td>
-                    <td>@re.descripcion</td>
-                    <td>@re.estado</td>
-                    <td><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
-                </tr>
+                foreach (Recursos re in Model)
+                {
+                    <tr class="table-active">
+                        @*<td>@re.idRecurso</td>*@
+                        <td>@re.nombre</td>
+                        <td>@re.descripcion</td>
+                        @if (@re.estado == true)
+                        {
+                            <td>Activo</td>
+                        }
+                        else
+                        {
+                            <td>Inactivo</td>
+                        }
+                        <td><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

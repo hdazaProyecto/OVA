@@ -1,101 +1,67 @@
-01/05/2022 12:55:30 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+2/05/2022 9:03:42 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
                                         BEGIN
-                                           UPDATE Tema
+                                           UPDATE Unidades
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
                                                   imagen = @imagen,
-                                                  estado = @estado,                                                
-                                                  fechaModifica = @fechaModifica                                                 
-                                             WHERE idTema=@idTema
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
                                         END
                                         ELSE
                                         BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
-                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Los datos binarios o de la cadena se truncan en la columna "nombre" de la tabla "db.dbo.Tema". Valor truncado: "OBJETO VIRTUAL DE APRENDIZAJE PARA EL APOYO EN LA ".
+                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: Debe declarar la variable escalar '@recurso'.]
+2/05/2022 9:03:42 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+2/05/2022 9:10:22 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Unidades_Tema'. El conflicto ha aparecido en la base de datos 'db', tabla 'dbo.Tema', column 'idTema'.
 Se terminó la instrucción.]
-01/05/2022 12:55:30 : Error [mensaje: No se puede encontrar la tabla 0.]
-01/05/2022 12:57:51 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+2/05/2022 9:10:22 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+2/05/2022 11:54:11 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
                                         BEGIN
-                                           UPDATE Tema
+                                           UPDATE Recursos
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
                                                   imagen = @imagen,
-                                                  estado = @estado,                                                
-                                                  fechaModifica = @fechaModifica                                                 
-                                             WHERE idTema=@idTema
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
                                         END
                                         ELSE
                                         BEGIN
-                                            INSERT INTO Tema
-                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
-                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Los datos binarios o de la cadena se truncan en la columna "nombre" de la tabla "db.dbo.Tema". Valor truncado: "Objeto Virtual de Aprendizaje para el Apoyo en la ".
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Recursos_Unidades'. El conflicto ha aparecido en la base de datos 'db', tabla 'dbo.Unidades', column 'idUnidad'.
 Se terminó la instrucción.]
-01/05/2022 12:57:51 : Error [mensaje: No se puede encontrar la tabla 0.]
-01/05/2022 1:33:53 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
-                                        BEGIN
-                                           UPDATE Unidades
-                                               SET nombre = @nombre,
-                                                  descripcion = @descripcion,
-                                                  imagen = @imagen,
-                                                  estado = @estado,
-                                                  idTema = @idTema,
-                                                  fecha = @fecha,
-                                                  fechaModifica = @fechaModifica,
-                                                  userName = @userName
-                                             WHERE idUnidad=@idUnidad
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
-                                        END SELECT * FROM Unidades [mensaje: Debe declarar la variable escalar '@recurso'.]
-01/05/2022 1:33:53 : Error [mensaje: No se puede encontrar la tabla 0.]
-01/05/2022 1:34:07 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
-                                        BEGIN
-                                           UPDATE Unidades
-                                               SET nombre = @nombre,
-                                                  descripcion = @descripcion,
-                                                  imagen = @imagen,
-                                                  estado = @estado,
-                                                  idTema = @idTema,
-                                                  fecha = @fecha,
-                                                  fechaModifica = @fechaModifica,
-                                                  userName = @userName
-                                             WHERE idUnidad=@idUnidad
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
-                                        END SELECT * FROM Unidades [mensaje: Debe declarar la variable escalar '@recurso'.]
-01/05/2022 1:34:07 : Error [mensaje: No se puede encontrar la tabla 0.]
-01/05/2022 1:34:19 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
-                                        BEGIN
-                                           UPDATE Unidades
-                                               SET nombre = @nombre,
-                                                  descripcion = @descripcion,
-                                                  imagen = @imagen,
-                                                  estado = @estado,
-                                                  idTema = @idTema,
-                                                  fecha = @fecha,
-                                                  fechaModifica = @fechaModifica,
-                                                  userName = @userName
-                                             WHERE idUnidad=@idUnidad
-                                        END
-                                        ELSE
-                                        BEGIN
-                                            INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
-                                             VALUES
-                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
-                                        END SELECT * FROM Unidades [mensaje: Debe declarar la variable escalar '@recurso'.]
-01/05/2022 1:34:19 : Error [mensaje: No se puede encontrar la tabla 0.]
+2/05/2022 11:54:12 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
