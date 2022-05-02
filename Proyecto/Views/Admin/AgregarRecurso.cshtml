@@ -30,7 +30,6 @@
     <form>
         @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
         @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-        @Html.Hidden("idUnidad", tema.idTema, new { @value_data = "idUnidad" })
         @if (us != null)
         {
             @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
@@ -53,25 +52,31 @@
         </div>
         <div class="form-group">
             <label>
-                Imagen <span class="req">*</span>
+                Unidad
+            </label>            
+            @Html.DropDownList("idUnidad", (List<System.Web.Mvc.SelectListItem>)ViewBag.unidades, "Seleccione...", new { @Class = "form-control form-control-sm", @title = "Unidades", @value_data = "idUnidad" })
+        </div>
+        <div class="form-group">
+            <label>
+                Url 
             </label>
             @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url" })
         </div>
         <div class="form-group">
             <label>
-                Imagen <span class="req">*</span>
+                Archivo 
             </label>
             @Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
         </div>
         <div class="form-group">
             <label>
-                Imagen <span class="req">*</span>
+                Imagen 
             </label>
             @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
         </div>
         <div class="form-group">
             <label>
-                Estado <span class="req">*</span>
+                Estado 
             </label>
             @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
         </div>

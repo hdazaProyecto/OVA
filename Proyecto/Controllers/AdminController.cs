@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Proyecto.Funciones;
 using Proyecto.Models;
 
 namespace Proyecto.Controllers
@@ -104,6 +106,7 @@ namespace Proyecto.Controllers
 
         public ActionResult AgregarRecurso(Recursos recurso)
         {
+            ViewBag.unidades = recurso.comUnidades();
             if (Session["Usuario"] != null)
             {
                 if (recurso.nombre != null)
@@ -120,10 +123,11 @@ namespace Proyecto.Controllers
         }
 
         public ActionResult EditarRecurso(int idRecurso)
-        {
-            Recursos recurso = new Recursos();           
+        {   
             if (Session["Usuario"] != null)
             {
+                Recursos recurso = new Recursos();
+                ViewBag.unidades = recurso.comUnidades();
                 recurso = recurso.BuscarRecursos(idRecurso);
                 return View(recurso);
             }
