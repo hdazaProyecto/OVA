@@ -35,7 +35,7 @@ namespace Proyecto.Models
             parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@userName", this.userName));
             parametros.Add(new SqlParameter("@userPassword", Funcion.stringBase64(this.userPassword)));
-            server.ejecutarQuery("SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+            server.ejecutarQuery("SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
             server.close();
 
             if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -50,7 +50,10 @@ namespace Proyecto.Models
                     nombre = r.Field<string>("nombre"),
                     apellidos = r.Field<string>("apellidos"),
                     estado = r.Field<bool>("estado"),
-                    idRol = r.Field<int>("idRol")
+                    idRol = r.Field<int>("idRol"),
+                    profesion = r.Field<string>("profesion"),
+                    perfilProfesional = r.Field<string>("perfilProfesional"),
+                    fotografia = r.Field<string>("fotografia"),
                 }).FirstOrDefault();
             }
             return us;

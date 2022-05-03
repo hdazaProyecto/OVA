@@ -18,6 +18,9 @@ namespace Proyecto.Models
         public string apellidos { get; set; }
         public bool estado { get; set; }
         public int idRol { get; set; }
+        public string profesion { get; set; }
+        public string perfilProfesional { get; set; }
+        public string fotografia { get; set; }
 
         private Conexion conexion;
         DataSet dsusuario;
