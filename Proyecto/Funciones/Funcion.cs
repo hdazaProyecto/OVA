@@ -36,5 +36,23 @@ namespace Proyecto.Funciones
             tareas.Clear();
         }
 
+        public static Dictionary<string, string> ValidateEmail(string Email)
+        {
+            Dictionary<string, string> item = new Dictionary<string, string>();
+            try
+            {
+                Email.Split(';').ToList().ForEach(f =>
+                {
+                    if (f.Split('<').Count() == 2)
+                        item.Add(f.Split('<')[1].Replace(">", "").Trim(), f.Split('<')[0].Trim());
+                    else if (Email.Contains('@'))
+                        item.Add(f.Trim(), f.Trim());
+                });
+            }
+            catch
+            { }
+
+            return item;
+        }
     }
 }

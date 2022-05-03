@@ -127,10 +127,10 @@ namespace Proyecto.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult RecuperarContrasena(string usuario)
+        public ActionResult RecuperarContrasena(Cuenta usuario)
         {
-            EnvioCorreo envio = new EnvioCorreo();
-            envio.envio();
+            Cuenta re = new Cuenta();
+            re.recPassword(usuario.userName);
             return RedirectToAction("Index", "Home");
         }
     }

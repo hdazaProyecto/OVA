@@ -65,3 +65,6 @@ Se terminó la instrucción.]
                                         END SELECT * FROM Recursos [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Recursos_Unidades'. El conflicto ha aparecido en la base de datos 'db', tabla 'dbo.Unidades', column 'idUnidad'.
 Se terminó la instrucción.]
 2/05/2022 11:54:12 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+3/05/2022 1:36:20 p. m.: Error al ejecutar la consultaSELECT correoElectronico,userPassword FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) [mensaje: Referencia a objeto no establecida como instancia de un objeto.]
+3/05/2022 1:53:21 p. m.: Error al ejecutar la consultatop 1 SELECT nombre, servidor, usuario, clave, puerto, ssl FROM configEmail [mensaje: Sintaxis incorrecta cerca de la palabra clave 'top'.]
+3/05/2022 1:54:10 p. m.: Error al ejecutar la consultatop 1 SELECT nombre, servidor, usuario, clave, puerto, ssl FROM configEmail [mensaje: Sintaxis incorrecta cerca de la palabra clave 'top'.]

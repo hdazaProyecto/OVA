@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>@ViewBag.Title</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>    
+    <title>@ViewBag.Title</title>
     @using Proyecto.Models
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -76,9 +76,9 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" title="Ingresar al sitio">Acceder</button>
                     }
-                    <a data-toggle="modal" data-target="#regis" id="registrar">Registrarse</a>
                 </div>
                 <div class="modal-footer">
+                    <a data-toggle="modal" data-target="#regis" id="registrar">Registrarse</a><br />
                     <a data-toggle="modal" data-target="#RecPass" id="recuperar">Recuperar Password</a>
                 </div>
             </div>
@@ -151,7 +151,7 @@
         </div>
     </div>
 
-    <!-- Modal HTML -->
+    <!-- Modal Recuperar Password-->
     <div id="RecPass" class="modal fade">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
