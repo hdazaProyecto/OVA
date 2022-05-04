@@ -57,9 +57,9 @@ namespace Proyecto.Controllers
 
         public ActionResult Plataforma()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            plataforma p = new plataforma();
+            p = p.ModelPlataforma();
+            return View(p);
         }
 
         public ActionResult Foro()
