@@ -3,7 +3,44 @@
 @{
     ViewBag.Title = "Plataforma";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h1><b>Plataforma</b></h1></div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h1><b>@Model.nombreTema</b></h1></div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        visor
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table class="table">
+                @if (Model.unidades != null && Model.unidades.Count > 0)
+                {
+                    foreach (Unidades un in Model.unidades)
+                    {
+                <tr>
+                    <th>@un.nombre</th>
+                    @foreach (Recursos re in Model.recursos)
+                    {
+                        if (re.idUnidad == un.idUnidad)
+                        {
+                    <th align="left">
+                        &nbsp&nbsp&nbsp @re.nombre
+                    </th>
 
-<h2>Plataforma</h2>
-
+                        }
+                    }
+                </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
 

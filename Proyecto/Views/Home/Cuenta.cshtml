@@ -29,6 +29,21 @@
                 <label>Email</label>
                 @Html.TextBox("correoElectronico", @us.correoElectronico, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico" })
             </div>
+            @if (us.idRol == 2)
+            {
+                <div class="form-group col-md-12">
+                    <label>Profesion</label>
+                    @Html.TextBox("profesion", @us.profesion, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtprofesion" })
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Perfil Profesional</label>
+                    @Html.TextArea("perfilProfesional", @us.perfilProfesional, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtperfilProfesional" })
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Fotografia</label>
+                    @Html.TextBox("fotografia", @us.fotografia, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtfotografia" })
+                </div>
+            }
             <div class="form-group col-md-12">
                 <label>Usuario</label>
                 @Html.TextBox("userName", @us.userName, new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName" })
@@ -46,7 +61,7 @@
             <div class="form-group col-md-6">
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </div>
-            
+
         </form>
         }
     </div>

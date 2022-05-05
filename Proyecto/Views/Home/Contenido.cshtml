@@ -19,8 +19,7 @@
                 <tr>
                     <th>
                         <br />
-                        @un.nombre
-                        <hr />
+                        @un.nombre - @un.descripcion                        
                     </th>
                 </tr>
                 if (Model.recursos != null && Model.recursos.Count > 0)
@@ -31,7 +30,7 @@
                         {
                             <tr>
                                 <th>
-                                    &nbsp&nbsp&nbsp * @re.nombre
+                                    &nbsp&nbsp&nbsp * @re.nombre - @re.descripcion
                                 </th>
                             </tr>
                         }

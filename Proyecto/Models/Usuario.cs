@@ -18,6 +18,9 @@ namespace Proyecto.Models
         public string apellidos { get; set; }
         public bool estado { get; set; }
         public int idRol { get; set; }
+        public string profesion { get; set; }
+        public string perfilProfesional { get; set; }
+        public string fotografia { get; set; }
 
         private Conexion conexion;
         DataSet dsusuario;
@@ -97,6 +100,9 @@ namespace Proyecto.Models
                     parametros.Add(new SqlParameter("@apellidos", usuario.apellidos));
                     parametros.Add(new SqlParameter("@estado", usuario.estado));
                     parametros.Add(new SqlParameter("@idRol", usuario.idRol));
+                    parametros.Add(new SqlParameter("@perfilProfesional", usuario.perfilProfesional == null ? "" : usuario.perfilProfesional));
+                    parametros.Add(new SqlParameter("@profesion", usuario.profesion == null ? "" : usuario.profesion));
+                    parametros.Add(new SqlParameter("@fotografia", usuario.fotografia == null ? "" : usuario.fotografia));
                     parametros.Add(new SqlParameter("@fecha", System.DateTime.Now));
                     dsusuario = new DataSet();
                     server.ejecutarQuery(@"UPDATE Usuarios
@@ -107,8 +113,20 @@ namespace Proyecto.Models
                                               ,estado = @estado
                                               ,idRol = @idRol
                                               ,fechaModifica = getdate()
-                                         WHERE userName = @userName 
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia,
+                                                userName = @userName
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
                     server.close();
 
                     if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -123,7 +141,10 @@ namespace Proyecto.Models
                             nombre = r.Field<string>("nombre"),
                             apellidos = r.Field<string>("apellidos"),
                             estado = r.Field<bool>("estado"),
-                            idRol = r.Field<int>("idRol")
+                            idRol = r.Field<int>("idRol"),
+                            profesion = r.Field<String>("profesion"),
+                            perfilProfesional = r.Field<String>("perfilProfesional"),
+                            fotografia = r.Field<String>("fotografia")
                         }).FirstOrDefault();
                     }
                 }
@@ -135,6 +156,7 @@ namespace Proyecto.Models
             }
             return us;
         }
+
 
         public Usuario Existe()
         {

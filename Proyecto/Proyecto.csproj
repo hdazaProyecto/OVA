@@ -127,6 +127,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Funciones\Conexion.cs" />
     <Compile Include="Funciones\ConSqlServer.cs" />
+    <Compile Include="Funciones\EnvioCorreo.cs" />
     <Compile Include="Funciones\Funcion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

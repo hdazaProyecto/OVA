@@ -12,11 +12,14 @@ namespace Proyecto.Controllers
     public class HomeController : Controller
     {
         Recursos recurso = new Recursos();
-
+        plataforma p = new plataforma();
         public ActionResult Index()
-        {
-            plataforma p = new plataforma();
+        {            
             p = p.ModelPlataforma();
+            if (p != null)
+            {
+                Session["plataforma"] = p;
+            }
             return View(p);
         }
 
@@ -33,12 +36,15 @@ namespace Proyecto.Controllers
         public ActionResult Index(Cuenta usuario)
         {
             Usuario us = usuario.Existe();
-
+            p = p.ModelPlataforma();
+            if (p != null)
+            {
+                Session["plataforma"] = p;
+            }
             if (us != null)
             {
                 Session["Usuario"] = us;
-                Session["Logueado"] = true;
-                //return RedirectToAction("Index", "Resolucion", new { SinRes = true });
+                Session["Logueado"] = true;                
             }
             else
             {
@@ -46,14 +52,14 @@ namespace Proyecto.Controllers
 
                 us = null;
             }
-            return View();
+            return View(p);
         }
 
         public ActionResult Plataforma()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            plataforma p = new plataforma();
+            p = p.ModelPlataforma();
+            return View(p);
         }
 
         public ActionResult Foro()
@@ -117,8 +123,24 @@ namespace Proyecto.Controllers
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
             Usuario us = usuario.registrarUsuario(usuario);
-            //return View(us);
+            @ViewBag.Usuario = "Usuario registrado";
             return RedirectToAction("Index");
+        }
+
+        public ActionResult RecuperarContrasena(Cuenta usuario)
+        {
+            Cuenta re = new Cuenta();
+            re.recPassword(usuario.userName);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult ActualizarUsuario(Usuario usuario)
+        {
+            Usuario us = usuario.actualizarUsuario(usuario);
+            //return View(us);
+            Session["Usuario"] = us;
+            return RedirectToAction("Cuenta");
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Proyecto.Models
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                server.ejecutarQuery(@"SELECT * FROM Unidades", parametros, out dunidad);
+                server.ejecutarQuery(@"SELECT * FROM Unidades ORDER BY idUnidad", parametros, out dunidad);
                 server.close();
 
                 if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
@@ -104,9 +104,9 @@ namespace Proyecto.Models
                                         ELSE
                                         BEGIN
                                             INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,recurso,idTema,fecha,userName)
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@recurso,@idTema,@fecha,@userName)
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
                                         END SELECT * FROM Unidades", parametros, out dunidad);
                 server.close();
 

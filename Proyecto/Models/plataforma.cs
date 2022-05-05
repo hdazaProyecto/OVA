@@ -42,7 +42,7 @@ namespace Proyecto.Models
                 server.ejecutarQuery(@"SELECT * FROM recursos WHERE estado=1", parametros, out drecurso);
                 server.close();
 
-                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                if (dtema != null && dtema.Tables[0].Rows.Count > 0)
                 {
                     dttema = new DataTable();
                     dttema = dtema.Tables[0];

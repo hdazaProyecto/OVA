@@ -4,8 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>@ViewBag.Title</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>    
+    <title>@ViewBag.Title</title>
     @using Proyecto.Models
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -28,6 +28,8 @@
                     <li>@Html.ActionLink("Plataforma", "Plataforma", "Home")</li>
                     <li>@Html.ActionLink("Foro", "Foro", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     @if (Session["Usuario"] == null)
                     {
                         <li><a data-toggle="modal" data-target="#login">Login</a></li>
@@ -35,7 +37,7 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Cuenta", "Cuenta", "Home")</li>
+                        <li>@Html.ActionLink("Hola " + us.nombre, "Cuenta", "Home")</li>
                         if (us.idRol == 1 || us.idRol == 2)
                         {
                             <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
@@ -54,7 +56,7 @@
         </footer>
     </div>
 
-    <!-- Modal HTML -->
+    <!-- Modal Login -->
     <div id="login" class="modal fade">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
@@ -76,16 +78,16 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" title="Ingresar al sitio">Acceder</button>
                     }
-                    <a data-toggle="modal" data-target="#regis" id="registrar">Registrarse</a>
                 </div>
                 <div class="modal-footer">
-                    <a href="#">Forgot Password?</a>
+                    <a data-toggle="modal" data-target="#regis" id="registrar">Registrarse</a><br />
+                    <a data-toggle="modal" data-target="#RecPass" id="recuperar">Recuperar Password</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal HTML -->
+    <!-- Modal Registro -->
     <div id="regis" class="modal fade">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
@@ -104,14 +106,14 @@
                         <div class="fila-arriba">
                             <div class="form-group">
                                 <label>
-                                    Nombre <span class="req">*</span>
+                                    Nombre
                                 </label>
                                 @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre" })
                             </div>
 
                             <div class="form-group">
                                 <label>
-                                    Apellido <span class="req">*</span>
+                                    Apellido
                                 </label>
                                 @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos" })
                             </div>
@@ -145,7 +147,31 @@
                     }
                 </div>
                 <div class="modal-footer">
-                    <a href="#">Forgot Password?</a>
+                    @*<a href="#">Forgot Password?</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Recuperar Password-->
+    <div id="RecPass" class="modal fade">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="avatar">
+                        <img src="~/Content/images/user.png" alt="">
+                    </div>
+                    <h4 class="modal-title">Recuperar Password</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("RecuperarContrasena", "Home", FormMethod.Post, new { id = "frmLogin" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite usuario", @Id = "txtIdUsuario" })
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-btn" title="Recuperar Password">Aceptar</button>
+                    }
                 </div>
             </div>
         </div>
@@ -159,8 +185,11 @@
             $("#registrar").click(function () {
                 $("#login").modal('hide');
             });
+            $("#recuperar").click(function () {
+                $("#login").modal('hide');
+            });
             @if (!String.IsNullOrWhiteSpace(ViewBag.Usuario))
-            {
+                {
                 <text>
                 alert('@Html.Raw(ViewBag.Usuario)');
                 </text>

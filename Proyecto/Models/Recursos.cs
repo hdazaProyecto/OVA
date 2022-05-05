@@ -20,6 +20,7 @@ namespace Proyecto.Models
         public string imagen { get; set; }
         public bool estado { get; set; }
         public int idUnidad { get; set; }
+        public string nomUnidad { get; set; }
         public DateTime fecha { get; set; }
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
@@ -50,7 +51,7 @@ namespace Proyecto.Models
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                server.ejecutarQuery(@"SELECT * FROM Recursos", parametros, out drecurso);
+                server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1 ORDER BY R.idUnidad,R.idRecurso", parametros, out drecurso);
                 server.close();
 
                 if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
@@ -68,6 +69,7 @@ namespace Proyecto.Models
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
                         idUnidad = r.Field<int>("idUnidad"),
+                        nomUnidad = r.Field<string>("nomUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                     }).ToList();
