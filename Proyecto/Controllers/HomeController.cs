@@ -71,9 +71,10 @@ namespace Proyecto.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            Usuario us = new Usuario();
+            List<Usuario> profesores = new List<Usuario>();
+            profesores = us.listarProfesores();
+            return View(profesores);
         }
 
         public ActionResult Cuenta()

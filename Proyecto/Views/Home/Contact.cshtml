@@ -1,17 +1,31 @@
-﻿@{
+﻿@using Proyecto.Models;
+@model List<Usuario>
+@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<hr />
+@if (Model != null && Model.Count > 0)
+{
+    foreach (Usuario p in Model)
+    {
+        if (p.idRol == 2)
+        {
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <address>
+                        <h3>@p.nombre @p.apellidos</h3><br />
+                        <p>@p.perfilProfesional</p><br />
+                    </address>
+                    <address>
+                        <strong>Contacto:</strong>   <a href="mailto:@p.correoElectronico">@p.correoElectronico</a>
+                    </address>
+                </div>
+                <div class="col-md-6">
+                    @p.fotografia
+                </div>
+            </div>
+        }
+    }
+}
+<hr />

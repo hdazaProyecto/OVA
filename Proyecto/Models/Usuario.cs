@@ -126,7 +126,7 @@ namespace Proyecto.Models
                                                 INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
                                                 VALUES
                                                 (@profesion,@perfilProfesional,@fotografia,@userName);                                            
-                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1", parametros, out dsusuario);
                     server.close();
 
                     if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -156,7 +156,6 @@ namespace Proyecto.Models
             }
             return us;
         }
-
 
         public Usuario Existe()
         {
@@ -193,6 +192,50 @@ namespace Proyecto.Models
                 }
             }
             return us;
+        }
+
+        public List<Usuario> listarProfesores()
+        {
+            List<Usuario> Profesores = new List<Usuario>();
+            try
+            {
+                DataSet dProfesores;
+                DataTable dtProfesores;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                server.ejecutarQuery(@"select * from profesores P LEFT JOIN usuarios U ON P.userName=U.userName WHERE estado=1", parametros, out dProfesores);
+                server.close();
+
+                if (dProfesores != null && dProfesores.Tables[0].Rows.Count > 0)
+                {
+                    dtProfesores = new DataTable();
+                    dtProfesores = dProfesores.Tables[0];
+
+                    Profesores = dtProfesores.AsEnumerable().Select(r => new Usuario()
+                    {
+                        userName = r.Field<string>("userName"),
+                        userPassword = r.Field<string>("userPassword"),
+                        correoElectronico = r.Field<string>("correoElectronico"),
+                        nombre = r.Field<string>("nombre"),
+                        apellidos = r.Field<string>("apellidos"),
+                        estado = r.Field<bool>("estado"),
+                        idRol = r.Field<int>("idRol"),
+                        profesion = r.Field<String>("profesion"),
+                        perfilProfesional = r.Field<String>("perfilProfesional"),
+                        fotografia = r.Field<String>("fotografia")
+                    }).ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
+            }
+            return Profesores;
         }
     }
 }
