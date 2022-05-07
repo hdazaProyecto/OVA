@@ -28,6 +28,8 @@
                     <li>@Html.ActionLink("Plataforma", "Plataforma", "Home")</li>
                     <li>@Html.ActionLink("Foro", "Foro", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     @if (Session["Usuario"] == null)
                     {
                         <li><a data-toggle="modal" data-target="#login">Login</a></li>
@@ -35,7 +37,7 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Cuenta", "Cuenta", "Home")</li>
+                        <li>@Html.ActionLink("Hola " + us.nombre, "Cuenta", "Home")</li>
                         if (us.idRol == 1 || us.idRol == 2)
                         {
                             <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
@@ -187,7 +189,7 @@
                 $("#login").modal('hide');
             });
             @if (!String.IsNullOrWhiteSpace(ViewBag.Usuario))
-            {
+                {
                 <text>
                 alert('@Html.Raw(ViewBag.Usuario)');
                 </text>

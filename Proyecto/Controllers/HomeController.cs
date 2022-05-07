@@ -71,9 +71,10 @@ namespace Proyecto.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            Usuario us = new Usuario();
+            List<Usuario> profesores = new List<Usuario>();
+            profesores = us.listarProfesores();
+            return View(profesores);
         }
 
         public ActionResult Cuenta()
@@ -123,7 +124,7 @@ namespace Proyecto.Controllers
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
             Usuario us = usuario.registrarUsuario(usuario);
-            //return View(us);
+            @ViewBag.Usuario = "Usuario registrado";
             return RedirectToAction("Index");
         }
 
@@ -132,6 +133,15 @@ namespace Proyecto.Controllers
             Cuenta re = new Cuenta();
             re.recPassword(usuario.userName);
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult ActualizarUsuario(Usuario usuario)
+        {
+            Usuario us = usuario.actualizarUsuario(usuario);
+            //return View(us);
+            Session["Usuario"] = us;
+            return RedirectToAction("Cuenta");
         }
     }
 }

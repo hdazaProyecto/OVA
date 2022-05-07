@@ -30,7 +30,7 @@
     <table class="tableContenido table-striped table-condensed table-hover">
         <thead class="table-light">
             <tr>
-                @*<th>#</th>*@
+                <th>UNIDAD</th>
                 <th>NOMBRE</th>
                 <th>DESCRIPCIÓN</th>
                 <th>ESTADO</th>
@@ -43,7 +43,7 @@
                 foreach (Recursos re in Model)
                 {
                     <tr class="table-active">
-                        @*<td>@re.idRecurso</td>*@
+                        <td>@re.nomUnidad</td>
                         <td>@re.nombre</td>
                         <td>@re.descripcion</td>
                         @if (@re.estado == true)
