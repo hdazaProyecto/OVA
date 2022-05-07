@@ -1,0 +1,69 @@
+﻿@using Proyecto.Models;
+@using Proyecto.Funciones;
+@model plataforma
+@{
+    ViewBag.Title = "Plataforma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(function () {
+        $("#recurso").click(function () {
+            alert("Hola recurso 1");
+        });
+    });
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h1><b>Plataforma</b></h1></div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h1><b>@Model.nombreTema</b></h1></div>
+    </div>
+    <hr />
+    <div class="row">
+        @if (@Model.tipoRecurso == null)
+        {
+            <div id="visor">vacio</div>
+        }
+        else
+        {
+            <div id="visor">recurso</div>
+        }
+
+        @*<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <iframe width="560"
+                    height="315"
+                    src="http://www.youtube.com/embed/fxCEcPxUbYA"
+                    frameborder="0"
+                    allowfullscreen></iframe>
+        </div>*@
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table class="table">
+                @if (Model.unidades != null && Model.unidades.Count > 0)
+                {
+                    foreach (Unidades un in Model.unidades)
+                    {
+                        <tr>
+                            <th>@un.nombre</th>
+                            @foreach (Recursos re in Model.recursos)
+                            {
+                                if (re.idUnidad == un.idUnidad)
+                                {
+                                    <th align="left">
+                                        <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })">&nbsp&nbsp&nbsp @re.idRecurso @re.nombre</a>
+                                    </th>
+
+                                }
+                            }
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+

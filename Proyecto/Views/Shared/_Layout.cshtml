@@ -25,7 +25,7 @@
                 <ul class="nav navbar-nav">
                     <!--li>@Html.ActionLink("Inicio", "Index", "Home")</li-->
                     <li>@Html.ActionLink("Contenido programatico", "Contenido", "Home")</li>
-                    <li>@Html.ActionLink("Plataforma", "Plataforma", "Home")</li>
+                    <li>@Html.ActionLink("Plataforma", "Index", "Plataforma")</li>
                     <li>@Html.ActionLink("Foro", "Foro", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
@@ -194,6 +194,11 @@
                 alert('@Html.Raw(ViewBag.Usuario)');
                 </text>
             }
+            //$(document).ready(function () {
+            //    $("#recurso").click(function () {
+            //        alert("Hola recurso 1");
+            //    });
+            //});
         });
 
     </script>
