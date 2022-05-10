@@ -87,7 +87,7 @@
                     <th>@un.nombre</th>
                     @if (Model.recursos != null && Model.recursos.Count > 0)
                     {
-                        @foreach (Recursos re in Model.recursos)
+                        foreach (Recursos re in Model.recursos)
                         {
                             if (re.idUnidad == un.idUnidad)
                             {

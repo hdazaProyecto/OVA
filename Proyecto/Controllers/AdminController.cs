@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -104,11 +105,21 @@ namespace Proyecto.Controllers
             return RedirectToAction("ListarUnidades");
         }
 
+        
         public ActionResult AgregarRecurso(Recursos recurso)
         {
             ViewBag.unidades = recurso.comUnidades();
             if (Session["Usuario"] != null)
             {
+                string ruta = Server.MapPath("~/Archivos/");
+                if (!Directory.Exists(ruta))
+                    Directory.CreateDirectory(ruta);
+                if (recurso.file != null)
+                {
+                    string nombreArchivo = Path.GetFileName(recurso.file.FileName);
+                    recurso.file.SaveAs(ruta+nombreArchivo);
+                }
+
                 if (recurso.nombre != null)
                 {
                     recurso = recurso.gestionarUnidad(recurso);

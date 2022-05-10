@@ -24,6 +24,7 @@ namespace Proyecto.Models
         public DateTime fecha { get; set; }
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
+        public HttpPostedFileBase file { get; set; }
 
         private Conexion conexion;
         private SqlConnectionStringBuilder con;

@@ -24,7 +24,7 @@
     <div>
         <h2><b>Agregar Recursos</b></h2>
     </div>
-    @using (Html.BeginForm("AgregarRecurso", "Admin"))
+    @using (Html.BeginForm("AgregarRecurso", "Admin",FormMethod.Post, new { enctype="multipart/form-data"}))
     {
     <form>
         @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
@@ -65,7 +65,7 @@
             <label>
                 Archivo
             </label>
-            @Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
+            @Html.TextBox("file", @Model.archivo, new { @type="file", @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
         </div>
         <div class="form-group">
             <label>
