@@ -16,8 +16,9 @@ namespace Proyecto.Models
         public string imagenTema { get; set; }
         public string tipoRecurso { get; set; }
         public string url { get; set; }
-        public string recurso { get; set; }
+        public string archivo { get; set; }
         public string imagen { get; set; }
+        public string descripcion { get; set; }
         public List<Unidades> unidades { get; set; }
         public List<Recursos> recursos { get; set; }
 
@@ -153,7 +154,19 @@ namespace Proyecto.Models
                     dtrecurso = drecurso.Tables[0];
                     
                     Plataforma.url = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("url");
-
+                    Plataforma.archivo = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
+                    Plataforma.imagen = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
+                    Plataforma.descripcion = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("descripcion");
+                    if (Plataforma.url != null)
+                    {
+                        Plataforma.tipoRecurso = "URL";
+                    } else if (Plataforma.archivo != null)
+                    {
+                        Plataforma.tipoRecurso = "ARCHIVO";
+                    } else
+                    {
+                        Plataforma.tipoRecurso = "IMAGEN";
+                    }
                     Plataforma.recursos = dtrecurso.AsEnumerable().Select(r => new Recursos()
                     {
                         idRecurso = r.Field<int>("idRecurso"),

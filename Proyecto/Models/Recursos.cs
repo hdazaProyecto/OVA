@@ -99,8 +99,8 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@idrecurso", Precurso.idRecurso));
                 parametros.Add(new SqlParameter("@nombre", Precurso.nombre));
                 parametros.Add(new SqlParameter("@descripcion", Precurso.descripcion == null ? "" : Precurso.descripcion));
-                parametros.Add(new SqlParameter("@url", Precurso.imagen == null ? "" : Precurso.imagen));
-                parametros.Add(new SqlParameter("@imagen", Precurso.url == null ? "" : Precurso.url));
+                parametros.Add(new SqlParameter("@url", Precurso.url == null ? "" : Precurso.url));
+                parametros.Add(new SqlParameter("@imagen", Precurso.imagen == null ? "" : Precurso.imagen));
                 parametros.Add(new SqlParameter("@archivo", Precurso.archivo == null ? "" : Precurso.archivo));
                 parametros.Add(new SqlParameter("@idUnidad", Precurso.idUnidad));
                 parametros.Add(new SqlParameter("@estado", Precurso.estado));

@@ -148,3 +148,91 @@ Se terminó la instrucción.]
                                     (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
                                     SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: La consulta con parámetros '(@userName nvarchar(6),@userPassword nvarchar(8),@correoElectron' espera el parámetro '@apellidos', que no se ha proporcionado.]
 05/05/2022 12:01:20 : Error [mensaje: No se puede encontrar la tabla 0.]
+09/05/2022 7:45:25 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Los datos binarios o de la cadena se truncan en la columna "url" de la tabla "db.dbo.Recursos". Valor truncado: "https://es.educaplay.com/juego/12108002-tipos_de_o".
+Se terminó la instrucción.]
+09/05/2022 7:45:27 : Error [mensaje: No se puede encontrar la tabla 0.]
+09/05/2022 8:00:42 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Los datos binarios o de la cadena se truncan en la columna "url" de la tabla "db.dbo.Recursos". Valor truncado: "https://es.educaplay.com/juego/12108002-tipos_de_o".
+Se terminó la instrucción.]
+09/05/2022 8:00:42 : Error [mensaje: No se puede encontrar la tabla 0.]
+09/05/2022 8:04:07 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                        END SELECT * FROM Recursos [mensaje: Los datos binarios o de la cadena se truncan en la columna "url" de la tabla "db.dbo.Recursos". Valor truncado: "https://es.educaplay.com/juego/12108002-tipos_de_o".
+Se terminó la instrucción.]
+09/05/2022 8:04:08 : Error [mensaje: No se puede encontrar la tabla 0.]
+09/05/2022 10:33:37 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:33:43 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:34:06 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:34:08 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:34:10 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:35:03 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:36:14 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:36:43 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:36:45 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:36:47 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:37:09 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:37:23 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:37:25 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:37:29 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:38:21 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]
+09/05/2022 10:38:27 : Error [mensaje: No se puede convertir un objeto de tipo 'System.String' al tipo 'System.Web.HttpPostedFileBase'.]

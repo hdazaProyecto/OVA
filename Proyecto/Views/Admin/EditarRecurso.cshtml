@@ -66,7 +66,8 @@
             <label>
                 Archivo
             </label>
-            @Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
+            @Html.TextBox("Archivo", new { @type="file", @Class = "form-control" })
+            @*@Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })*@
         </div>
         <div class="form-group">
             <label>
