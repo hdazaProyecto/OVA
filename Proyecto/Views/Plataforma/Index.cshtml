@@ -9,6 +9,7 @@
     .cont {
         position: relative;
         width: 100%;
+        height: 50%;
         overflow: hidden;
         padding-top: 75%; /* 4:3 Aspect Ratio */
     }
@@ -37,11 +38,7 @@
         @if (@Model.tipoRecurso == null)
         {
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <iframe width="660"
-                        height="415"
-                        src=""
-                        frameborder="0"
-                        allowfullscreen></iframe>
+                <iframe class="responsive-iframe"  src=""></iframe>
             </div>
             <div>
 
@@ -58,7 +55,9 @@
         else if (Model.tipoRecurso == "ARCHIVO")
         {
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                archivo
+                <div id="portapdf">
+                    <object data="~/Archivos/@Model.archivo" type="application/pdf" width="100%" height="100%"></object>
+                </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 @Model.descripcion
@@ -67,7 +66,7 @@
         else if (Model.tipoRecurso == "IMAGEN")
         {
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                Imagen
+                <img class="responsive-iframe" src="@Model.imagen"/>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 @Model.descripcion

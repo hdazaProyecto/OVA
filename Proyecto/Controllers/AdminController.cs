@@ -15,6 +15,8 @@ namespace Proyecto.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            if (@TempData["Mensaje"] != null)
+                ViewBag.Usuario = @TempData["Mensaje"].ToString();
             Tema tema = new Tema();
             if(Session["Usuario"] != null)
             {
@@ -93,7 +95,17 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult GuardarTema(Tema pTema)
         {
+            string ruta = Server.MapPath("~/Archivos/");
+            if (pTema.file != null)
+            {
+                pTema.imagen = Path.GetFileName(pTema.file.FileName);
+                pTema.file.SaveAs(ruta + pTema.imagen);
+            }
             Tema Tema = pTema.gestionarTema(pTema);
+            if (Tema != null)
+            {
+                @TempData["Mensaje"] = "Los datos se guardaron exitosamente";
+            }
             return RedirectToAction("Index");
             //return View(Tema);
         }
