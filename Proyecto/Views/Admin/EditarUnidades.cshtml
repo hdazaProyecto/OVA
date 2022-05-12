@@ -52,13 +52,13 @@
                     </label>
                     @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
                 </div>
-                <div class="form-group">
+                @*<div class="form-group">
                     <label>
                         Imagen <span class="req">*</span>
                     </label>
                     <input type="file" id="myfile" name="myfile" class="rm-input" />
                     @Html.("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
-                </div>
+                </div>*@
                 <div class="form-group">
                     <label>
                         Estado <span class="req">*</span>

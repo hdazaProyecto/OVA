@@ -9,6 +9,7 @@
     .cont {
         position: relative;
         width: 100%;
+        height: 50%;
         overflow: hidden;
         padding-top: 75%; /* 4:3 Aspect Ratio */
     }
@@ -37,11 +38,8 @@
         @if (@Model.tipoRecurso == null)
         {
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <iframe width="660"
-                        height="415"
-                        src=""
-                        frameborder="0"
-                        allowfullscreen></iframe>
+                @*<iframe class="responsive-iframe"  src=""></iframe>*@
+                @*<object data="~/Archivos/JuradodeVotacion.pdf" type="application/pdf" width="100%" ></object>*@
             </div>
             <div>
 
@@ -58,7 +56,10 @@
         else if (Model.tipoRecurso == "ARCHIVO")
         {
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                archivo
+                <div id="portapdf">
+                    @*<object data="~/Archivos/@Model.archivo" type="application/pdf" width="100%" height="100%"></object>*@
+                    <object data="~/Archivos/@Model.archivo" type="application/pdf" width="100%" ></object>
+                </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 @Model.descripcion
@@ -67,7 +68,7 @@
         else if (Model.tipoRecurso == "IMAGEN")
         {
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                Imagen
+                <img class="responsive-iframe" src="@Model.imagen"/>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 @Model.descripcion
@@ -85,19 +86,32 @@
                     {
                 <tr>
                     <th>@un.nombre</th>
-                    @if (Model.recursos != null && Model.recursos.Count > 0)
-                    {
-                        foreach (Recursos re in Model.recursos)
+                    <th>
+                        @if (Model.recursos != null && Model.recursos.Count > 0)
                         {
-                            if (re.idUnidad == un.idUnidad)
+                            foreach (Recursos re in Model.recursos)
                             {
-                                <th align="left">
-                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })">&nbsp&nbsp&nbsp @re.idRecurso @re.nombre</a>
-                                </th>
+                                if (re.idUnidad == un.idUnidad)
+                                {
 
+                                    if (@re.url != null)
+                                    {
+                                        <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" width="10%" height="10%" /></a>
+                                    }
+                                    else if (@re.archivo != null)
+                                    {
+                                        <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" width="10%" height="10%" /></a>
+                                    }
+                                    else
+                                    {
+                                        <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" width="10%" height="10%" /></a>
+                                    }
+
+
+                                }
                             }
                         }
-                    }                        
+                    </th>                    
                 </tr>
                     }
                 }

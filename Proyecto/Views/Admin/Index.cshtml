@@ -24,7 +24,7 @@
     <div>
         <h2><b>Tema</b></h2>
     </div>
-    @using (Html.BeginForm("GuardarTema", "Admin", new AjaxOptions { HttpMethod = "POST" }))
+    @using (Html.BeginForm("GuardarTema", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <form>
             @Html.Hidden("idTema", @Model.idTema, new { @value_data = "idTema" })
@@ -50,16 +50,10 @@
                 @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
             </div>
             <div class="form-group">
-                <label>
-                    Imagen <span class="req">*</span>
-                </label>
-                @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
+                @Html.TextBox("file", @Model.file, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfile", @value_data = "file" })
             </div>
             <div class="form-group">
-                <label>
-                    Estado <span class="req">*</span>
-                </label>
-                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
+                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado", @accept = "image/*" })
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Guardar</button>

@@ -5,40 +5,43 @@
 }
 <h2>Contenido Programatico </h2>
 <hr />
-<table class="tableContenido">
-    <tbody>
+
+<table class="table table-bordered">
+    <thead>
         <tr>
-            <th>
+            <th colspan="20">
                 <h3>@Model.nombreTema</h3>
             </th>
         </tr>
+        <tr>
+            <th scope="col">Unidades</th>
+            <th colspan="20"> contenid</th>
+        </tr>
+    </thead>
+    <tbody>
         @if (Model.unidades != null && Model.unidades.Count > 0)
         {
             foreach (Unidades un in Model.unidades)
             {
                 <tr>
-                    <th>
-                        <br />
-                        @un.nombre - @un.descripcion                        
-                    </th>
-                </tr>
-                if (Model.recursos != null && Model.recursos.Count > 0)
-                {
-                    foreach (Recursos re in Model.recursos)
+                    <th scope="row">@un.nombre <br />@un.descripcion </th>
+                    @if (Model.recursos != null && Model.recursos.Count > 0)
                     {
-                        if (re.idUnidad == un.idUnidad)
+                        foreach (Recursos re in Model.recursos)
                         {
-                            <tr>
+                            if (re.idUnidad == un.idUnidad)
+                            {
                                 <th>
-                                    &nbsp&nbsp&nbsp * @re.nombre - @re.descripcion
+                                    @re.nombre <br /> @re.descripcion
                                 </th>
-                            </tr>
-                        }
+                            }
 
+                        }
                     }
-                }
+                </tr>
+
             }
         }
     </tbody>
-</table>
+    </table>
 

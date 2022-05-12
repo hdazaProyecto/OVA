@@ -1,6 +1,7 @@
 ﻿using Proyecto.Funciones;
 using System;
 using System.Collections.Generic;
+using Proyecto.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;

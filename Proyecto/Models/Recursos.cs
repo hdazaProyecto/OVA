@@ -99,10 +99,10 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 parametros.Add(new SqlParameter("@idrecurso", Precurso.idRecurso));
                 parametros.Add(new SqlParameter("@nombre", Precurso.nombre));
-                parametros.Add(new SqlParameter("@descripcion", Precurso.descripcion == null ? "" : Precurso.descripcion));
-                parametros.Add(new SqlParameter("@url", Precurso.url == null ? "" : Precurso.url));
-                parametros.Add(new SqlParameter("@imagen", Precurso.imagen == null ? "" : Precurso.imagen));
-                parametros.Add(new SqlParameter("@archivo", Precurso.archivo == null ? "" : Precurso.archivo));
+                parametros.Add(new SqlParameter("@descripcion", String.IsNullOrWhiteSpace(Precurso.descripcion) ? DBNull.Value : (object)Precurso.descripcion));
+                parametros.Add(new SqlParameter("@url", String.IsNullOrWhiteSpace(Precurso.url) ? DBNull.Value : (object)Precurso.url));
+                parametros.Add(new SqlParameter("@imagen", String.IsNullOrWhiteSpace(Precurso.imagen) ? DBNull.Value : (object)Precurso.imagen));
+                parametros.Add(new SqlParameter("@archivo", String.IsNullOrWhiteSpace(Precurso.archivo) ? DBNull.Value : (object)Precurso.archivo));
                 parametros.Add(new SqlParameter("@idUnidad", Precurso.idUnidad));
                 parametros.Add(new SqlParameter("@estado", Precurso.estado));
                 parametros.Add(new SqlParameter("@fecha", Precurso.fecha));

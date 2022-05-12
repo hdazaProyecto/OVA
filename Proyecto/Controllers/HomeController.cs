@@ -14,7 +14,7 @@ namespace Proyecto.Controllers
         Recursos recurso = new Recursos();
         plataforma p = new plataforma();
         public ActionResult Index()
-        {            
+        {
             p = p.ModelPlataforma();
             if (p != null)
             {
