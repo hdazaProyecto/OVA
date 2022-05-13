@@ -65,13 +65,14 @@
             <label>
                 Archivo
             </label>
-            @Html.TextBox("file", @Model.archivo, new { @type="file", @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })
+            @Html.TextBox("fileArchivo", @Model.archivo, new { @type="file", @Class = "custom-file-input", @placeholder = "", @Id = "txtarchivo", @value_data = "archivo", accept = "application/pdf" })
         </div>
         <div class="form-group">
             <label>
                 Imagen
             </label>
-            @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
+            @Html.TextBox("fileImagen", @Model.imagen, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtimagen", @value_data = "imagen", accept = " image/*" })
+            @*@Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })*@
         </div>
         <div class="form-group">
             <label>

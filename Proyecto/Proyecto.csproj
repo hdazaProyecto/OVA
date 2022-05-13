@@ -144,6 +144,7 @@
   <ItemGroup>
     <Content Include="Archivos\archivo.png" />
     <Content Include="Archivos\examen.png" />
+    <Content Include="Archivos\fondo.jpg" />
     <Content Include="Archivos\imagen.png" />
     <Content Include="Archivos\video.png" />
     <Content Include="Content\bootstrap-theme.css" />

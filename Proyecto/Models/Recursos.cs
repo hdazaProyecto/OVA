@@ -24,7 +24,8 @@ namespace Proyecto.Models
         public DateTime fecha { get; set; }
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
-        public HttpPostedFileBase file { get; set; }
+        public HttpPostedFileBase fileArchivo { get; set; }
+        public HttpPostedFileBase fileImagen { get; set; }
 
         private Conexion conexion;
         private SqlConnectionStringBuilder con;
@@ -52,7 +53,7 @@ namespace Proyecto.Models
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1 ORDER BY R.idUnidad,R.idRecurso", parametros, out drecurso);
+                server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad ORDER BY R.idUnidad,R.idRecurso", parametros, out drecurso);
                 server.close();
 
                 if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)

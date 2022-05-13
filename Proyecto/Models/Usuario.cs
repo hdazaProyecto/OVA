@@ -21,6 +21,7 @@ namespace Proyecto.Models
         public string profesion { get; set; }
         public string perfilProfesional { get; set; }
         public string fotografia { get; set; }
+        public HttpPostedFileBase filefotografia { get; set; }
 
         private Conexion conexion;
         DataSet dsusuario;
