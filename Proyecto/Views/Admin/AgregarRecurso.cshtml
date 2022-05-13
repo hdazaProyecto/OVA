@@ -19,6 +19,12 @@
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
     </nav>
+    if (us.idRol == 1)
+    {
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
+    </nav>
+    }
 </div>
 <div class="col-md-10">
     <div>

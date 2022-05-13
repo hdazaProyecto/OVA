@@ -133,6 +133,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConfigEmail.cs" />
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\plataforma.cs" />
     <Compile Include="Models\Recursos.cs" />
@@ -200,6 +201,7 @@
     <Content Include="Views\Admin\AgregarRecurso.cshtml" />
     <Content Include="Views\Admin\EditarRecurso.cshtml" />
     <Content Include="Views\Plataforma\Index.cshtml" />
+    <Content Include="Views\Admin\email.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

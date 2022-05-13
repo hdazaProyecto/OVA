@@ -30,8 +30,6 @@ namespace Proyecto.Controllers
 
         }
 
-        //Formularios
-
         public ActionResult ListarUnidades()
         {
             Unidades uni = new Unidades();
@@ -47,34 +45,6 @@ namespace Proyecto.Controllers
             }
             
         }
-
-        public ActionResult AgregarUnidades(Unidades unidad = null)
-        {
-            //Unidades unidad = new Unidades();
-            if (Session["Usuario"] != null)
-            {
-                return View(unidad);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        public ActionResult EditarUnidades(int idUnidad)
-        {
-            Unidades unidad = new Unidades();
-            if (Session["Usuario"] != null)
-            {
-                unidad = unidad.editarUnidades(idUnidad);
-                return View(unidad);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
         public ActionResult listarRecursos()
         {
             List<Recursos> recursos = new List<Recursos>();
@@ -89,8 +59,6 @@ namespace Proyecto.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-
-        //Acciones de formularios
 
         [HttpPost]
         public ActionResult GuardarTema(Tema pTema)
@@ -109,7 +77,6 @@ namespace Proyecto.Controllers
             return RedirectToAction("Index");
             //return View(Tema);
         }
-        
         [HttpPost]
         public ActionResult GuardarUnidad(Unidades pUnidad)
         {
@@ -117,7 +84,18 @@ namespace Proyecto.Controllers
             return RedirectToAction("ListarUnidades");
         }
 
-        
+        public ActionResult AgregarUnidades(Unidades unidad = null)
+        {
+            //Unidades unidad = new Unidades();
+            if (Session["Usuario"] != null)
+            {
+                return View(unidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
         public ActionResult AgregarRecurso(Recursos recurso)
         {
             ViewBag.unidades = recurso.comUnidades();
@@ -129,7 +107,7 @@ namespace Proyecto.Controllers
                 if (recurso.fileArchivo != null)
                 {
                     recurso.archivo = Path.GetFileName(recurso.fileArchivo.FileName); ;
-                    recurso.fileArchivo.SaveAs(ruta+ recurso.archivo);
+                    recurso.fileArchivo.SaveAs(ruta + recurso.archivo);
                 }
                 if (recurso.fileImagen != null)
                 {
@@ -150,6 +128,19 @@ namespace Proyecto.Controllers
             }
         }
 
+        public ActionResult EditarUnidades(int idUnidad)
+        {
+            Unidades unidad = new Unidades();
+            if (Session["Usuario"] != null)
+            {
+                unidad = unidad.editarUnidades(idUnidad);
+                return View(unidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
         public ActionResult EditarRecurso(int idRecurso)
         {   
             if (Session["Usuario"] != null)
@@ -165,5 +156,18 @@ namespace Proyecto.Controllers
             }
         }
 
+        public ActionResult email()
+       {
+            ConfigEmail configEmail = new ConfigEmail();
+            configEmail = configEmail.ConsultaConfiguracion();
+            return View(configEmail);
+        }
+
+        public ActionResult GuardarConfEmail(ConfigEmail conf)
+        {
+            ConfigEmail configuracion = new ConfigEmail();
+            configuracion = configuracion.gestioanarConfiguracion(conf);
+            return View("email", configuracion);
+        }
     }
 }

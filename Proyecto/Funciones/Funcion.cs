@@ -23,6 +23,22 @@ namespace Proyecto.Funciones
             return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(agValor));
         }
 
+        public static string Encriptar(string _cadenaAencriptar)
+        {
+            string result = string.Empty;
+            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_cadenaAencriptar);
+            result = Convert.ToBase64String(encryted);
+            return result;
+        }
+
+        public static string DesEncriptar(string _cadenaAdesencriptar)
+        {
+            string result = string.Empty;
+            byte[] decryted = Convert.FromBase64String(_cadenaAdesencriptar);
+            result = System.Text.Encoding.Unicode.GetString(decryted);
+            return result;
+        }
+
         public static void write()
         {
             using (StreamWriter sw = new StreamWriter(dir + "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + ".txt", true))

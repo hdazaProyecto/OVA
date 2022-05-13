@@ -44,3 +44,77 @@
                                                 (@profesion,@perfilProfesional,@fotografia,@userName);                                            
                                         SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
 13/05/2022 12:16:09 : Error [mensaje: No se puede encontrar la tabla 0.]
+13/05/2022 4:47:44 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: Debe declarar la variable escalar '@id'.
+Debe declarar la variable escalar '@id'.]
+13/05/2022 4:47:44 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+13/05/2022 4:50:09 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: Debe declarar la variable escalar '@id'.
+Debe declarar la variable escalar '@id'.]
+13/05/2022 4:50:09 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+13/05/2022 4:50:54 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: El nombre de variable '@nombre' ya se ha declarado. Los nombres de variable deben ser únicos en cada lote de consultas o procedimiento almacenado.
+Debe declarar la variable escalar '@id'.
+Debe declarar la variable escalar '@servidor'.
+Debe declarar la variable escalar '@servidor'.]
+13/05/2022 4:50:54 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+13/05/2022 4:59:10 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: Los datos binarios o de la cadena se truncan en la columna "clave" de la tabla "db.dbo.configEmail". Valor truncado: "YUFCbEFHa0FiUUJoQUc0QU1RQXlBRE1BTkFBMUFEWUFLZ0FxQU".
+Se terminó la instrucción.]
+13/05/2022 4:59:10 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
