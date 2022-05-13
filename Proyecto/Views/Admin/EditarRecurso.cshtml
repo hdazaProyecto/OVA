@@ -24,7 +24,7 @@
     <div>
         <h2><b>Editar Recursos</b></h2>
     </div>
-    @using (Html.BeginForm("AgregarRecurso", "Admin"))
+    @using (Html.BeginForm("AgregarRecurso", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
     <form>
         @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
@@ -66,14 +66,14 @@
             <label>
                 Archivo
             </label>
-            @Html.TextBox("Archivo", new { @type="file", @Class = "form-control" })
-            @*@Html.TextBox("archivo", @Model.archivo, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "archivo" })*@
+            @Html.TextBox("fileArchivo", @Model.archivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtarchivo", @value_data = "archivo", accept = "application/pdf" })
         </div>
         <div class="form-group">
             <label>
                 Imagen
             </label>
-            @Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
+            @Html.TextBox("fileImagen", @Model.imagen, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtimagen", @value_data = "imagen", accept = " image/*" })
+            @*@Html.TextBox("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })*@
         </div>
         <div class="form-group">
             <label>

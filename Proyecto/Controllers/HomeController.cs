@@ -2,6 +2,7 @@
 using Proyecto.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -138,6 +139,14 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult ActualizarUsuario(Usuario usuario)
         {
+            string ruta = Server.MapPath("~/Archivos/");
+            if (!Directory.Exists(ruta))
+                Directory.CreateDirectory(ruta);
+            if (usuario.filefotografia != null)
+            {
+                usuario.fotografia = Path.GetFileName(usuario.filefotografia.FileName); ;
+                usuario.filefotografia.SaveAs(ruta + usuario.fotografia);
+            }
             Usuario us = usuario.actualizarUsuario(usuario);
             //return View(us);
             Session["Usuario"] = us;

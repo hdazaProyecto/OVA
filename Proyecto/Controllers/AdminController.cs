@@ -126,10 +126,15 @@ namespace Proyecto.Controllers
                 string ruta = Server.MapPath("~/Archivos/");
                 if (!Directory.Exists(ruta))
                     Directory.CreateDirectory(ruta);
-                if (recurso.file != null)
+                if (recurso.fileArchivo != null)
                 {
-                    recurso.archivo = recurso.nombre+".pdf";
-                    recurso.file.SaveAs(ruta+ recurso.archivo);
+                    recurso.archivo = Path.GetFileName(recurso.fileArchivo.FileName); ;
+                    recurso.fileArchivo.SaveAs(ruta+ recurso.archivo);
+                }
+                if (recurso.fileImagen != null)
+                {
+                    recurso.imagen = Path.GetFileName(recurso.fileImagen.FileName); ;
+                    recurso.fileImagen.SaveAs(ruta + recurso.imagen);
                 }
 
                 if (recurso.nombre != null)

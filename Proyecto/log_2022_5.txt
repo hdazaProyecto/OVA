@@ -1,0 +1,46 @@
+13/05/2022 12:12:46 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword
+                                              ,correoElectronico = @correoElectronico
+                                              ,nombre = @nombre
+                                              ,apellidos = @apellidos
+                                              ,estado = @estado
+                                              ,idRol = @idRol
+                                              ,fechaModifica = getdate()
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia,
+                                                userName = @userName
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
+13/05/2022 12:12:46 : Error [mensaje: No se puede encontrar la tabla 0.]
+13/05/2022 12:16:09 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword
+                                              ,correoElectronico = @correoElectronico
+                                              ,nombre = @nombre
+                                              ,apellidos = @apellidos
+                                              ,estado = @estado
+                                              ,idRol = @idRol
+                                              ,fechaModifica = getdate()
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia,
+                                                userName = @userName
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
+13/05/2022 12:16:09 : Error [mensaje: No se puede encontrar la tabla 0.]
