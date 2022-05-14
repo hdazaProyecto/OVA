@@ -118,3 +118,13 @@ Debe declarar la variable escalar '@servidor'.]
                                             SELECT TOP 1 * FROM configEmail [mensaje: Los datos binarios o de la cadena se truncan en la columna "clave" de la tabla "db.dbo.configEmail". Valor truncado: "YUFCbEFHa0FiUUJoQUc0QU1RQXlBRE1BTkFBMUFEWUFLZ0FxQU".
 Se terminó la instrucción.]
 13/05/2022 4:59:10 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+14/05/2022 10:35:17 a. m.: Error [mensaje: El valor no puede ser nulo.
+Nombre del parámetro: row]
+14/05/2022 10:35:45 a. m.: Error [mensaje: El valor no puede ser nulo.
+Nombre del parámetro: row]
+14/05/2022 10:35:48 a. m.: Error [mensaje: El valor no puede ser nulo.
+Nombre del parámetro: row]
+14/05/2022 10:42:54 a. m.: Error [mensaje: El valor no puede ser nulo.
+Nombre del parámetro: row]
+14/05/2022 10:45:47 a. m.: Error [mensaje: El valor no puede ser nulo.
+Nombre del parámetro: row]

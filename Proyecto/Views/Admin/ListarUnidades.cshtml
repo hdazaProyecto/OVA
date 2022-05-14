@@ -2,9 +2,28 @@
 @{Usuario us = (Usuario)Session["Usuario"];}
 @{Tema tema = (Tema)Session["tema"];}
 @model List<Unidades>
+@Scripts.Render("~/Content/jqueryFnSys")
 @{
     ViewBag.Title = "Listar Unidades";
 }
+<style>
+    #tb th {
+        width: auto !important;
+        white-space: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: left !important;
+        -ms-word-break: break-all;
+        -ms-word-break: normal;
+        -moz-word-break: break-all;
+        -moz-word-break: normal;
+        word-break: break-all;
+        word-break: normal;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }
+</style>
 <div>
     <h1><b>Administración de portal</b></h1>
 </div>
@@ -33,39 +52,41 @@
     </div>
     <a>@Html.ActionLink("Agregar Unidad", "AgregarUnidades", "Admin")</a>
     <hr />
-    <table class="tableContenido table-striped table-condensed table-hover">
-        <thead class="table-light">
-            <tr>
-                @*<th>#</th>*@
-                <th>NOMBRE</th>
-                <th>DESCRIPCIÓN</th>
-                <th>ESTADO</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null && Model.Count > 0)
-            {
-                foreach (Unidades un in Model)
-                {
-                    <tr class="table-active">
-                        @*<td>@un.idUnidad</td>*@
-                        <td>@un.nombre</td>
-                        <td>@un.descripcion</td>
-                        @if (@un.estado == true)
-                        {
-                            <td>Activo</td>
-                        }
-                        else
-                        {
-                            <td>Inactivo</td>
-                        }
-                        <td><a class="btn btn-primary" href="@Url.Action("EditarUnidades", "Admin", new { idUnidad = un.idUnidad })" title="Editar">Editar</a></td>
+    <div class="tab-content mt-2 table-responsive">
+        <div class="" id="tabone" role="tabpanel">
+            <table id="tb" class="table table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>DESCRIPCIÓN</th>
+                        <th>ESTADO</th>
+                        <th></th>
                     </tr>
-                }
-            }
-        </tbody>
-    </table>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        foreach (Unidades un in Model)
+                        {
+                            <tr class="table-active">
+                                @*<td>@un.idUnidad</td>*@
+                                <td>@un.nombre</td>
+                                <td>@un.descripcion</td>
+                                @if (@un.estado == true)
+                                {
+                                    <td>Activo</td>
+                                }
+                                else
+                                {
+                                    <td>Inactivo</td>
+                                }
+                                <td><a class="btn btn-primary" href="@Url.Action("EditarUnidades", "Admin", new { idUnidad = un.idUnidad })" title="Editar">Editar</a></td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
 

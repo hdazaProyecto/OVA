@@ -15,13 +15,19 @@ namespace Proyecto.Models
         public string nombreTema { get; set; }
         public string descripcionTema { get; set; }
         public string imagenTema { get; set; }
+
+        public int idUnidad { get; set; }
         public string nombreUnidad { get; set; }
+        public string descripcionUnidad { get; set; }
+
+        public int idRecurso { get; set; }
         public string nombreRecurso { get; set; }
+        public string descripcionRecurso { get; set; }
         public string tipoRecurso { get; set; }
         public string url { get; set; }
         public string archivo { get; set; }
         public string imagen { get; set; }
-        public string descripcion { get; set; }
+
         public List<Unidades> unidades { get; set; }
         public List<Recursos> recursos { get; set; }
 
@@ -136,38 +142,29 @@ namespace Proyecto.Models
                         imagenTema = r.Field<string>("imagen"),
                     }).FirstOrDefault();
                 }
-                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
-                {
-                    dtunidad = new DataTable();
-                    dtunidad = dunidad.Tables[0];
 
-                    Plataforma.unidades = dtunidad.AsEnumerable().Select(r => new Unidades()
-                    {
-                        idUnidad = r.Field<int>("idUnidad"),
-                        nombre = r.Field<string>("nombre"),
-                        descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
-                        idTema = r.Field<int>("idTema"),
-                    }).ToList();
-
-                }
                 if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
                 {
                     dtrecurso = new DataTable();
                     dtrecurso = drecurso.Tables[0];
-                    
+
+                    Plataforma.idRecurso = recurso;
                     Plataforma.nombreRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("nombre");
+                    Plataforma.descripcionRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("descripcion");
                     Plataforma.url = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("url");
                     Plataforma.archivo = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
                     Plataforma.imagen = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
-                    Plataforma.descripcion = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("descripcion");
+                    Plataforma.idUnidad = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<int>("idUnidad");
+
                     if (Plataforma.url != null)
                     {
                         Plataforma.tipoRecurso = "URL";
-                    } else if (Plataforma.archivo != null)
+                    }
+                    else if (Plataforma.archivo != null)
                     {
                         Plataforma.tipoRecurso = "ARCHIVO";
-                    } else
+                    }
+                    else
                     {
                         Plataforma.tipoRecurso = "IMAGEN";
                     }
@@ -183,6 +180,26 @@ namespace Proyecto.Models
                     }).ToList();
 
                 }
+
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                {
+                    dtunidad = new DataTable();
+                    dtunidad = dunidad.Tables[0];
+
+                    Plataforma.nombreUnidad = dtunidad.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idUnidad") == Plataforma.idUnidad).FirstOrDefault().Field<string>("nombre");
+                    Plataforma.descripcionUnidad = dtunidad.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idUnidad") == Plataforma.idUnidad).FirstOrDefault().Field<string>("descripcion");
+
+                    Plataforma.unidades = dtunidad.AsEnumerable().Select(r => new Unidades()
+                    {
+                        idUnidad = r.Field<int>("idUnidad"),
+                        nombre = r.Field<string>("nombre"),
+                        descripcion = r.Field<string>("descripcion"),
+                        imagen = r.Field<string>("imagen"),
+                        idTema = r.Field<int>("idTema"),
+                    }).ToList();
+
+                }
+
             }
             catch (Exception ex)
             {

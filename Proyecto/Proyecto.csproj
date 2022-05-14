@@ -164,6 +164,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Funcionesjs\jsFnGenSys.js" />
+    <Content Include="Scripts\Funcionesjs\jsFnSecuritySys.js" />
+    <Content Include="Scripts\Funcionesjs\jsMensajesSys.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
