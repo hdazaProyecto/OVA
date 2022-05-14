@@ -15,6 +15,8 @@ namespace Proyecto.Models
         public string nombreTema { get; set; }
         public string descripcionTema { get; set; }
         public string imagenTema { get; set; }
+        public string nombreUnidad { get; set; }
+        public string nombreRecurso { get; set; }
         public string tipoRecurso { get; set; }
         public string url { get; set; }
         public string archivo { get; set; }
@@ -154,6 +156,7 @@ namespace Proyecto.Models
                     dtrecurso = new DataTable();
                     dtrecurso = drecurso.Tables[0];
                     
+                    Plataforma.nombreRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("nombre");
                     Plataforma.url = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("url");
                     Plataforma.archivo = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
                     Plataforma.imagen = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");

@@ -24,7 +24,7 @@
             foreach (Unidades un in Model.unidades)
             {
                 <tr>
-                    <th scope="row">@un.nombre <br />@un.descripcion </th>
+                    <th scope="row">@un.nombre </th>
                     @if (Model.recursos != null && Model.recursos.Count > 0)
                     {
                         foreach (Recursos re in Model.recursos)
@@ -32,7 +32,7 @@
                             if (re.idUnidad == un.idUnidad)
                             {
                                 <th>
-                                    @re.nombre <br /> @re.descripcion
+                                    @re.nombre
                                 </th>
                             }
 
