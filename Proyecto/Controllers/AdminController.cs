@@ -173,6 +173,8 @@ namespace Proyecto.Controllers
 
         public ActionResult email()
        {
+            if (@TempData["Mensaje"] != null)
+                ViewBag.Usuario = @TempData["Mensaje"].ToString();
             if (Session["Usuario"] != null)
             {
                 ConfigEmail configEmail = new ConfigEmail();
@@ -189,9 +191,37 @@ namespace Proyecto.Controllers
         {
             if (Session["Usuario"] != null)
             {
-                ConfigEmail configuracion = new ConfigEmail();
-                configuracion = configuracion.gestioanarConfiguracion(conf);
+                ConfigEmail configuracion = conf.gestioanarConfiguracion(conf);
+                if (configuracion.servidor != null)
+                {
+                    @ViewBag.Usuario = "los datos se guardaron exitosamente";
+                }
+                else
+                {
+                    @ViewBag.Usuario = "Error al guardar los datos";
+                }
                 return View("email", configuracion);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public ActionResult EmailPrueba()
+        {
+            if (Session["Usuario"] != null)
+            {
+                ConfigEmail configuracion = new ConfigEmail();
+                bool envio = configuracion.envioPrueba();
+                if (envio)
+                {
+                    @TempData["Mensaje"] = "Envio correcto, revisar correo electronico";
+                }
+                else
+                {
+                    @TempData["Mensaje"] = "Error en el envio de correo";
+                }
+                return RedirectToAction("email");
             }
             else
             {

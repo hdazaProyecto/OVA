@@ -35,7 +35,11 @@ namespace Proyecto.Models
             parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@userName", this.userName));
             parametros.Add(new SqlParameter("@userPassword", Funcion.stringBase64(this.userPassword)));
-            server.ejecutarQuery("SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+            server.ejecutarQuery(@"SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional, ISNULL(E.nivelEstudio, 0) nivelEstudio, descripcion, fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName = E.userName
+                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio = N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
             server.close();
 
             if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -51,9 +55,11 @@ namespace Proyecto.Models
                     apellidos = r.Field<string>("apellidos"),
                     estado = r.Field<bool>("estado"),
                     idRol = r.Field<int>("idRol"),
-                    profesion = r.Field<string>("profesion"),
-                    perfilProfesional = r.Field<string>("perfilProfesional"),
-                    fotografia = r.Field<string>("fotografia"),
+                    profesion = r.Field<String>("profesion"),
+                    perfilProfesional = r.Field<String>("perfilProfesional"),
+                    nivelEstudio = r.Field<int>("nivelEstudio"),
+                    nivelEstudiodesc = r.Field<string>("descripcion"),
+                    fotografia = r.Field<String>("fotografia")
                 }).FirstOrDefault();
             }
             return us;
@@ -75,11 +81,9 @@ namespace Proyecto.Models
             {
                 dtusuario = dsusuario.Tables[0];
                 EnvioCorreo em = null;
-                string ErrorEm = "";
-                //bool ini = em.Initialize();                
+                string ErrorEm = "";            
                 em = new EnvioCorreo("Recuperacion de password", "<body><p align = 'justify'>recuperacion de password <br>contraseña " + Funcion.base64String(dtusuario.Rows[0].Field<string>("userPassword")) + "<br/> Atentamente,<br/><b/><br/><br/><br/><br/><br/></p></body>");
-                em.envio(out ErrorEm, dtusuario.Rows[0].Field<string>("correoElectronico"),true);
-                envio = true;
+                envio = em.envio(out ErrorEm, dtusuario.Rows[0].Field<string>("correoElectronico"), true);
             }        
             return envio;
         }

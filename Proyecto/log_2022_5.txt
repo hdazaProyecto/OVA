@@ -198,3 +198,80 @@ Nombre del parámetro: row]
                                         SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
 14/05/2022 9:40:24 : Error [mensaje: No se puede encontrar la tabla 0.]
 15/05/2022 10:42:36 : Error [mensaje: La columna 'profesion' no pertenece a la tabla Table.]
+16/05/2022 7:37:58 a. m.: Error [mensaje: La columna 'nivelEstudio' no pertenece a la tabla Table.]
+16/05/2022 7:38:35 a. m.: Error [mensaje: La conversión especificada no es válida.]
+16/05/2022 7:41:31 a. m.: Error [mensaje: La columna 'profesion' no pertenece a la tabla Table.]
+16/05/2022 7:46:14 a. m.: Error [mensaje: La conversión especificada no es válida.]
+16/05/2022 7:46:16 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+16/05/2022 7:46:24 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+16/05/2022 8:08:25 a. m.: Error [mensaje: No se puede convertir un objeto de tipo 'System.Int32' al tipo 'System.String'.]
+16/05/2022 8:08:41 a. m.: Error [mensaje: No se puede convertir un objeto de tipo 'System.Int32' al tipo 'System.String'.]
+16/05/2022 8:10:07 a. m.: Error [mensaje: No se puede convertir un objeto de tipo 'System.Int32' al tipo 'System.String'.]
+16/05/2022 8:13:17 a. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+16/05/2022 8:13:45 a. m.: Error [mensaje: No se puede convertir un objeto de tipo 'System.Int32' al tipo 'System.String'.]
+16/05/2022 8:14:24 a. m.: Error [mensaje: No se puede convertir un objeto de tipo 'System.Int32' al tipo 'System.String'.]
+16/05/2022 8:14:29 a. m.: Error [mensaje: La columna 'fotografia' no pertenece a la tabla Table.]
+16/05/2022 8:15:39 a. m.: Error [mensaje: La columna 'fotografia' no pertenece a la tabla Table.]
+16/05/2022 1:45:25 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: Los datos binarios o de la cadena se truncan en la columna "clave" de la tabla "db.dbo.configEmail". Valor truncado: "VUFCeUFHOEFlUUJsQUdNQWRBQnZBRzhBZGdCaEFESUFNZ0FxQU".
+Se terminó la instrucción.]
+16/05/2022 1:45:25 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+16/05/2022 1:47:44 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 1:53:29 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 1:58:31 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 2:00:34 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 2:05:42 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: Los datos binarios o de la cadena se truncan en la columna "clave" de la tabla "db.dbo.configEmail". Valor truncado: "VmdCVkFFWUFRd0JsQUZVQVJnQklBRThBUlFCR0FHd0FWUUJWQU".
+Se terminó la instrucción.]
+16/05/2022 2:05:58 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+16/05/2022 2:08:50 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: Los datos binarios o de la cadena se truncan en la columna "clave" de la tabla "db.dbo.configEmail". Valor truncado: "VmdCVkFFWUFRd0JsQUZVQVJnQklBRThBUlFCR0FHd0FWUUJWQU".
+Se terminó la instrucción.]
+16/05/2022 2:08:50 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+16/05/2022 2:21:59 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 2:23:00 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 2:24:00 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 2:25:13 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+16/05/2022 2:26:54 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]

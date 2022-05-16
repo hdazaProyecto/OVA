@@ -42,6 +42,7 @@ namespace Proyecto.Models
                     dtconfiguracion = dconfiguracion.Tables[0];
                     conf = dtconfiguracion.Rows.Cast<DataRow>().Select(r => new ConfigEmail
                     {
+                        id = r.Field<int>("id"),
                         nombre = r.Field<string>("nombre"),
                         servidor = r.Field<string>("servidor"),
                         usuario = r.Field<string>("usuario"),
@@ -75,7 +76,7 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@nombre", configuracion.nombre));
                 parametros.Add(new SqlParameter("@servidor", configuracion.servidor));
                 parametros.Add(new SqlParameter("@usuario", configuracion.usuario));
-                parametros.Add(new SqlParameter("@clave", Funcion.stringBase64(Funcion.Encriptar(configuracion.clave))));
+                parametros.Add(new SqlParameter("@clave", Funcion.stringBase64(configuracion.clave)));
                 parametros.Add(new SqlParameter("@puerto", configuracion.puerto));
                 parametros.Add(new SqlParameter("@ssl", configuracion.ssl));
                 server.ejecutarQuery(@"IF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
@@ -100,10 +101,11 @@ namespace Proyecto.Models
                     dtconfiguracion = dconfiguracion.Tables[0];
                     conf = dtconfiguracion.Rows.Cast<DataRow>().Select(r => new ConfigEmail
                     {
+                        id = r.Field<int>("id"),
                         nombre = r.Field<string>("nombre"),
                         servidor = r.Field<string>("servidor"),
                         usuario = r.Field<string>("usuario"),
-                        clave = Funcion.base64String(Funcion.DesEncriptar(r.Field<string>("clave"))),
+                        clave = Funcion.base64String(r.Field<string>("clave")),
                         puerto = r.Field<int>("puerto"),
                         ssl = r.Field<bool>("ssl"),
                     }).FirstOrDefault();
@@ -115,6 +117,31 @@ namespace Proyecto.Models
                 Funcion.write();
             }
             return conf;
+        }
+
+        public bool envioPrueba()
+        {
+
+            bool envio = false;
+            DataSet dconfiguracion = new DataSet();
+            DataTable dtconfiguracion = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            parametros = new List<SqlParameter>();
+            server.ejecutarQuery(@"SELECT TOP 1 * FROM configEmail", parametros, out dconfiguracion);
+            server.close();
+            if (dconfiguracion != null && dconfiguracion.Tables[0].Rows.Count > 0)
+            {
+                dtconfiguracion = dconfiguracion.Tables[0];
+                EnvioCorreo em = null;
+                string ErrorEm = "";
+                em = new EnvioCorreo("Correo de prueba", "<body><p align = 'justify'>este es un correo de prueba <br/> Atentamente,<br/><b/><br/><br/><br/><br/><br/></p></body>");
+                envio =  em.envio(out ErrorEm, dtconfiguracion.Rows[0].Field<string>("usuario"), true);
+                
+            }            
+            return envio;
         }
     }
 }

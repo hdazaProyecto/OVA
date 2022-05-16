@@ -83,12 +83,15 @@ namespace Proyecto.Controllers
             return View(profesores);
         }
 
-        public ActionResult Cuenta()
+        public ActionResult Cuenta(Usuario usu)
         {
+            if (@TempData["Mensaje"] != null)
+                ViewBag.Usuario = @TempData["Mensaje"].ToString();
             ViewBag.nivelEdu = usuarios.comNivelEdu();
             if (Session["Usuario"] != null)
             {
-                return View();
+                usu = (Usuario)Session["Usuario"];
+                return View(usu);
             }
             else
             {
@@ -126,23 +129,39 @@ namespace Proyecto.Controllers
             if (@TempData["Mensaje"] != null)
                 ViewBag.Usuario = @TempData["Mensaje"].ToString();
             ViewBag.nivelEdu = usuarios.comNivelEdu();
-            ViewBag.Message = "Your application description page.";
             return View(usu);
         }
 
         [HttpPost]
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
+            if (usuario.docente)
+            {
+                usuario.estado = false;
+                usuario.idRol = 2;
+            }
+            else
+            {
+                usuario.estado = true;
+                usuario.idRol = 3;
+            }
             ViewBag.nivelEdu = usuarios.comNivelEdu();
             if (usuario.userPassword == usuario.userPassword2)
             {
                 Usuario us = usuario.registrarUsuario(usuario);
-                @TempData["Mensaje"] = "Usuario registrado";
+                if (us.idRol == 2)
+                {
+                    @TempData["Mensaje"] = "Usuario registrado con éxito. Recuerde que recibirá un correo con la confirmación de la activación de su usuario";
+                }
+                else
+                {
+                    @TempData["Mensaje"] = "Usuario registrado con éxito.";
+                }                
                 return RedirectToAction("Index");
             }
             else
             {
-                @TempData["Mensaje"] = "Por favor verificar Password";
+                ViewBag.Usuario = "Las contraseñas no son iguales verifica y reintente nuevamente ";
                 return RedirectToAction("RegistrarUsu", usuario);
             }
 
@@ -151,7 +170,15 @@ namespace Proyecto.Controllers
         public ActionResult RecuperarContrasena(Cuenta usuario)
         {
             Cuenta re = new Cuenta();
-            re.recPassword(usuario.userName);
+            bool envio = re.recPassword(usuario.userName);
+            if (envio)
+            {
+                @TempData["Mensaje"] = "El password se a enviado s u correo por favor revisar y volver a ingresar, en caso de no ver el correo por favor revisar su carpeta de Spam ";
+            }
+            else
+            {
+                @TempData["Mensaje"] = "Error al recuperar el password, comuníquese con el administrador";
+            }
             return RedirectToAction("Index", "Home");
         }
 
@@ -167,8 +194,16 @@ namespace Proyecto.Controllers
                 usuario.filefotografia.SaveAs(ruta + usuario.fotografia);
             }
             Usuario us = usuario.actualizarUsuario(usuario);
-            Session["Usuario"] = us;
-            return RedirectToAction("Cuenta");
+            if (us != null)
+            {
+                @TempData["Mensaje"] = "Usuario actualizado correctamente";
+                Session["Usuario"] = us;                
+            }
+            else
+            {
+                @TempData["Mensaje"] = "Error al actualizar el usiario";
+            }
+            return RedirectToAction("Cuenta", us);
         }
     }
 }

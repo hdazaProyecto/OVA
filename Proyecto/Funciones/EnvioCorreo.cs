@@ -134,7 +134,7 @@ namespace Proyecto.Funciones
                     {
                         this.smtp_From = Funcion.ValidateEmail(dtconfiguracion.Rows[0].Field<string>("usuario")).FirstOrDefault().Key;
                         this.smtp_FromAlias = dtconfiguracion.Rows[0].Field<string>("nombre");
-                        this.smtp_Pass = dtconfiguracion.Rows[0].Field<string>("clave");
+                        this.smtp_Pass = Funcion.base64String(dtconfiguracion.Rows[0].Field<string>("clave"));
                         this.smtp_Port = dtconfiguracion.Rows[0].Field<int>("puerto");
                         this.smtp_Server = dtconfiguracion.Rows[0].Field<string>("servidor");
                         this.smtp_Ssl = dtconfiguracion.Rows[0].Field<bool>("ssl");

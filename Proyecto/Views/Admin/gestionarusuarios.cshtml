@@ -40,6 +40,7 @@
                     <th scope="col">Usuario</th>
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
+                    <th scope="col">ROL</th>
                     @if (us.idRol == 2)
                     {
                         <th scope="col">Nivel Estudios</th>
@@ -57,16 +58,31 @@
                 {
                     foreach (Usuario usu in Model)
                     {
-                        <tr>
-                            <th scope="row">@usu.userName</th>
-                            <th>@usu.nombre</th>
-                            <td>@usu.apellidos</td>
-                            <td>@usu.nivelEstudio@usu.profesion</td>
-                            <td>@usu.estado</td>
-                            <td>
-                                <a class="btn btn-primary" href="@Url.Action("cambiarestadousuario", "Admin", new { userName = usu.userName })" title="Cambiar Estado">Cambiar Estado</a>
-                            </td>
-                        </tr>
+                <tr>
+                    <th scope="row">@usu.userName</th>
+                    <th>@usu.nombre</th>
+                    <td>@usu.apellidos</td>
+                    @if (usu.idRol == 2)
+                    {
+                        <td>Docente</td>
+                    }
+                    else
+                    {
+                        <td>Estudiante</td>
+                    }
+                    <td>@usu.nivelEstudiodesc@usu.profesion</td>
+                    @if (usu.estado == true)
+                    {
+                        <td>Activo</td>
+                    }
+                    else
+                    {
+                        <td>Inactivo</td>
+                    }
+                    <td>
+                        <a class="btn btn-primary" href="@Url.Action("cambiarestadousuario", "Admin", new { userName = usu.userName })" title="Cambiar Estado">Cambiar Estado</a>
+                    </td>
+                </tr>
                     }
                 }
             </tbody>
