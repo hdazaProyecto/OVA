@@ -11,60 +11,62 @@
 
     }
 </script>
-<h2>RegistarUsu</h2>
+<h2>Registar usuario</h2>
 
 <!-- Registrarse -->
-<div id="registrarse">
-    <h1>Registrarse</h1>
-    @using (Html.BeginForm("RegistrarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
-    {
-        @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = 3 })
-        @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = 1 })
-        <div class="fila-arriba">
-            <div class="contenedor-input">
+<div class="row">
+    <div class="container">
+        @using (Html.BeginForm("RegistrarUsuario", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "registrarse" }))
+        {
+            @Html.Hidden("idRol", "", new { @Class = "form-control", @Id = "txtidRol", @Value = 3 })
+            @Html.Hidden("estado", "", new { @Class = "form-control", @Id = "txtestado", @Value = 1 })
+            <div class="fila-arriba">
+                <div class="form-group">
+                    <label>
+                        Nombre
+                    </label>
+                    @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre", required = "required" })
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Apellido
+                    </label>
+                    @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos", required = "required" })
+                </div>
+            </div>
+            <div class="form-group">
                 <label>
-                    Nombre <span class="req">*</span>
+                    Usuario <span class="req">*</span>
                 </label>
-                @*<input type="text" required>*@
-                @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "nombre" })
+                @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName", required = "required" })
+            </div>
+            <div class="form-group">
+                <label>
+                    Email <span class="req">*</span>
+                </label>
+                @Html.TextBox("correoElectronico", "", new { @type = "email", @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico", required = "required" })
+            </div>
+            <div class="form-group">
+                <label>
+                    Nivel Educativo <span class="req">*</span>
+                </label>
+                @Html.DropDownList("nivelEstudio", (List<System.Web.Mvc.SelectListItem>)ViewBag.nivelEdu, "Seleccione...", new { @Class = "form-control form-control-sm", @title = "Nivel de Estudio", @value_data = "nivelEstudio", required = "required" })
+            </div>
+            <div class="form-group">
+                <label>
+                    Contraseña <span class="req">*</span>
+                </label>
+                @Html.Password("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword", required = "required" })
             </div>
 
-            <div class="contenedor-input">
+            <div class="form-group">
                 <label>
-                    Apellido <span class="req">*</span>
+                    Repetir Contraseña <span class="req">*</span>
                 </label>
-                @*<input type="text" required>*@
-                @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "apellidos" })
+                @Html.Password("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword", required = "required" })
             </div>
-        </div>
-        <div class="contenedor-input">
-            <label>
-                Usuario <span class="req">*</span>
-            </label>
-            @*<input type="text" required>*@
-            @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName", @data_value = "userName" })
-        </div>
-        <div class="contenedor-input">
-            <label>
-                Email <span class="req">*</span>
-            </label>
-            @*<input type="email" required>*@
-            @Html.TextBox("correoElectronico", "", new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico", @data_value = "correoElectronico" })
-        </div>
-        <div class="contenedor-input">
-            <label>
-                Contraseña <span class="req">*</span>
-            </label>
-            @*<input type="password" required>*@
-            @Html.TextBox("userPassword", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword", @data_value = "userPassword" })
-        </div>
-
-        <div class="contenedor-input">
-            <label>
-                Repetir Contraseña <span class="req">*</span>
-            </label>
-            @Html.TextBox("userPassword2", "", new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword" })
-        </div>
-        <input type="submit" class="button button-block" value="Registrarse">
-    }
+            <input type="submit" class="btn btn-primary btn-lg btn-block login-btn" value="Registrar">
+        }
+    </div> 
 </div>

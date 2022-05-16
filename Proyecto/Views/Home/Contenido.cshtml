@@ -3,10 +3,10 @@
 @{
     ViewBag.Title = "Contenido Programatico";
 }
-<h2>Contenido Programatico </h2>
+<br />
+<h1><b>Contenido Programatico</b></h1>
 <hr />
-
-<table class="table table-bordered">
+<table class="tabla table table-bordered">
     <thead>
         <tr>
             <th colspan="20">
@@ -32,7 +32,7 @@
                             if (re.idUnidad == un.idUnidad)
                             {
                                 <th>
-                                    @re.nombre
+                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre">@re.nombre</a>
                                 </th>
                             }
 
@@ -43,5 +43,6 @@
             }
         }
     </tbody>
-    </table>
+</table>
+
 

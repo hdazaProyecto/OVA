@@ -14,119 +14,91 @@
     <h1><b>Administración de portal</b></h1>
 </div>
 <hr />
-<div class="col-md-2">
-    <!-- Menu lateral -->
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
-    </nav>
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
-    </nav>
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
-    </nav>
-    @if (us.idRol == 1)
-    {
+<div class="row">
+    <div class="col-md-2">
+        <!-- Menu lateral -->
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
+            <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
         </nav>
-    }
-</div>
-<div class="col-md-10">
-    <div>
-        <h2><b>Recursos</b></h2>
-    </div>
-    <a>@Html.ActionLink("Agregar Recurso", "AgregarRecurso", "Admin")</a>
-    <hr />
-
-    @if (Model != null && Model.Count > 0)
-    {
-        foreach (var nameGroup in groupBy)
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Usuarios", "gestionarusuarios", "Admin")</span>
+        </nav>
+        @if (us.idRol == 1)
         {
-            <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@nameGroup.Key" aria-expanded="false" aria-controls="collapseThree">
-                                Unidad
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="@nameGroup.Key" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <table class="table table-condensed">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>NOMBRE</th>
-                                        <th>DESCRIPCIÓN</th>
-                                        <th>ESTADO</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (Recursos re in Model)
-                                    {
-                                        if (nameGroup.Key == re.idUnidad)
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
+            </nav>
+        }
+    </div>
+    <div class="col-md-10">
+        <div>
+            <h2><b>Recursos</b></h2>
+        </div>
+        <a>@Html.ActionLink("Agregar Recurso", "AgregarRecurso", "Admin")</a>
+        <hr />
+
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var nameGroup in groupBy)
+            {
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@nameGroup.Key" aria-expanded="false" aria-controls="collapseThree">
+                                    Unidad
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="@nameGroup.Key" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <table class="tabla table table-condensed">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>NOMBRE</th>
+                                            <th>DESCRIPCIÓN</th>
+                                            <th>ESTADO</th>
+                                            <th>OPCIONES</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (Recursos re in Model)
                                         {
-                                            <tr class="table-active">
-                                                <td>@re.nombre</td>
-                                                <td>@re.descripcion</td>
-                                                @if (@re.estado == true)
-                                                {
-                                                    <td>Activo</td>
-                                                }
-                                                else
-                                                {
-                                                    <td>Inactivo</td>
-                                                }
-                                                <td><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
-                                            </tr>
+                                            if (nameGroup.Key == re.idUnidad)
+                                            {
+                                                <tr class="table-active">
+                                                    <td width="20%">@re.nombre</td>
+                                                    <td width="60%">@re.descripcion</td>
+                                                    @if (@re.estado == true)
+                                                    {
+                                                        <td width="10%">Activo</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td width="10%">Inactivo</td>
+                                                    }
+                                                    <td width="10%"><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
+                                                    <td width="10%"><a class="btn btn-danger" href="@Url.Action("cambiarestadorecurso", "Admin", new { idRecurso = re.idRecurso })" title="Cambiar Estado">Cambiar Estado</a></td>
+                                                </tr>
+                                            }
                                         }
-                                    }
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            }
         }
-    }
-    <hr />
-
-    @*<table class="table table-condensed">
-            <thead class="table-light">
-                <tr>
-                    <th>UNIDAD</th>
-                    <th>NOMBRE</th>
-                    <th>DESCRIPCIÓN</th>
-                    <th>ESTADO</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model != null && Model.Count > 0)
-                {
-                    foreach (Recursos re in Model)
-                    {
-                        <tr class="table-active">
-                            <td>@re.nomUnidad</td>
-                            <td>@re.nombre</td>
-                            <td>@re.descripcion</td>
-                            @if (@re.estado == true)
-                            {
-                                <td>Activo</td>
-                            }
-                            else
-                            {
-                                <td>Inactivo</td>
-                            }
-                            <td><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>*@
-
+        <hr />
+    </div>
 </div>
+
 

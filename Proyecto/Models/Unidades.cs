@@ -177,5 +177,48 @@ namespace Proyecto.Models
             return unidad;
         }
 
+        public List<Unidades> cambiarestadouni(int idUnidad)
+        {
+            List<Unidades> unidad = new List<Unidades>();
+            try
+            {
+                DataSet dunidad;
+                DataTable dtunidad;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@idUnidad", idUnidad));
+                server.ejecutarQuery(@"UPDATE Unidades SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE idUnidad=@idUnidad 
+                                        SELECT * FROM Unidades ORDER BY idUnidad", parametros, out dunidad);
+                server.close();
+
+                if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
+                {
+                    dtunidad = new DataTable();
+                    dtunidad = dunidad.Tables[0];
+
+                    unidad = dtunidad.AsEnumerable().Select(r => new Unidades()
+                    {
+                        idUnidad = r.Field<int>("idUnidad"),
+                        nombre = r.Field<string>("nombre"),
+                        descripcion = r.Field<string>("descripcion"),
+                        imagen = r.Field<string>("imagen"),
+                        estado = r.Field<bool>("estado"),
+                        idTema = r.Field<int>("idTema"),
+                        fecha = r.Field<DateTime>("fecha"),
+                        userName = r.Field<string>("userName"),
+                    }).ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
+            }
+            return unidad;
+        }
     }
 }

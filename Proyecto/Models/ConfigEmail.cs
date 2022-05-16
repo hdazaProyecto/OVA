@@ -20,7 +20,6 @@ namespace Proyecto.Models
         public bool ssl { get; set; }
 
         private Conexion conexion;
-        DataSet dsusuario;
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 

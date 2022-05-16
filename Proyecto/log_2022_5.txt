@@ -128,3 +128,73 @@ Nombre del parámetro: row]
 Nombre del parámetro: row]
 14/05/2022 10:45:47 a. m.: Error [mensaje: El valor no puede ser nulo.
 Nombre del parámetro: row]
+14/05/2022 9:30:15 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword
+                                              ,correoElectronico = @correoElectronico
+                                              ,nombre = @nombre
+                                              ,apellidos = @apellidos
+                                              ,estado = @estado
+                                              ,idRol = @idRol
+                                              ,fechaModifica = getdate()
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia,
+                                                userName = @userName
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
+14/05/2022 9:30:15 : Error [mensaje: No se puede encontrar la tabla 0.]
+14/05/2022 9:34:26 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword
+                                              ,correoElectronico = @correoElectronico
+                                              ,nombre = @nombre
+                                              ,apellidos = @apellidos
+                                              ,estado = @estado
+                                              ,idRol = @idRol
+                                              ,fechaModifica = getdate()
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia,
+                                                userName = @userName
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
+14/05/2022 9:34:26 : Error [mensaje: No se puede encontrar la tabla 0.]
+14/05/2022 9:39:44 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword
+                                              ,correoElectronico = @correoElectronico
+                                              ,nombre = @nombre
+                                              ,apellidos = @apellidos
+                                              ,estado = @estado
+                                              ,idRol = @idRol
+                                              ,fechaModifica = getdate()
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia,
+                                                userName = @userName
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
+                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1 [mensaje: Sintaxis incorrecta cerca de la palabra clave 'WHERE'.]
+14/05/2022 9:40:24 : Error [mensaje: No se puede encontrar la tabla 0.]
+15/05/2022 10:42:36 : Error [mensaje: La columna 'profesion' no pertenece a la tabla Table.]

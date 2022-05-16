@@ -1,0 +1,76 @@
+﻿@using Proyecto.Models;
+@{Usuario us = (Usuario)Session["Usuario"];}
+@model List<Usuario>
+@{
+    ViewBag.Title = "Usuarios";
+}
+<div>
+    <h1><b>Administración de portal</b></h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <!-- Menu lateral -->
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Usuarios", "gestionarusuarios", "Admin")</span>
+        </nav>
+        @if (us.idRol == 1)
+        {
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
+            </nav>
+        }
+    </div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <div>
+            <h2><b>Gestion de Usuarios</b></h2>
+        </div><hr />
+        <table class="tabla table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    @if (us.idRol == 2)
+                    {
+                        <th scope="col">Nivel Estudios</th>
+                    }
+                    else
+                    {
+                        <th scope="col">Nivel Estudios/Profesion</th>
+                    }
+                    <th scope="col">Estado</th>
+                    <th scope="col">Activar/Inactivar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (Usuario usu in Model)
+                    {
+                        <tr>
+                            <th scope="row">@usu.userName</th>
+                            <th>@usu.nombre</th>
+                            <td>@usu.apellidos</td>
+                            <td>@usu.nivelEstudio@usu.profesion</td>
+                            <td>@usu.estado</td>
+                            <td>
+                                <a class="btn btn-primary" href="@Url.Action("cambiarestadousuario", "Admin", new { userName = usu.userName })" title="Cambiar Estado">Cambiar Estado</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

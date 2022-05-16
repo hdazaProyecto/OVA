@@ -13,9 +13,12 @@ namespace Proyecto.Controllers
     public class HomeController : Controller
     {
         Recursos recurso = new Recursos();
+        Usuario usuarios = new Usuario();
         plataforma p = new plataforma();
         public ActionResult Index()
         {
+            if (@TempData["Mensaje"] != null)
+                ViewBag.Usuario = @TempData["Mensaje"].ToString();
             p = p.ModelPlataforma();
             if (p != null)
             {
@@ -35,7 +38,8 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         public ActionResult Index(Cuenta usuario)
-        {
+        {            
+            
             Usuario us = usuario.Existe();
             p = p.ModelPlataforma();
             if (p != null)
@@ -45,7 +49,8 @@ namespace Proyecto.Controllers
             if (us != null)
             {
                 Session["Usuario"] = us;
-                Session["Logueado"] = true;                
+                Session["Logueado"] = true;
+                @ViewBag.Usuario = "Bienvenido "+us.nombre +", gracias por iniciar sesion.";
             }
             else
             {
@@ -80,6 +85,7 @@ namespace Proyecto.Controllers
 
         public ActionResult Cuenta()
         {
+            ViewBag.nivelEdu = usuarios.comNivelEdu();
             if (Session["Usuario"] != null)
             {
                 return View();
@@ -117,16 +123,29 @@ namespace Proyecto.Controllers
 
         public ActionResult RegistrarUsu(Usuario usu)
         {
+            if (@TempData["Mensaje"] != null)
+                ViewBag.Usuario = @TempData["Mensaje"].ToString();
+            ViewBag.nivelEdu = usuarios.comNivelEdu();
             ViewBag.Message = "Your application description page.";
-            return View();
+            return View(usu);
         }
 
         [HttpPost]
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
-            Usuario us = usuario.registrarUsuario(usuario);
-            @ViewBag.Usuario = "Usuario registrado";
-            return RedirectToAction("Index");
+            ViewBag.nivelEdu = usuarios.comNivelEdu();
+            if (usuario.userPassword == usuario.userPassword2)
+            {
+                Usuario us = usuario.registrarUsuario(usuario);
+                @TempData["Mensaje"] = "Usuario registrado";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                @TempData["Mensaje"] = "Por favor verificar Password";
+                return RedirectToAction("RegistrarUsu", usuario);
+            }
+
         }
 
         public ActionResult RecuperarContrasena(Cuenta usuario)
@@ -144,11 +163,10 @@ namespace Proyecto.Controllers
                 Directory.CreateDirectory(ruta);
             if (usuario.filefotografia != null)
             {
-                usuario.fotografia = Path.GetFileName(usuario.filefotografia.FileName); ;
+                usuario.fotografia = usuario.userName+"-"+ Path.GetFileName(usuario.filefotografia.FileName);
                 usuario.filefotografia.SaveAs(ruta + usuario.fotografia);
             }
             Usuario us = usuario.actualizarUsuario(usuario);
-            //return View(us);
             Session["Usuario"] = us;
             return RedirectToAction("Cuenta");
         }

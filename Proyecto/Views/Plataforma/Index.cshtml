@@ -11,9 +11,7 @@
         min-height: 500px;
     }
 
-    .tabla{
-        width: 100%;
-    }
+
     /*.cont {
         position: relative;
         width: 100%;
@@ -44,119 +42,117 @@
         border: none;
     }*/
 </style>
-<div>
-
-    @if (@Model.tipoRecurso == null)
-    {
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1><b>@Model.nombreTema</b></h1>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <img class="visor" src="~/Archivos/fondo.jpg" />
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <p>@Model.descripcionTema</p>
-            </div>
-        </div>
-    }
-    else if (Model.tipoRecurso == "URL")
-    {
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1><b>@Model.nombreUnidad</b></h1>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <iframe class="visor" src="@Model.url" frameborder="0"></iframe>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <h2>@Model.nombreRecurso</h2><br />
-                <p>@Model.descripcionRecurso</p>                
-            </div>
-        </div>
-    }
-    else if (Model.tipoRecurso == "ARCHIVO")
-    {
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1><b>@Model.nombreUnidad</b></h1>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <object class="visor" data="~/Archivos/@Model.archivo" type="application/pdf"></object>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <h2>@Model.nombreRecurso</h2><br />
-                <p>@Model.descripcionRecurso</p>
-            </div>
-        </div>
-    }
-    else if (Model.tipoRecurso == "IMAGEN")
-    {
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1><b>@Model.nombreUnidad</b></h1>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <img class="visor" src="@Model.imagen" />
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <h2>@Model.nombreRecurso</h2><br />
-                <p>@Model.descripcionRecurso</p>
-            </div>
-        </div>
-    }
-    <hr />
-    <br />
+<hr />
+@if (@Model.tipoRecurso == null)
+{
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <table class="tabla table table-bordered">
-                @if (Model.unidades != null && Model.unidades.Count > 0)
+            <h1><b>@Model.nombreTema</b></h1>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <img class="visor" src="~/Archivos/fondo.jpg" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <p>@Model.descripcionTema</p>
+        </div>
+    </div>
+}
+else if (Model.tipoRecurso == "URL")
+{
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1><b>@Model.nombreUnidad</b></h1>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <iframe class="visor" src="@Model.url" frameborder="0"></iframe>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h2>@Model.nombreRecurso</h2><br />
+            <p>@Model.descripcionRecurso</p>                
+        </div>
+    </div>
+}
+else if (Model.tipoRecurso == "ARCHIVO")
+{
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1><b>@Model.nombreUnidad</b></h1>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <object class="visor" data="~/Archivos/@Model.archivo" type="application/pdf"></object>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h2>@Model.nombreRecurso</h2><br />
+            <p>@Model.descripcionRecurso</p>
+        </div>
+    </div>
+}
+else if (Model.tipoRecurso == "IMAGEN")
+{
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1><b>@Model.nombreUnidad</b></h1>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <img class="visor" src="@Model.imagen" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <h2>@Model.nombreRecurso</h2><br />
+            <p>@Model.descripcionRecurso</p>
+        </div>
+    </div>
+}
+<hr />
+<br />
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="tabla table table-bordered">
+            @if (Model.unidades != null && Model.unidades.Count > 0)
+            {
+                foreach (Unidades un in Model.unidades)
                 {
-                    foreach (Unidades un in Model.unidades)
-                    {
-                        <tr>
-                            <th><h2>@un.nombre</h2></th>
-                            <th>
-                                @if (Model.recursos != null && Model.recursos.Count > 0)
+                    <tr>
+                        <th><h2>@un.nombre</h2></th>
+                        <th>
+                            @if (Model.recursos != null && Model.recursos.Count > 0)
+                            {
+                                foreach (Recursos re in Model.recursos)
                                 {
-                                    foreach (Recursos re in Model.recursos)
+                                    if (re.idUnidad == un.idUnidad)
                                     {
-                                        if (re.idUnidad == un.idUnidad)
-                                        {
 
-                                            if (@re.url != null)
-                                            {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" width="100px" height="100px" /></a>
-                                            }
-                                            else if (@re.archivo != null)
-                                            {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" width="100px" height="100px" /></a>
-                                            }
-                                            else
-                                            {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" width="100px" height="100px" /></a>
-                                            }
+                                        if (@re.url != null)
+                                        {
+                                            <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" width="100px" height="100px" /></a>
+                                        }
+                                        else if (@re.archivo != null)
+                                        {
+                                            <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" width="100px" height="100px" /></a>
+                                        }
+                                        else
+                                        {
+                                            <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" width="100px" height="100px" /></a>
                                         }
                                     }
                                 }
-                            </th>
-                        </tr>
-                    }
+                            }
+                        </th>
+                    </tr>
                 }
-            </table>
-        </div>
+            }
+        </table>
     </div>
 </div>
 

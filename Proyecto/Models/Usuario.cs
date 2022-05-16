@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Proyecto.Models
 {
@@ -21,10 +22,10 @@ namespace Proyecto.Models
         public string profesion { get; set; }
         public string perfilProfesional { get; set; }
         public string fotografia { get; set; }
+        public int nivelEstudio { get; set; }
         public HttpPostedFileBase filefotografia { get; set; }
 
         private Conexion conexion;
-        DataSet dsusuario;
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
@@ -47,12 +48,17 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@apellidos", usuario.apellidos));
                 parametros.Add(new SqlParameter("@estado", usuario.estado));
                 parametros.Add(new SqlParameter("@idRol", usuario.idRol));
+                parametros.Add(new SqlParameter("@nivelEstudio", usuario.nivelEstudio));
                 parametros.Add(new SqlParameter("@fecha", System.DateTime.Now));
                 dsusuario = new DataSet();
                 server.ejecutarQuery(@"INSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
                                         VALUES
                                     (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
-                                    SELECT * FROM Usuarios WHERE UPPER(userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+                                        INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName); 
+                                    SELECT * FROM Usuarios U
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
                 server.close();
 
                 if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -67,7 +73,11 @@ namespace Proyecto.Models
                         nombre = r.Field<string>("nombre"),
                         apellidos = r.Field<string>("apellidos"),
                         estado = r.Field<bool>("estado"),
-                        idRol = r.Field<int>("idRol")
+                        idRol = r.Field<int>("idRol"),
+                        profesion = r.Field<String>("profesion"),
+                        perfilProfesional = r.Field<String>("perfilProfesional"),
+                        nivelEstudio = r.Field<int>("nivelEstudio"),
+                        fotografia = r.Field<String>("fotografia")
                     }).FirstOrDefault();
                 }
 
@@ -101,33 +111,44 @@ namespace Proyecto.Models
                     parametros.Add(new SqlParameter("@apellidos", usuario.apellidos));
                     parametros.Add(new SqlParameter("@estado", usuario.estado));
                     parametros.Add(new SqlParameter("@idRol", usuario.idRol));
-                    parametros.Add(new SqlParameter("@perfilProfesional", usuario.perfilProfesional == null ? "" : usuario.perfilProfesional));
-                    parametros.Add(new SqlParameter("@profesion", usuario.profesion == null ? "" : usuario.profesion));
-                    parametros.Add(new SqlParameter("@fotografia", usuario.fotografia == null ? "" : usuario.fotografia));
+                    parametros.Add(new SqlParameter("@perfilProfesional", usuario.perfilProfesional == null ? DBNull.Value : (object)usuario.perfilProfesional));
+                    parametros.Add(new SqlParameter("@profesion", usuario.profesion == null ? DBNull.Value : (object)usuario.profesion));
+                    parametros.Add(new SqlParameter("@fotografia", usuario.fotografia == null ? DBNull.Value : (object)usuario.fotografia));
+                    parametros.Add(new SqlParameter("@nivelEstudio", usuario.nivelEstudio));
                     parametros.Add(new SqlParameter("@fecha", System.DateTime.Now));
                     dsusuario = new DataSet();
                     server.ejecutarQuery(@"UPDATE Usuarios
-                                           SET userPassword = @userPassword
-                                              ,correoElectronico = @correoElectronico
-                                              ,nombre = @nombre
-                                              ,apellidos = @apellidos
-                                              ,estado = @estado
-                                              ,idRol = @idRol
-                                              ,fechaModifica = getdate()
+                                           SET userPassword = @userPassword,
+                                               correoElectronico = @correoElectronico,
+                                               nombre = @nombre,
+                                               apellidos = @apellidos,
+                                               estado = @estado,
+                                               idRol = @idRol,
+                                               fechaModifica = getdate()
                                          WHERE userName = @userName;
                                         IF (@idRol=2)
-                                            IF EXISTS (SELECT * FROM Profesores where userName=@userName)
+                                            IF EXISTS (SELECT * FROM Profesores WHERE userName=@userName)
                                                 UPDATE Profesores
                                                 SET profesion = @profesion,
                                                 perfilProfesional = @perfilProfesional,
-                                                fotografia = @fotografia,
-                                                userName = @userName
+                                                fotografia = @fotografia
                                                 WHERE userName = @userName;
                                             ELSE
                                                 INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
                                                 VALUES
-                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                            
-                                        SELECT * FROM Usuarios U LEFT JOIN Profesores P ON U.userName=P.userName WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword WHERE estado=1", parametros, out dsusuario);
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);  
+                                        IF (@idRol=3)
+                                            IF EXISTS (SELECT * FROM Estudiantes WHERE userName=@userName)
+                                                UPDATE Estudiantes
+                                                SET nivelEstudio = @nivelEstudio
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName);  
+                                        SELECT * FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1", parametros, out dsusuario);
                     server.close();
 
                     if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -145,6 +166,7 @@ namespace Proyecto.Models
                             idRol = r.Field<int>("idRol"),
                             profesion = r.Field<String>("profesion"),
                             perfilProfesional = r.Field<String>("perfilProfesional"),
+                            nivelEstudio = r.Field<int>("nivelEstudio"),
                             fotografia = r.Field<String>("fotografia")
                         }).FirstOrDefault();
                     }
@@ -188,7 +210,11 @@ namespace Proyecto.Models
                         nombre = r.Field<string>("nombre"),
                         apellidos = r.Field<string>("apellidos"),
                         estado = r.Field<bool>("estado"),
-                        idRol = r.Field<int>("idRol")
+                        idRol = r.Field<int>("idRol"),
+                        profesion = r.Field<String>("profesion"),
+                        perfilProfesional = r.Field<String>("perfilProfesional"),
+                        nivelEstudio = r.Field<int>("nivelEstudio"),
+                        fotografia = r.Field<String>("fotografia")
                     }).FirstOrDefault();
                 }
             }
@@ -226,6 +252,7 @@ namespace Proyecto.Models
                         idRol = r.Field<int>("idRol"),
                         profesion = r.Field<String>("profesion"),
                         perfilProfesional = r.Field<String>("perfilProfesional"),
+                        nivelEstudio = r.Field<int>("nivelEstudio"),
                         fotografia = r.Field<String>("fotografia")
                     }).ToList();
 
@@ -237,6 +264,127 @@ namespace Proyecto.Models
                 Funcion.write();
             }
             return Profesores;
+        }
+
+        public List<Usuario> listarUsuarios(int id)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            try
+            {
+                DataSet dusuarios;
+                DataTable dtusuarios;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@idRol", id == 1 ? 2 : 3));
+                server.ejecutarQuery(@"SELECT * FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        WHERE U.IdRol >= @idRol", parametros, out dusuarios);
+                server.close();
+
+                if (dusuarios != null && dusuarios.Tables[0].Rows.Count > 0)
+                {
+                    dtusuarios = new DataTable();
+                    dtusuarios = dusuarios.Tables[0];
+
+                    usuarios = dtusuarios.AsEnumerable().Select(r => new Usuario()
+                    {
+                        userName = r.Field<string>("userName"),
+                        userPassword = r.Field<string>("userPassword"),
+                        correoElectronico = r.Field<string>("correoElectronico"),
+                        nombre = r.Field<string>("nombre"),
+                        apellidos = r.Field<string>("apellidos"),
+                        estado = r.Field<bool>("estado"),
+                        idRol = r.Field<int>("idRol"),
+                        profesion = r.Field<String>("profesion"),
+                        perfilProfesional = r.Field<String>("perfilProfesional"),
+                        nivelEstudio = r.Field<int>("nivelEstudio"),
+                        fotografia = r.Field<String>("fotografia")
+                    }).ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
+            }
+            return usuarios;
+        }
+
+        public List<Usuario> cambiarestadoUsu(string userName,int id)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            try
+            {
+                DataSet dusuarios;
+                DataTable dtusuarios;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@idRol", id == 1 ? 2 : 3));
+                parametros.Add(new SqlParameter("@userName", userName));
+                server.ejecutarQuery(@"UPDATE Usuarios SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE userName=@userName
+                                        SELECT * FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        WHERE U.IdRol >= @idRol", parametros, out dusuarios);
+                server.close();
+
+                if (dusuarios != null && dusuarios.Tables[0].Rows.Count > 0)
+                {
+                    dtusuarios = new DataTable();
+                    dtusuarios = dusuarios.Tables[0];
+
+                    usuarios = dtusuarios.AsEnumerable().Select(r => new Usuario()
+                    {
+                        userName = r.Field<string>("userName"),
+                        userPassword = r.Field<string>("userPassword"),
+                        correoElectronico = r.Field<string>("correoElectronico"),
+                        nombre = r.Field<string>("nombre"),
+                        apellidos = r.Field<string>("apellidos"),
+                        estado = r.Field<bool>("estado"),
+                        idRol = r.Field<int>("idRol"),
+                        profesion = r.Field<String>("profesion"),
+                        perfilProfesional = r.Field<String>("perfilProfesional"),
+                        nivelEstudio = r.Field<int>("nivelEstudio"),
+                        fotografia = r.Field<String>("fotografia")
+                    }).ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
+            }
+            return usuarios;
+        }
+
+        public List<SelectListItem> comNivelEdu()
+        {
+            DataTable _unidades = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            server.ejecutarQuery(@"select idNivel,descripcion from NivelEstudio", new List<SqlParameter>(), out _unidades);
+            return Combo(_unidades, "descripcion", "idNivel", null);
+        }
+
+        public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)
+        {
+            return agOrigenDatos.Rows.Cast<DataRow>().Select(r => new SelectListItem
+            {
+                Text = r[agDisplay].ToString(),
+                Value = r[agValue].ToString(),
+                Selected = r[agValue].ToString().Equals(agSelectedValue)
+            }).ToList();
         }
     }
 }

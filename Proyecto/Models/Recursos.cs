@@ -204,6 +204,53 @@ namespace Proyecto.Models
             return recurso;
         }
 
+        public List<Recursos> cambiarestadorec(int idRecurso)
+        {
+            List<Recursos> recurso = new List<Recursos>();
+            try
+            {
+                DataSet drecurso;
+                DataTable dtrecurso;
+                conexion = new Conexion();
+                con = new SqlConnectionStringBuilder();
+                con = conexion.ConexionSQLServer();
+                ConSqlServer server = new ConSqlServer(con);
+                parametros = new List<SqlParameter>();
+                parametros.Add(new SqlParameter("@idrecurso", idRecurso));
+                server.ejecutarQuery(@"UPDATE Recursos SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE idRecurso=@idrecurso
+                                        SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad ORDER BY R.idUnidad,R.idRecurso", parametros, out drecurso);
+                server.close();
+
+                if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
+                {
+                    dtrecurso = new DataTable();
+                    dtrecurso = drecurso.Tables[0];
+
+                    recurso = dtrecurso.AsEnumerable().Select(r => new Recursos()
+                    {
+                        idRecurso = r.Field<int>("idRecurso"),
+                        nombre = r.Field<string>("nombre"),
+                        descripcion = r.Field<string>("descripcion"),
+                        url = r.Field<string>("url"),
+                        archivo = r.Field<string>("archivo"),
+                        imagen = r.Field<string>("imagen"),
+                        estado = r.Field<bool>("estado"),
+                        idUnidad = r.Field<int>("idUnidad"),
+                        nomUnidad = r.Field<string>("nomUnidad"),
+                        fecha = r.Field<DateTime>("fecha"),
+                        userName = r.Field<string>("userName"),
+                    }).ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
+            }
+            return recurso;
+        }
+
         public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)
         {
             return agOrigenDatos.Rows.Cast<DataRow>().Select(r => new SelectListItem

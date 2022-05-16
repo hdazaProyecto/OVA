@@ -130,6 +130,7 @@
     <Compile Include="Funciones\ConSqlServer.cs" />
     <Compile Include="Funciones\EnvioCorreo.cs" />
     <Compile Include="Funciones\Funcion.cs" />
+    <Compile Include="Funciones\Helper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -147,6 +148,7 @@
     <Content Include="Archivos\examen.png" />
     <Content Include="Archivos\fondo.jpg" />
     <Content Include="Archivos\imagen.png" />
+    <Content Include="Archivos\patron.png" />
     <Content Include="Archivos\video.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -196,7 +198,6 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\RegistrarUsu.cshtml" />
     <Content Include="Views\Home\Cuenta.cshtml" />
-    <Content Include="Views\Admin\Unidades.cshtml" />
     <Content Include="Views\Admin\AgregarUnidades.cshtml" />
     <Content Include="Views\Admin\EditarUnidades.cshtml" />
     <Content Include="Views\Admin\listarRecursos.cshtml" />
@@ -205,6 +206,8 @@
     <Content Include="Views\Admin\EditarRecurso.cshtml" />
     <Content Include="Views\Plataforma\Index.cshtml" />
     <Content Include="Views\Admin\email.cshtml" />
+    <Content Include="Views\Admin\gestionarusuarios.cshtml" />
+    <Content Include="Views\Admin\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

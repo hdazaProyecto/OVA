@@ -111,6 +111,8 @@ namespace Proyecto.Funciones
             }
             catch (Exception ex)
             {
+                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
+                Funcion.write();
             }
             finally
             {

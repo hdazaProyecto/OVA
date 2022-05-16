@@ -63,25 +63,40 @@ namespace Proyecto.Controllers
         [HttpPost]
         public ActionResult GuardarTema(Tema pTema)
         {
-            string ruta = Server.MapPath("~/Archivos/");
-            if (pTema.file != null)
+            if (Session["Usuario"] != null)
             {
-                pTema.imagen = Path.GetFileName(pTema.file.FileName);
-                pTema.file.SaveAs(ruta + pTema.imagen);
+                string ruta = Server.MapPath("~/Archivos/");
+                if (pTema.file != null)
+                {
+                    pTema.imagen = Path.GetFileName(pTema.file.FileName);
+                    pTema.file.SaveAs(ruta + pTema.imagen);
+                }
+                Tema Tema = pTema.gestionarTema(pTema);
+                if (Tema != null)
+                {
+                    @TempData["Mensaje"] = "Los datos se guardaron exitosamente";
+                }
+                return RedirectToAction("Index");
             }
-            Tema Tema = pTema.gestionarTema(pTema);
-            if (Tema != null)
+            else
             {
-                @TempData["Mensaje"] = "Los datos se guardaron exitosamente";
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index");
-            //return View(Tema);
+
         }
         [HttpPost]
         public ActionResult GuardarUnidad(Unidades pUnidad)
         {
-            Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
-            return RedirectToAction("ListarUnidades");
+            if (Session["Usuario"] != null)
+            {
+                Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
+                return RedirectToAction("ListarUnidades");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
         }
 
         public ActionResult AgregarUnidades(Unidades unidad = null)
@@ -158,16 +173,91 @@ namespace Proyecto.Controllers
 
         public ActionResult email()
        {
-            ConfigEmail configEmail = new ConfigEmail();
-            configEmail = configEmail.ConsultaConfiguracion();
-            return View(configEmail);
+            if (Session["Usuario"] != null)
+            {
+                ConfigEmail configEmail = new ConfigEmail();
+                configEmail = configEmail.ConsultaConfiguracion();
+                return View(configEmail);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult GuardarConfEmail(ConfigEmail conf)
         {
-            ConfigEmail configuracion = new ConfigEmail();
-            configuracion = configuracion.gestioanarConfiguracion(conf);
-            return View("email", configuracion);
+            if (Session["Usuario"] != null)
+            {
+                ConfigEmail configuracion = new ConfigEmail();
+                configuracion = configuracion.gestioanarConfiguracion(conf);
+                return View("email", configuracion);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
+
+        public ActionResult cambiarestadounida(int idUnidad)
+        {
+            Unidades unidad = new Unidades();
+            List<Unidades> listunidad = new List<Unidades>();
+            if (Session["Usuario"] != null)
+            {
+                listunidad = unidad.cambiarestadouni(idUnidad);
+                return RedirectToAction("ListarUnidades", listunidad);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public ActionResult cambiarestadorecurso(int idRecurso)
+        {
+            Recursos recurso = new Recursos();
+            List<Recursos> listrecurso = new List<Recursos>();
+            if (Session["Usuario"] != null)
+            {
+                listrecurso = recurso.cambiarestadorec(idRecurso);
+                return RedirectToAction("listarRecursos", listrecurso);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public ActionResult cambiarestadousuario(string userName)
+        {
+            if (Session["Usuario"] != null)
+            {
+                Usuario usu = new Usuario();
+                List<Usuario> listUsuarios = new List<Usuario>();
+                Usuario us = (Usuario)Session["Usuario"];
+                listUsuarios = usu.cambiarestadoUsu(userName,us.idRol);
+                return RedirectToAction("gestionarusuarios", listUsuarios);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult gestionarusuarios()
+        {
+            if (Session["Usuario"] != null)
+            {
+                Usuario usu = new Usuario();
+                List<Usuario> listUsuarios = new List<Usuario>();
+                Usuario us = (Usuario)Session["Usuario"];
+                listUsuarios = usu.listarUsuarios(us.idRol);
+                return View(listUsuarios);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
     }
 }

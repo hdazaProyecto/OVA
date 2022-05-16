@@ -4,11 +4,29 @@
     padding-bottom: 20px;
     padding-left: 8%;
     padding-right: 8%;
+    background-image: url("../Archivos/patron.png");
 }
 
 .body-content {
     /*padding-left: 5%;
     padding-right: 5%;*/
+}
+
+.contenedor{
+    padding: 10px;
+    background-color: white;
+}
+.tabla {
+    width: 100%;
+}
+
+.navcolor {
+    background-color: #60c7c1 !important;
+}
+
+.contenedorVisor {
+    /*background-color: white;
+    color: white;*/
 }
 
 .contensdorbar {
@@ -26,86 +44,86 @@
     margin: 80px auto 0;
 }
 
-    .modal-login .modal-content {
-        padding: 20px;
-        border-radius: 5px;
-        border: none;
+.modal-login .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.modal-login .modal-header {
+    border-bottom: none;
+    position: relative;
+    justify-content: center;
+}
+
+.modal-login h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -15px;
+}
+
+.modal-login .form-control:focus {
+    border-color: #70c5c0;
+}
+
+.modal-login .form-control, .modal-login .btn {
+    min-height: 40px;
+    border-radius: 3px;
+}
+
+.modal-login .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.modal-login .modal-footer {
+    background: #ecf0f1;
+    border-color: #dee4e7;
+    text-align: center;
+    justify-content: center;
+    margin: 0 -20px -20px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+    .modal-login .modal-footer a {
+        color: #999;
     }
 
-    .modal-login .modal-header {
-        border-bottom: none;
-        position: relative;
-        justify-content: center;
+.modal-login .avatar {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -70px;
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    z-index: 9;
+    background: #60c7c1;
+    padding: 15px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+    .modal-login .avatar img {
+        width: 100%;
     }
 
-    .modal-login h4 {
-        text-align: center;
-        font-size: 26px;
-        margin: 30px 0 -15px;
+.modal-login .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+
+    .modal-login .btn:hover, .modal-login .btn:focus {
+        background: #45aba6;
+        outline: none;
     }
-
-    .modal-login .form-control:focus {
-        border-color: #70c5c0;
-    }
-
-    .modal-login .form-control, .modal-login .btn {
-        min-height: 40px;
-        border-radius: 3px;
-    }
-
-    .modal-login .close {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-    }
-
-    .modal-login .modal-footer {
-        background: #ecf0f1;
-        border-color: #dee4e7;
-        text-align: center;
-        justify-content: center;
-        margin: 0 -20px -20px;
-        border-radius: 5px;
-        font-size: 13px;
-    }
-
-        .modal-login .modal-footer a {
-            color: #999;
-        }
-
-    .modal-login .avatar {
-        position: absolute;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        top: -70px;
-        width: 95px;
-        height: 95px;
-        border-radius: 50%;
-        z-index: 9;
-        background: #60c7c1;
-        padding: 15px;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-    }
-
-        .modal-login .avatar img {
-            width: 100%;
-        }
-
-    .modal-login .btn {
-        color: #fff;
-        border-radius: 4px;
-        background: #60c7c1;
-        text-decoration: none;
-        transition: all 0.4s;
-        line-height: normal;
-        border: none;
-    }
-
-        .modal-login .btn:hover, .modal-login .btn:focus {
-            background: #45aba6;
-            outline: none;
-        }
 
 .trigger-btn {
     display: inline-block;
@@ -119,18 +137,18 @@
     margin-bottom: 20px;
 }
 
-    .tableContenido > thead > tr > th,
-    .tableContenido > tbody > tr > th,
-    .tableContenido > tfoot > tr > th,
-    .tableContenido > thead > tr > td,
-    .tableContenido > tbody > tr > td,
-    .tableContenido > tfoot > tr > td {
-        padding: 8px;
-        line-height: 1.42857143;
-        vertical-align: top;
-    }
+.tableContenido > thead > tr > th,
+.tableContenido > tbody > tr > th,
+.tableContenido > tfoot > tr > th,
+.tableContenido > thead > tr > td,
+.tableContenido > tbody > tr > td,
+.tableContenido > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+}
 
-    .tableContenido > thead > tr > th {
-        vertical-align: bottom;
-    }
+.tableContenido > thead > tr > th {
+    vertical-align: bottom;
+}
 
