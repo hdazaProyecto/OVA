@@ -36,7 +36,7 @@ namespace Proyecto.Models
             parametros.Add(new SqlParameter("@userName", this.userName));
             parametros.Add(new SqlParameter("@userPassword", Funcion.stringBase64(this.userPassword)));
             server.ejecutarQuery(@"SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional, ISNULL(E.nivelEstudio, 0) nivelEstudio, descripcion, fotografia FROM Usuarios U
+                                        perfilProfesional, CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio, descripcion, fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName = P.userName
                                         LEFT JOIN Estudiantes E ON U.userName = E.userName
                                         LEFT JOIN NivelEstudio N ON E.nivelEstudio = N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);

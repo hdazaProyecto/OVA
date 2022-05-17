@@ -60,7 +60,7 @@ namespace Proyecto.Models
                                                 VALUES
                                                 (@nivelEstudio,@userName); 
                                     SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        perfilProfesional,CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName=P.userName
                                         LEFT JOIN Estudiantes E ON U.userName=E.userName
                                         LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
@@ -68,8 +68,15 @@ namespace Proyecto.Models
 
                 if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
                 {
+                    EnvioCorreo em = null;
+                    string ErrorEm = "";
                     dtusuario = new DataTable();
                     dtusuario = dsusuario.Tables[0];
+                    
+                    //envio de correo
+                    em = new EnvioCorreo("Bienvenida !!!!!", "<body><p align = 'justify'>Bienvenid@ "+ dtusuario.Rows[0].Field<string>("nombre") +" "+ dtusuario.Rows[0].Field<string>("apellidos") + " <br><br/>Gracias por haberte dado de alta en el sitio.<br><br/>Accede a nuestro sitio con los siguientes datos <br>Usuario: "+ dtusuario.Rows[0].Field<string>("userName") + "<br>Contraseña: "+ Funcion.base64String(dtusuario.Rows[0].Field<string>("userPassword")) + "<br><br><br/> Atentamente,<br/><b/><br/><br/><br/><br/><br/></p></body>");
+                    em.envio(out ErrorEm, dtusuario.Rows[0].Field<string>("correoElectronico"), true);
+                    
                     us = dtusuario.Rows.Cast<DataRow>().Select(r => new Usuario
                     {
                         userName = r.Field<string>("userName"),
@@ -153,7 +160,7 @@ namespace Proyecto.Models
                                                 VALUES
                                                 (@nivelEstudio,@userName);  
                                         SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        perfilProfesional,CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName=P.userName
                                         LEFT JOIN Estudiantes E ON U.userName=E.userName
                                         LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1", parametros, out dsusuario);
@@ -248,7 +255,7 @@ namespace Proyecto.Models
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
                 server.ejecutarQuery(@"SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        perfilProfesional,CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName=P.userName
                                         LEFT JOIN Estudiantes E ON U.userName=E.userName
                                         LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE estado=1 AND idRol=2", parametros, out dProfesores);
@@ -299,7 +306,7 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 parametros.Add(new SqlParameter("@idRol", id == 1 ? 2 : 3));
                 server.ejecutarQuery(@"SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        perfilProfesional,CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName=P.userName
                                         LEFT JOIN Estudiantes E ON U.userName=E.userName
                                         LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel
@@ -353,7 +360,7 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@userName", userName));
                 server.ejecutarQuery(@"UPDATE Usuarios SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE userName=@userName
                                         SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        perfilProfesional,CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName=P.userName
                                         LEFT JOIN Estudiantes E ON U.userName=E.userName
                                         LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel

@@ -11,12 +11,22 @@
 </center>
 <hr />
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <img src="~/Archivos/@Model.imagenTema" width="100%" />
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-        <p align="left"><h4>@Model.descripcionTema</h4></p>
-    </div>
+    @if (Model.imagenTema != null)
+    {
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <img src="~/Archivos/@Model.imagenTema" width="100%" />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <p align="left"><h4>@Model.descripcionTema</h4></p>
+        </div>
+    }
+    else
+    {
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p align="left"><h4>@Model.descripcionTema</h4></p>
+        </div>
+    }
+
 </div>   
 }
 

@@ -11,7 +11,7 @@ namespace Proyecto.Models
 {
     public class ConfigEmail
     {
-        public int id { get; set; }
+        public int idConfigEmail { get; set; }
         public string nombre { get; set; }
         public string servidor { get; set; }
         public string usuario { get; set; }
@@ -42,7 +42,7 @@ namespace Proyecto.Models
                     dtconfiguracion = dconfiguracion.Tables[0];
                     conf = dtconfiguracion.Rows.Cast<DataRow>().Select(r => new ConfigEmail
                     {
-                        id = r.Field<int>("id"),
+                        idConfigEmail = r.Field<int>("idConfigEmail"),
                         nombre = r.Field<string>("nombre"),
                         servidor = r.Field<string>("servidor"),
                         usuario = r.Field<string>("usuario"),
@@ -72,14 +72,14 @@ namespace Proyecto.Models
                 con = conexion.ConexionSQLServer();
                 ConSqlServer server = new ConSqlServer(con);
                 parametros = new List<SqlParameter>();
-                parametros.Add(new SqlParameter("@id", configuracion.id));
+                parametros.Add(new SqlParameter("@idConfigEmail", configuracion.idConfigEmail));
                 parametros.Add(new SqlParameter("@nombre", configuracion.nombre));
                 parametros.Add(new SqlParameter("@servidor", configuracion.servidor));
-                parametros.Add(new SqlParameter("@usuario", configuracion.usuario));
+                parametros.Add(new SqlParameter("@usuario", configuracion.usuario.ToLower()));
                 parametros.Add(new SqlParameter("@clave", Funcion.stringBase64(configuracion.clave)));
                 parametros.Add(new SqlParameter("@puerto", configuracion.puerto));
                 parametros.Add(new SqlParameter("@ssl", configuracion.ssl));
-                server.ejecutarQuery(@"IF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                server.ejecutarQuery(@"IF EXISTS (SELECT * FROM configEmail WHERE idConfigEmail=@idConfigEmail) 
                                         BEGIN
 	                                        UPDATE configEmail
 		                                    SET nombre = @nombre,
@@ -88,7 +88,7 @@ namespace Proyecto.Models
 		                                    clave = @clave,
 		                                    puerto = @puerto,
 		                                    ssl = @ssl
-		                                    WHERE id=@id
+		                                    WHERE idConfigEmail=@idConfigEmail
                                         END
                                         ELSE
                                         BEGIN
@@ -101,11 +101,11 @@ namespace Proyecto.Models
                     dtconfiguracion = dconfiguracion.Tables[0];
                     conf = dtconfiguracion.Rows.Cast<DataRow>().Select(r => new ConfigEmail
                     {
-                        id = r.Field<int>("id"),
+                        idConfigEmail = r.Field<int>("idConfigEmail"),
                         nombre = r.Field<string>("nombre"),
                         servidor = r.Field<string>("servidor"),
                         usuario = r.Field<string>("usuario"),
-                        clave = Funcion.base64String(r.Field<string>("clave")),
+                        clave = r.Field<string>("clave"),
                         puerto = r.Field<int>("puerto"),
                         ssl = r.Field<bool>("ssl"),
                     }).FirstOrDefault();

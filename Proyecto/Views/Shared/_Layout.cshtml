@@ -24,17 +24,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <!--li>@Html.ActionLink("Inicio", "Index", "Home")</li-->
-                    <li>@Html.ActionLink("Contenido programatico", "Contenido", "Home")</li>
-                    <li>@Html.ActionLink("Plataforma", "Index", "Plataforma")</li>
-                    <li>@Html.ActionLink("Foro", "Foro", "Home")</li>
+                    @if (Session["Usuario"] != null)
+                    {
+                        <li>@Html.ActionLink("Contenido programatico", "Contenido", "Home")</li>
+                        <li>@Html.ActionLink("Plataforma", "Index", "Plataforma")</li>
+                        <li>@Html.ActionLink("Foro", "Foro", "Home")</li>
+                    }
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session["Usuario"] == null)
                     {
+                        <li>@Html.ActionLink("Registrarse", "RegistrarUsu", "Home")</li>
                         <li><a data-toggle="modal" data-target="#login">Login</a></li>
-                        @*<li>@Html.ActionLink("Registrarse", "RegistrarUsu", "Home")</li>*@
                     }
                     else
                     {
@@ -54,7 +56,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - @pt.nombreTema</p>
+            <p>&copy; @DateTime.Now.Year - @if (@pt != null)
+            {@pt.nombreTema}</p>
         </footer>
     </div>
 

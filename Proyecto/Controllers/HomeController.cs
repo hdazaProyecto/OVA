@@ -149,14 +149,22 @@ namespace Proyecto.Controllers
             if (usuario.userPassword == usuario.userPassword2)
             {
                 Usuario us = usuario.registrarUsuario(usuario);
-                if (us.idRol == 2)
+                if(us != null)
                 {
-                    @TempData["Mensaje"] = "Usuario registrado con éxito. Recuerde que recibirá un correo con la confirmación de la activación de su usuario";
+                    if (us.idRol == 2)
+                    {
+                        @TempData["Mensaje"] = "Usuario registrado con éxito. Recuerde que recibirá un correo con la confirmación de la activación de su usuario";
+                    }
+                    else
+                    {
+                        @TempData["Mensaje"] = "Usuario registrado con éxito.";
+                    }
                 }
                 else
                 {
-                    @TempData["Mensaje"] = "Usuario registrado con éxito.";
-                }                
+                    @TempData["Mensaje"] = "Error al crear el usuario. El usuario ya existe prueba con otro usuario o recupera contraseña.";
+                }
+                                
                 return RedirectToAction("Index");
             }
             else

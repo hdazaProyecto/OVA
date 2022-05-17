@@ -74,7 +74,7 @@ namespace Proyecto.Controllers
                 Tema Tema = pTema.gestionarTema(pTema);
                 if (Tema != null)
                 {
-                    @TempData["Mensaje"] = "Los datos se guardaron exitosamente";
+                    @ViewBag.Usuario = "Los datos se guardaron exitosamente";
                 }
                 return RedirectToAction("Index");
             }

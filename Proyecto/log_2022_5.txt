@@ -275,3 +275,280 @@ Se terminó la instrucción.]
 16/05/2022 2:24:00 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
 16/05/2022 2:25:13 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
 16/05/2022 2:26:54 p. m.: Error [mensaje: La entrada no es una cadena Base 64 válida porque contiene un carácter que no es Base 64, más de dos caracteres de relleno o un carácter no válido entre los caracteres de relleno. ]
+17/05/2022 2:53:50 p. m.: Error al ejecutar la consulta select idNivel,descripcion from NivelEstudio [mensaje: El nombre de objeto 'NivelEstudio' no es válido.]
+17/05/2022 2:57:28 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                        INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName); 
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: No se puede insertar el valor NULL en la columna 'fechaModifica', tabla 'Proyecto.dbo.Usuarios'. La columna no admite valores NULL. Error de INSERT.
+Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Estudiante_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.
+Se terminó la instrucción.
+Se terminó la instrucción.]
+17/05/2022 2:57:28 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 2:58:44 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                        INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName); 
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: No se puede insertar el valor NULL en la columna 'fechaModifica', tabla 'Proyecto.dbo.Usuarios'. La columna no admite valores NULL. Error de INSERT.
+Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Estudiante_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.
+Se terminó la instrucción.
+Se terminó la instrucción.]
+17/05/2022 2:58:44 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 2:59:19 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                        INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName); 
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: No se puede insertar el valor NULL en la columna 'fechaModifica', tabla 'Proyecto.dbo.Usuarios'. La columna no admite valores NULL. Error de INSERT.
+Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Estudiante_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.
+Se terminó la instrucción.
+Se terminó la instrucción.]
+17/05/2022 2:59:19 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 3:10:04 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                        INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName); 
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: No se puede insertar el valor NULL en la columna 'fechaModifica', tabla 'Proyecto.dbo.Usuarios'. La columna no admite valores NULL. Error de INSERT.
+Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Estudiante_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.
+Se terminó la instrucción.
+Se terminó la instrucción.]
+17/05/2022 3:11:43 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 3:16:20 p. m.: Error [mensaje: La conversión especificada no es válida.]
+17/05/2022 3:22:17 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha)
+                                        INSERT INTO Estudiantes (nivelEstudio,userName)
+                                                VALUES
+                                                (@nivelEstudio,@userName); 
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,ISNULL(E.nivelEstudio,0) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName=P.userName
+                                        LEFT JOIN Estudiantes E ON U.userName=E.userName
+                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio=N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Infracción de la restricción PRIMARY KEY 'PK_Usuarios'. No se puede insertar una clave duplicada en el objeto 'dbo.Usuarios'. El valor de la clave duplicada es (hdaza).
+Se terminó la instrucción.]
+17/05/2022 3:22:17 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:10:53 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,true,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: El nombre de columna 'true' no es válido.]
+17/05/2022 4:10:53 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:37:18 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: El nombre de columna 'id' no es válido.
+El nombre de columna 'id' no es válido.]
+17/05/2022 4:37:18 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:38:59 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: El nombre de columna 'id' no es válido.
+El nombre de columna 'id' no es válido.]
+17/05/2022 4:38:59 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:40:34 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: El nombre de columna 'id' no es válido.
+El nombre de columna 'id' no es válido.]
+17/05/2022 4:40:34 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:40:42 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE id=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: El nombre de columna 'id' no es válido.
+El nombre de columna 'id' no es válido.]
+17/05/2022 4:40:42 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:44:09 p. m.: Error al ejecutar la consultaIF EXISTS (SELECT * FROM configEmail WHERE id=@id) 
+                                        BEGIN
+	                                        UPDATE configEmail
+		                                    SET nombre = @nombre,
+		                                    servidor = @servidor,
+		                                    usuario = @usuario,
+		                                    clave = @clave,
+		                                    puerto = @puerto,
+		                                    ssl = @ssl
+		                                    WHERE idConfigEmail=@id
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                        END 
+                                            SELECT TOP 1 * FROM configEmail [mensaje: El nombre de columna 'id' no es válido.]
+17/05/2022 4:44:16 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:57:53 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Error al convertir una cadena de caracteres en fecha y/u hora.]
+17/05/2022 4:57:53 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 4:59:46 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Error al convertir una cadena de caracteres en fecha y/u hora.]
+17/05/2022 4:59:46 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 5:01:30 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Error al convertir una cadena de caracteres en fecha y/u hora.]
+17/05/2022 5:01:30 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 5:02:08 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,                                                
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Error al convertir una cadena de caracteres en fecha y/u hora.]
+17/05/2022 5:02:08 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 5:07:24 p. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 5:08:54 p. m.: Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 5:19:09 p. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(4000),@descripcion nvarchar(4000' espera el parámetro '@nombre', que no se ha proporcionado.]
+17/05/2022 5:19:10 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]

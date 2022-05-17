@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text;
-using System.Data.SQLite;
+//using System.Data.SQLite;
 using System.IO;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,10 +12,8 @@ namespace Proyecto.Funciones
 {
     public class Conexion
     {
-        private SQLiteDataAdapter DB = new SQLiteDataAdapter();
         private DataSet DS = new DataSet();
         private DataTable DT = new DataTable();
-        private SQLiteConnection sql_con = new SQLiteConnection(); 
         //private SQLiteCommand sql_cmd;
 
         public List<string> sqlTablas = new List<string>();
@@ -36,10 +34,9 @@ namespace Proyecto.Funciones
             con = new SqlConnectionStringBuilder();
 
             con.DataSource = "demos.syscom.com.co";
-            con.InitialCatalog = "db";
+            con.InitialCatalog = "Proyecto";
             con.UserID = "syscom";
             con.Password = "u.owner";
-
 
             //con.DataSource = "(local)";
             //con.InitialCatalog = "dbproyecto";
@@ -73,50 +70,6 @@ namespace Proyecto.Funciones
             this.sqlOrderBy.Clear();
             this.DS = new DataSet();
             this.DT = new DataTable();
-        }
-
-        public void ejecutarSQL(string _pmTabla = null, bool result = true)
-        {
-            try
-            {
-                foreach (string sql in this.sqlConsultas)
-                {
-                    this.DB.SelectCommand = new SQLiteCommand(sql, this.sql_con);
-                    this.DB.SelectCommand.CommandType = CommandType.Text;
-                    this.DB.SelectCommand.Parameters.Clear();
-                    switch (sql.Split(' ')[0].ToLower())
-                    {
-                        case "update":
-                            this.DB.SelectCommand.ExecuteNonQuery();
-                            break;
-                        case "delete":
-                            this.DB.SelectCommand.ExecuteNonQuery();
-                            break;
-                        case "insert":
-                            this.DB.SelectCommand.ExecuteNonQuery();
-                            break;
-                        default:
-                            this.DB.SelectCommand.ExecuteNonQuery();
-                            if (result == true)
-                            {
-                                if (String.IsNullOrEmpty(_pmTabla))
-                                    this.DB.Fill(this.DS);
-                                else
-                                    this.DB.Fill(this.DS, _pmTabla);
-                            }
-                            break;
-                    }
-                }
-                this.sqlConsultas.Clear();
-            }
-            catch (Exception ex)
-            {
-                Funcion.tareas.Add("Error [mensaje: " + ex.Message + "]");
-                Funcion.write();
-            }
-            finally
-            {
-            }
         }
 
         public void reiniciarSql()

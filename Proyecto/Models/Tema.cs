@@ -38,10 +38,9 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 parametros.Add(new SqlParameter("@idTema", Ptema.idTema));
                 parametros.Add(new SqlParameter("@nombre", Ptema.nombre));
-                parametros.Add(new SqlParameter("@descripcion", Ptema.descripcion));
-                parametros.Add(new SqlParameter("@imagen", Ptema.imagen == null ? "" : Ptema.imagen));
-                parametros.Add(new SqlParameter("@estado", Ptema.estado));
-                parametros.Add(new SqlParameter("@fecha", Ptema.fecha.ToString()));
+                parametros.Add(new SqlParameter("@descripcion", String.IsNullOrWhiteSpace(Ptema.descripcion) ? DBNull.Value : (object)Ptema.descripcion));
+                parametros.Add(new SqlParameter("@imagen", String.IsNullOrWhiteSpace(Ptema.imagen) ? DBNull.Value : (object)Ptema.imagen));
+                parametros.Add(new SqlParameter("@fecha", DateTime.Now));
                 parametros.Add(new SqlParameter("@fechaModifica", DateTime.Now));
                 parametros.Add(new SqlParameter("@userName", Ptema.userName));
                 dtema = new DataSet();
@@ -50,8 +49,7 @@ namespace Proyecto.Models
                                            UPDATE Tema
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
-                                                  imagen = @imagen,
-                                                  estado = @estado,                                                
+                                                  imagen = @imagen,                                              
                                                   fechaModifica = @fechaModifica                                                 
                                              WHERE idTema=@idTema
                                         END
@@ -60,7 +58,7 @@ namespace Proyecto.Models
                                             INSERT INTO Tema
                                                    (nombre,descripcion,imagen,estado,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@fecha,@userName)
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
                                         END SELECT * FROM Tema WHERE estado=1", parametros, out dtema);
                 server.close();
 
@@ -76,7 +74,7 @@ namespace Proyecto.Models
                         imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
                         fecha = r.Field<DateTime>("fecha"),
-                        fechaModifica = r.Field<DateTime>("fechaModifica"),
+                        fechaModifica = r.Field<DateTime>("fechaModifica") == null ? DateTime.Now : r.Field<DateTime>("fechaModifica"),
                         userName = r.Field<string>("userName"),
                     }).FirstOrDefault();
                 }
