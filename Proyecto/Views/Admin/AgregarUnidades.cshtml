@@ -56,13 +56,13 @@
                     <label>
                         Nombre <span class="req">*</span>
                     </label>
-                    @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
+                    @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre", required = "required" })
                 </div>
                 <div class="form-group">
                     <label>
                         Descripcion <span class="req">*</span>
                     </label>
-                    @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+                    @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion", required = "required" })
                 </div>
                 <div class="form-group">
                     <label>

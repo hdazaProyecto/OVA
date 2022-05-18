@@ -24,6 +24,7 @@ namespace Proyecto.Models
         public DateTime fecha { get; set; }
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
+        public bool evidencia { get; set; }
         public HttpPostedFileBase fileArchivo { get; set; }
         public HttpPostedFileBase fileImagen { get; set; }
 
@@ -38,7 +39,7 @@ namespace Proyecto.Models
             con = new SqlConnectionStringBuilder();
             con = conexion.ConexionSQLServer();
             ConSqlServer server = new ConSqlServer(con);
-            server.ejecutarQuery(@"select idUnidad,nombre unidades from unidades where estado=1", new List<SqlParameter>(), out _unidades);
+            server.ejecutarQuery(@"select idUnidad,nombre unidades from unidades", new List<SqlParameter>(), out _unidades);
             return Combo(_unidades, "unidades", "idUnidad",null);
         }
         public List<Recursos> listarRecursos()
@@ -74,6 +75,7 @@ namespace Proyecto.Models
                         nomUnidad = r.Field<string>("nomUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
+                        evidencia = r.Field<bool>("evidencia"),
                     }).ToList();
 
                 }
@@ -109,6 +111,7 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@fecha", Precurso.fecha));
                 parametros.Add(new SqlParameter("@fechaModifica", DateTime.Now));
                 parametros.Add(new SqlParameter("@userName", Precurso.userName));
+                parametros.Add(new SqlParameter("@evidencia", Precurso.evidencia));
                 drecurso = new DataSet();
                 server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
                                         BEGIN
@@ -122,15 +125,16 @@ namespace Proyecto.Models
                                                   idUnidad = @idUnidad,
                                                   fecha = @fecha,
                                                   fechaModifica = @fechaModifica,
-                                                  userName = @userName
+                                                  userName = @userName,
+                                                  evidencia = @evidencia
                                              WHERE idrecurso=@idrecurso
                                         END
                                         ELSE
                                         BEGIN
                                             INSERT INTO Recursos
-                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName)
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia)
                                              VALUES
-                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName)
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia)
                                         END SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
 
@@ -150,6 +154,7 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
+                        evidencia = r.Field<bool>("evidencia"),
                     }).FirstOrDefault();
                 }
             }

@@ -552,3 +552,108 @@ El nombre de columna 'id' no es válido.]
                                                    (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
                                         END SELECT * FROM Unidades [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(4000),@descripcion nvarchar(4000' espera el parámetro '@nombre', que no se ha proporcionado.]
 17/05/2022 5:19:10 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 8:54:17 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(4000),@descripcion nvarchar(4000' espera el parámetro '@nombre', que no se ha proporcionado.]
+17/05/2022 8:54:17 : Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 8:58:43 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: La consulta con parámetros '(@idUnidad int,@nombre nvarchar(4000),@descripcion nvarchar(4000' espera el parámetro '@nombre', que no se ha proporcionado.]
+17/05/2022 8:58:43 : Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 9:03:25 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: No se puede insertar el valor NULL en la columna 'idRecurso', tabla 'Proyecto.dbo.Unidades'. La columna no admite valores NULL. Error de INSERT.
+Se terminó la instrucción.]
+17/05/2022 9:03:30 : Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 9:04:36 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:04:36 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:05:40 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:05:41 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:05:42 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:17:20 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:26:16 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:26:45 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:27:11 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:28:05 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:28:24 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:31:11 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:31:18 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:31:36 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:31:44 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:31:56 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:33:16 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:34:04 : Error al ejecutar la consultaSELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad ORDER BY R.idUnidad,R.idRecurso [mensaje: El nombre de columna 'idUnidad' no es válido.
+El nombre de columna 'idUnidad' no es válido.]
+17/05/2022 9:34:06 : Error [mensaje: No se puede encontrar la tabla 0.]
+17/05/2022 9:45:55 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:46:09 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:46:15 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:46:16 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:46:20 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 9:46:46 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 11:01:39 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Boolean'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 11:06:24 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Boolean'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 11:08:01 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Boolean'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 11:08:07 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Boolean'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 11:09:09 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Boolean'. Utilice un tipo que acepte valores NULL.]
+17/05/2022 11:10:52 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 11:10:56 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 11:10:59 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 11:11:12 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 11:24:36 : Error [mensaje: La columna 'nomUnidad' no pertenece a la tabla Table.]
+17/05/2022 11:24:47 : Error [mensaje: La columna 'nomUnidad' no pertenece a la tabla Table.]
+17/05/2022 11:24:53 : Error [mensaje: La columna 'nomUnidad' no pertenece a la tabla Table.]
+17/05/2022 11:25:03 : Error [mensaje: La columna 'nomUnidad' no pertenece a la tabla Table.]
+17/05/2022 11:27:12 : Error [mensaje: La columna 'nomUnidad' no pertenece a la tabla Table.]
+17/05/2022 11:27:27 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+17/05/2022 11:29:59 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]

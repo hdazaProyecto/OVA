@@ -49,7 +49,6 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
                         idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),
@@ -81,7 +80,6 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@idUnidad", Punidad.idUnidad));
                 parametros.Add(new SqlParameter("@nombre", Punidad.nombre));
                 parametros.Add(new SqlParameter("@descripcion", Punidad.descripcion));
-                parametros.Add(new SqlParameter("@imagen", Punidad.imagen == null ? "" : Punidad.imagen));
                 parametros.Add(new SqlParameter("@idTema", Punidad.idTema));
                 parametros.Add(new SqlParameter("@estado", Punidad.estado));
                 parametros.Add(new SqlParameter("@fecha", Punidad.fecha));
@@ -93,7 +91,6 @@ namespace Proyecto.Models
                                            UPDATE Unidades
                                                SET nombre = @nombre,
                                                   descripcion = @descripcion,
-                                                  imagen = @imagen,
                                                   estado = @estado,
                                                   idTema = @idTema,
                                                   fecha = @fecha,
@@ -104,9 +101,9 @@ namespace Proyecto.Models
                                         ELSE
                                         BEGIN
                                             INSERT INTO Unidades
-                                                   (nombre,descripcion,imagen,estado,idTema,fecha,userName)
+                                                   (nombre,descripcion,estado,idTema,fecha,userName)
                                              VALUES
-                                                   (@nombre,@descripcion,@imagen,@estado,@idTema,@fecha,@userName)
+                                                   (@nombre,@descripcion,@estado,@idTema,@fecha,@userName)
                                         END SELECT * FROM Unidades", parametros, out dunidad);
                 server.close();
 
@@ -119,7 +116,6 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
                         idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),

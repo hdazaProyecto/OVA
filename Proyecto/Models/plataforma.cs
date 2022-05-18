@@ -27,6 +27,7 @@ namespace Proyecto.Models
         public string url { get; set; }
         public string archivo { get; set; }
         public string imagen { get; set; }
+        public bool evidencia { get; set; }
 
         public List<Unidades> unidades { get; set; }
         public List<Recursos> recursos { get; set; }
@@ -53,7 +54,7 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 server.ejecutarQuery(@"SELECT * FROM tema WHERE estado=1", parametros, out dtema);
                 server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
-                server.ejecutarQuery(@"SELECT * FROM recursos WHERE estado=1", parametros, out drecurso);
+                server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1", parametros, out drecurso);
                 server.close();
 
                 if (dtema != null && dtema.Tables[0].Rows.Count > 0)
@@ -78,7 +79,6 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
                         idTema = r.Field<int>("idTema"),
                     }).ToList();
 
@@ -96,7 +96,12 @@ namespace Proyecto.Models
                         url = r.Field<string>("url"),
                         archivo = r.Field<string>("archivo"),
                         imagen = r.Field<string>("imagen"),
+                        estado = r.Field<bool>("estado"),
                         idUnidad = r.Field<int>("idUnidad"),
+                        nomUnidad = r.Field<string>("nomUnidad"),
+                        fecha = r.Field<DateTime>("fecha"),
+                        userName = r.Field<string>("userName"),
+                        evidencia = r.Field<bool>("evidencia"),
                     }).ToList();
 
                 }
@@ -127,7 +132,7 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 server.ejecutarQuery(@"SELECT * FROM tema WHERE estado=1", parametros, out dtema);
                 server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
-                server.ejecutarQuery(@"SELECT * FROM recursos WHERE estado=1", parametros, out drecurso);
+                server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1", parametros, out drecurso);
                 server.close();
 
                 if (dtema != null && dtema.Tables[0].Rows.Count > 0)
@@ -150,6 +155,7 @@ namespace Proyecto.Models
 
                     Plataforma.idRecurso = recurso;
                     Plataforma.nombreRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("nombre");
+                    Plataforma.evidencia = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<bool>("evidencia");
                     Plataforma.descripcionRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("descripcion");
                     Plataforma.url = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("url");
                     Plataforma.archivo = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
@@ -176,7 +182,12 @@ namespace Proyecto.Models
                         url = r.Field<string>("url"),
                         archivo = r.Field<string>("archivo"),
                         imagen = r.Field<string>("imagen"),
+                        estado = r.Field<bool>("estado"),
                         idUnidad = r.Field<int>("idUnidad"),
+                        nomUnidad = r.Field<string>("nomUnidad"),
+                        fecha = r.Field<DateTime>("fecha"),
+                        userName = r.Field<string>("userName"),
+                        evidencia = r.Field<bool>("evidencia"),
                     }).ToList();
 
                 }
@@ -194,7 +205,6 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
                         idTema = r.Field<int>("idTema"),
                     }).ToList();
 

@@ -16,7 +16,7 @@ namespace Proyecto.Controllers
         public ActionResult Index()
         {
             if (@TempData["Mensaje"] != null)
-                ViewBag.Usuario = @TempData["Mensaje"].ToString();
+               @ViewBag.Usuario = @TempData["Mensaje"].ToString();
             Tema tema = new Tema();
             if(Session["Usuario"] != null)
             {
@@ -32,6 +32,8 @@ namespace Proyecto.Controllers
 
         public ActionResult ListarUnidades()
         {
+            if (@TempData["Mensaje"] != null)
+                @ViewBag.Usuario = @TempData["Mensaje"].ToString();
             Unidades uni = new Unidades();
             List<Unidades> unidad = new List<Unidades>();
             if (Session["Usuario"] != null)
@@ -74,7 +76,11 @@ namespace Proyecto.Controllers
                 Tema Tema = pTema.gestionarTema(pTema);
                 if (Tema != null)
                 {
-                    @ViewBag.Usuario = "Los datos se guardaron exitosamente";
+                    @TempData["Mensaje"] = "Tema Creado con éxito";
+                }
+                else
+                {
+                    @TempData["Mensaje"] = "Error al Crear el Tema.";
                 }
                 return RedirectToAction("Index");
             }
@@ -90,6 +96,14 @@ namespace Proyecto.Controllers
             if (Session["Usuario"] != null)
             {
                 Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
+                if (Unidades != null)
+                {
+                    @TempData["Mensaje"] = "Unidad creada con éxito.";
+                }
+                else
+                {
+                    @TempData["Mensaje"] = "Error al crear la Unidad.";
+                }
                 return RedirectToAction("ListarUnidades");
             }
             else
@@ -236,7 +250,15 @@ namespace Proyecto.Controllers
             if (Session["Usuario"] != null)
             {
                 listunidad = unidad.cambiarestadouni(idUnidad);
-                return RedirectToAction("ListarUnidades", listunidad);
+                if (listunidad != null)
+                {
+                    @TempData["Mensaje"] = "Estado de unidad actualizado";
+                }
+                else
+                {
+                    @TempData["Mensaje"] = "Error al actualizar unidad";
+                }
+                return RedirectToAction("ListarUnidades");
             }
             else
             {

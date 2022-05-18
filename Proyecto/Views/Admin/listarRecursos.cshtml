@@ -63,6 +63,7 @@
                                         <tr>
                                             <th>NOMBRE</th>
                                             <th>DESCRIPCIÓN</th>
+                                            <th>EVIDENCIA</th>
                                             <th>ESTADO</th>
                                             <th>OPCIONES</th>
                                         </tr>
@@ -72,20 +73,21 @@
                                         {
                                             if (nameGroup.Key == re.idUnidad)
                                             {
-                                                <tr class="table-active">
-                                                    <td width="20%">@re.nombre</td>
-                                                    <td width="60%">@re.descripcion</td>
-                                                    @if (@re.estado == true)
-                                                    {
-                                                        <td width="10%">Activo</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td width="10%">Inactivo</td>
-                                                    }
-                                                    <td width="10%"><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
-                                                    <td width="10%"><a class="btn btn-danger" href="@Url.Action("cambiarestadorecurso", "Admin", new { idRecurso = re.idRecurso })" title="Cambiar Estado">Cambiar Estado</a></td>
-                                                </tr>
+                                        <tr class="table-active">
+                                            <td width="20%">@re.nombre</td>
+                                            <td width="60%">@re.descripcion</td>
+                                            <td width="10%">@re.evidencia</td>
+                                            @if (@re.estado == true)
+                                            {
+                                                <td width="10%">Activo</td>
+                                            }
+                                            else
+                                            {
+                                                <td width="10%">Inactivo</td>
+                                            }
+                                            <td width="10%"><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
+                                            <td width="10%"><a class="btn btn-primary" href="@Url.Action("cambiarestadorecurso", "Admin", new { idRecurso = re.idRecurso })" title="Cambiar Estado">Cambiar Estado</a></td>
+                                        </tr>
                                             }
                                         }
                                     </tbody>
