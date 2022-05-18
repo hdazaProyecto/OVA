@@ -36,10 +36,9 @@ namespace Proyecto.Models
             parametros.Add(new SqlParameter("@userName", this.userName));
             parametros.Add(new SqlParameter("@userPassword", Funcion.stringBase64(this.userPassword)));
             server.ejecutarQuery(@"SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional, CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio, descripcion, fotografia FROM Usuarios U
+                                        perfilProfesional, CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios, descripcion, fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName = P.userName
-                                        LEFT JOIN Estudiantes E ON U.userName = E.userName
-                                        LEFT JOIN NivelEstudio N ON E.nivelEstudio = N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios = N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
             server.close();
 
             if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)
@@ -57,7 +56,7 @@ namespace Proyecto.Models
                     idRol = r.Field<int>("idRol"),
                     profesion = r.Field<String>("profesion"),
                     perfilProfesional = r.Field<String>("perfilProfesional"),
-                    nivelEstudio = r.Field<int>("nivelEstudio"),
+                    idNivelEstudios = r.Field<int>("idNivelEstudios"),
                     nivelEstudiodesc = r.Field<string>("descripcion"),
                     fotografia = r.Field<String>("fotografia")
                 }).FirstOrDefault();

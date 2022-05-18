@@ -34,6 +34,7 @@ namespace Proyecto.Funciones
             con = new SqlConnectionStringBuilder();
 
             con.DataSource = "demos.syscom.com.co";
+            //con.InitialCatalog = "Proyecto";
             con.InitialCatalog = "Proyecto";
             con.UserID = "syscom";
             con.Password = "u.owner";

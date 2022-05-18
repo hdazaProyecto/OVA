@@ -657,3 +657,36 @@ El nombre de columna 'idUnidad' no es válido.]
 17/05/2022 11:27:12 : Error [mensaje: La columna 'nomUnidad' no pertenece a la tabla Table.]
 17/05/2022 11:27:27 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
 17/05/2022 11:29:59 : Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+18/05/2022 3:28:44 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha,nivelEstudios)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha,@nivelEstudios)                                      
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.nivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@nivelEstudios'.
+Se especificó una expresión no booleana en un contexto donde se esperaba una condición, cerca de 'WHERE'.]
+18/05/2022 3:28:44 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+18/05/2022 3:32:08 p. m.: Error al ejecutar la consultaINSERT INTO Usuarios (userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,fecha,nivelEstudios)
+                                        VALUES
+                                    (@userName, @userPassword, @correoElectronico, @nombre, @apellidos, @estado, @idRol, @fecha,@nivelEstudios)                                      
+                                    SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.nivelEstudio,0) AS INT) nivelEstudio,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.nivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: Debe declarar la variable escalar '@nivelEstudios'.
+Se especificó una expresión no booleana en un contexto donde se esperaba una condición, cerca de 'WHERE'.]
+18/05/2022 3:32:08 p. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+18/05/2022 3:32:14 p. m.: Error al ejecutar la consulta select idNivel,descripcion from NivelEstudio [mensaje: El nombre de columna 'idNivel' no es válido.]
+18/05/2022 3:34:48 p. m.: Error al ejecutar la consulta select idNivel,descripcion from NivelEstudio [mensaje: El nombre de columna 'idNivel' no es válido.]
+18/05/2022 3:35:30 p. m.: Error al ejecutar la consulta select idNivel,descripcion from NivelEstudio [mensaje: El nombre de columna 'idNivel' no es válido.]
+18/05/2022 3:50:19 p. m.: Error al ejecutar la consultaSELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional, CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio, descripcion, fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.nivelEstudios = N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: El nombre de columna 'nivelEstudios' no es válido.
+El nombre de columna 'idNivel' no es válido.
+El identificador formado por varias partes 'E.nivelEstudio' no se pudo enlazar.]
+18/05/2022 3:51:12 p. m.: Error al ejecutar la consultaSELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional, CAST(ISNULL(E.nivelEstudio,0) AS INT) nivelEstudio, descripcion, fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.nivelEstudios = N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: El nombre de columna 'nivelEstudios' no es válido.
+El nombre de columna 'idNivel' no es válido.
+El identificador formado por varias partes 'E.nivelEstudio' no se pudo enlazar.]
