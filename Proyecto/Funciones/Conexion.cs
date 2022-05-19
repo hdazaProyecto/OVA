@@ -35,7 +35,7 @@ namespace Proyecto.Funciones
 
             con.DataSource = "demos.syscom.com.co";
             //con.InitialCatalog = "Proyecto";
-            con.InitialCatalog = "Proyecto";
+            con.InitialCatalog = "db";
             con.UserID = "syscom";
             con.Password = "u.owner";
 

@@ -690,3 +690,93 @@ El identificador formado por varias partes 'E.nivelEstudio' no se pudo enlazar.]
                                         LEFT JOIN NivelEstudio N ON U.nivelEstudios = N.idNivel WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword [mensaje: El nombre de columna 'nivelEstudios' no es válido.
 El nombre de columna 'idNivel' no es válido.
 El identificador formado por varias partes 'E.nivelEstudio' no se pudo enlazar.]
+18/05/2022 9:19:02 : Error al ejecutar la consultaSELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1 [mensaje: El nombre de columna 'idUnidad' no es válido.]
+18/05/2022 9:19:02 : Error [mensaje: No se puede encontrar la tabla 0.]
+18/05/2022 9:19:11 : Error al ejecutar la consulta select idNivelEstudios,descripcion from NivelEstudio [mensaje: El nombre de objeto 'NivelEstudio' no es válido.]
+18/05/2022 9:23:12 : Error al ejecutar la consultaSELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1 [mensaje: El nombre de columna 'idUnidad' no es válido.]
+18/05/2022 9:23:12 : Error [mensaje: No se puede encontrar la tabla 0.]
+18/05/2022 9:23:32 : Error al ejecutar la consulta select idNivelEstudios,descripcion from NivelEstudio [mensaje: El nombre de objeto 'NivelEstudio' no es válido.]
+18/05/2022 9:32:15 : Error al ejecutar la consulta select idNivelEstudios,descripcion from NivelEstudio [mensaje: El nombre de objeto 'NivelEstudio' no es válido.]
+18/05/2022 10:05:15 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.DateTime'. Utilice un tipo que acepte valores NULL.]
+18/05/2022 11:17:44 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos [mensaje: El nombre de columna 'descEvidencia' no es válido.]
+18/05/2022 11:17:45 : Error [mensaje: No se puede encontrar la tabla 0.]
+18/05/2022 11:20:54 : Error [mensaje: La columna 'descEvidencia' no pertenece a la tabla Table.]
+18/05/2022 11:21:01 : Error [mensaje: La columna 'descEvidencia' no pertenece a la tabla Table.]
+18/05/2022 11:21:20 : Error [mensaje: La columna 'descEvidencia' no pertenece a la tabla Table.]
+18/05/2022 11:23:45 : Error [mensaje: La columna 'descEvidencia' no pertenece a la tabla Table.]
+18/05/2022 11:25:36 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos [mensaje: El nombre de columna 'descEvidencia' no es válido.]
+18/05/2022 11:25:36 : Error [mensaje: No se puede encontrar la tabla 0.]
+18/05/2022 11:25:53 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos [mensaje: El nombre de columna 'descEvidencia' no es válido.]
+18/05/2022 11:25:53 : Error [mensaje: No se puede encontrar la tabla 0.]

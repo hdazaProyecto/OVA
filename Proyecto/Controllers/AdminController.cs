@@ -146,7 +146,7 @@ namespace Proyecto.Controllers
 
                 if (recurso.nombre != null)
                 {
-                    recurso = recurso.gestionarUnidad(recurso);
+                    recurso = recurso.gestionarrecurso(recurso);
                     return RedirectToAction("listarRecursos");
                 }
                 return View(recurso);

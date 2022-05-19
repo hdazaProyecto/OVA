@@ -25,6 +25,8 @@ namespace Proyecto.Models
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
         public bool evidencia { get; set; }
+        public string descEvidencia { get; set; }
+        public int puntosRecurso { get; set; }
         public HttpPostedFileBase fileArchivo { get; set; }
         public HttpPostedFileBase fileImagen { get; set; }
 
@@ -88,7 +90,7 @@ namespace Proyecto.Models
             return recurso;
         }
 
-        public Recursos gestionarUnidad(Recursos Precurso)
+        public Recursos gestionarrecurso(Recursos Precurso)
         {
             Recursos recurso = new Recursos();
             try
@@ -112,6 +114,8 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@fechaModifica", DateTime.Now));
                 parametros.Add(new SqlParameter("@userName", Precurso.userName));
                 parametros.Add(new SqlParameter("@evidencia", Precurso.evidencia));
+                parametros.Add(new SqlParameter("@descEvidencia", String.IsNullOrWhiteSpace(Precurso.descEvidencia) ? DBNull.Value : (object)Precurso.descEvidencia));
+                parametros.Add(new SqlParameter("@puntosRecurso", Precurso.puntosRecurso));
                 drecurso = new DataSet();
                 server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
                                         BEGIN
@@ -126,15 +130,17 @@ namespace Proyecto.Models
                                                   fecha = @fecha,
                                                   fechaModifica = @fechaModifica,
                                                   userName = @userName,
-                                                  evidencia = @evidencia
+                                                  evidencia = @evidencia,
+                                                  descripcionEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
                                              WHERE idrecurso=@idrecurso
                                         END
                                         ELSE
                                         BEGIN
                                             INSERT INTO Recursos
-                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia)
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
                                              VALUES
-                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia)
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
                                         END SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
 
@@ -155,6 +161,8 @@ namespace Proyecto.Models
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                         evidencia = r.Field<bool>("evidencia"),
+                        descEvidencia = r.Field<string>("descripcionEvidencia"),
+                        puntosRecurso = r.Field<int>("puntosRecurso"),
                     }).FirstOrDefault();
                 }
             }
@@ -198,6 +206,9 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
+                        evidencia = r.Field<bool>("evidencia"),
+                        descEvidencia = r.Field<string>("descripcionEvidencia"),
+                        puntosRecurso = r.Field<int>("puntosRecurso"),
                     }).FirstOrDefault();
                 }
             }

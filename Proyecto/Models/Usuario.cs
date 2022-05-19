@@ -353,13 +353,22 @@ namespace Proyecto.Models
 
                 if (dusuarios != null && dusuarios.Tables[0].Rows.Count > 0)
                 {
+                    EnvioCorreo em = null;
+                    string ErrorEm = "";
                     dtusuarios = new DataTable();
                     dtusuarios = dusuarios.Tables[0];
-                    string rol = dtusuarios.Rows[0]["idRol"].ToString();
-                    if (rol == "2")
-                    {
 
-                    }
+                   int rol = dtusuarios.Rows.Cast<DataRow>().Where(rf => rf.Field<string>("userName") == userName).FirstOrDefault().Field<int>("idRol");
+                    string nombre = dtusuarios.Rows.Cast<DataRow>().Where(rf => rf.Field<string>("userName") == userName).FirstOrDefault().Field<string>("nombre");
+                    string apellidos = dtusuarios.Rows.Cast<DataRow>().Where(rf => rf.Field<string>("userName") == userName).FirstOrDefault().Field<string>("apellidos");
+                    bool estado = dtusuarios.Rows.Cast<DataRow>().Where(rf => rf.Field<string>("userName") == userName).FirstOrDefault().Field<bool>("estado");
+                    string correo = dtusuarios.Rows.Cast<DataRow>().Where(rf => rf.Field<string>("userName") == userName).FirstOrDefault().Field<string>("correoElectronico");
+                    string desEstado = estado ? "Activado" : "Desactivado";
+
+                    //envio de correo
+                    em = new EnvioCorreo("Actualizacion de estado", "<body><p align = 'justify'>Respetad@ " + nombre + " " + apellidos + " <br><br/>El estado de su usuario ha sido actualizado. a: "+ desEstado + " <br></p></body>");
+                    em.envio(out ErrorEm, correo, true);
+
 
                     usuarios = dtusuarios.AsEnumerable().Select(r => new Usuario()
                     {
@@ -389,13 +398,13 @@ namespace Proyecto.Models
 
         public List<SelectListItem> comNivelEdu()
         {
-            DataTable _unidades = new DataTable();
+            DataTable NivelEstudio = new DataTable();
             conexion = new Conexion();
             con = new SqlConnectionStringBuilder();
             con = conexion.ConexionSQLServer();
             ConSqlServer server = new ConSqlServer(con);
-            server.ejecutarQuery(@"select idNivelEstudios,descripcion from NivelEstudio", new List<SqlParameter>(), out _unidades);
-            return Combo(_unidades, "descripcion", "idNivelEstudios", null);
+            server.ejecutarQuery(@"select idNivelEstudios,descripcion from NivelEstudio", new List<SqlParameter>(), out NivelEstudio);
+            return Combo(NivelEstudio, "descripcion", "idNivelEstudios", null);
         }
 
         public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)

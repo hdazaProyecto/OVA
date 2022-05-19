@@ -28,6 +28,8 @@ namespace Proyecto.Models
         public string archivo { get; set; }
         public string imagen { get; set; }
         public bool evidencia { get; set; }
+        public string descEvidencia { get; set; }
+        public int puntosRecurso { get; set; }
 
         public List<Unidades> unidades { get; set; }
         public List<Recursos> recursos { get; set; }
@@ -156,10 +158,12 @@ namespace Proyecto.Models
                     Plataforma.idRecurso = recurso;
                     Plataforma.nombreRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("nombre");
                     Plataforma.evidencia = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<bool>("evidencia");
+                    Plataforma.descEvidencia = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("descripcionEvidencia");
+                    Plataforma.puntosRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<int>("puntosRecurso");
                     Plataforma.descripcionRecurso = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("descripcion");
                     Plataforma.url = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("url");
                     Plataforma.archivo = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
-                    Plataforma.imagen = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("archivo");
+                    Plataforma.imagen = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<string>("imagen");
                     Plataforma.idUnidad = dtrecurso.Rows.Cast<DataRow>().Where(rf => rf.Field<int>("idRecurso") == recurso).FirstOrDefault().Field<int>("idUnidad");
 
                     if (Plataforma.url != null)
