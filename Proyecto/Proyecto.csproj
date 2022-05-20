@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Models\ConfigEmail.cs" />
     <Compile Include="Models\Cuenta.cs" />
+    <Compile Include="Models\Evidencia.cs" />
     <Compile Include="Models\plataforma.cs" />
     <Compile Include="Models\Recursos.cs" />
     <Compile Include="Models\Tema.cs" />

@@ -10,6 +10,15 @@
         width: 100%;
         min-height: 500px;
     }
+
+    .textright {
+        text-align: right;
+    }
+
+    img{
+        width: 100px;
+        height: 100px;
+    }
 </style>
 <hr />
 @if (@Model != null)
@@ -27,7 +36,7 @@
         <hr />
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <img class="visor" src="~/Archivos/fondo.jpg" />
+                <img class="visor img-thumbnail" src="~/Archivos/fondo.jpg" />
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <p>@Model.descripcionTema</p>
@@ -44,7 +53,7 @@
         <hr />
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <iframe class="visor" src="@Model.url" frameborder="0"></iframe>
+                <iframe class="visor img-thumbnail" src="@Model.url" frameborder="0"></iframe>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <h2>@Model.nombreRecurso</h2><br />
@@ -90,7 +99,7 @@
         <hr />
         <div class="row">
             <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <img class="visor" src="~/Archivos/@Model.imagen" width="100%"/>
+                <img class="visor img-thumbnail" src="~/Archivos/@Model.imagen" />
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <h2>@Model.nombreRecurso</h2><br />
@@ -101,8 +110,19 @@
                     <div>@Model.puntosRecurso</div>
                     using (Html.BeginForm("AgregarRecurso", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <h3><b>Enviar evidencia</b>Puntos a obtener</h3>
-                        <p>@Model.descEvidencia</p><br />
+                        <div class="row">
+                            <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
+                            <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.puntosRecurso Puntos</h4></div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class=""><p>@Model.descEvidencia</p></div>                            
+                        </div>
+                        <div class="row">
+
+                        </div>
+
+                        
                     }
                 }
             </div>
@@ -133,11 +153,11 @@
                                             }
                                             else if (@re.archivo != null)
                                             {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" width="100px" height="100px" /></a>
+                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" /></a>
                                             }
                                             else
                                             {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" width="100px" height="100px" /></a>
+                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" /></a>
                                             }
                                         }
                                     }
