@@ -27,6 +27,7 @@ namespace Proyecto.Models
         public bool evidencia { get; set; }
         public string descEvidencia { get; set; }
         public int puntosRecurso { get; set; }
+        public bool entregado { get; set; }
         public HttpPostedFileBase fileArchivo { get; set; }
         public HttpPostedFileBase fileImagen { get; set; }
 

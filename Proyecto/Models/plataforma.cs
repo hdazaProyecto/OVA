@@ -30,6 +30,9 @@ namespace Proyecto.Models
         public bool evidencia { get; set; }
         public string descEvidencia { get; set; }
         public int puntosRecurso { get; set; }
+        public string archivoEvidencia { get; set; }
+        public string observacion { get; set; }
+        public Evidencia evidenciaM { get; set; }
 
         public List<Unidades> unidades { get; set; }
         public List<Recursos> recursos { get; set; }
@@ -116,7 +119,7 @@ namespace Proyecto.Models
             return Plataforma;
         }
 
-        public plataforma visor(int recurso)
+        public plataforma visor(int recurso, string usuario)
         {
             plataforma Plataforma = new plataforma();
             try
@@ -124,9 +127,11 @@ namespace Proyecto.Models
                 DataSet dtema;
                 DataSet dunidad;
                 DataSet drecurso;
+                DataSet devidencias;
                 DataTable dttema;
                 DataTable dtunidad;
                 DataTable dtrecurso;
+                DataTable dtevidencias;
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
@@ -135,6 +140,7 @@ namespace Proyecto.Models
                 server.ejecutarQuery(@"SELECT * FROM tema WHERE estado=1", parametros, out dtema);
                 server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
                 server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1", parametros, out drecurso);
+                server.ejecutarQuery(@"SELECT * FROM Evidencias WHERE idRecurso ="+ recurso + " and userName ='" + usuario + "'", parametros, out devidencias);
                 server.close();
 
                 if (dtema != null && dtema.Tables[0].Rows.Count > 0)
@@ -147,6 +153,24 @@ namespace Proyecto.Models
                         nombreTema = r.Field<string>("nombre"),
                         descripcionTema = r.Field<string>("descripcion"),
                         imagenTema = r.Field<string>("imagen"),
+                    }).FirstOrDefault();
+                }
+
+                if (devidencias != null && devidencias.Tables[0].Rows.Count > 0)
+                {
+                    dtevidencias = new DataTable();
+                    dtevidencias = devidencias.Tables[0];
+                    Plataforma.evidenciaM = dtevidencias.Rows.Cast<DataRow>().Select(r => new Evidencia
+                    {
+                        idEvidencia = r.Field<int>("idEvidencia"),
+                        archivo = r.Field<string>("archivo"),
+                        observacion = r.Field<string>("observacion"),
+                        idTema = r.Field<int>("idTema"),
+                        idUnidad = r.Field<int>("idUnidad"),
+                        idRecurso = r.Field<int>("idRecurso"),
+                        retroalimentacion = r.Field<string>("retroalimentacion"),
+                        puntosAlcanzados = r.Field<int>("puntosAlcanzados"),
+                        entregado = r.Field<bool>("entregado"),
                     }).FirstOrDefault();
                 }
 

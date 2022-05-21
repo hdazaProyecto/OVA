@@ -780,3 +780,5 @@ El identificador formado por varias partes 'E.nivelEstudio' no se pudo enlazar.]
                                                    (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
                                         END SELECT * FROM Recursos [mensaje: El nombre de columna 'descEvidencia' no es válido.]
 18/05/2022 11:25:53 : Error [mensaje: No se puede encontrar la tabla 0.]
+21/05/2022 9:06:33 a. m.: Error [mensaje: La columna 'nombre' no pertenece a la tabla Table.]
+21/05/2022 9:53:37 a. m.: Error [mensaje: La columna 'nombre' no pertenece a la tabla Table.]

@@ -19,7 +19,8 @@ namespace Proyecto.Controllers
         public ActionResult recurso(int recurso)
         {
             plataforma p = new plataforma();
-            p = p.visor(recurso);
+            Usuario usu = (Usuario)Session["Usuario"];
+            p = p.visor(recurso, usu.userName);
             return PartialView("Index",p);
         }
     }
