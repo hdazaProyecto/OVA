@@ -782,3 +782,402 @@ El identificador formado por varias partes 'E.nivelEstudio' no se pudo enlazar.]
 18/05/2022 11:25:53 : Error [mensaje: No se puede encontrar la tabla 0.]
 21/05/2022 9:06:33 a. m.: Error [mensaje: La columna 'nombre' no pertenece a la tabla Table.]
 21/05/2022 9:53:37 a. m.: Error [mensaje: La columna 'nombre' no pertenece a la tabla Table.]
+21/05/2022 6:48:16 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado)
+                                        END SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia [mensaje: El nombre de columna 'idEvidencia' no es válido.]
+21/05/2022 6:48:16 : Error [mensaje: No se puede encontrar la tabla 0.]
+21/05/2022 7:55:12 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado)
+                                        END SELECT * FROM Evidencias WHERE userName=@userName and and idrecurso=@idrecurso [mensaje: Debe declarar la variable escalar '@userName'.]
+21/05/2022 7:55:12 : Error [mensaje: No se puede encontrar la tabla 0.]
+21/05/2022 7:59:07 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado)
+                                        END SELECT * FROM Evidencias WHERE userName=@userName and idrecurso=@idrecurso [mensaje: El nombre de columna 'idEvidencia' no es válido.]
+21/05/2022 7:59:08 : Error [mensaje: No se puede encontrar la tabla 0.]
+21/05/2022 8:01:56 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado)
+                                        END SELECT * FROM Evidencias WHERE userName=@userName and idrecurso=@idrecurso [mensaje: El nombre de columna 'idEvidencia' no es válido.]
+21/05/2022 8:01:56 : Error [mensaje: No se puede encontrar la tabla 0.]
+21/05/2022 8:02:37 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado)
+                                        END SELECT * FROM Evidencias WHERE userName=@userName and idrecurso=@idrecurso [mensaje: El nombre de columna 'idEvidencia' no es válido.]
+21/05/2022 8:02:37 : Error [mensaje: No se puede encontrar la tabla 0.]
+21/05/2022 8:15:50 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+21/05/2022 8:17:30 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+21/05/2022 8:20:28 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+21/05/2022 8:37:44 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+21/05/2022 8:37:55 : Error [mensaje: La columna 'idTema' no pertenece a la tabla Table.]
+21/05/2022 8:39:18 : Error [mensaje: La columna 'idTema' no pertenece a la tabla Table.]
+21/05/2022 8:39:28 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+21/05/2022 8:40:14 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+21/05/2022 8:41:37 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+22/05/2022 11:58:34 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword,
+                                               correoElectronico = @correoElectronico,
+                                               nombre = @nombre,
+                                               apellidos = @apellidos,
+                                               estado = @estado,
+                                               idRol = @idRol,
+                                               fechaModifica = getdate(),
+                                               idNivelEstudios = @idNivelEstudios
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores WHERE userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                           
+                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1 [mensaje: Instrucción UPDATE en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_NivelEstudio'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.NivelEstudio', column 'idNivelEstudios'.
+Se terminó la instrucción.]
+22/05/2022 11:58:34 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 12:02:00 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword,
+                                               correoElectronico = @correoElectronico,
+                                               nombre = @nombre,
+                                               apellidos = @apellidos,
+                                               estado = @estado,
+                                               idRol = @idRol,
+                                               fechaModifica = getdate(),
+                                               idNivelEstudios = @idNivelEstudios
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores WHERE userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                           
+                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1 [mensaje: Instrucción UPDATE en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_NivelEstudio'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.NivelEstudio', column 'idNivelEstudios'.
+Se terminó la instrucción.]
+23/05/2022 12:02:00 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 12:02:17 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword,
+                                               correoElectronico = @correoElectronico,
+                                               nombre = @nombre,
+                                               apellidos = @apellidos,
+                                               estado = @estado,
+                                               idRol = @idRol,
+                                               fechaModifica = getdate(),
+                                               idNivelEstudios = @idNivelEstudios
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores WHERE userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                           
+                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1 [mensaje: Instrucción UPDATE en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_NivelEstudio'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.NivelEstudio', column 'idNivelEstudios'.
+Se terminó la instrucción.]
+23/05/2022 12:02:17 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 12:02:34 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword,
+                                               correoElectronico = @correoElectronico,
+                                               nombre = @nombre,
+                                               apellidos = @apellidos,
+                                               estado = @estado,
+                                               idRol = @idRol,
+                                               fechaModifica = getdate(),
+                                               idNivelEstudios = @idNivelEstudios
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores WHERE userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                           
+                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1 [mensaje: Instrucción UPDATE en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_NivelEstudio'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.NivelEstudio', column 'idNivelEstudios'.
+Se terminó la instrucción.]
+23/05/2022 12:02:34 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 12:04:21 : Error al ejecutar la consultaUPDATE Usuarios
+                                           SET userPassword = @userPassword,
+                                               correoElectronico = @correoElectronico,
+                                               nombre = @nombre,
+                                               apellidos = @apellidos,
+                                               estado = @estado,
+                                               idRol = @idRol,
+                                               fechaModifica = getdate(),
+                                               idNivelEstudios = @idNivelEstudios
+                                         WHERE userName = @userName;
+                                        IF (@idRol=2)
+                                            IF EXISTS (SELECT * FROM Profesores WHERE userName=@userName)
+                                                UPDATE Profesores
+                                                SET profesion = @profesion,
+                                                perfilProfesional = @perfilProfesional,
+                                                fotografia = @fotografia
+                                                WHERE userName = @userName;
+                                            ELSE
+                                                INSERT INTO Profesores (profesion,perfilProfesional,fotografia,userName)
+                                                VALUES
+                                                (@profesion,@perfilProfesional,@fotografia,@userName);                                           
+                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
+                                        LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND U.userPassword = @userPassword AND U.estado=1 [mensaje: Instrucción UPDATE en conflicto con la restricción FOREIGN KEY 'FK_Usuarios_NivelEstudio'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.NivelEstudio', column 'idNivelEstudios'.
+Se terminó la instrucción.]
+23/05/2022 12:04:21 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 2:36:29 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: Los datos binarios o de la cadena se truncan en la columna "nombre" de la tabla "Proyecto.dbo.Unidades". Valor truncado: "Unidad 1:  Fundamentos de análisis y Diseño de Alg".
+Se terminó la instrucción.]
+23/05/2022 2:36:31 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 2:37:22 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: Los datos binarios o de la cadena se truncan en la columna "nombre" de la tabla "Proyecto.dbo.Unidades". Valor truncado: "Unidad 1:  Fundamentos de análisis y Diseño de Alg".
+Se terminó la instrucción.]
+23/05/2022 2:37:22 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 3:02:35 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Unidades WHERE idUnidad=@idUnidad) 
+                                        BEGIN
+                                           UPDATE Unidades
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  estado = @estado,
+                                                  idTema = @idTema,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName
+                                             WHERE idUnidad=@idUnidad
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Unidades
+                                                   (nombre,descripcion,estado,idTema,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@estado,@idTema,@fecha,@userName)
+                                        END SELECT * FROM Unidades [mensaje: Los datos binarios o de la cadena se truncan en la columna "nombre" de la tabla "Proyecto.dbo.Unidades". Valor truncado: "Unidad 1:  Fundamentos de análisis y Diseño de Alg".
+Se terminó la instrucción.]
+23/05/2022 3:02:35 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 3:04:55 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descripcionEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos idrecurso=@idrecurso [mensaje: Sintaxis incorrecta cerca de '='.]
+23/05/2022 3:04:55 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 3:53:17 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descripcionEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos [mensaje: Los datos binarios o de la cadena se truncan en la columna "url" de la tabla "Proyecto.dbo.Recursos". Valor truncado: "https://es.educaplay.com/juego/12108002-tipos_de_o".
+Se terminó la instrucción.]
+23/05/2022 3:53:17 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 3:55:48 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descripcionEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos [mensaje: Los datos binarios o de la cadena se truncan en la columna "url" de la tabla "Proyecto.dbo.Recursos". Valor truncado: "https://es.educaplay.com/juego/12108002-tipos_de_o".
+Se terminó la instrucción.]
+23/05/2022 3:55:48 : Error [mensaje: No se puede encontrar la tabla 0.]
+23/05/2022 3:57:53 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
+                                        BEGIN
+                                           UPDATE Recursos
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  url = @url,
+                                                  archivo = @archivo,
+                                                  imagen = @imagen,
+                                                  estado = @estado,
+                                                  idUnidad = @idUnidad,
+                                                  fecha = @fecha,
+                                                  fechaModifica = @fechaModifica,
+                                                  userName = @userName,
+                                                  evidencia = @evidencia,
+                                                  descripcionEvidencia = @descEvidencia,
+                                                  puntosRecurso = @puntosRecurso
+                                             WHERE idrecurso=@idrecurso
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Recursos
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
+                                             VALUES
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                        END SELECT * FROM Recursos [mensaje: Los datos binarios o de la cadena se truncan en la columna "url" de la tabla "Proyecto.dbo.Recursos". Valor truncado: "https://es.educaplay.com/juego/12108002-tipos_de_o".
+Se terminó la instrucción.]
+23/05/2022 3:57:53 : Error [mensaje: No se puede encontrar la tabla 0.]

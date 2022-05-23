@@ -38,7 +38,7 @@ namespace Proyecto.Models
             server.ejecutarQuery(@"SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
                                         perfilProfesional, CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios, descripcion, fotografia FROM Usuarios U
                                         LEFT JOIN Profesores P ON U.userName = P.userName
-                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios = N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword", parametros, out dsusuario);
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios = N.idNivelEstudios WHERE UPPER(U.userName) = UPPER(@userName) AND userPassword = @userPassword and U.estado=1", parametros, out dsusuario);
             server.close();
 
             if (dsusuario != null && dsusuario.Tables[0].Rows.Count > 0)

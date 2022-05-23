@@ -12,6 +12,7 @@ namespace Proyecto.Models
     {
         public int idEvidencia { get; set; }
         public string archivo { get; set; }
+        public HttpPostedFileBase fileArchivo { get; set; }
         public string observacion { get; set; }
         public int idTema { get; set; }
         public int idUnidad { get; set; }
@@ -19,6 +20,7 @@ namespace Proyecto.Models
         public string retroalimentacion { get; set; }
         public int puntosAlcanzados { get; set; }
         public bool entregado { get; set; }
+        public string userName { get; set; }
 
         private Conexion conexion;
         private SqlConnectionStringBuilder con;
@@ -44,10 +46,11 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@idRecurso", evidencia.idRecurso));
                 parametros.Add(new SqlParameter("@retroalimentacion", String.IsNullOrWhiteSpace(evidencia.retroalimentacion) ? DBNull.Value : (object)evidencia.retroalimentacion));
                 parametros.Add(new SqlParameter("@entregado", evidencia.entregado));
+                parametros.Add(new SqlParameter("@userName", evidencia.userName));
                 devidencia = new DataSet();
                 server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
                                         BEGIN
-                                           UPDATE Recursos
+                                           UPDATE Evidencias
                                                SET archivo = @archivo,
                                                   observacion = @observacion,
                                                   retroalimentacion = @retroalimentacion,
@@ -57,10 +60,10 @@ namespace Proyecto.Models
                                         ELSE
                                         BEGIN
                                             INSERT INTO Evidencias
-                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado)
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado,userName)
                                              VALUES
-                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado)
-                                        END SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia", parametros, out devidencia);
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado,@userName)
+                                        END SELECT * FROM Evidencias WHERE userName=@userName and idrecurso=@idrecurso", parametros, out devidencia);
                 server.close();
 
                 if (devidencia != null && devidencia.Tables[0].Rows.Count > 0)

@@ -132,6 +132,7 @@ namespace Proyecto.Models
                 DataTable dtunidad;
                 DataTable dtrecurso;
                 DataTable dtevidencias;
+                Plataforma.evidenciaM = new Evidencia();
                 conexion = new Conexion();
                 con = new SqlConnectionStringBuilder();
                 con = conexion.ConexionSQLServer();
@@ -140,7 +141,7 @@ namespace Proyecto.Models
                 server.ejecutarQuery(@"SELECT * FROM tema WHERE estado=1", parametros, out dtema);
                 server.ejecutarQuery(@"SELECT * FROM Unidades WHERE estado=1", parametros, out dunidad);
                 server.ejecutarQuery(@"SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad WHERE R.estado=1", parametros, out drecurso);
-                server.ejecutarQuery(@"SELECT * FROM Evidencias WHERE idRecurso ="+ recurso + " and userName ='" + usuario + "'", parametros, out devidencias);
+                server.ejecutarQuery(@"SELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =" + recurso + " and userName ='" + usuario + "'", parametros, out devidencias);
                 server.close();
 
                 if (dtema != null && dtema.Tables[0].Rows.Count > 0)

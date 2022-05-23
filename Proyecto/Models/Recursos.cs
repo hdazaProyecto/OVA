@@ -142,7 +142,7 @@ namespace Proyecto.Models
                                                    (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
                                              VALUES
                                                    (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
-                                        END SELECT * FROM Recursos idrecurso=@idrecurso", parametros, out drecurso);
+                                        END SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
 
                 if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)
