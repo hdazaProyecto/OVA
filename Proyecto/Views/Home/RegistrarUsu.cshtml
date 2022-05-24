@@ -22,13 +22,13 @@
                     <label>
                         Nombre
                     </label>
-                    @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "Nombres", required = "required" })
+                    @Html.TextBox("nombre", "", new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", @data_value = "Nombres", required = "required", @maxlength = "50" })
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <label>
                         Apellido
                     </label>
-                    @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "Apellidos", required = "required" })
+                    @Html.TextBox("apellidos", "", new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos", @data_value = "Apellidos", required = "required", @maxlength = "50" })
                 </div>
             </div>
             <div class="row">
@@ -36,7 +36,7 @@
                     <label>
                         Email
                     </label>
-                    @Html.TextBox("correoElectronico", "", new { @type = "email", @Class = "form-control", @placeholder = "Correo Electronico", @Id = "txtcorreoElectronico", @data_value = "correoElectronico", required = "required" })
+                    @Html.TextBox("correoElectronico", "", new { @type = "email", @Class = "form-control", @placeholder = "Correo Electronico", @Id = "txtcorreoElectronico", @data_value = "correoElectronico", required = "required", @maxlength = "50" })
                 </div>
             </div>
             <div class="row">
@@ -44,7 +44,7 @@
                     <label>
                         Usuario
                     </label>
-                    @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Usuario", @Id = "txtuserName", @data_value = "userName", required = "required" })
+                    @Html.TextBox("userName", "", new { @Class = "form-control", @placeholder = "Usuario", @Id = "txtuserName", @data_value = "userName", required = "required", @maxlength = "50" })
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <label>
@@ -58,14 +58,14 @@
                     <label>
                         Contraseña
                     </label>
-                    @Html.Password("userPassword", "", new { @pattern=".{6,}", @Class = "form-control", @placeholder = "Contraseña", @Id = "txtuserPassword", @data_value = "userPassword", required = "required" })
+                    @Html.Password("userPassword", "", new { @pattern=".{6,}", @Class = "form-control", @placeholder = "Contraseña", @Id = "txtuserPassword", @data_value = "userPassword", required = "required", @maxlength = "50" })
                     <small class="form-text text-muted">El contraseña debe tener como minino 6 caracteres .</small>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <label>
                         Repetir Contraseña
                     </label>
-                    @Html.Password("userPassword2", "", new { @pattern = ".{6,}", @Class = "form-control", @placeholder = "Confirmar Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword", required = "required" })
+                    @Html.Password("userPassword2", "", new { @pattern = ".{6,}", @Class = "form-control", @placeholder = "Confirmar Contraseña", @Id = "txtuserPassword2", @data_value = "userPassword", required = "required", @maxlength = "50" })
                 </div>
             </div>
             <br />

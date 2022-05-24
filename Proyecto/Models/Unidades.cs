@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Proyecto.Models
 {
@@ -157,7 +158,6 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
                         idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),

@@ -72,7 +72,7 @@ namespace Proyecto.Controllers
                 {
                     pTema.imagen = Path.GetFileName(pTema.file.FileName);
                     pTema.file.SaveAs(ruta + pTema.imagen);
-                }
+                }               
                 Tema Tema = pTema.gestionarTema(pTema);
                 if (Tema != null)
                 {
@@ -311,5 +311,10 @@ namespace Proyecto.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult busqueda(string busqueda)
+        {
+            return RedirectToAction("gestionarusuarios", "Home");
+        }
     }
 }

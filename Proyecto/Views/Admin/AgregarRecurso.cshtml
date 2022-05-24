@@ -51,7 +51,7 @@
                 <label>
                     Nombre <span class="req">*</span>
                 </label>
-                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre", required = "required" })
+                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre", required = "required", @maxlength = "250" })
             </div>
             <div class="form-group">
                 <label>
@@ -69,7 +69,7 @@
                 <label>
                     URL
                 </label>
-                @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url" })
+                @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url", @maxlength = "250" })
             </div>
             <div class="form-group">
                 <label>
@@ -84,16 +84,24 @@
                 @Html.TextBox("fileImagen", @Model.imagen, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtimagen", @value_data = "imagen", accept = "image/jpg, image/jpeg, image/png" })
             </div>
             <div class="form-group">
-                <label>
-                    Estado
-                </label>
-                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
+                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-check-input", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
+                <label class="form-check-label"> Estado </label>
+            </div>
+            <div class="form-group">
+                @Html.CheckBox("evidencia", @Model.evidencia, new { @Class = "form-check-input", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
+                <label class="form-check-label"> Evidencia </label>
             </div>
             <div class="form-group">
                 <label>
-                    Evidencia
+                    Descripcion Evidencia
                 </label>
-                @Html.CheckBox("evidencia", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
+                @Html.TextBox("descEvidencia", @Model.descEvidencia, new { @Class = "form-control", @placeholder = "", @Id = "txtdescEvidencia", @value_data = "descEvidencia", @maxlength = "250" })
+            </div>
+            <div class="form-group">
+                <label>
+                    Puntos Descripcion
+                </label>
+                @Html.TextBox("puntosRecurso", @Model.puntosRecurso, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuntosRecurso", @value_data = "puntosRecurso", @max = "100" })
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Guardar</button>

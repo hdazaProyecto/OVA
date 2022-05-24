@@ -38,47 +38,38 @@
             </div>
             @using (Html.BeginForm("GuardarUnidad", "Admin", new AjaxOptions { HttpMethod = "POST" }))
             {
-                <form>
-                    @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
-                    @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-                    @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
-                    @if (us != null)
-                    {
-                        @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
-                    }
-                    else
-                    {
-                        @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
-                    }
-                    <div class="form-group">
-                        <label>
-                            Nombre <span class="req">*</span>
-                        </label>
-                        @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Descripcion <span class="req">*</span>
-                        </label>
-                        @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
-                    </div>
-                    @*<div class="form-group">
-                            <label>
-                                Imagen <span class="req">*</span>
-                            </label>
-                            <input type="file" id="myfile" name="myfile" class="rm-input" />
-                            @Html.("imagen", @Model.imagen, new { @Class = "form-control", @placeholder = "", @Id = "txtimagen", @value_data = "imagen" })
-                        </div>*@
-                    <div class="form-group">
-                        <label>
-                            Estado <span class="req">*</span>
-                        </label>
-                        @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </form>
+            <form>
+                @Html.Hidden("idUnidad", @Model.idUnidad, new { @value_data = "idUnidad" })
+                @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
+                @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
+                @if (us != null)
+                {
+                    @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
+                }
+                else
+                {
+                    @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
+                }
+                <div class="form-group">
+                    <label>
+                        Nombre <span class="req">*</span>
+                    </label>
+                    @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Descripcion <span class="req">*</span>
+                    </label>
+                    @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+                </div>
+                <div class="form-group">
+                    @Html.CheckBox("estado", @Model.estado, new { @Class = "form-check-input", @placeholder = "", @Id = "txtestado", @value_data = "estado" })
+                    <label class="form-check-label"> Estado </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
             }
 
         </div>

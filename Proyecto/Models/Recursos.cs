@@ -35,16 +35,6 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
-        public List<SelectListItem>  comUnidades()
-        {
-            DataTable _unidades = new DataTable();
-            conexion = new Conexion();
-            con = new SqlConnectionStringBuilder();
-            con = conexion.ConexionSQLServer();
-            ConSqlServer server = new ConSqlServer(con);
-            server.ejecutarQuery(@"select idUnidad,nombre unidades from unidades", new List<SqlParameter>(), out _unidades);
-            return Combo(_unidades, "unidades", "idUnidad",null);
-        }
         public List<Recursos> listarRecursos()
         {
             List<Recursos> recurso = new List<Recursos>();
@@ -266,6 +256,17 @@ namespace Proyecto.Models
                 Funcion.write();
             }
             return recurso;
+        }
+
+        public List<SelectListItem> comUnidades()
+        {
+            DataTable _unidades = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            server.ejecutarQuery(@"select idUnidad,nombre from unidades", new List<SqlParameter>(), out _unidades);
+            return Combo(_unidades, "nombre", "idUnidad", null);
         }
 
         public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)
