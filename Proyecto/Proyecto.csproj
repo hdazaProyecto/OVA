@@ -127,7 +127,6 @@
     <Compile Include="Funciones\ConSqlServer.cs" />
     <Compile Include="Funciones\EnvioCorreo.cs" />
     <Compile Include="Funciones\Funcion.cs" />
-    <Compile Include="Funciones\Helper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,7 +191,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contenido.cshtml" />
-    <Content Include="Views\Home\Plataforma.cshtml" />
     <Content Include="Views\Home\Foro.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\RegistrarUsu.cshtml" />

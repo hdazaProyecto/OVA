@@ -24,6 +24,11 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que permite guardar o actualizar tema.
+        /// </summary>
+        /// <param name="Ptema">Argumento Ptema, modelo de datos Tema.</param>
+        /// <returns>Retotna modelo tema</returns>
         public Tema gestionarTema(Tema Ptema)
         {
             Tema tema = null;
@@ -88,6 +93,10 @@ namespace Proyecto.Models
             return tema;
         }
 
+        /// <summary>
+        /// Método que permite consultar si hay tema crado.
+        /// </summary>
+        /// <returns>Retorna modelo de datos para tema</returns>
         public Tema existe()
         {
             Tema tema = new Tema();

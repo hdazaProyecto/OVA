@@ -23,6 +23,10 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que valida si el usuario existe en la base de datos.
+        /// </summary>
+        /// <returns>Retorna modelo de usuario</returns>
         public Usuario Existe()
         {
             Usuario us = null;
@@ -64,6 +68,11 @@ namespace Proyecto.Models
             return us;
         }
 
+        /// <summary>
+        /// Método que peromite enviar correo con la recuperacion de la contraseña.
+        /// </summary>
+        /// <param name="usuario">Argumento usuario, usuario que solicita recuperacion de contraseña.</param>
+        /// <returns></returns>
         public bool recPassword(string usuario)
         {
             DataTable dtusuario;

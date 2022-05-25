@@ -26,6 +26,11 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que peromite guardar o actualizar evidencias en base de datos.
+        /// </summary>
+        /// <param name="evidencia">Argumento evidencia, modelo de datos evidencia.</param>
+        /// <returns>Retorna modelo de datos evidencia</returns>
         public Evidencia gestionarEvidencia(Evidencia evidencia)
         {
             Evidencia evi = new Evidencia();

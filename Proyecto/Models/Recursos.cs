@@ -35,6 +35,10 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que lista todos los recursos crteados.
+        /// </summary>
+        /// <returns>lista de modelo recursos</returns>
         public List<Recursos> listarRecursos()
         {
             List<Recursos> recurso = new List<Recursos>();
@@ -81,6 +85,11 @@ namespace Proyecto.Models
             return recurso;
         }
 
+        /// <summary>
+        /// Método que permite guardar o actualizar recursos.
+        /// </summary>
+        /// <param name="Precurso">Argumento Precurso, modelo de datos Recursos.</param>
+        /// <returns>retorna modelo recurso</returns>
         public Recursos gestionarrecurso(Recursos Precurso)
         {
             Recursos recurso = new Recursos();
@@ -165,6 +174,11 @@ namespace Proyecto.Models
             return recurso;
         }
 
+        /// <summary>
+        /// Método que permite buscar un recurso por id del recurso.
+        /// </summary>
+        /// <param name="idRecurso">Argumento idRecurso, idRecurso del recurso.</param>
+        /// <returns>Retorna modelo recurso</returns>
         public Recursos BuscarRecursos(int idRecurso)
         {
             Recursos recurso = new Recursos();
@@ -211,6 +225,11 @@ namespace Proyecto.Models
             return recurso;
         }
 
+        /// <summary>
+        /// Método que permite cambiar el estado al recurso de Activo a inactivo o viceversa.
+        /// </summary>
+        /// <param name="idRecurso">Argumento idRecurso, idRecurso del recurso.</param>
+        /// <returns>Retorna lista de modelo recursos</returns>
         public List<Recursos> cambiarestadorec(int idRecurso)
         {
             List<Recursos> recurso = new List<Recursos>();
@@ -258,6 +277,10 @@ namespace Proyecto.Models
             return recurso;
         }
 
+        /// <summary>
+        /// Método que permite consultar las unidades creadas para llenar combo.
+        /// </summary>
+        /// <returns></returns>
         public List<SelectListItem> comUnidades()
         {
             DataTable _unidades = new DataTable();
@@ -269,6 +292,10 @@ namespace Proyecto.Models
             return Combo(_unidades, "nombre", "idUnidad", null);
         }
 
+        /// <summary>
+        /// Método que permite generar lista para llenar combo.
+        /// </summary>
+        /// <returns></returns>
         public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)
         {
             return agOrigenDatos.Rows.Cast<DataRow>().Select(r => new SelectListItem

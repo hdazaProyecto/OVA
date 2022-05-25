@@ -41,6 +41,10 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que permite hacer la busteda de contenido para mostar en el visor de aplicativo.
+        /// </summary>
+        /// <returns>Retorna un modelo de plataforma (informacion de tema, lista de unidades y lista de recursos)</returns>
         public plataforma ModelPlataforma()
         {
             plataforma Plataforma = new plataforma();
@@ -119,6 +123,12 @@ namespace Proyecto.Models
             return Plataforma;
         }
 
+        /// <summary>
+        /// Método que permite hacer la busteda de contenido para mostar en el visor de aplicativo y recurso especifico con datos de evidencia de un estudiante o usuario.
+        /// </summary>
+        /// <param name="recurso">Argumento recurso, id del recurso a consultar.</param>
+        /// <param name="usuario">Argumento usuario, usuario autenticado para consultar evidencias si hay asiciadas al recurso.</param>
+        /// <returns>Retorna un modelo de plataforma (informacion de tema, lista de unidades y lista de recursos) con el recurso consultado</returns>
         public plataforma visor(int recurso, string usuario)
         {
             plataforma Plataforma = new plataforma();

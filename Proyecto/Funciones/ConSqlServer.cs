@@ -12,18 +12,30 @@ namespace Proyecto.Funciones
         private SqlConnection con = null;
         private SqlTransaction tran = null;
 
+        /// <summary>
+        /// Método que retorna error cuando no hay datos de conexion.
+        /// </summary>
+        /// <returns></returns>
         public ConSqlServer()
         {
             if (con == null)
                 throw new System.ArgumentException("No se han asignado los datos de conexión.");
         }
 
+        /// <summary>
+        /// Método que retorna datos de conexion a la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public ConSqlServer(SqlConnectionStringBuilder stringConn)
         {
             stringConn.ConnectTimeout = 0;
             con = new SqlConnection(stringConn.ConnectionString);
         }
 
+        /// <summary>
+        /// Método que abre la conexion a la base de datos .
+        /// </summary>
+        /// <returns>retorna estado de conexion</returns>
         public ConnectionState abrirConexion(bool isTransact = false)
         {
             try
@@ -44,6 +56,10 @@ namespace Proyecto.Funciones
             return con.State;
         }
 
+        /// <summary>
+        /// Método que permite cerrar la conexion a la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public void close()
         {
             if (this.tran != null)
@@ -54,6 +70,10 @@ namespace Proyecto.Funciones
             this.con.Dispose();
         }
 
+        /// <summary>
+        /// Método que peromite hacer las consulta a la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public bool ejecutarQuery(string SqlQuery, List<SqlParameter> _parametros, out DataTable _Datos, CommandType tipo = CommandType.Text, bool istransactional = false)
         {
             bool resultado = false;
@@ -81,7 +101,6 @@ namespace Proyecto.Funciones
                         if (_parametros != null && _parametros.Count > 0)
                         {
                             _parametros.Cast<SqlParameter>().ToList().ForEach(p => {
-                                //Log.tareas.Add("Parámetro nombre:" + p.ParameterName + " Valor:" + p.Value);
                             });
 
                         }
@@ -98,9 +117,12 @@ namespace Proyecto.Funciones
             return resultado;
         }
 
+        /// <summary>
+        /// Método que peromite hacer las consulta a la base de datos.
+        /// </summary>
+        /// <returns></returns>
         public bool ejecutarQuery(string SqlQuery, List<SqlParameter> _parametros, out DataSet _Datos, CommandType tipo = CommandType.Text)
         {
-
             bool resultado = false;
             _Datos = new DataSet();
             try

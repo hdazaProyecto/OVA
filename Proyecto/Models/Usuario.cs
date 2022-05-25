@@ -31,6 +31,11 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que permite registrar un numevo usuario.
+        /// </summary>
+        /// <param name="usuario">Argumento usuario, modelo de datos usuario.</param>
+        /// <returns>Retorna modelo de datos con el usiario creado</returns>
         public Usuario registrarUsuario(Usuario usuario)
         {
             Usuario us = null;
@@ -99,6 +104,11 @@ namespace Proyecto.Models
             return us;
         }
 
+        /// <summary>
+        /// Método que peromite actualizar usuario.
+        /// </summary>
+        /// <param name="usuario">Argumento usuario, modelo de datos usuario.</param>
+        /// <returns>Retorna modelo de datos con el usiario actualizado</returns>
         public Usuario actualizarUsuario(Usuario usuario)
         {
             Usuario us = null;
@@ -183,6 +193,10 @@ namespace Proyecto.Models
             return us;
         }
 
+        /// <summary>
+        /// Método que busva usuario y verifica su existencia.
+        /// </summary>
+        /// <returns>Retorna modelo de datos con el usiario</returns>
         public Usuario Existe()
         {
             Usuario us = null;
@@ -229,6 +243,10 @@ namespace Proyecto.Models
             return us;
         }
 
+        /// <summary>
+        /// Método que permite buscar todos los profesores creados nivel 2.
+        /// </summary>
+        /// <returns>Retorna modelo de datos con el usiario</returns>
         public List<Usuario> listarProfesores()
         {
             List<Usuario> Profesores = new List<Usuario>();
@@ -278,6 +296,11 @@ namespace Proyecto.Models
             return Profesores;
         }
 
+        /// <summary>
+        /// Método que permite buscar todos los usuarios ceados en la plataforma
+        /// </summary>
+        /// <param name="id">Argumento id, rol del usuario que hace la consulta.</param>
+        /// <returns>Retorna lista de modelo usuarios</returns>
         public List<Usuario> listarUsuarios(int id)
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -329,6 +352,12 @@ namespace Proyecto.Models
             return usuarios;
         }
 
+        /// <summary>
+        /// Método que permite cambiar el estado al usuario de Activo a inactivo o viceversa.
+        /// </summary>
+        /// <param name="id">Argumento id, rol del usuario que hace la consulta.</param>
+        /// <param name="userName">Argumento userName, musuario al cual se desea actualizar estado.</param>
+        /// <returns></returns>
         public List<Usuario> cambiarestadoUsu(string userName,int id)
         {
             List<Usuario> usuarios = new List<Usuario>();
@@ -396,6 +425,10 @@ namespace Proyecto.Models
             return usuarios;
         }
 
+        /// <summary>
+        /// Método que lista los niveles de usuario creados en la base de datos.
+        /// </summary>
+        /// <returns>Retorna lista de niveles educativos</returns>
         public List<SelectListItem> comNivelEdu()
         {
             DataTable NivelEstudio = new DataTable();
@@ -407,6 +440,10 @@ namespace Proyecto.Models
             return Combo(NivelEstudio, "descripcion", "idNivelEstudios", null);
         }
 
+        /// <summary>
+        /// Método que permite generar lista para llenar combo.
+        /// </summary>
+        /// <returns></returns>
         public static List<SelectListItem> Combo(DataTable agOrigenDatos, string agDisplay, string agValue, string agSelectedValue)
         {
             return agOrigenDatos.Rows.Cast<DataRow>().Select(r => new SelectListItem

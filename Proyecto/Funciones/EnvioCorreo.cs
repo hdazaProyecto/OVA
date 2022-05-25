@@ -27,6 +27,10 @@ namespace Proyecto.Funciones
         private List<SqlParameter> parametros;
         private MailMessage agMail = new MailMessage();
 
+        /// <summary>
+        /// Método que permite intanciar la clase "contructor".
+        /// </summary>
+        /// <returns></returns>
         public EnvioCorreo(string agSubject, string agBody)
         {
             try
@@ -41,6 +45,10 @@ namespace Proyecto.Funciones
             { }
         }
 
+        /// <summary>
+        /// Método que peromite hacer el elvio de correo de la plataforma.
+        /// </summary>
+        /// <returns>Retorna tur o false si sepudo enviar o no el correo electronico</returns>
         public bool envio(out string Error, string email,bool CCOculto = false)
         {
             bool envio = false;
@@ -65,7 +73,7 @@ namespace Proyecto.Funciones
                     if (CCOculto)
                         agMail.Bcc.Add(agMail.From);
 
-                    #region
+                    #region para implementar si mas adelante se desea enviar adjuntos en los correos
                     //if (ArchivosAdjuntos != null)
                     //{
                     //    ArchivosAdjuntos.AddRange(this.Archivos);
@@ -111,6 +119,10 @@ namespace Proyecto.Funciones
             return envio;
         }
 
+        /// <summary>
+        /// Método que peromite nicializar valores de correo configurado en el base de datos.
+        /// </summary>
+        /// <returns></returns>
         public bool Initialize()
         {
             bool cargado = false;

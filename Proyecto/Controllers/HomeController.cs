@@ -15,6 +15,11 @@ namespace Proyecto.Controllers
         Recursos recurso = new Recursos();
         Usuario usuarios = new Usuario();
         plataforma p = new plataforma();
+
+        /// <summary>
+        /// Método que carga datos en el home de la aplicacion.
+        /// </summary>
+        /// <returns>Retorna modelo plataforma para llenar datos</returns>
         public ActionResult Index()
         {
             if (@TempData["Mensaje"] != null)
@@ -27,15 +32,10 @@ namespace Proyecto.Controllers
             return View(p);
         }
 
-        public ActionResult Check(ActionResult destino)
-        {
-            ActionResult act = RedirectToAction("Index");
-
-            if (Session["Usuario"] != null)
-                act = destino;
-            return act;
-        }
-
+        /// <summary>
+        /// Método que permite realizar el logue en la aplicación.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Index(Cuenta usuario)
         {            
@@ -61,13 +61,10 @@ namespace Proyecto.Controllers
             return View(p);
         }
 
-        public ActionResult Plataforma()
-        {
-            plataforma p = new plataforma();
-            p = p.ModelPlataforma();
-            return View(p);
-        }
-
+        /// <summary>
+        /// Método que permite redireccionar a foro que se pretende implementar en una mejora o nueva version.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Foro()
         {
             ViewBag.Message = "Your application description page.";
@@ -75,6 +72,10 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Método que permite mostrar lista de docentes avilitados para la plataforma.
+        /// </summary>
+        /// <returns>Retorna una lista de modelo de usuarios con la informacion de los docentes habilitados</returns>
         public ActionResult Contact()
         {
             Usuario us = new Usuario();
@@ -83,6 +84,10 @@ namespace Proyecto.Controllers
             return View(profesores);
         }
 
+        /// <summary>
+        /// Método que muestra informacion de la cuanta del usuario (estudiante, docente, administrador).
+        /// </summary>
+        /// <returns>Retorna modelo con los datos del usuario para cargar vista parcial</returns>
         public ActionResult Cuenta(Usuario usu)
         {
             if (@TempData["Mensaje"] != null)
@@ -99,13 +104,29 @@ namespace Proyecto.Controllers
             }
         }
 
+        /// <summary>
+        /// Método que muestra organigrama con la informacion del contenido del programa.
+        /// </summary>
+        /// <returns>Retorna un modelo con la informacion de la plataforma</returns>
         public ActionResult Contenido()
         {
-            plataforma p = new plataforma();
-            p = p.ModelPlataforma();
-            return View(p);
+            if (Session["Usuario"] != null)
+            {
+                plataforma p = new plataforma();
+                p = p.ModelPlataforma();
+                return View(p);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
+        /// <summary>
+        /// Método que permite destruir una sesion.
+        /// </summary>
+        /// <returns>Redirecciona al index del home y destruye la sesión.</returns>
         public ActionResult Logout()
         {
             try
@@ -124,6 +145,10 @@ namespace Proyecto.Controllers
             }
         }
 
+        /// <summary>
+        /// Método que permite mostrar vista para registar nuevo usuario.
+        /// </summary>
+        /// <returns>Retorna vista parcial para registrar usuario</returns>
         public ActionResult RegistrarUsu(Usuario usu)
         {
             if (@TempData["Mensaje"] != null)
@@ -132,6 +157,10 @@ namespace Proyecto.Controllers
             return View(usu);
         }
 
+        /// <summary>
+        /// Método que permite reguistrar un usuario nuevo y envio de correo coan la informacion del usuario.
+        /// </summary>
+        /// <returns>Retorna modelo de usuario con datos del usuario que se acaba de crear</returns>
         [HttpPost]
         public ActionResult RegistrarUsuario(Usuario usuario)
         {
@@ -175,6 +204,10 @@ namespace Proyecto.Controllers
 
         }
 
+        /// <summary>
+        /// Método que permite recuperar la contraseña enviando datos de ingreso al correo registrado del usuario.
+        /// </summary>
+        /// <returns>Retorna a la vista inical de la aplicacion despues de enviar correo con datos de autenticacion</returns>
         public ActionResult RecuperarContrasena(Cuenta usuario)
         {
             Cuenta re = new Cuenta();
@@ -190,6 +223,10 @@ namespace Proyecto.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Método que permite actualizar informacion del usuario o completar informacion de docente registrado.
+        /// </summary>
+        /// <returns>Retyormna datos de usuario para mostar vista parcial cuanta</returns>
         [HttpPost]
         public ActionResult ActualizarUsuario(Usuario usuario)
         {

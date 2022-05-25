@@ -25,6 +25,10 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que permite listar las unidades creadas.
+        /// </summary>
+        /// <returns>Retorna lista de modelo unidades</returns>
         public List<Unidades> listarUnidades()
         {
            List<Unidades>  unidad = new List<Unidades>();
@@ -66,6 +70,11 @@ namespace Proyecto.Models
             return unidad;
         }
 
+        /// <summary>
+        /// Método que permite gestionar unidades crear o actualizar unidades
+        /// </summary>
+        /// <param name="Punidad">Argumento Punidad, modelo de datos Unidades.</param>
+        /// <returns>Retotna modelo de Unidades</returns>
         public Unidades gestionarUnidad(Unidades Punidad)
         {
             Unidades unidad = new Unidades();
@@ -133,6 +142,11 @@ namespace Proyecto.Models
             return unidad;
         }
 
+        /// <summary>
+        /// Método que busca una unidad especifica para editar.
+        /// </summary>
+        /// <param name="idUnidad">Argumento idUnidad, id de la unidad a consultar.</param>
+        /// <returns>Retorna modelo de unidades</returns>
         public Unidades editarUnidades(int idUnidad)
         {
             Unidades unidad = new Unidades();
@@ -173,6 +187,11 @@ namespace Proyecto.Models
             return unidad;
         }
 
+        /// <summary>
+        /// Método que peromite actualizar estado de unidades de Activo a inactivo o viceversa.
+        /// </summary>
+        /// <param name="idUnidad">Argumento idUnidad, id de la unidad a consultar.</param>
+        /// <returns>retorna listado de modelo de unidades</returns>
         public List<Unidades> cambiarestadouni(int idUnidad)
         {
             List<Unidades> unidad = new List<Unidades>();

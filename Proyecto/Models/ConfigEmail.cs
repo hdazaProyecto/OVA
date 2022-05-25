@@ -23,6 +23,10 @@ namespace Proyecto.Models
         private SqlConnectionStringBuilder con;
         private List<SqlParameter> parametros;
 
+        /// <summary>
+        /// Método que permite consultar configuracion de correo electronico en la base de datos.
+        /// </summary>
+        /// <returns>retorna modelo con la configuracion de email</returns>
         public ConfigEmail ConsultaConfiguracion()
         {
             ConfigEmail conf = new ConfigEmail();
@@ -60,6 +64,11 @@ namespace Proyecto.Models
             return conf;
         }
 
+        /// <summary>
+        /// Método que peromite guiardar o actualizar configuracion de email.
+        /// </summary>
+        /// <param name="configuracion">Argumento configuracion, modelo de datos ConfigEmail.</param>
+        /// <returns>Retorna modelo con la configuracion de email</returns>
         public ConfigEmail gestioanarConfiguracion(ConfigEmail configuracion)
         {
             ConfigEmail conf = new ConfigEmail();
@@ -119,6 +128,10 @@ namespace Proyecto.Models
             return conf;
         }
 
+        /// <summary>
+        /// Método que envia correo deprueba.
+        /// </summary>
+        /// <returns>Retorna repueta true o false si se envia o no prueba de correo</returns>
         public bool envioPrueba()
         {
 

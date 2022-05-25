@@ -10,7 +10,10 @@ namespace Proyecto.Controllers
 {
     public class PlataformaController : Controller
     {
-        // GET: Plataforma
+        /// <summary>
+        /// Método que permite mostar vista parcial de plataforma principal para navegacion en contenido del OVA.
+        /// </summary>
+        /// <returns>Retorna un modelo de plataforma (informacion de tema, lista de unidades y lista de recursos)</returns>
         public ActionResult Index()
         {
             if (Session["Usuario"] != null)
@@ -26,6 +29,10 @@ namespace Proyecto.Controllers
            
         }
 
+        /// <summary>
+        /// Método que permite hacer la busteda de contenido para mostar en el visor de aplicativo.
+        /// </summary>
+        /// <returns>Retorna un modelo de plataforma (informacion de tema, lista de unidades y lista de recursos)</returns>
         public ActionResult recurso(int recurso)
         {
             if (Session["Usuario"] != null)
@@ -42,6 +49,10 @@ namespace Proyecto.Controllers
 
         }
 
+        /// <summary>
+        /// Método que peromite el registro de evidencia de parte del estudiante.
+        /// </summary>
+        /// <returns>Retorna al visor de la plataforma despues de registar evidencia</returns>
         public ActionResult gestionarEvidencia(Evidencia evidencia)
         {
             string ruta = Server.MapPath("~/Archivos/");
