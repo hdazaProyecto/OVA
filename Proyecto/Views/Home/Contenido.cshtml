@@ -6,43 +6,46 @@
 <br />
 <h1><b>Contenido Programatico</b></h1>
 <hr />
-<table class="tabla table table-bordered">
-    <thead>
-        <tr>
-            <th colspan="20">
-                <h3>@Model.nombreTema</h3>
-            </th>
-        </tr>
-        <tr>
-            <th width="20%">UNIDADES</th>
-            <th width="80%"> CONTENIDO</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.unidades != null && Model.unidades.Count > 0)
-        {
-            foreach (Unidades un in Model.unidades)
+<div class="table-responsive">
+    <table class="tabla table">
+        <thead>
+            <tr>
+                <th colspan="20">
+                    <h3>@Model.nombreTema</h3>
+                </th>
+            </tr>
+            <tr>
+                <th>UNIDADES</th>
+                <th> CONTENIDO</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.unidades != null && Model.unidades.Count > 0)
             {
-                <tr>
-                    <th scope="row">@un.nombre </th>
-                    @if (Model.recursos != null && Model.recursos.Count > 0)
-                    {
-                        foreach (Recursos re in Model.recursos)
+                foreach (Unidades un in Model.unidades)
+                {
+                    <tr>
+                        <th scope="row">@un.nombre </th>
+                        @if (Model.recursos != null && Model.recursos.Count > 0)
                         {
-                            if (re.idUnidad == un.idUnidad)
+                            foreach (Recursos re in Model.recursos)
                             {
-                                <th>
-                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre">@re.nombre</a>
-                                </th>
+                                if (re.idUnidad == un.idUnidad)
+                                {
+                                    <th>
+                                        <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre">@re.nombre</a>
+                                    </th>
+                                }
+
                             }
-
                         }
-                    }
-                </tr>
+                    </tr>
 
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
 
 

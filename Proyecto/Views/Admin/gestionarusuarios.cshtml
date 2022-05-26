@@ -10,7 +10,7 @@
 </div>
 <hr />
 <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
         <!-- Menu lateral -->
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
@@ -31,66 +31,68 @@
             </nav>
         }
     </div>
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
         <div>
             <h2><b>Gestion de Usuarios</b></h2>
         </div><hr />        
-              <form id="form">
+              @*<form id="form">
                   <input type="text" id="busqueda"/>
-              </form>
-        <table class="tabla table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">ROL</th>
-                    @if (us.idRol == 2)
-                    {
-                        <th scope="col">Nivel Estudios</th>
-                    }
-                    else
-                    {
-                        <th scope="col">Nivel Estudios/Profesion</th>
-                    }
-                    <th scope="col">Estado</th>
-                    <th scope="col">Activar/Inactivar</th>
-                </tr>
-            </thead>
-            <tbody>
-                @if (Model != null && Model.Count > 0)
-                {
-                    foreach (Usuario usu in Model)
-                    {
-                        <tr>
-                            <th scope="row">@usu.userName</th>
-                            <th>@usu.nombre</th>
-                            <td>@usu.apellidos</td>
-                            @if (usu.idRol == 2)
-                            {
-                                <td>Docente</td>
-                            }
-                            else
-                            {
-                                <td>Estudiante</td>
-                            }
-                            <td>@usu.nivelEstudiodesc@usu.profesion</td>
-                            @if (usu.estado == true)
-                            {
-                                <td>Activo</td>
-                            }
-                            else
-                            {
-                                <td>Inactivo</td>
-                            }
-                            <td>
-                                <a class="btn btn-primary" href="@Url.Action("cambiarestadousuario", "Admin", new { userName = usu.userName })" title="Cambiar Estado">Cambiar Estado</a>
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
+              </form>*@
+              <div class="table-responsive">
+                  <table class="tabla table table-hover">
+                      <thead>
+                          <tr>
+                              <th scope="col">Usuario</th>
+                              <th scope="col">Nombres</th>
+                              <th scope="col">Apellidos</th>
+                              <th scope="col">ROL</th>
+                              @if (us.idRol == 2)
+                              {
+                                  <th scope="col">Nivel Estudios</th>
+                              }
+                              else
+                              {
+                                  <th scope="col">Nivel Estudios/Profesion</th>
+                              }
+                              <th scope="col">Estado</th>
+                              <th scope="col">Activar/Inactivar</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @if (Model != null && Model.Count > 0)
+                          {
+                              foreach (Usuario usu in Model)
+                              {
+                                  <tr>
+                                      <th scope="row">@usu.userName</th>
+                                      <th>@usu.nombre</th>
+                                      <td>@usu.apellidos</td>
+                                      @if (usu.idRol == 2)
+                                      {
+                                          <td>Docente</td>
+                                      }
+                                      else
+                                      {
+                                          <td>Estudiante</td>
+                                      }
+                                      <td>@usu.nivelEstudiodesc@usu.profesion</td>
+                                      @if (usu.estado == true)
+                                      {
+                                          <td>Activo</td>
+                                      }
+                                      else
+                                      {
+                                          <td>Inactivo</td>
+                                      }
+                                      <td>
+                                          <a class="btn btn-primary" href="@Url.Action("cambiarestadousuario", "Admin", new { userName = usu.userName })" title="Cambiar Estado">Cambiar Estado</a>
+                                      </td>
+                                  </tr>
+                              }
+                          }
+                      </tbody>
+                  </table>
+              </div>
     </div>
 </div>
 

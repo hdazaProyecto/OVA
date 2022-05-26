@@ -9,7 +9,7 @@
 </div>
 <hr />
 <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
         <!-- Menu lateral -->
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
@@ -30,7 +30,7 @@
             </nav>
         }
     </div>
-    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
         <div>
             <h2><b>Editar Recursos</b></h2>
         </div>
@@ -75,13 +75,13 @@
             </div>
             <div class="form-group">
                 <label>
-                    Archivo
+                    Archivo @Model.archivo
                 </label>
                 @Html.TextBox("fileArchivo", @Model.archivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtarchivo", @value_data = "archivo", accept = "application/pdf" })
             </div>
             <div class="form-group">
                 <label>
-                    Imagen
+                    Imagen @Model.imagen
                 </label>
                 @Html.TextBox("fileImagen", @Model.imagen, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtimagen", @value_data = "imagen", accept = " image/*" })
             </div>
