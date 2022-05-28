@@ -4,3 +4,39 @@
 27/05/2022 8:59:03 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
 27/05/2022 8:59:03 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
 27/05/2022 9:00:12 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]
+28/05/2022 9:07:17 a. m.: Error al ejecutar la consultaselect 
+                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
+                                        from evidencias E 
+                                        inner join usuarios S on e.userName=s.userName
+                                        inner join unidades U on E.idUnidad=U.idUnidad 
+                                        inner join Recursos R on e.idRecurso=R.idRecurso
+                                        where idUnidad=@idUnidad and idRecurso=@idRecurso and userName=@userName [mensaje: El nombre de columna 'idUnidad' es ambiguo.
+El nombre de columna 'idRecurso' es ambiguo.
+El nombre de columna 'userName' es ambiguo.]
+28/05/2022 9:07:17 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/05/2022 9:09:01 a. m.: Error al ejecutar la consultaselect 
+                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
+                                        from evidencias E 
+                                        inner join usuarios S on e.userName=s.userName
+                                        inner join unidades U on E.idUnidad=U.idUnidad 
+                                        inner join Recursos R on e.idRecurso=R.idRecurso
+                                        where idUnidad=ISNULL(@idUnidad,idUnidad) and idRecurso=ISNULL(@idRecurso,idRecurso) and userName=ISNULL(@userName,userName) [mensaje: El nombre de columna 'idUnidad' es ambiguo.
+El nombre de columna 'idUnidad' es ambiguo.
+El nombre de columna 'idRecurso' es ambiguo.
+El nombre de columna 'idRecurso' es ambiguo.
+El nombre de columna 'userName' es ambiguo.
+El nombre de columna 'userName' es ambiguo.]
+28/05/2022 9:09:01 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/05/2022 9:11:50 a. m.: Error al ejecutar la consultaselect 
+                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
+                                        from evidencias E 
+                                        inner join usuarios S on e.userName=s.userName
+                                        inner join unidades U on E.idUnidad=U.idUnidad 
+                                        inner join Recursos R on e.idRecurso=R.idRecurso
+                                        where idUnidad=ISNULL(@idUnidad,idUnidad) and idRecurso=ISNULL(@idRecurso,idRecurso) and userName=ISNULL(@userName,userName) [mensaje: El nombre de columna 'idUnidad' es ambiguo.
+El nombre de columna 'idUnidad' es ambiguo.
+El nombre de columna 'idRecurso' es ambiguo.
+El nombre de columna 'idRecurso' es ambiguo.
+El nombre de columna 'userName' es ambiguo.
+El nombre de columna 'userName' es ambiguo.]
+28/05/2022 9:11:50 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]

@@ -407,7 +407,8 @@ namespace Proyecto.Controllers
             {
                 Recursos recurso = new Recursos();
                 ViewBag.unidades = recurso.comUnidades();
-                ViewBag.recursos = recurso.comRecursos();
+                ViewBag.recursos = recurso.comRecursos(evidencia.idRecurso);
+                ViewBag.usuarios = recurso.comUsuarios();
                 listEvidencia = evidencia.consultarEvidencias(evidencia);
                 return View(listEvidencia);
             }

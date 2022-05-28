@@ -316,6 +316,29 @@ namespace Proyecto.Models
         }
 
         /// <summary>
+        /// Método que permite consultar usuarios creados para llenar combo.
+        /// </summary>
+        /// <returns></returns>
+        public List<SelectListItem> comUsuarios(string id = "0")
+        {
+            DataTable _usuarios = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            if (id == "0")
+            {
+                server.ejecutarQuery(@"select userName, (nombre + ' ' +apellidos) nombre from usuarios where estado=1 and idRol > 1", new List<SqlParameter>(), out _usuarios);
+            }
+            else
+            {
+                server.ejecutarQuery(@"select userName, (nombre + ' ' +apellidos) nombre from usuarios where estado=1 and idRol > 1 and userName=" + id, new List<SqlParameter>(), out _usuarios);
+            }
+
+            return Combo(_usuarios, "nombre", "userName", null);
+        }
+
+        /// <summary>
         /// Método que permite generar lista para llenar combo.
         /// </summary>
         /// <returns></returns>

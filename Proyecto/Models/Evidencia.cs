@@ -132,8 +132,8 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@archivo", String.IsNullOrWhiteSpace(evidencia.archivo) ? DBNull.Value : (object)evidencia.archivo));
                 parametros.Add(new SqlParameter("@observacion", String.IsNullOrWhiteSpace(evidencia.observacion) ? DBNull.Value : (object)evidencia.observacion));
                 parametros.Add(new SqlParameter("@idTema", (object)evidencia.idTema == null ? DBNull.Value : (object)evidencia.idTema));
-                parametros.Add(new SqlParameter("@idUnidad", (object)evidencia.idUnidad == null ? DBNull.Value : (object)evidencia.idUnidad));
-                parametros.Add(new SqlParameter("@idRecurso", (object)evidencia.idRecurso == null ? DBNull.Value : (object)evidencia.idRecurso));
+                parametros.Add(new SqlParameter("@idUnidad", evidencia.idUnidad == 0 ? DBNull.Value : (object)evidencia.idUnidad));
+                parametros.Add(new SqlParameter("@idRecurso", evidencia.idRecurso == 0 ? DBNull.Value : (object)evidencia.idRecurso));
                 parametros.Add(new SqlParameter("@retroalimentacion", String.IsNullOrWhiteSpace(evidencia.retroalimentacion) ? DBNull.Value : (object)evidencia.retroalimentacion));
                 parametros.Add(new SqlParameter("@entregado", (object)evidencia.entregado == null ? DBNull.Value : (object)evidencia.entregado));
                 parametros.Add(new SqlParameter("@userName", (object)evidencia.userName == null ? DBNull.Value : (object)evidencia.userName));
@@ -143,7 +143,8 @@ namespace Proyecto.Models
                                         from evidencias E 
                                         inner join usuarios S on e.userName=s.userName
                                         inner join unidades U on E.idUnidad=U.idUnidad 
-                                        inner join Recursos R on e.idRecurso=R.idRecurso", parametros, out devidencia);
+                                        inner join Recursos R on e.idRecurso=R.idRecurso
+                                        where E.idUnidad=ISNULL(@idUnidad,E.idUnidad) and E.idRecurso=ISNULL(@idRecurso,E.idRecurso) and E.userName=ISNULL(@userName,E.userName) AND S.estado=1 and r.estado=1", parametros, out devidencia);
                 server.close();
 
                 if (devidencia != null && devidencia.Tables[0].Rows.Count > 0)
