@@ -11,27 +11,30 @@
 <div class="row">
     @if (Model != null)
     {
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-            <!-- Menu lateral -->
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <!-- Menu lateral -->
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Usuarios", "gestionarusuarios", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Evidencias", "evidencias", "Admin")</span>
+        </nav>
+        @if (us.idRol == 1)
+        {
             <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
+                <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
             </nav>
-            <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
-            </nav>
-            <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
-            </nav>
-            <nav class="navbar navbar-light bg-light">
-                <span class="navbar-brand">@Html.ActionLink("Usuarios", "gestionarusuarios", "Admin")</span>
-            </nav>
-            @if (us.idRol == 1)
-            {
-                <nav class="navbar navbar-light bg-light">
-                    <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
-                </nav>
-            }
-        </div>
+        }
+    </div>
         <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
             <div>
                 <h2><b>Editar Unidades</b></h2>

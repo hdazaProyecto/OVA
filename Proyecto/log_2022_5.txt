@@ -1,1 +1,6 @@
 23/05/2022 10:49:31 a. m.: Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
+26/05/2022 10:28:50 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]
+26/05/2022 10:36:41 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]
+27/05/2022 8:59:03 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+27/05/2022 8:59:03 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
+27/05/2022 9:00:12 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]

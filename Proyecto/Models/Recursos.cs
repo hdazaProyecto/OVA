@@ -293,6 +293,29 @@ namespace Proyecto.Models
         }
 
         /// <summary>
+        /// Método que permite consultar recursos creados para llenar combo.
+        /// </summary>
+        /// <returns></returns>
+        public List<SelectListItem> comRecursos(int id = 0)
+        {
+            DataTable _recursos = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            if (id == 0)
+            {
+                server.ejecutarQuery(@"select idRecurso,nombre from recursos", new List<SqlParameter>(), out _recursos);
+            }
+            else
+            {
+                server.ejecutarQuery(@"select idRecurso,nombre from recursos where idunidad="+id, new List<SqlParameter>(), out _recursos);
+            }
+            
+            return Combo(_recursos, "nombre", "idRecurso", null);
+        }
+
+        /// <summary>
         /// Método que permite generar lista para llenar combo.
         /// </summary>
         /// <returns></returns>

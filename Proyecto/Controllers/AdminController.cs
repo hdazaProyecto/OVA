@@ -393,5 +393,63 @@ namespace Proyecto.Controllers
         {
             return RedirectToAction("gestionarusuarios", "Home");
         }
+
+        /// <summary>
+        /// Método que permite cargar vista para retroalimentar evidencias
+        /// </summary>
+        /// <returns>retorna lista modelo evidencias</returns>
+        public ActionResult evidencias(Evidencia evidencia)
+        {
+            List<Evidencia> listEvidencia = new List<Evidencia>();
+            if (@TempData["Mensaje"] != null)
+                ViewBag.Usuario = @TempData["Mensaje"].ToString();
+            if (Session["Usuario"] != null)
+            {
+                Recursos recurso = new Recursos();
+                ViewBag.unidades = recurso.comUnidades();
+                ViewBag.recursos = recurso.comRecursos();
+                listEvidencia = evidencia.consultarEvidencias(evidencia);
+                return View(listEvidencia);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        /// <summary>
+        /// Método que permite consultar una evidencia para retroalimentar
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult retroEvidencia(int idEvidencia)
+        {            
+            if (Session["Usuario"] != null)
+            {
+                Evidencia evidencia = new Evidencia();
+                evidencia = evidencia.evidencia(idEvidencia);
+                return View(evidencia);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        /// <summary>
+        /// Método que permite actualizar las evidencias.
+        /// </summary>
+        /// <returns>Retorna modelo evidencia </returns>
+        public ActionResult gestionarEvidencia(Evidencia evidencia)
+        {
+            if (Session["Usuario"] != null)
+            {
+                evidencia = evidencia.gestionarEvidencia(evidencia);
+                return RedirectToAction("retroEvidencia", evidencia);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

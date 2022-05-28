@@ -38,8 +38,7 @@ namespace Proyecto.Controllers
         /// <returns></returns>
         [HttpPost]
         public ActionResult Index(Cuenta usuario)
-        {            
-            
+        {   
             Usuario us = usuario.Existe();
             p = p.ModelPlataforma();
             if (p != null)

@@ -7,7 +7,7 @@
     ViewBag.Title = "Listar Unidades";
 }
 <style>
-    #tb th {
+    /*#tb th {
         width: auto !important;
         white-space: normal;
         text-overflow: ellipsis;
@@ -22,7 +22,7 @@
         -webkit-hyphens: auto;
         -moz-hyphens: auto;
         hyphens: auto;
-    }
+    }*/
 </style>
 <div>
     <h1><b>Administración de portal</b></h1>
@@ -42,6 +42,9 @@
         </nav>
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand">@Html.ActionLink("Usuarios", "gestionarusuarios", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Evidencias", "evidencias", "Admin")</span>
         </nav>
         @if (us.idRol == 1)
         {

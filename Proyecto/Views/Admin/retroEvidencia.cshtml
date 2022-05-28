@@ -1,0 +1,93 @@
+﻿@using Proyecto.Models;
+@{Usuario us = (Usuario)Session["Usuario"];}
+@model Evidencia
+@{
+    ViewBag.Title = "retroEvidencia";
+}
+<style>
+    .visor {
+        width: 100%;
+        min-height: 500px;
+    }
+</style>
+<div>
+    <h1><b>Administración de portal</b></h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <!-- Menu lateral -->
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand" href="#">@Html.ActionLink("Tema", "Index", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Unidades", "ListarUnidades", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Recursos", "listarRecursos", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Usuarios", "gestionarusuarios", "Admin")</span>
+        </nav>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand">@Html.ActionLink("Evidencias", "evidencias", "Admin")</span>
+        </nav>
+        @if (us.idRol == 1)
+        {
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand">@Html.ActionLink("Email", "email", "Admin")</span>
+            </nav>
+        }
+    </div>
+    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+        <div>
+            <h2><b>Retoalimentacion</b></h2>
+        </div><hr />
+        @using (Html.BeginForm("gestionarEvidencia", "Admin", FormMethod.Post, new { evidencia = "multipart/form-data" }))
+        {
+              <form>
+                  @Html.Hidden("idEvidencia", @Model.idEvidencia, new { @value_data = "idEvidencia" })
+                  @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
+                  @Html.Hidden("idUnidad", Model.idUnidad, new { @value_data = "idUnidad" })
+                  @Html.Hidden("idRecurso", Model.idRecurso, new { @value_data = "idRecurso" })
+                  @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
+                  @Html.Hidden("entregado", @Model.entregado, new { @value_data = "entregado" })
+                  @Html.Hidden("archivo", @Model.archivo, new { @value_data = "archivo" })
+                  @Html.Hidden("observacion", @Model.observacion, new { @value_data = "observacion" })
+                  <div class="form-group">
+                      <label>
+                          Estudiante: @Model.nombres @Model.apellidos
+                      </label>
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          Observacion:
+                      </label>
+                      <p>@Model.observacion</p>
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          archivo: @Model.archivo
+                      </label>
+                      <object class="visor" data="~/Archivos/@Model.archivo" type="application/pdf"></object>
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          Retroalimentacion
+                      </label>
+                      @Html.TextArea("retroalimentacion", @Model.retroalimentacion, new { @Class = "form-control", @placeholder = "", @Id = "txtretroalimentacion", @value_data = "retroalimentacion" })
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          Retroalimentacion
+                      </label>
+                      @Html.TextBox("puntosAlcanzados", @Model.puntosAlcanzados, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuntosAlcanzados", @value_data = "puntosAlcanzados" })
+                  </div>
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+              </form>
+        }
+    </div>
+</div>
+
