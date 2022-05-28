@@ -29,7 +29,7 @@ namespace Proyecto.Models
         /// </summary>
         /// <param name="Ptema">Argumento Ptema, modelo de datos Tema.</param>
         /// <returns>Retotna modelo tema</returns>
-        public Tema gestionarTema(Tema Ptema)
+        public Tema gestionarTema(Tema Ptema, string userName)
         {
             Tema tema = null;
             try
@@ -57,6 +57,7 @@ namespace Proyecto.Models
                                                   imagen = @imagen,                                              
                                                   fechaModifica = @fechaModifica                                                 
                                              WHERE idTema=@idTema
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Actualizar',getdate(),'" + userName + @"')
                                         END
                                         ELSE
                                         BEGIN
@@ -64,6 +65,7 @@ namespace Proyecto.Models
                                                    (nombre,descripcion,imagen,estado,fecha,userName)
                                              VALUES
                                                    (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Crear',getdate(),'" + userName + @"')
                                         END SELECT * FROM Tema WHERE estado=1", parametros, out dtema);
                 server.close();
 

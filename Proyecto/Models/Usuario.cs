@@ -358,7 +358,7 @@ namespace Proyecto.Models
         /// <param name="id">Argumento id, rol del usuario que hace la consulta.</param>
         /// <param name="userName">Argumento userName, musuario al cual se desea actualizar estado.</param>
         /// <returns></returns>
-        public List<Usuario> cambiarestadoUsu(string userName,int id)
+        public List<Usuario> cambiarestadoUsu(string userName,int id, string user)
         {
             List<Usuario> usuarios = new List<Usuario>();
             try
@@ -377,7 +377,9 @@ namespace Proyecto.Models
                                         perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
                                            LEFT JOIN Profesores P ON U.userName = P.userName
                                         LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios
-                                        WHERE U.IdRol >= @idRol", parametros, out dusuarios);
+                                        WHERE U.IdRol >= @idRol
+                                        INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES 
+                                        ('Usuarios',(select case when estado=1 then 'Activación ' else 'Desactivación ' end from  Usuarios  WHERE userName=@userName) +' de usuario '+ @userName,getdate(),'" + user + @"')", parametros, out dusuarios);
                 server.close();
 
                 if (dusuarios != null && dusuarios.Tables[0].Rows.Count > 0)

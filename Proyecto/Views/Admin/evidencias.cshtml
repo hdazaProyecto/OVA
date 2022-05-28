@@ -37,7 +37,7 @@
     </div>
     <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
         <div>
-            <h2><b>Retoalimentacion </b></h2>
+            <h2><b>Retroalimentación </b></h2>
         </div><hr />
         @using (Html.BeginForm("evidencias", "Admin", FormMethod.Post, new { evidencia = "multipart/form-data" }))
         {
@@ -96,7 +96,7 @@
                         <td>@ev.nombres</td>
                         <td>@ev.apellidos</td>
                         <td>@ev.observacion</td>
-                        <td>@ev.nombreUnidad/td>
+                        <td>@ev.nombreUnidad</td>
                         <td>@ev.nombreRecurso</td>
                         <td>
                             @if (ev.puntosAlcanzados == 0)

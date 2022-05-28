@@ -69,7 +69,7 @@ namespace Proyecto.Models
         /// </summary>
         /// <param name="configuracion">Argumento configuracion, modelo de datos ConfigEmail.</param>
         /// <returns>Retorna modelo con la configuracion de email</returns>
-        public ConfigEmail gestioanarConfiguracion(ConfigEmail configuracion)
+        public ConfigEmail gestioanarConfiguracion(ConfigEmail configuracion, string userName)
         {
             ConfigEmail conf = new ConfigEmail();
             try
@@ -98,10 +98,12 @@ namespace Proyecto.Models
 		                                    puerto = @puerto,
 		                                    ssl = @ssl
 		                                    WHERE idConfigEmail=@idConfigEmail
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('configEmail','Actualizar',getdate()," + userName + @")
                                         END
                                         ELSE
                                         BEGIN
                                             INSERT INTO configEmail (nombre,servidor,usuario,clave,puerto,ssl) VALUES (@nombre,@servidor,@usuario,@clave,@puerto,@ssl)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('configEmail','Creacion',getdate()," + userName + @")
                                         END 
                                             SELECT TOP 1 * FROM configEmail", parametros, out dconfiguracion);
                 server.close();

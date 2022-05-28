@@ -75,7 +75,7 @@ namespace Proyecto.Models
         /// </summary>
         /// <param name="Punidad">Argumento Punidad, modelo de datos Unidades.</param>
         /// <returns>Retotna modelo de Unidades</returns>
-        public Unidades gestionarUnidad(Unidades Punidad)
+        public Unidades gestionarUnidad(Unidades Punidad, string userName)
         {
             Unidades unidad = new Unidades();
             try
@@ -107,6 +107,7 @@ namespace Proyecto.Models
                                                   fechaModifica = @fechaModifica,
                                                   userName = @userName
                                              WHERE idUnidad=@idUnidad
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Unidades','Actualiza unidades' + CAST(@idUnidad as VARCHAR),getdate(),'" + userName + @"')
                                         END
                                         ELSE
                                         BEGIN
@@ -114,6 +115,7 @@ namespace Proyecto.Models
                                                    (nombre,descripcion,estado,idTema,fecha,userName)
                                              VALUES
                                                    (@nombre,@descripcion,@estado,@idTema,@fecha,@userName)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Unidades','Crear',getdate(),'" + userName + @"')
                                         END SELECT * FROM Unidades", parametros, out dunidad);
                 server.close();
 
@@ -192,7 +194,7 @@ namespace Proyecto.Models
         /// </summary>
         /// <param name="idUnidad">Argumento idUnidad, id de la unidad a consultar.</param>
         /// <returns>retorna listado de modelo de unidades</returns>
-        public List<Unidades> cambiarestadouni(int idUnidad)
+        public List<Unidades> cambiarestadouni(int idUnidad, string userName)
         {
             List<Unidades> unidad = new List<Unidades>();
             try
@@ -206,7 +208,10 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 parametros.Add(new SqlParameter("@idUnidad", idUnidad));
                 server.ejecutarQuery(@"UPDATE Unidades SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE idUnidad=@idUnidad 
-                                        SELECT * FROM Unidades ORDER BY idUnidad", parametros, out dunidad);
+                                        SELECT * FROM Unidades ORDER BY idUnidad
+                                        INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES 
+                                        ('Unidades',(select case when estado=1 then 'Activación ' else 'Desactivación ' end from  Unidades  WHERE idUnidad=@idUnidad) +' de unidad '+ CAST(@idUnidad as VARCHAR),getdate(),
+                                        '" + userName + @"')", parametros, out dunidad);
                 server.close();
 
                 if (dunidad != null && dunidad.Tables[0].Rows.Count > 0)
@@ -219,7 +224,6 @@ namespace Proyecto.Models
                         idUnidad = r.Field<int>("idUnidad"),
                         nombre = r.Field<string>("nombre"),
                         descripcion = r.Field<string>("descripcion"),
-                        imagen = r.Field<string>("imagen"),
                         estado = r.Field<bool>("estado"),
                         idTema = r.Field<int>("idTema"),
                         fecha = r.Field<DateTime>("fecha"),

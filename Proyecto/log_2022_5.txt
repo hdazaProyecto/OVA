@@ -1,42 +1,8 @@
-23/05/2022 10:49:31 a. m.: Error [mensaje: La columna 'imagen' no pertenece a la tabla Table.]
-26/05/2022 10:28:50 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]
-26/05/2022 10:36:41 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]
-27/05/2022 8:59:03 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
-27/05/2022 8:59:03 : Error [mensaje: No se puede convertir DBNull.Value al tipo 'System.Int32'. Utilice un tipo que acepte valores NULL.]
-27/05/2022 9:00:12 : Error [mensaje: La columna 'idEvidencia' no pertenece a la tabla Table.]
-28/05/2022 9:07:17 a. m.: Error al ejecutar la consultaselect 
-                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
-                                        from evidencias E 
-                                        inner join usuarios S on e.userName=s.userName
-                                        inner join unidades U on E.idUnidad=U.idUnidad 
-                                        inner join Recursos R on e.idRecurso=R.idRecurso
-                                        where idUnidad=@idUnidad and idRecurso=@idRecurso and userName=@userName [mensaje: El nombre de columna 'idUnidad' es ambiguo.
-El nombre de columna 'idRecurso' es ambiguo.
-El nombre de columna 'userName' es ambiguo.]
-28/05/2022 9:07:17 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/05/2022 9:09:01 a. m.: Error al ejecutar la consultaselect 
-                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
-                                        from evidencias E 
-                                        inner join usuarios S on e.userName=s.userName
-                                        inner join unidades U on E.idUnidad=U.idUnidad 
-                                        inner join Recursos R on e.idRecurso=R.idRecurso
-                                        where idUnidad=ISNULL(@idUnidad,idUnidad) and idRecurso=ISNULL(@idRecurso,idRecurso) and userName=ISNULL(@userName,userName) [mensaje: El nombre de columna 'idUnidad' es ambiguo.
-El nombre de columna 'idUnidad' es ambiguo.
-El nombre de columna 'idRecurso' es ambiguo.
-El nombre de columna 'idRecurso' es ambiguo.
-El nombre de columna 'userName' es ambiguo.
-El nombre de columna 'userName' es ambiguo.]
-28/05/2022 9:09:01 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
-28/05/2022 9:11:50 a. m.: Error al ejecutar la consultaselect 
-                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
-                                        from evidencias E 
-                                        inner join usuarios S on e.userName=s.userName
-                                        inner join unidades U on E.idUnidad=U.idUnidad 
-                                        inner join Recursos R on e.idRecurso=R.idRecurso
-                                        where idUnidad=ISNULL(@idUnidad,idUnidad) and idRecurso=ISNULL(@idRecurso,idRecurso) and userName=ISNULL(@userName,userName) [mensaje: El nombre de columna 'idUnidad' es ambiguo.
-El nombre de columna 'idUnidad' es ambiguo.
-El nombre de columna 'idRecurso' es ambiguo.
-El nombre de columna 'idRecurso' es ambiguo.
-El nombre de columna 'userName' es ambiguo.
-El nombre de columna 'userName' es ambiguo.]
-28/05/2022 9:11:50 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+28/05/2022 11:38:05 a. m.: Error al ejecutar la consultaUPDATE Usuarios SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE userName=@userName
+                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
+                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
+                                           LEFT JOIN Profesores P ON U.userName = P.userName
+                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios
+                                        WHERE U.IdRol >= @idRol
+                                        INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES 
+                                        ('Usuarios',(select case when estado=1 then 'Activación ' else 'Desactivación ' end from  Usuarios  WHERE userName=@userName) +' de usuario '+ @userName,getdate(),'') [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Auditoria_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.]

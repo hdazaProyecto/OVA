@@ -90,7 +90,7 @@ namespace Proyecto.Models
         /// </summary>
         /// <param name="Precurso">Argumento Precurso, modelo de datos Recursos.</param>
         /// <returns>retorna modelo recurso</returns>
-        public Recursos gestionarrecurso(Recursos Precurso)
+        public Recursos gestionarrecurso(Recursos Precurso, string userName)
         {
             Recursos recurso = new Recursos();
             try
@@ -134,6 +134,7 @@ namespace Proyecto.Models
                                                   descripcionEvidencia = @descEvidencia,
                                                   puntosRecurso = @puntosRecurso
                                              WHERE idrecurso=@idrecurso
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Recursos','Actualizar recurso' + CAST(@idrecurso as VARCHAR),getdate(),'" + userName + @"')
                                         END
                                         ELSE
                                         BEGIN
@@ -141,6 +142,7 @@ namespace Proyecto.Models
                                                    (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
                                              VALUES
                                                    (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Recursos','Crear',getdate(),'" + userName + @"')                                        
                                         END SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
 
@@ -244,7 +246,10 @@ namespace Proyecto.Models
                 parametros = new List<SqlParameter>();
                 parametros.Add(new SqlParameter("@idrecurso", idRecurso));
                 server.ejecutarQuery(@"UPDATE Recursos SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE idRecurso=@idrecurso
-                                        SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad ORDER BY R.idUnidad,R.idRecurso", parametros, out drecurso);
+                                        SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad ORDER BY R.idUnidad,R.idRecurso
+                                        INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES 
+                                        ('Recursos',(select case when estado=1 then 'Activación ' else 'Desactivación ' end from  Recursos  WHERE idRecurso=@idrecurso) +' de recurso '+ CAST(@idRecurso as VARCHAR),getdate(),
+                                        '" + userName + @"')", parametros, out drecurso);
                 server.close();
 
                 if (drecurso != null && drecurso.Tables[0].Rows.Count > 0)

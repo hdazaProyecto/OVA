@@ -82,13 +82,14 @@ namespace Proyecto.Controllers
         {
             if (Session["Usuario"] != null)
             {
+                Usuario us = (Usuario)Session["Usuario"];
                 string ruta = Server.MapPath("~/Archivos/");
                 if (pTema.file != null)
                 {
                     pTema.imagen = Path.GetFileName(pTema.file.FileName);
                     pTema.file.SaveAs(ruta + pTema.imagen);
                 }               
-                Tema Tema = pTema.gestionarTema(pTema);
+                Tema Tema = pTema.gestionarTema(pTema,us.userName);
                 if (Tema != null)
                 {
                     @TempData["Mensaje"] = "Tema Creado con éxito";
@@ -115,7 +116,8 @@ namespace Proyecto.Controllers
         {
             if (Session["Usuario"] != null)
             {
-                Unidades Unidades = pUnidad.gestionarUnidad(pUnidad);
+                Usuario us = (Usuario)Session["Usuario"];
+                Unidades Unidades = pUnidad.gestionarUnidad(pUnidad, us.userName);
                 if (Unidades != null)
                 {
                     @TempData["Mensaje"] = "Unidad creada con éxito.";
@@ -180,7 +182,8 @@ namespace Proyecto.Controllers
         {
             if (Session["Usuario"] != null)
             {
-                ConfigEmail configuracion = conf.gestioanarConfiguracion(conf);
+                Usuario us = (Usuario)Session["Usuario"];
+                ConfigEmail configuracion = conf.gestioanarConfiguracion(conf, us.userName);
                 if (configuracion.servidor != null)
                 {
                     @ViewBag.Usuario = "los datos se guardaron exitosamente";
@@ -233,7 +236,8 @@ namespace Proyecto.Controllers
             List<Unidades> listunidad = new List<Unidades>();
             if (Session["Usuario"] != null)
             {
-                listunidad = unidad.cambiarestadouni(idUnidad);
+                Usuario us = (Usuario)Session["Usuario"];
+                listunidad = unidad.cambiarestadouni(idUnidad, us.userName);
                 if (listunidad != null)
                 {
                     @TempData["Mensaje"] = "Estado de unidad actualizado";
@@ -280,7 +284,7 @@ namespace Proyecto.Controllers
                 Usuario usu = new Usuario();
                 List<Usuario> listUsuarios = new List<Usuario>();
                 Usuario us = (Usuario)Session["Usuario"];
-                listUsuarios = usu.cambiarestadoUsu(userName,us.idRol);
+                listUsuarios = usu.cambiarestadoUsu(userName,us.idRol,us.userName);
                 return RedirectToAction("gestionarusuarios", listUsuarios);
             }
             else
@@ -335,6 +339,7 @@ namespace Proyecto.Controllers
             ViewBag.unidades = recurso.comUnidades();
             if (Session["Usuario"] != null)
             {
+                Usuario us = (Usuario)Session["Usuario"];
                 string ruta = Server.MapPath("~/Archivos/");
                 if (!Directory.Exists(ruta))
                     Directory.CreateDirectory(ruta);
@@ -351,7 +356,7 @@ namespace Proyecto.Controllers
 
                 if (recurso.nombre != null)
                 {
-                    recurso = recurso.gestionarrecurso(recurso);
+                    recurso = recurso.gestionarrecurso(recurso, us.userName);
                     return RedirectToAction("listarRecursos");
                 }
                 return View(recurso);
