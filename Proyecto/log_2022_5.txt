@@ -1,8 +1,0 @@
-28/05/2022 11:38:05 a. m.: Error al ejecutar la consultaUPDATE Usuarios SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE userName=@userName
-                                        SELECT U.userName,userPassword,correoElectronico,nombre,apellidos,estado,idRol,profesion,
-                                        perfilProfesional,CAST(ISNULL(U.idNivelEstudios,0) AS INT) idNivelEstudios,descripcion,fotografia FROM Usuarios U
-                                           LEFT JOIN Profesores P ON U.userName = P.userName
-                                        LEFT JOIN NivelEstudio N ON U.idNivelEstudios=N.idNivelEstudios
-                                        WHERE U.IdRol >= @idRol
-                                        INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES 
-                                        ('Usuarios',(select case when estado=1 then 'Activación ' else 'Desactivación ' end from  Usuarios  WHERE userName=@userName) +' de usuario '+ @userName,getdate(),'') [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Auditoria_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.]
