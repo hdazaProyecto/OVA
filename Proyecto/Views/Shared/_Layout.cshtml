@@ -1,6 +1,30 @@
 ﻿@{Usuario us = (Usuario)Session["Usuario"];}
 @{plataforma pt = (plataforma)Session["plataforma"];}
 <!DOCTYPE html>
+<style>
+    .navbar-default {
+        background-color: #60c7c1 !important;
+    }
+    .navbar-default .navbar-nav > li > a {
+        background: #60c7c1;
+        Color: #fff !important;
+    }
+    .navbar-default .navbar-brand {
+        Color: #fff !important;
+    }
+    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+        background-color: #60c7c1 !important;
+    }
+    .btn {
+        background: #60c7c1;
+        Color: #fff !important;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        Color: #60c7c1 !important;
+        background-color: #fff !important;
+    }
+</style>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +36,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="contensdorbar">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

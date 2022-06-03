@@ -42,7 +42,7 @@
                   <input type="text" id="busqueda"/>
               </form>*@
               <div class="table-responsive">
-                  <table class="tabla table table-hover">
+                  <table class="tabla table table-striped table-condensed table-hover">
                       <thead>
                           <tr>
                               <th scope="col">Usuario</th>
@@ -67,8 +67,8 @@
                               foreach (Usuario usu in Model)
                               {
                                   <tr>
-                                      <th scope="row">@usu.userName</th>
-                                      <th>@usu.nombre</th>
+                                      <td scope="row">@usu.userName</td>
+                                      <td>@usu.nombre</td>
                                       <td>@usu.apellidos</td>
                                       @if (usu.idRol == 2)
                                       {

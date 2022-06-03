@@ -53,11 +53,11 @@
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#@nameGroup.Key" aria-expanded="false" aria-controls="collapseThree">
+                            <h4 class="mb-0">
+                                <a class="btn-link collapsed" type="button" data-toggle="collapse" data-target="#@nameGroup.Key" aria-expanded="false" aria-controls="collapseThree">
                                     @{ var nomuni = from uni in Model where uni.idUnidad == nameGroup.Key select uni.nomUnidad;} @nomuni.FirstOrDefault()
-                                </button>
-                            </h2>
+                                </a>
+                            </h4>
                         </div>
                         <div id="@nameGroup.Key" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                             <div class="card-body">

@@ -16,8 +16,8 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <img src="~/Archivos/@Model.imagenTema" width="100%" />
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <p align="left"><h4>@Model.descripcionTema</h4></p>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">            
+            @Html.Raw(@Model.descripcionTema)
         </div>
     }
     else

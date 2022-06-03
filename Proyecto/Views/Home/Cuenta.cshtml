@@ -5,6 +5,12 @@
     ViewBag.Title = "Cuenta";
 }
 @{Usuario us = (Usuario)Session["Usuario"];}
+<style>
+    .btn {
+        background: #60c7c1;
+        Color: #fff !important;
+    }
+</style>
 <div>
     <h1>Hola, <b>@us.nombre @us.apellidos</b></h1>
 </div>
@@ -15,45 +21,45 @@
         {
             @Html.Hidden("idRol", @Model.idRol, new { @Class = "form-control", @Id = "txtidRol", @Value = @us.idRol })
             @Html.Hidden("estado", Model.estado, new { @Class = "form-control", @Id = "txtestado", @Value = @us.estado })
-        <form>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <label>Nombre</label>
-                    @Html.TextBox("nombre", Model.nombre, new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", required = "required" })
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <label>Apellido</label>
-                    @Html.TextBox("apellidos", Model.apellidos, new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos" })
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <label>Email</label>
-                    @Html.TextBox("correoElectronico", Model.correoElectronico, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico" })
-                </div>
-            </div>
-            @if (us.idRol == 2)
-            {
+            <form>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <label>Profesion</label>
-                        @Html.TextBox("profesion", Model.profesion, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtprofesion" })
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <label>Nombre</label>
+                        @Html.TextBox("nombre", Model.nombre, new { @Class = "form-control", @placeholder = "Digite Nombre", @Id = "txtnombre", required = "required" })
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <label>Apellido</label>
+                        @Html.TextBox("apellidos", Model.apellidos, new { @Class = "form-control", @placeholder = "Digite Apellidos", @Id = "txtapellidos" })
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <label>Perfil Profesional</label>
-                        @Html.TextArea("perfilProfesional", Model.perfilProfesional, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtperfilProfesional" })
+                        <label>Email</label>
+                        @Html.TextBox("correoElectronico", Model.correoElectronico, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtcorreoElectronico" })
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <label>Fotografia</label>
-                        @Html.Hidden("fotografia", Model.fotografia, new { @Class = "custom-file-input", @placeholder = "", @Id = "txtfotografia", @value_data = "fotografia" })
-                        @Html.TextBox("filefotografia", Model.fotografia, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfilefotografia", @value_data = "filefotografia", accept = " image/*" })
+                @if (us.idRol == 2)
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label>Profesion</label>
+                            @Html.TextBox("profesion", Model.profesion, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtprofesion" })
+                        </div>
                     </div>
-                </div>
-            }
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label>Perfil Profesional</label>
+                            @Html.TextArea("perfilProfesional", Model.perfilProfesional, new { @Class = "form-control", @placeholder = "Digite Email", @Id = "txtperfilProfesional" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label>Fotografia</label>
+                            @Html.Hidden("fotografia", Model.fotografia, new { @Class = "custom-file-input", @placeholder = "", @Id = "txtfotografia", @value_data = "fotografia" })
+                            @Html.TextBox("filefotografia", Model.fotografia, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfilefotografia", @value_data = "filefotografia", accept = " image/*" })
+                        </div>
+                    </div>
+                }
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <label>Nivel Estudiantil</label>
@@ -66,21 +72,24 @@
                         @Html.TextBox("userName", Model.userName, new { @Class = "form-control", @placeholder = "Digite Usuario", @Id = "txtuserName" })
                     </div>
                 </div>
-            
-            <div class="form-row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <label>Contraseña</label>
-                    @Html.Password("userPassword", Funcion.base64String(@Model.userPassword), new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword" })
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <label>Contraseña</label>
+                        @Html.Password("userPassword", Funcion.base64String(@Model.userPassword), new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword" })
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <label>Confirmar Contraseña</label>
+                        @Html.Password("userPassword2", Funcion.base64String(@Model.userPassword), new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2" })
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <label>Confirmar Contraseña</label>
-                    @Html.Password("userPassword2", Funcion.base64String(@Model.userPassword), new { @Class = "form-control", @placeholder = "Digite Contraseña", @Id = "txtuserPassword2" })
+                <br />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button type="submit" class="btn btn-primary login-btn">Actualizar</button>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-primary">Actualizar</button>
-            </div>
-        </form>
+            </form>
         }
     </div>
     <div class="col-md-6">

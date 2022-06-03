@@ -29,6 +29,9 @@ namespace Proyecto
                     "~/Scripts/Funcionesjs/jsFnGenSys.js",
                     "~/Scripts/Funcionesjs/jsFnSecuritySys.js",
                     "~/Scripts/Funcionesjs/jsMensajesSys.js"));
+
+            bundles.Add(new ScriptBundle("~/Content/ckeditor").Include(
+               "~/Scripts/ckeditor/ckeditor.js"));
         }
     }
 }

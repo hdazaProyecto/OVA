@@ -1,4 +1,5 @@
 ﻿@using Proyecto.Models;
+@Scripts.Render("~/Content/ckeditor")
 @{Usuario us = (Usuario)Session["Usuario"];}
 @model Tema
 @{
@@ -39,40 +40,41 @@
         </div><hr />
         @using (Html.BeginForm("GuardarTema", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-              <form>
-                  @Html.Hidden("idTema", @Model.idTema, new { @value_data = "idTema" })
-                  @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-                  @Html.Hidden("imagen", @Model.imagen, new { @value_data = "imagen" })
-                  @if (us != null)
-                  {
-                      @Html.Hidden("userName", us.userName, new { })
-                  }
-                  else
-                  {
-                      @Html.Hidden("userName", @Model.userName, new { })
-                  }
-                  <div class="form-group">
-                      <label>
-                          Nombre <span class="req">*</span>
-                      </label>
-                      @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre", required = "required" })
-                  </div>
-                  <div class="form-group">
-                      <label>
-                          Descripcion <span class="req">*</span>
-                      </label>
-                      @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
-                  </div>
-                  <div class="form-group">
-                      @Html.TextBox("file", @Model.file, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfile", @value_data = "file", accept = "image/*" })
-                  </div>
-                  @*<div class="form-group">
-            @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado", @accept = "image/*" })
-        </div>*@
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary">Guardar</button>
-                  </div>
-              </form>
+            <form>
+                @Html.Hidden("idTema", @Model.idTema, new { @value_data = "idTema" })
+                @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
+                @Html.Hidden("imagen", @Model.imagen, new { @value_data = "imagen" })
+                @if (us != null)
+                {
+                    @Html.Hidden("userName", us.userName, new { })
+                }
+                else
+                {
+                    @Html.Hidden("userName", @Model.userName, new { })
+                }
+                <div class="form-group">
+                    <label>
+                        Nombre <span class="req">*</span>
+                    </label>
+                    @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Descripcion <span class="req">*</span>
+                    </label>
+                    @*@Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })*@
+                    @Html.TextArea("descripcion", @Model.descripcion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+                </div>
+                <div class="form-group">
+                    @Html.TextBox("file", @Model.file, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfile", @value_data = "file", accept = "image/*" })
+                </div>
+                @*<div class="form-group">
+                        @Html.CheckBox("estado", @Model.estado, new { @Class = "form-control", @placeholder = "", @Id = "txtestado", @value_data = "estado", @accept = "image/*" })
+                    </div>*@
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
         }
 
     </div>

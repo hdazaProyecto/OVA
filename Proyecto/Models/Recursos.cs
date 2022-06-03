@@ -14,6 +14,7 @@ namespace Proyecto.Models
         //Variables
         public int idRecurso { get; set; }
         public string nombre { get; set; }
+        [AllowHtml]
         public string descripcion { get; set; }
         public string url { get; set; }
         public string archivo { get; set; }
@@ -25,6 +26,7 @@ namespace Proyecto.Models
         public DateTime? fechaModifica { get; set; }
         public string userName { get; set; }
         public bool evidencia { get; set; }
+        [AllowHtml]
         public string descEvidencia { get; set; }
         public int puntosRecurso { get; set; }
         public bool entregado { get; set; }
@@ -293,7 +295,7 @@ namespace Proyecto.Models
             con = new SqlConnectionStringBuilder();
             con = conexion.ConexionSQLServer();
             ConSqlServer server = new ConSqlServer(con);
-            server.ejecutarQuery(@"select idUnidad,nombre from unidades", new List<SqlParameter>(), out _unidades);
+            server.ejecutarQuery(@"select idUnidad,nombre from unidades where estado=1", new List<SqlParameter>(), out _unidades);
             return Combo(_unidades, "nombre", "idUnidad", null);
         }
 
@@ -310,11 +312,11 @@ namespace Proyecto.Models
             ConSqlServer server = new ConSqlServer(con);
             if (id == 0)
             {
-                server.ejecutarQuery(@"select idRecurso,nombre from recursos", new List<SqlParameter>(), out _recursos);
+                server.ejecutarQuery(@"select idRecurso,nombre from recursos where estado=1", new List<SqlParameter>(), out _recursos);
             }
             else
             {
-                server.ejecutarQuery(@"select idRecurso,nombre from recursos where idunidad="+id, new List<SqlParameter>(), out _recursos);
+                server.ejecutarQuery(@"select idRecurso,nombre from recursos where estado=1 and idunidad=" + id, new List<SqlParameter>(), out _recursos);
             }
             
             return Combo(_recursos, "nombre", "idRecurso", null);
@@ -333,11 +335,11 @@ namespace Proyecto.Models
             ConSqlServer server = new ConSqlServer(con);
             if (id == "0")
             {
-                server.ejecutarQuery(@"select userName, (nombre + ' ' +apellidos) nombre from usuarios where estado=1 and idRol > 1", new List<SqlParameter>(), out _usuarios);
+                server.ejecutarQuery(@"select userName, (nombre + ' ' +apellidos) nombre from usuarios where estado=1 and idRol = 3", new List<SqlParameter>(), out _usuarios);
             }
             else
             {
-                server.ejecutarQuery(@"select userName, (nombre + ' ' +apellidos) nombre from usuarios where estado=1 and idRol > 1 and userName=" + id, new List<SqlParameter>(), out _usuarios);
+                server.ejecutarQuery(@"select userName, (nombre + ' ' +apellidos) nombre from usuarios where estado=1 and idRol = 3 and userName=" + id, new List<SqlParameter>(), out _usuarios);
             }
 
             return Combo(_usuarios, "nombre", "userName", null);

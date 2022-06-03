@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Proyecto.Models
 {
@@ -12,7 +13,8 @@ namespace Proyecto.Models
     {
         public int idTema { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
+        [AllowHtml]
+        public string  descripcion { get; set; }
         public string imagen { get; set; }
         public bool estado { get; set; }
         public DateTime fecha { get; set; }
