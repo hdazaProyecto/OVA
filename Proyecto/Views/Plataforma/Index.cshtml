@@ -486,7 +486,7 @@
                     foreach (Unidades un in Model.unidades)
                     {
                         <tr>
-                            <th width="20%"><h2>@un.nombre</h2></th>
+                            <th width="20%" title="@un.descripcion"><h2>@un.nombre</h2></th>
                             <th width="80%">
                                 @if (Model.recursos != null && Model.recursos.Count > 0)
                                 {

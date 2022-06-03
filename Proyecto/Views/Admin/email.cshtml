@@ -39,48 +39,52 @@
         </div><hr />
         @using (Html.BeginForm("GuardarConfEmail", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <form>
-                @Html.Hidden("idConfigEmail", @Model.idConfigEmail, new { @value_data = "idConfigEmail" })
-                <div class="form-group">
-                    <label>
-                        Nombre
-                    </label>
-                    @Html.TextBox("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtnombre", @value_data = "nombre", required = "required" })
-                </div>
-                <div class="form-group">
-                    <label>
-                        Servidor
-                    </label>
-                    @Html.TextBox("servidor", @Model.servidor, new { @Class = "form-control", @placeholder = "", @Id = "txtservidor", @value_data = "servidor", required = "required" })
-                </div>
-                <div class="form-group">
-                    <label>
-                        E-mail
-                    </label>
-                    @Html.TextBox("usuario", @Model.usuario, new { @type = "email", @Class = "form-control", @placeholder = "", @Id = "txtusuario", @value_data = "usuario", required = "required" })
-                </div>
-                <div class="form-group">
-                    <label>
-                        Clave
-                    </label>
-                    @Html.TextBox("clave", @Model.clave, new { @type = "password", @Class = "form-control", @placeholder = "", @Id = "txtclave", @value_data = "clave", required = "required" })
-                </div>
-                <div class="form-group">
-                    <label>
-                        Puerto
-                    </label>
-                    @Html.TextBox("puerto", @Model.puerto, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuerto", @value_data = "puerto", required = "required" })
-                </div>
-                <div class="form-group">
-                    <label>
-                        ssl
-                    </label>
-                    @Html.CheckBox("ssl", @Model.ssl, new { @Class = "form-control", @placeholder = "", @Id = "txtssl", @value_data = "ssl" })
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
+              <form>
+                  @Html.Hidden("idConfigEmail", @Model.idConfigEmail, new { @value_data = "idConfigEmail" })
+                  <div class="form-group">
+                      <label>
+                          Nombre
+                      </label>
+                      @Html.TextBox("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtnombre", @value_data = "nombre", required = "required" })
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          Servidor
+                      </label>
+                      @Html.TextBox("servidor", @Model.servidor, new { @Class = "form-control", @placeholder = "", @Id = "txtservidor", @value_data = "servidor", required = "required" })
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          E-mail
+                      </label>
+                      @Html.TextBox("usuario", @Model.usuario, new { @type = "email", @Class = "form-control", @placeholder = "", @Id = "txtusuario", @value_data = "usuario", required = "required" })
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          Clave
+                      </label>
+                      @Html.TextBox("clave", @Model.clave, new { @type = "password", @Class = "form-control", @placeholder = "", @Id = "txtclave", @value_data = "clave", required = "required" })
+                  </div>
+                  <div class="form-group">
+                      <label>
+                          Puerto
+                      </label>
+                      @Html.TextBox("puerto", @Model.puerto, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuerto", @value_data = "puerto", required = "required" })
+                  </div>
+                  @*<div class="form-group">
+                      <label>
+                          ssl
+                      </label>
+                      @Html.CheckBox("ssl", @Model.ssl, new { @Class = "form-control", @placeholder = "", @Id = "txtssl", @value_data = "ssl" })
+                  </div>*@
+                  <div class="form-group">
+                      @Html.CheckBox("ssl", @Model.ssl, new { @Class = "form-check-input", @placeholder = "", @Id = "txtssl", @value_data = "ssl" })
+                      <label class="form-check-label"> ssl </label>
+                  </div>
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+              </form>
         }
         <div class="form-group">
             <a class="btn btn-primary" href="@Url.Action("EmailPrueba", "Admin")" title="Envio Correo de prueba">Correo de prueba</a>
