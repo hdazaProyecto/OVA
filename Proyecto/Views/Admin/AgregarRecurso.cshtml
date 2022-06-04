@@ -1,6 +1,7 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
 @model Recursos
+@Scripts.Render("~/Content/ckeditor")
 @{
     ViewBag.Title = "Agregar Recursos";
 }
@@ -60,7 +61,7 @@
                 <label>
                     Descripcion
                 </label>
-                @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+                @Html.TextArea("descripcion", @Model.descripcion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
             </div>
             <div class="form-group">
                 <label>
@@ -94,11 +95,23 @@
                 @Html.CheckBox("evidencia", @Model.evidencia, new { @Class = "form-check-input", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
                 <label class="form-check-label"> Evidencia </label>
             </div>
+            @*<div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Contenido</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Actividad</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                <label class="form-check-label" for="inlineRadio3">Evaluacion</label>
+            </div>*@
             <div class="form-group">
                 <label>
                     Descripcion Evidencia
                 </label>
-                @Html.TextBox("descEvidencia", @Model.descEvidencia, new { @Class = "form-control", @placeholder = "", @Id = "txtdescEvidencia", @value_data = "descEvidencia", @maxlength = "250" })
+                @Html.TextArea("descEvidencia", @Model.descEvidencia, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtdescEvidencia", @value_data = "descEvidencia", @maxlength = "250" })
             </div>
             <div class="form-group">
                 <label>

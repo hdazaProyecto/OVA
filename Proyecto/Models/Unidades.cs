@@ -13,6 +13,7 @@ namespace Proyecto.Models
     {
         public int idUnidad { get; set; }
         public string nombre { get; set; }
+        [AllowHtml]
         public string descripcion { get; set; }
         public string imagen { get; set; }
         public bool estado { get; set; }

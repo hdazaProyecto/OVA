@@ -1,6 +1,7 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
 @model Recursos
+@Scripts.Render("~/Content/ckeditor")
 @{
     ViewBag.Title = "Editar Recursos";
 }
@@ -39,79 +40,79 @@
         </div>
         @using (Html.BeginForm("AgregarRecurso", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-        <form>
-            @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
-            @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
-            @Html.Hidden("imagen", @Model.imagen, new { @value_data = "imagen" })
-            @Html.Hidden("archivo", @Model.archivo, new { @value_data = "archivo" })
-            @if (us != null)
-            {
-                @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
-            }
-            else
-            {
-                @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
-            }
-            <div class="form-group">
-                <label>
-                    Nombre <span class="req">*</span>
-                </label>
-                @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", required = "required", @Id = "txtNombre", @value_data = "nombre", @maxlength = "250" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Descripcion
-                </label>
-                @Html.TextArea("descripcion", @Model.descripcion, new { @Class = "form-control", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Unidad
-                </label>
-                @Html.DropDownList("idUnidad", (List<System.Web.Mvc.SelectListItem>)ViewBag.unidades, "Seleccione...", new { @Class = "form-control form-control-sm", @title = "Unidades", @value_data = "idUnidad", required = "required" })
-            </div>
-            <div class="form-group">
-                <label>
-                    URL
-                </label>
-                @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Archivo @Model.archivo
-                </label>
-                @Html.TextBox("fileArchivo", @Model.archivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtarchivo", @value_data = "archivo", accept = "application/pdf" })
-            </div>
-            <div class="form-group">
-                <label>
-                    Imagen @Model.imagen
-                </label>
-                @Html.TextBox("fileImagen", @Model.imagen, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtimagen", @value_data = "imagen", accept = " image/*" })
-            </div>
-            <div class="form-group">
-                @Html.CheckBox("estado", @Model.estado, new { @Class = "form-check-input", @placeholder = "", @Id = "txtestado", @value_data = "estado", @title = "Estado de recurso Activo o Inactivo" })
-                <label class="form-check-label"> Estado </label>
-            </div>
-            <div class="form-group">
-                @Html.CheckBox("evidencia", @Model.evidencia, new { @Class = "form-check-input", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
-                <label class="form-check-label"> Evidencia </label>
-            </div>
-            <div class="form-group">
-                <label>
-                    Descripcion Evidencia
-                </label> 
-                @Html.TextBox("descEvidencia", @Model.descEvidencia, new { @Class = "form-control", @placeholder = "", @Id = "txtdescEvidencia", @value_data = "descEvidencia",@maxlength = "250"})
-            </div>
-            <div class="form-group">
-                <label>
-                   Puntos Descripcion
-                </label>
-                @Html.TextBox("puntosRecurso", @Model.puntosRecurso, new { @type = "number",@Class = "form-control", @placeholder = "", @Id = "txtpuntosRecurso", @value_data = "puntosRecurso",@max="100" })
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
+            <form>
+                @Html.Hidden("idRecurso", @Model.idUnidad, new { @value_data = "idRecurso" })
+                @Html.Hidden("fecha", DateTime.Now, new { @value_data = "fecha" })
+                @Html.Hidden("imagen", @Model.imagen, new { @value_data = "imagen" })
+                @Html.Hidden("archivo", @Model.archivo, new { @value_data = "archivo" })
+                @if (us != null)
+                {
+                    @Html.Hidden("userName", us.userName, new { @value_data = "userName" })
+                }
+                else
+                {
+                    @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
+                }
+                <div class="form-group">
+                    <label>
+                        Nombre <span class="req">*</span>
+                    </label>
+                    @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", required = "required", @Id = "txtNombre", @value_data = "nombre", @maxlength = "250" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Descripcion
+                    </label>
+                    @Html.TextArea("descripcion", @Model.descripcion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtDescripcion", @value_data = "descripcion" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Unidad
+                    </label>
+                    @Html.DropDownList("idUnidad", (List<System.Web.Mvc.SelectListItem>)ViewBag.unidades, "Seleccione...", new { @Class = "form-control form-control-sm", @title = "Unidades", @value_data = "idUnidad", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        URL
+                    </label>
+                    @Html.TextBox("url", @Model.url, new { @Class = "form-control", @placeholder = "", @Id = "txturl", @value_data = "url" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Archivo @Model.archivo
+                    </label>
+                    @Html.TextBox("fileArchivo", @Model.archivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtarchivo", @value_data = "archivo", accept = "application/pdf" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Imagen @Model.imagen
+                    </label>
+                    @Html.TextBox("fileImagen", @Model.imagen, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtimagen", @value_data = "imagen", accept = " image/*" })
+                </div>
+                <div class="form-group">
+                    @Html.CheckBox("estado", @Model.estado, new { @Class = "form-check-input", @placeholder = "", @Id = "txtestado", @value_data = "estado", @title = "Estado de recurso Activo o Inactivo" })
+                    <label class="form-check-label"> Estado </label>
+                </div>
+                <div class="form-group">
+                    @Html.CheckBox("evidencia", @Model.evidencia, new { @Class = "form-check-input", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
+                    <label class="form-check-label"> Evidencia </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Descripcion Evidencia
+                    </label>
+                    @Html.TextArea("descEvidencia", @Model.descEvidencia, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtdescEvidencia", @value_data = "descEvidencia", @maxlength = "250" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Puntos Descripcion
+                    </label>
+                    @Html.TextBox("puntosRecurso", @Model.puntosRecurso, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuntosRecurso", @value_data = "puntosRecurso", @max = "100" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
         }
 
     </div>
