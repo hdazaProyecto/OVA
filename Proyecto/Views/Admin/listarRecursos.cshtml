@@ -79,7 +79,7 @@
                                                 {
                                                     <tr class="table-active">
                                                         <td>@re.nombre</td>
-                                                        <td>@re.descripcion</td>
+                                                        <td> @Html.Raw(@re.descripcion)</td>
                                                         <td>@re.evidencia</td>
                                                         @if (@re.estado == true)
                                                         {

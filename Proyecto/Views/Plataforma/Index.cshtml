@@ -58,7 +58,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="row">
-                    <h2>@Model.nombreRecurso</h2><br />
+                    <h3 style="color:#60c7c1 !important"><b>@Model.nombreRecurso</b></h3><br />
                     @Html.Raw(@Model.descripcionRecurso)                    
                 </div>
                 <hr />
@@ -69,11 +69,11 @@
                         {
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
-                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.evidenciaM.puntosAlcanzados / @Model.puntosRecurso&nbsp&nbsp</h4></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>Calificación: @Model.evidenciaM.puntosAlcanzados / @Model.puntosRecurso&nbsp&nbsp</h4></div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><b>@Model.descEvidencia</b></p></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">@Html.Raw(@Model.descEvidencia)</div>
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
@@ -142,11 +142,11 @@
                         {
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
-                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.puntosRecurso&nbsp&nbsp</h4></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>Calificación: @Model.puntosRecurso&nbsp&nbsp</h4></div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><b>@Model.descEvidencia</b></p></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">@Html.Raw(@Model.descEvidencia)</div>
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
@@ -202,7 +202,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="row">
-                    <h2>@Model.nombreRecurso</h2><br />
+                    <h3 style="color:#60c7c1 !important"><b>@Model.nombreRecurso</b></h3><br />
                     @Html.Raw(@Model.descripcionRecurso)                 
                 </div>
                 <hr />
@@ -213,11 +213,11 @@
                         {
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
-                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.evidenciaM.puntosAlcanzados / @Model.puntosRecurso&nbsp&nbsp</h4></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>Calificación: @Model.evidenciaM.puntosAlcanzados / @Model.puntosRecurso&nbsp&nbsp</h4></div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><b>@Model.descEvidencia</b></p></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">@Html.Raw(@Model.descEvidencia)</div>
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
@@ -286,11 +286,11 @@
                         {
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
-                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.puntosRecurso&nbsp&nbsp</h4></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>Calificación: @Model.puntosRecurso&nbsp&nbsp</h4></div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><b>@Model.descEvidencia</b></p></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">@Html.Raw(@Model.descEvidencia)</div>
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
@@ -346,7 +346,7 @@
             </div>
             <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="row">
-                    <h2>@Model.nombreRecurso</h2><br />
+                    <h3 style="color:#60c7c1 !important"><b>@Model.nombreRecurso</b></h3><br />
                     @Html.Raw(@Model.descripcionRecurso)
                 </div>
                 <hr />
@@ -357,11 +357,11 @@
                         {
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
-                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.evidenciaM.puntosAlcanzados / @Model.puntosRecurso&nbsp&nbsp</h4></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>Calificación: @Model.evidenciaM.puntosAlcanzados / @Model.puntosRecurso&nbsp&nbsp</h4></div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><b>@Model.descEvidencia</b></p></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">@Html.Raw(@Model.descEvidencia)</div>
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
@@ -430,11 +430,11 @@
                         {
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6"><h3><b>Enviar evidencia</b></h3></div>
-                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>@Model.puntosRecurso&nbsp&nbsp</h4></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6 textright"><h4>Calificación: @Model.puntosRecurso&nbsp&nbsp</h4></div>
                             </div>
                             <hr />
                             <div class="row">
-                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12"><p><b>@Model.descEvidencia</b></p></div>
+                                <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">@Html.Raw(@Model.descEvidencia)</div>
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {

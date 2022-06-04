@@ -80,7 +80,7 @@
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Hola "+us.nombre, "Cuenta", "Home")</li>
+                            <li>@Html.ActionLink("Hola " + us.nombre, "Cuenta", "Home")</li>
                         }
                         <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Home")</li>
 
@@ -94,11 +94,12 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - @if (@pt != null)
-            {@pt.nombreTema}</p>
+            <p>
+                &copy; @DateTime.Now.Year - @if (@pt != null)
+                {@pt.nombreTema}
+            </p>
         </footer>
     </div>
-
     <!-- Modal Login -->
     <div id="login" class="modal fade">
         <div class="modal-dialog modal-login">
@@ -129,7 +130,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal Recuperar Password-->
     <div id="RecPass" class="modal fade">
         <div class="modal-dialog modal-login">
@@ -153,7 +153,6 @@
             </div>
         </div>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -172,7 +171,6 @@
                 </text>
             }
         });
-
     </script>
 </body>
 </html>
