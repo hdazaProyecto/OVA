@@ -77,59 +77,57 @@
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
-                                <from>
-                                    @Html.Hidden("idEvidencia", @Model.evidenciaM.idEvidencia, new { @value_data = "idEvidencia" })
-                                    @Html.Hidden("idTema", @Model.evidenciaM.idTema, new { @value_data = "idTema" })
-                                    @Html.Hidden("idUnidad", @Model.evidenciaM.idUnidad, new { @value_data = "idUnidad" })
-                                    @Html.Hidden("idRecurso", @Model.evidenciaM.idRecurso, new { @value_data = "idRecurso" })
-                                    @Html.Hidden("archivo", @Model.evidenciaM.archivo, new { @value_data = "archivo" })
-                                    @Html.Hidden("entregado", @Model.evidenciaM.entregado, new { @value_data = "entregado" })
-                                    @Html.Hidden("userName", us.userName, new { @Id = "txtarchivo", @value_data = "userName" })
+                            <from>
+                                @Html.Hidden("idEvidencia", @Model.evidenciaM.idEvidencia, new { @value_data = "idEvidencia" })
+                                @Html.Hidden("idTema", @Model.evidenciaM.idTema, new { @value_data = "idTema" })
+                                @Html.Hidden("idUnidad", @Model.evidenciaM.idUnidad, new { @value_data = "idUnidad" })
+                                @Html.Hidden("idRecurso", @Model.evidenciaM.idRecurso, new { @value_data = "idRecurso" })
+                                @Html.Hidden("archivo", @Model.evidenciaM.archivo, new { @value_data = "archivo" })
+                                @Html.Hidden("entregado", @Model.evidenciaM.entregado, new { @value_data = "entregado" })
+                                @Html.Hidden("userName", us.userName, new { @Id = "txtarchivo", @value_data = "userName" })
 
-                                    @if (@Model.evidenciaM.entregado)
-                                    {
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <h3>
-                                                    <label>
-                                                        Actividad entregada
-                                                    </label>
-                                                </h3>
-                                            </div>
+                                @if (@Model.evidenciaM.entregado)
+                                {
+                                    <div class="form-group">
+                                        <h3>
+                                            <label>
+                                                Actividad entregada
+                                            </label>
+                                        </h3>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div>
+                                            <b>Comentario:</b> @Model.evidenciaM.observacion
                                         </div>
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label>
-                                                    Comentario: @Model.evidenciaM.observacion
-                                                </label>
-                                            </div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="row">
-                                            <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <div class="form-group">
-                                                    <label>
-                                                        Archivo
-                                                    </label>
-                                                    @Html.TextBox("fileArchivo", @Model.evidenciaM.fileArchivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfileArchivo", @title = "se admiten solo PDF", @value_data = "fileArchivo", accept = "application/pdf" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    </div>
+
+                                }
+                                else
+                                {
+                                     <div class="row">
+                                        
                                             <div class="form-group">
                                                 <label>
-                                                    Comentario
+                                                    Archivo
                                                 </label>
-                                                @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                                @Html.TextBox("fileArchivo", @Model.evidenciaM.fileArchivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfileArchivo", @title = "se admiten solo PDF", @value_data = "fileArchivo", accept = "application/pdf" })
                                             </div>
+                                       
+                                    </div>
+                                    
+                                     <div class="form-group">
+                                            <label>
+                                                Comentario
+                                            </label>
+                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
-                                        </div>
-                                    }
-                                </from>
+                                    
+                                     <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                }
+                            </from>
                             }
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -168,14 +166,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <label>
-                                                Comentario
-                                            </label>
-                                            @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                    <div class="row">
+                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label>
+                                                    Comentario
+                                                </label>
+                                                @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                            </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
@@ -221,59 +222,57 @@
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
-                                <from>
-                                    @Html.Hidden("idEvidencia", @Model.evidenciaM.idEvidencia, new { @value_data = "idEvidencia" })
-                                    @Html.Hidden("idTema", @Model.evidenciaM.idTema, new { @value_data = "idTema" })
-                                    @Html.Hidden("idUnidad", @Model.evidenciaM.idUnidad, new { @value_data = "idUnidad" })
-                                    @Html.Hidden("idRecurso", @Model.evidenciaM.idRecurso, new { @value_data = "idRecurso" })
-                                    @Html.Hidden("archivo", @Model.evidenciaM.archivo, new { @value_data = "archivo" })
-                                    @Html.Hidden("entregado", @Model.evidenciaM.entregado, new { @value_data = "entregado" })
-                                    @Html.Hidden("userName", us.userName, new { @Id = "txtarchivo", @value_data = "userName" })
+                            <from>
+                                @Html.Hidden("idEvidencia", @Model.evidenciaM.idEvidencia, new { @value_data = "idEvidencia" })
+                                @Html.Hidden("idTema", @Model.evidenciaM.idTema, new { @value_data = "idTema" })
+                                @Html.Hidden("idUnidad", @Model.evidenciaM.idUnidad, new { @value_data = "idUnidad" })
+                                @Html.Hidden("idRecurso", @Model.evidenciaM.idRecurso, new { @value_data = "idRecurso" })
+                                @Html.Hidden("archivo", @Model.evidenciaM.archivo, new { @value_data = "archivo" })
+                                @Html.Hidden("entregado", @Model.evidenciaM.entregado, new { @value_data = "entregado" })
+                                @Html.Hidden("userName", us.userName, new { @Id = "txtarchivo", @value_data = "userName" })
 
-                                    @if (@Model.evidenciaM.entregado)
-                                    {
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <h3>
-                                                    <label>
-                                                        Actividad entregada
-                                                    </label>
-                                                </h3>
-                                            </div>
+                                @if (@Model.evidenciaM.entregado)
+                                {
+                                    <div class="form-group">
+                                        <h3>
+                                            <label>
+                                                Actividad entregada
+                                            </label>
+                                        </h3>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div>
+                                            <b>Comentario:</b> @Model.evidenciaM.observacion
                                         </div>
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label>
-                                                    Comentario: @Model.evidenciaM.observacion
-                                                </label>
-                                            </div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="row">
-                                            <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <div class="form-group">
-                                                    <label>
-                                                        Archivo
-                                                    </label>
-                                                    @Html.TextBox("fileArchivo", @Model.evidenciaM.fileArchivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfileArchivo", @title = "se admiten solo PDF", @value_data = "fileArchivo", accept = "application/pdf" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label>
-                                                    Comentario
-                                                </label>
-                                                @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
-                                            </div>
-                                        </div>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="row">
+
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                            <label>
+                                                Archivo
+                                            </label>
+                                            @Html.TextBox("fileArchivo", @Model.evidenciaM.fileArchivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfileArchivo", @title = "se admiten solo PDF", @value_data = "fileArchivo", accept = "application/pdf" })
                                         </div>
-                                    }
-                                </from>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>
+                                            Comentario
+                                        </label>
+                                        @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                }
+                            </from>
                             }
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -312,12 +311,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <label>
-                                                Comentario
-                                            </label>
-                                            @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                    <div class="row">
+                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label>
+                                                    Comentario
+                                                </label>
+                                                @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -365,59 +366,57 @@
                             </div>
                             using (Html.BeginForm("gestionarEvidencia", "Plataforma", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
-                                <from>
-                                    @Html.Hidden("idEvidencia", @Model.evidenciaM.idEvidencia, new { @value_data = "idEvidencia" })
-                                    @Html.Hidden("idTema", @Model.evidenciaM.idTema, new { @value_data = "idTema" })
-                                    @Html.Hidden("idUnidad", @Model.evidenciaM.idUnidad, new { @value_data = "idUnidad" })
-                                    @Html.Hidden("idRecurso", @Model.evidenciaM.idRecurso, new { @value_data = "idRecurso" })
-                                    @Html.Hidden("archivo", @Model.evidenciaM.archivo, new { @value_data = "archivo" })
-                                    @Html.Hidden("entregado", @Model.evidenciaM.entregado, new { @value_data = "entregado" })
-                                    @Html.Hidden("userName", us.userName, new { @Id = "txtarchivo", @value_data = "userName" })
+                            <from>
+                                @Html.Hidden("idEvidencia", @Model.evidenciaM.idEvidencia, new { @value_data = "idEvidencia" })
+                                @Html.Hidden("idTema", @Model.evidenciaM.idTema, new { @value_data = "idTema" })
+                                @Html.Hidden("idUnidad", @Model.evidenciaM.idUnidad, new { @value_data = "idUnidad" })
+                                @Html.Hidden("idRecurso", @Model.evidenciaM.idRecurso, new { @value_data = "idRecurso" })
+                                @Html.Hidden("archivo", @Model.evidenciaM.archivo, new { @value_data = "archivo" })
+                                @Html.Hidden("entregado", @Model.evidenciaM.entregado, new { @value_data = "entregado" })
+                                @Html.Hidden("userName", us.userName, new { @Id = "txtarchivo", @value_data = "userName" })
 
-                                    @if (@Model.evidenciaM.entregado)
-                                    {
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <h3>
-                                                    <label>
-                                                        Actividad entregada
-                                                    </label>
-                                                </h3>
-                                            </div>
+                                @if (@Model.evidenciaM.entregado)
+                                {
+                                    <div class="form-group">
+                                        <h3>
+                                            <label>
+                                                Actividad entregada
+                                            </label>
+                                        </h3>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div>
+                                            <b>Comentario:</b> @Model.evidenciaM.observacion
                                         </div>
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label>
-                                                    Comentario: @Model.evidenciaM.observacion
-                                                </label>
-                                            </div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="row">
-                                            <div class="cont col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <div class="form-group">
-                                                    <label>
-                                                        Archivo
-                                                    </label>
-                                                    @Html.TextBox("fileArchivo", @Model.evidenciaM.fileArchivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfileArchivo", @title = "se admiten solo PDF", @value_data = "fileArchivo", accept = "application/pdf" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label>
-                                                    Comentario
-                                                </label>
-                                                @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
-                                            </div>
-                                        </div>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="row">
+
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                            <label>
+                                                Archivo
+                                            </label>
+                                            @Html.TextBox("fileArchivo", @Model.evidenciaM.fileArchivo, new { @type = "file", @Class = "custom-file-input", @placeholder = "", @Id = "txtfileArchivo", @title = "se admiten solo PDF", @value_data = "fileArchivo", accept = "application/pdf" })
                                         </div>
-                                    }
-                                </from>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>
+                                            Comentario
+                                        </label>
+                                        @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                }
+                            </from>
                             }
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -456,12 +455,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <label>
-                                                Comentario
-                                            </label>
-                                            @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                    <div class="row">
+                                        <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label>
+                                                    Comentario
+                                                </label>
+                                                @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">

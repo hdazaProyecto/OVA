@@ -300,6 +300,21 @@ namespace Proyecto.Models
         }
 
         /// <summary>
+        /// Método que permite consultar las unidades creadas para llenar combo.
+        /// </summary>
+        /// <returns></returns>
+        public List<SelectListItem> comUnidadesE()
+        {
+            DataTable _unidades = new DataTable();
+            conexion = new Conexion();
+            con = new SqlConnectionStringBuilder();
+            con = conexion.ConexionSQLServer();
+            ConSqlServer server = new ConSqlServer(con);
+            server.ejecutarQuery(@"select distinct U.idUnidad,U.nombre from unidades U inner join Recursos R on U.idUnidad=R.idUnidad where U.estado=1 and r.evidencia=1", new List<SqlParameter>(), out _unidades);
+            return Combo(_unidades, "nombre", "idUnidad", null);
+        }
+
+        /// <summary>
         /// Método que permite consultar recursos creados para llenar combo.
         /// </summary>
         /// <returns></returns>
@@ -312,11 +327,11 @@ namespace Proyecto.Models
             ConSqlServer server = new ConSqlServer(con);
             if (id == 0)
             {
-                server.ejecutarQuery(@"select idRecurso,nombre from recursos where estado=1", new List<SqlParameter>(), out _recursos);
+                server.ejecutarQuery(@"select idRecurso,nombre from recursos where estado=1 and evidencia=1", new List<SqlParameter>(), out _recursos);
             }
             else
             {
-                server.ejecutarQuery(@"select idRecurso,nombre from recursos where estado=1 and idunidad=" + id, new List<SqlParameter>(), out _recursos);
+                server.ejecutarQuery(@"select idRecurso,nombre from recursos where estado=1 and evidencia=1 and idunidad=" + id, new List<SqlParameter>(), out _recursos);
             }
             
             return Combo(_recursos, "nombre", "idRecurso", null);

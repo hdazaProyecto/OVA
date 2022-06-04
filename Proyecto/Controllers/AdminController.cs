@@ -411,7 +411,7 @@ namespace Proyecto.Controllers
             if (Session["Usuario"] != null)
             {
                 Recursos recurso = new Recursos();
-                ViewBag.unidades = recurso.comUnidades();
+                ViewBag.unidades = recurso.comUnidadesE();
                 ViewBag.recursos = recurso.comRecursos(evidencia.idRecurso);
                 ViewBag.usuarios = recurso.comUsuarios();
                 listEvidencia = evidencia.consultarEvidencias(evidencia);
