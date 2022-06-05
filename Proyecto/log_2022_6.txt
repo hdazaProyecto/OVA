@@ -116,3 +116,61 @@ El nombre de columna 'userName' no es válido.]
 El nombre de columna 'userName' no es válido.]
 05/06/2022 5:50:45 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =4 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
 El nombre de columna 'userName' no es válido.]
+05/06/2022 5:53:49 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:53:52 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:59:38 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='hdaza' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:59:51 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Evidencias
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  puntosAlcanzados = @puntosAlcanzados,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado,userName)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado,@userName)
+                                        END SELECT E.idEvidencia,E.archivo,E.observacion,E.idTema,E.idUnidad,E.idRecurso,E.retroalimentacion,
+                                        CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados,E.entregado,E.userName,U.nombre,U.apellidos 
+                                        FROM Evidencias E
+                                        INNER JOIN Usuarios U ON E.userName=U.userName
+                                        WHERE idEvidencia=@idEvidencia [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:59:51 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:59:55 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='hdaza' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 6:00:46 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Evidencias
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  puntosAlcanzados = @puntosAlcanzados,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado,userName)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado,@userName)
+                                        END SELECT E.idEvidencia,E.archivo,E.observacion,E.idTema,E.idUnidad,E.idRecurso,E.retroalimentacion,
+                                        CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados,E.entregado,E.userName,U.nombre,U.apellidos 
+                                        FROM Evidencias E
+                                        INNER JOIN Usuarios U ON E.userName=U.userName
+                                        WHERE idEvidencia=@idEvidencia [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 6:15:19 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 6:15:24 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='hdaza' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]

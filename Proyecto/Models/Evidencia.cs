@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Proyecto.Models
 {
@@ -13,6 +14,7 @@ namespace Proyecto.Models
         public int idEvidencia { get; set; }
         public string archivo { get; set; }
         public HttpPostedFileBase fileArchivo { get; set; }
+        [AllowHtml]
         public string observacion { get; set; }
         public int idTema { get; set; }
         public int idUnidad { get; set; }
