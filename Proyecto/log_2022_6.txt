@@ -1,0 +1,118 @@
+05/06/2022 3:57:23 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,                                              
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Actualizar',getdate(),'admin')
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Crear',getdate(),'admin')
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Instrucción INSERT en conflicto con la restricción CHECK 'CK_Auditoria'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Auditoria', column 'registro'.
+Se terminó la instrucción.]
+05/06/2022 3:57:23 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 3:58:01 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,                                              
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Actualizar',getdate(),'admin')
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Crear',getdate(),'admin')
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Instrucción INSERT en conflicto con la restricción CHECK 'CK_Auditoria'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Auditoria', column 'registro'.
+Se terminó la instrucción.]
+05/06/2022 3:58:01 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 4:01:25 : Error al ejecutar la consulta IF EXISTS (SELECT * FROM Tema WHERE idTema=@idTema) 
+                                        BEGIN
+                                           UPDATE Tema
+                                               SET nombre = @nombre,
+                                                  descripcion = @descripcion,
+                                                  imagen = @imagen,                                              
+                                                  fechaModifica = @fechaModifica                                                 
+                                             WHERE idTema=@idTema
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Actualizar',getdate(),'admin')
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Tema
+                                                   (nombre,descripcion,imagen,estado,fecha,userName)
+                                             VALUES
+                                                   (@nombre,@descripcion,@imagen,1,@fecha,@userName)
+                                            INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Tema','Crear',getdate(),'admin')
+                                        END SELECT * FROM Tema WHERE estado=1 [mensaje: Instrucción INSERT en conflicto con la restricción CHECK 'CK_Auditoria'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Auditoria', column 'registro'.
+Se terminó la instrucción.]
+05/06/2022 4:01:25 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:00:56 : Error al ejecutar la consultaUPDATE Recursos SET estado=CASE WHEN estado=1 THEN 0 ELSE 1 END WHERE idRecurso=@idrecurso
+                                        SELECT R.*,U.nombre nomUnidad FROM Recursos R LEFT JOIN Unidades U ON R.idUnidad=U.idUnidad ORDER BY R.idUnidad,R.idRecurso
+                                        INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES 
+                                        ('Recursos',(select case when estado=1 then 'Activación ' else 'Desactivación ' end from  Recursos  WHERE idRecurso=@idrecurso) +' de recurso '+ CAST(@idRecurso as VARCHAR),getdate(),
+                                        '') [mensaje: Instrucción INSERT en conflicto con la restricción FOREIGN KEY 'FK_Auditoria_Usuarios'. El conflicto ha aparecido en la base de datos 'Proyecto', tabla 'dbo.Usuarios', column 'userName'.]
+05/06/2022 5:10:21 : Error al ejecutar la consultaselect 
+                                        e.idevidencia,e.userName,s.nombre,s.apellidos,e.observacion,e.archivo,e.idTema,u.idunidad,u.nombre nombreUnidad,e.idRecurso,r.nombre nombreRecurso,e.retroalimentacion,e.entregado,CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados                                        
+                                        from evidencias E 
+                                        inner join usuarios S on e.userName=s.userName
+                                        inner join unidades U on E.idUnidad=U.idUnidad 
+                                        inner join Recursos R on e.idRecurso=R.idRecurso
+                                        where E.idUnidad=ISNULL(@idUnidad,E.idUnidad) and E.idRecurso=ISNULL(@idRecurso,E.idRecurso) and E.userName=ISNULL(@userName,E.userName) AND S.estado=1 and r.estado=1 [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:10:21 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:21:29 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:21:29 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:22:10 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:22:10 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:23:02 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:23:25 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:23:57 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:24:42 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:24:52 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:25:53 : Error [mensaje: No se puede encontrar la tabla 3.]
+05/06/2022 5:26:03 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:29:05 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:29:16 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:30:15 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:30:24 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:46:12 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:47:36 : Error [mensaje: No se puede encontrar la tabla 0.]
+05/06/2022 5:47:47 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:09 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:17 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:26 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =4 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:29 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =3 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:32 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:41 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =1 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]
+05/06/2022 5:50:45 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =4 and userName ='admin' [mensaje: El nombre de columna 'userName' no es válido.
+El nombre de columna 'userName' no es válido.]

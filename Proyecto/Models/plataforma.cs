@@ -111,6 +111,7 @@ namespace Proyecto.Models
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                         evidencia = r.Field<bool>("evidencia"),
+                        tipoRecurso = r.Field<string>("tipoRecurso"),
                     }).ToList();
 
                 }
@@ -154,7 +155,7 @@ namespace Proyecto.Models
                 server.ejecutarQuery(@"SELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =" + recurso + " and userName ='" + usuario + "'", parametros, out devidencias);
                 server.close();
 
-                if (dtema != null && dtema.Tables[0].Rows.Count > 0)
+                if (dtema.Tables.Count != 0 && dtema.Tables[0].Rows.Count > 0)
                 {
                     dttema = new DataTable();
                     dttema = dtema.Tables[0];
@@ -167,7 +168,7 @@ namespace Proyecto.Models
                     }).FirstOrDefault();
                 }
 
-                if (devidencias != null && devidencias.Tables[0].Rows.Count > 0)
+                if (devidencias.Tables.Count != 0 && devidencias.Tables[0].Rows.Count > 0)
                 {
                     dtevidencias = new DataTable();
                     dtevidencias = devidencias.Tables[0];
@@ -227,6 +228,7 @@ namespace Proyecto.Models
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                         evidencia = r.Field<bool>("evidencia"),
+                        tipoRecurso = r.Field<string>("tipoRecurso"),
                     }).ToList();
 
                 }

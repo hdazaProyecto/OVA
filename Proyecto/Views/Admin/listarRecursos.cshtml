@@ -69,6 +69,7 @@
                                                 <th>DESCRIPCIÓN</th>
                                                 <th>EVIDENCIA</th>
                                                 <th>ESTADO</th>
+                                                <th>TIPO RECURSO</th>
                                                 <th>OPCIONES</th>
                                             </tr>
                                         </thead>
@@ -77,21 +78,33 @@
                                             {
                                                 if (nameGroup.Key == re.idUnidad)
                                                 {
-                                                    <tr class="table-active">
-                                                        <td>@re.nombre</td>
-                                                        <td> @Html.Raw(@re.descripcion)</td>
-                                                        <td>@re.evidencia</td>
-                                                        @if (@re.estado == true)
-                                                        {
-                                                            <td width="10%">Activo</td>
-                                                        }
-                                                        else
-                                                        {
-                                                            <td width="10%">Inactivo</td>
-                                                        }
-                                                        <td width="10%"><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
-                                                        <td width="10%"><a class="btn btn-primary" href="@Url.Action("cambiarestadorecurso", "Admin", new { idRecurso = re.idRecurso })" title="Cambiar Estado">Cambiar Estado</a></td>
-                                                    </tr>
+                                            <tr class="table-active">
+                                                <td>@re.nombre</td>
+                                                <td> @Html.Raw(@re.descripcion)</td>
+                                                <td>@re.evidencia</td>
+                                                @if (@re.estado == true)
+                                                {
+                                                    <td>Activo</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Inactivo</td>
+                                                }
+                                                @if (@re.tipoRecurso == "C")
+                                                {
+                                                    <td>Contenido</td>
+                                                }
+                                                else if (@re.tipoRecurso == "A")
+                                                {
+                                                    <td>Actividad</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>Evaluacion</td>
+                                                }
+                                                <td><a class="btn btn-primary" href="@Url.Action("EditarRecurso", "Admin", new { idRecurso = re.idRecurso })" title="Editar">Editar</a></td>
+                                                <td><a class="btn btn-primary" href="@Url.Action("cambiarestadorecurso", "Admin", new { idRecurso = re.idRecurso })" title="Cambiar Estado">Cambiar Estado</a></td>
+                                            </tr>
                                                 }
                                             }
                                         </tbody>

@@ -481,41 +481,97 @@
     <br />
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <table class="tabla table table-bordered">
-                @if (Model.unidades != null && Model.unidades.Count > 0)
-                {
-                    foreach (Unidades un in Model.unidades)
+            <div class="table-responsive">
+                <table class="tabla table table-bordered">
+                    <tr>
+                        <th width="25%">UNIDADES</th>
+                        <th width="25%"> CONTENIDO</th>
+                        <th width="25%"> ACTIVIDADES</th>
+                        <th width="25%"> EVALUACIONES</th>
+                    </tr>
+                    @if (Model.unidades != null && Model.unidades.Count > 0)
                     {
-                        <tr>
-                            <th width="20%" title="@un.descripcion"><h3>@un.nombre</h3></th>
-                            <th width="80%">
-                                @if (Model.recursos != null && Model.recursos.Count > 0)
-                                {
-                                    foreach (Recursos re in Model.recursos)
+                        foreach (Unidades un in Model.unidades)
+                        {
+                            <tr>
+                                <th title="@un.descripcion"><h3>@un.nombre</h3></th>
+                                <th>
+                                    @if (Model.recursos != null && Model.recursos.Count > 0)
                                     {
-                                        if (re.idUnidad == un.idUnidad)
+                                        foreach (Recursos re in Model.recursos)
                                         {
+                                            if (re.idUnidad == un.idUnidad && re.tipoRecurso == "C")
+                                            {
 
-                                            if (@re.url != null)
-                                            {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" /></a>
-                                            }
-                                            else if (@re.archivo != null)
-                                            {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" /></a>
-                                            }
-                                            else
-                                            {
-                                                <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" /></a>
+                                                if (@re.url != null)
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" /></a>
+                                                }
+                                                else if (@re.archivo != null)
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" /></a>
+                                                }
+                                                else
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" /></a>
+                                                }
                                             }
                                         }
                                     }
-                                }
-                            </th>
-                        </tr>
+                                </th>
+                                <th>
+                                    @if (Model.recursos != null && Model.recursos.Count > 0)
+                                    {
+                                        foreach (Recursos re in Model.recursos)
+                                        {
+                                            if (re.idUnidad == un.idUnidad && re.tipoRecurso == "A")
+                                            {
+
+                                                if (@re.url != null)
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" /></a>
+                                                }
+                                                else if (@re.archivo != null)
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" /></a>
+                                                }
+                                                else
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" /></a>
+                                                }
+                                            }
+                                        }
+                                    }
+                                </th>
+                                <th>
+                                    @if (Model.recursos != null && Model.recursos.Count > 0)
+                                    {
+                                        foreach (Recursos re in Model.recursos)
+                                        {
+                                            if (re.idUnidad == un.idUnidad && re.tipoRecurso == "E")
+                                            {
+
+                                                if (@re.url != null)
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/video.png" /></a>
+                                                }
+                                                else if (@re.archivo != null)
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/archivo.png" /></a>
+                                                }
+                                                else
+                                                {
+                                                    <a id="recurso" href="@Url.Action("recurso", "Plataforma", new { recurso = @re.idRecurso })" title="@re.nombre"><img src="~/Archivos/imagen.png" /></a>
+                                                }
+                                            }
+                                        }
+                                    }
+                                </th>
+                            </tr>
+                        }
                     }
-                }
-            </table>
+                </table>
+            </div>            
         </div>
     </div>
 }

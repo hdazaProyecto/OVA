@@ -37,7 +37,8 @@ namespace Proyecto.Funciones
             this.reiniciarSql();
             con = new SqlConnectionStringBuilder();
 
-            con.DataSource = "demos.syscom.com.co";
+            //con.DataSource = "demos.syscom.com.co";
+            con.DataSource = "(local)";
             //base de datos produccion de plataforma publicada
             con.InitialCatalog = "Proyecto";
             //Base de datos de pruebas de plataforma

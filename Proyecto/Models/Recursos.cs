@@ -30,6 +30,7 @@ namespace Proyecto.Models
         public string descEvidencia { get; set; }
         public int puntosRecurso { get; set; }
         public bool entregado { get; set; }
+        public string tipoRecurso { get; set; }
         public HttpPostedFileBase fileArchivo { get; set; }
         public HttpPostedFileBase fileImagen { get; set; }
 
@@ -75,6 +76,7 @@ namespace Proyecto.Models
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
                         evidencia = r.Field<bool>("evidencia"),
+                        tipoRecurso = r.Field<string>("tipoRecurso")
                     }).ToList();
 
                 }
@@ -118,6 +120,7 @@ namespace Proyecto.Models
                 parametros.Add(new SqlParameter("@evidencia", Precurso.evidencia));
                 parametros.Add(new SqlParameter("@descEvidencia", String.IsNullOrWhiteSpace(Precurso.descEvidencia) ? DBNull.Value : (object)Precurso.descEvidencia));
                 parametros.Add(new SqlParameter("@puntosRecurso", Precurso.puntosRecurso));
+                parametros.Add(new SqlParameter("@tipoRecurso", Precurso.tipoRecurso));
                 drecurso = new DataSet();
                 server.ejecutarQuery(@" IF EXISTS (SELECT * FROM Recursos WHERE idrecurso=@idrecurso) 
                                         BEGIN
@@ -134,16 +137,17 @@ namespace Proyecto.Models
                                                   userName = @userName,
                                                   evidencia = @evidencia,
                                                   descripcionEvidencia = @descEvidencia,
-                                                  puntosRecurso = @puntosRecurso
+                                                  puntosRecurso = @puntosRecurso,
+                                                  tipoRecurso = @tipoRecurso
                                              WHERE idrecurso=@idrecurso
                                             INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Recursos','Actualizar recurso' + CAST(@idrecurso as VARCHAR),getdate(),'" + userName + @"')
                                         END
                                         ELSE
                                         BEGIN
                                             INSERT INTO Recursos
-                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso)
+                                                   (nombre,descripcion,url,archivo,imagen,estado,idUnidad,fecha,userName,evidencia,descripcionEvidencia,puntosRecurso,tipoRecurso)
                                              VALUES
-                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso)
+                                                   (@nombre,@descripcion,@url,@archivo,@imagen,@estado,@idUnidad,@fecha,@userName,@evidencia,@descEvidencia,@puntosRecurso,@tipoRecurso)
                                             INSERT INTO Auditoria (tabla,registro,fecha,userName) VALUES ('Recursos','Crear',getdate(),'" + userName + @"')                                        
                                         END SELECT * FROM Recursos", parametros, out drecurso);
                 server.close();
@@ -167,6 +171,7 @@ namespace Proyecto.Models
                         evidencia = r.Field<bool>("evidencia"),
                         descEvidencia = r.Field<string>("descripcionEvidencia"),
                         puntosRecurso = r.Field<int>("puntosRecurso"),
+                        tipoRecurso = r.Field<string>("tipoRecurso")
                     }).FirstOrDefault();
                 }
             }
@@ -218,6 +223,7 @@ namespace Proyecto.Models
                         evidencia = r.Field<bool>("evidencia"),
                         descEvidencia = r.Field<string>("descripcionEvidencia"),
                         puntosRecurso = r.Field<int>("puntosRecurso"),
+                        tipoRecurso = r.Field<string>("tipoRecurso")
                     }).FirstOrDefault();
                 }
             }
@@ -272,6 +278,7 @@ namespace Proyecto.Models
                         nomUnidad = r.Field<string>("nomUnidad"),
                         fecha = r.Field<DateTime>("fecha"),
                         userName = r.Field<string>("userName"),
+                        tipoRecurso = r.Field<string>("tipoRecurso")
                     }).ToList();
 
                 }
