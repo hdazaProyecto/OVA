@@ -53,6 +53,17 @@
             }
             <div class="form-group">
                 <label>
+                    Tipo Recurso <span class="req">*</span>&nbsp;:&nbsp;
+                </label>
+                @Html.RadioButton("tipoRecurso", "C", new { @class = "form-check-input", @id = "tipoRecursoC", @value_data = "tipoRecurso", required = "required" })
+                <label class="form-check-label" for="inlineRadio1">Contenido</label>&nbsp;
+                @Html.RadioButton("tipoRecurso", "A", new { @class = "form-check-input", @id = "tipoRecursoA", @value_data = "tipoRecurso", required = "required" })
+                <label class="form-check-label" for="inlineRadio2">Actividad</label>&nbsp;
+                @Html.RadioButton("tipoRecurso", "E", new { @class = "form-check-input", @id = "tipoRecursoE", @value_data = "tipoRecurso", required = "required" })
+                <label class="form-check-label" for="inlineRadio3">Evaluacion</label>&nbsp;
+            </div>           
+            <div class="form-group">
+                <label>
                     Nombre <span class="req">*</span>
                 </label>
                 @Html.TextArea("nombre", @Model.nombre, new { @Class = "form-control", @placeholder = "", @Id = "txtNombre", @value_data = "nombre", required = "required", @maxlength = "250" })
@@ -94,21 +105,6 @@
             <div class="form-group">
                 @Html.CheckBox("evidencia", @Model.evidencia, new { @Class = "form-check-input", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
                 <label class="form-check-label"> Evidencia </label>
-            </div>
-            <div class="form-check form-check-inline">
-                @Html.RadioButton("tipoRecurso", "C", new { @class = "form-check-input", @id= "tipoRecursoC", @value_data = "tipoRecurso", required = "required" })
-                @*<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="C">*@
-                <label class="form-check-label" for="inlineRadio1">Contenido</label>
-            </div>
-            <div class="form-check form-check-inline">
-                @Html.RadioButton("tipoRecurso", "A", new { @class = "form-check-input", @id = "tipoRecursoA", @value_data = "tipoRecurso", required = "required" })
-                @*<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="A">*@
-                <label class="form-check-label" for="inlineRadio2">Actividad</label>
-            </div>
-            <div class="form-check form-check-inline">
-                @Html.RadioButton("tipoRecurso", "E", new { @class = "form-check-input", @id = "tipoRecursoE", @value_data = "tipoRecurso", required = "required" })
-                @*<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="E">*@
-                <label class="form-check-label" for="inlineRadio3">Evaluacion</label>
             </div>
             <div class="form-group">
                 <label>
