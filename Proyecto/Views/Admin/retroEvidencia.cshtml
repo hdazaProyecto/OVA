@@ -1,10 +1,12 @@
 ﻿@using Proyecto.Models;
 @{Usuario us = (Usuario)Session["Usuario"];}
 @model Evidencia
+@Scripts.Render("~/Content/ckeditor")
 @{
     ViewBag.Title = "retroEvidencia";
 }
 <style>
+
     .visor {
         width: 100%;
         min-height: 500px;
@@ -45,49 +47,48 @@
         </div><hr />
         @using (Html.BeginForm("gestionarEvidencia", "Admin", FormMethod.Post, new { evidencia = "multipart/form-data" }))
         {
-              <form>
-                  @Html.Hidden("idEvidencia", @Model.idEvidencia, new { @value_data = "idEvidencia" })
-                  @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
-                  @Html.Hidden("idUnidad", Model.idUnidad, new { @value_data = "idUnidad" })
-                  @Html.Hidden("idRecurso", Model.idRecurso, new { @value_data = "idRecurso" })
-                  @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
-                  @Html.Hidden("entregado", @Model.entregado, new { @value_data = "entregado" })
-                  @Html.Hidden("archivo", @Model.archivo, new { @value_data = "archivo" })
-                  @Html.Hidden("observacion", @Model.observacion, new { @value_data = "observacion" })
-                  <div class="form-group">
-                      <label>
-                          Estudiante: @Model.nombres @Model.apellidos
-                      </label>
-                  </div>
-                  <div class="form-group">
-                      <label>
-                          Observación:
-                      </label>
-                      <p>@Model.observacion</p>
-                  </div>
-                  <div class="form-group">
-                      <label>
-                          archivo: @Model.archivo
-                      </label>
-                      <object class="visor" data="~/Archivos/@Model.archivo" type="application/pdf"></object>
-                  </div>
-                  <div class="form-group">
-                      <label>
-                          Retroalimentación
-                      </label>
-                      @Html.TextArea("retroalimentacion", @Model.retroalimentacion, new { @Class = "form-control", @placeholder = "", @Id = "txtretroalimentacion", @value_data = "retroalimentacion" })
-                  </div>
-                  <div class="form-group">
-                      <label>
-                          Calificación
-                      </label>
-                      @Html.TextBox("puntosAlcanzados", @Model.puntosAlcanzados, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuntosAlcanzados", @value_data = "puntosAlcanzados" })
-                  </div>
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary">Guardar</button>
-                  </div>
-              </form>
+            <form>
+                @Html.Hidden("idEvidencia", @Model.idEvidencia, new { @value_data = "idEvidencia" })
+                @Html.Hidden("idTema", Model.idTema, new { @value_data = "idTema" })
+                @Html.Hidden("idUnidad", Model.idUnidad, new { @value_data = "idUnidad" })
+                @Html.Hidden("idRecurso", Model.idRecurso, new { @value_data = "idRecurso" })
+                @Html.Hidden("userName", @Model.userName, new { @value_data = "userName" })
+                @Html.Hidden("entregado", @Model.entregado, new { @value_data = "entregado" })
+                @Html.Hidden("archivo", @Model.archivo, new { @value_data = "archivo" })
+                @Html.Hidden("observacion", @Model.observacion, new { @value_data = "observacion" })
+                <div class="form-group">
+                    <label>
+                        Estudiante: @Model.nombres @Model.apellidos
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Observación:
+                    </label>
+                    <p>@Html.Raw(@Model.observacion)</p>
+                </div>
+                <div class="form-group">
+                    <label>
+                        archivo: @Model.archivo
+                    </label>
+                    <object class="visor" data="~/Archivos/@Model.archivo" type="application/pdf"></object>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Retroalimentación
+                    </label>
+                    @Html.TextArea("retroalimentacion", @Model.retroalimentacion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtretroalimentacion", @value_data = "retroalimentacion" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        Calificación
+                    </label>
+                    @Html.TextBox("puntosAlcanzados", @Model.puntosAlcanzados, new { @type = "number", @Class = "form-control", @placeholder = "", @Id = "txtpuntosAlcanzados", @value_data = "puntosAlcanzados" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
         }
     </div>
 </div>
-

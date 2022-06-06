@@ -21,6 +21,7 @@ namespace Proyecto.Models
         public string nombreUnidad { get; set; }
         public int idRecurso { get; set; }
         public string nombreRecurso { get; set; }
+        [AllowHtml]
         public string retroalimentacion { get; set; }
         public int puntosAlcanzados { get; set; }
         public bool entregado { get; set; }

@@ -99,7 +99,7 @@
 
                                         <div class="form-group">
                                             <div>
-                                                <b>Comentario:</b> @Model.evidenciaM.observacion
+                                                <b>Comentario:</b> @Html.Raw(@Model.evidenciaM.observacion)
                                             </div>
                                         </div>
 
@@ -121,7 +121,7 @@
                                             <label>
                                                 Comentario
                                             </label>
-                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
                                         </div>
 
                                         <div class="form-group">
@@ -132,7 +132,7 @@
                             }
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <p><b>Observación: @Model.evidenciaM.retroalimentacion</b></p>
+                                    <p><b>Observación: </b> @Html.Raw(@Model.evidenciaM.retroalimentacion)</p>
                                 </div>
                             </div>
 
@@ -173,7 +173,7 @@
                                                 <label>
                                                     Comentario
                                                 </label>
-                                                @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                                @Html.TextArea("observacion", "", new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
                                             </div>
                                         </div>
                                     </div>
@@ -244,7 +244,7 @@
 
                                         <div class="form-group">
                                             <div>
-                                                <b>Comentario:</b> @Model.evidenciaM.observacion
+                                                <b>Comentario:</b> @Html.Raw(@Model.evidenciaM.observacion)
                                             </div>
                                         </div>
 
@@ -266,7 +266,7 @@
                                             <label>
                                                 Comentario
                                             </label>
-                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
                                         </div>
 
                                         <div class="form-group">
@@ -277,7 +277,7 @@
                             }
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <p><b>Observación: @Model.evidenciaM.retroalimentacion</b></p>
+                                    <p><b>Observación: </b> @Html.Raw(@Model.evidenciaM.retroalimentacion)</p>
                                 </div>
                             </div>
 
@@ -318,7 +318,7 @@
                                                 <label>
                                                     Comentario
                                                 </label>
-                                                @Html.TextArea("observacion", "", new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                                @Html.TextArea("observacion", "", new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
                                             </div>
                                         </div>
                                     </div>
@@ -388,7 +388,7 @@
 
                                         <div class="form-group">
                                             <div>
-                                                <b>Comentario:</b> @Model.evidenciaM.observacion
+                                                <b>Comentario:</b> @Html.Raw(@Model.evidenciaM.observacion)
                                             </div>
                                         </div>
 
@@ -410,7 +410,7 @@
                                             <label>
                                                 Comentario
                                             </label>
-                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @Class = "form-control", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
+                                            @Html.TextArea("observacion", @Model.evidenciaM.observacion, new { @contenteditable = "true", @class = "ckeditor ckeditoradd", @placeholder = "", @Id = "txtobservacion", @value_data = "observacion" })
                                         </div>
 
                                         <div class="form-group">
@@ -421,7 +421,7 @@
                             }
                             <div class="row">
                                 <div class="cont col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <p><b>Observación: @Model.evidenciaM.retroalimentacion</b></p>
+                                    <p><b>Observación: </b> @Html.Raw(@Model.evidenciaM.retroalimentacion)</p>
                                 </div>
                             </div>
 

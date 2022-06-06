@@ -95,6 +95,7 @@
         <hr />
         <footer>
             <p>
+                Versión: @ViewContext.Controller.GetType().Assembly.GetName().Version
                 &copy; @DateTime.Now.Year - @if (@pt != null)
                 {@pt.nombreTema}
             </p>

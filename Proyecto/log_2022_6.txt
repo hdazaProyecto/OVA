@@ -174,3 +174,52 @@ El nombre de columna 'userName' no es válido.]
 05/06/2022 6:15:19 : Error [mensaje: No se puede encontrar la tabla 0.]
 05/06/2022 6:15:24 : Error al ejecutar la consultaSELECT idEvidencia,archivo,observacion,CAST(idTema AS INT) idTema,CAST(idUnidad AS INT) idUnidad,CAST(idRecurso AS INT) idRecurso,retroalimentacion,CAST(ISNULL(puntosAlcanzados,0) AS INT) puntosAlcanzados,entregado,userName FROM Evidencias WHERE idRecurso =2 and userName ='hdaza' [mensaje: El nombre de columna 'userName' no es válido.
 El nombre de columna 'userName' no es válido.]
+6/06/2022 7:52:32 a. m.: Error [mensaje: La columna 'tipoRecurso' no pertenece a la tabla Table.]
+6/06/2022 7:52:42 a. m.: Error [mensaje: La columna 'tipoRecurso' no pertenece a la tabla Table.]
+6/06/2022 7:52:45 a. m.: Error [mensaje: La columna 'tipoRecurso' no pertenece a la tabla Table.]
+6/06/2022 9:05:29 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Evidencias
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  puntosAlcanzados = @puntosAlcanzados,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado,userName)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado,@userName)
+                                        END SELECT E.idEvidencia,E.archivo,E.observacion,E.idTema,E.idUnidad,E.idRecurso,E.retroalimentacion,
+                                        CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados,E.entregado,E.userName,U.nombre,U.apellidos 
+                                        FROM Evidencias E
+                                        INNER JOIN Usuarios U ON E.userName=U.userName
+                                        WHERE idEvidencia=@idEvidencia [mensaje: Los datos binarios o de la cadena se truncan en la columna "observacion" de la tabla "Proyecto.dbo.Evidencias". Valor truncado: "<p>Realice el ejemplo del c&oacute;digo suministrado y adjunte un archivo en formato .pdf, <strong><".
+Se terminó la instrucción.]
+6/06/2022 9:05:29 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]
+6/06/2022 9:11:23 a. m.: Error al ejecutar la consulta IF EXISTS (SELECT * FROM Evidencias WHERE idEvidencia=@idEvidencia) 
+                                        BEGIN
+                                           UPDATE Evidencias
+                                               SET archivo = @archivo,
+                                                  observacion = @observacion,
+                                                  retroalimentacion = @retroalimentacion,
+                                                  puntosAlcanzados = @puntosAlcanzados,
+                                                  entregado = @entregado                                               
+                                             WHERE idEvidencia=@idEvidencia
+                                        END
+                                        ELSE
+                                        BEGIN
+                                            INSERT INTO Evidencias
+                                                   (archivo,observacion,idTema,idUnidad,idRecurso,retroalimentacion,entregado,userName)
+                                             VALUES
+                                                    (@archivo,@observacion,@idTema,@idUnidad,@idRecurso,@retroalimentacion,@entregado,@userName)
+                                        END SELECT E.idEvidencia,E.archivo,E.observacion,E.idTema,E.idUnidad,E.idRecurso,E.retroalimentacion,
+                                        CAST(ISNULL(E.puntosAlcanzados,0) AS INT) puntosAlcanzados,E.entregado,E.userName,U.nombre,U.apellidos 
+                                        FROM Evidencias E
+                                        INNER JOIN Usuarios U ON E.userName=U.userName
+                                        WHERE idEvidencia=@idEvidencia [mensaje: Los datos binarios o de la cadena se truncan en la columna "observacion" de la tabla "Proyecto.dbo.Evidencias". Valor truncado: "<p>Realice el ejemplo del c&oacute;digo suministrado y adjunte un archivo en formato .pdf, con la re".
+Se terminó la instrucción.]
+6/06/2022 9:11:23 a. m.: Error [mensaje: No se puede encontrar la tabla 0.]

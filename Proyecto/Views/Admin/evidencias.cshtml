@@ -98,7 +98,7 @@
                         <td>@ev.apellidos</td>
                         <td>@ev.nombreUnidad</td>
                         <td>@ev.nombreRecurso</td>
-                        <td>@ev.observacion</td>
+                        <td>@Html.Raw(@ev.observacion)</td>
                         <td>
                             @if (ev.puntosAlcanzados == 0)
                             {
