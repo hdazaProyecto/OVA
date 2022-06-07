@@ -103,7 +103,11 @@
             <div class="form-group">
                 @Html.CheckBox("estado", @Model.estado, new { @Class = "form-check-input", @placeholder = "", @Id = "txtestado", @value_data = "estado", @title = "Estado de recurso Activo o Inactivo" })
                 <label class="form-check-label"> Estado </label>
-            </div>            
+            </div>   
+            <div class="form-group">
+                @Html.CheckBox("evidencia", @Model.evidencia, new { @Class = "form-check-input", @placeholder = "", @Id = "txtevidencia", @value_data = "evidencia" })
+                <label class="form-check-label"> Evidencia </label>
+            </div>
             <div class="form-group">
                 <label>
                     Descripcion Evidencia
