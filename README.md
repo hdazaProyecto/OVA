@@ -6,11 +6,10 @@ Información:
 
 Mayo - 31 - 2022
 
-Proyecto de Grado
-
 Universidad de Investigación y Desarrollo - UDI
 
 1 Periodo académico 2022
+
 
 El actual programa, cuenta con toda la documentación correspondiente, la cual se encuentra dentro del CD y este contiene los códigos fuente, y utilidades necesarías para ejecutar el proyecto.
 
