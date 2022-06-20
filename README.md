@@ -1,15 +1,13 @@
-# OVA Proyecto de Grado
-							  
-OBJETO VIRTUAL DE APRENDIZAJE (OVA) PARA EL APOYO A LA ENSEÑANZA DE LA TÉCNICA DE DISEÑO DE ALGORITMOS "DIVIDE Y VENCERÁS"
-
+PROYECTO DE GRADO: OBJETO VIRTUAL DE APRENDIZAJE (OVA) PARA EL APOYO A LA ENSEÑANZA DE LA TÉCNICA DE DISEÑO DE ALGORITMOS "DIVIDE Y VENCERÁS"
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Información:
 
 Mayo - 31 - 2022
 
-Universidad de Investigación y Desarrollo - UDI
-
 1 Periodo académico 2022
 
+Universidad de Investigación y Desarrollo - UDI
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 El actual programa, cuenta con toda la documentación correspondiente, la cual se encuentra dentro del CD y este contiene los códigos fuente, y utilidades necesarías para ejecutar el proyecto.
 
