@@ -1,0 +1,18 @@
+Copyright-Copyleft (C) 2022
+
+Versión: 1.0.0.0 - Objeto Virtual de Aprendizaje (OVA) para el Apoyo en la Enseñanza de la Técnica de Diseño de Algoritmos Divide y Vencerás.
+
+Este software, se encuentra bajo una licencia de tipo CopyLeft, se permite la copia, uso, distribución y mejoramiento del mismo, siempre y cuando se reconozca los principios integrales de desarrollo de sus autores, y no se use con fines comerciales a no ser que se obtenga un permiso expreso del autor.
+
+Se autoriza el uso y aporte de los usuarios que accendan a los recursos del sistema, siempre y cuando estos añadan nuevas funcionalidades y no se haga uso privativo de los derechos intelectuales, puesto que todos los recursos se encuentran disponibles para consulta.
+
+No se permite bajo ninguna circunstancia, otorgar permisos a terceros para que se incluya publicidad invasiva con fines comerciales.
+
+No se puede utilizar ninguno de los recursos del proyecto a manera de copia en un nuevo proyecto, de tal manera que se viole la integridad del diseño original, todo aporte debe ser agregado con base en los medios existentes, ya que el fin último, es el de brindar la posibilidad de complementar el software.
+
+Al acceder de manera libre y voluntaria a cada uno de los elementos que componen este software, se considera que está aceptando los términos y condiciones aquí descritos.
+
+Recuerde que la violación de alguno de estos términos descritos, en el que se incluye el beneficio económico privativo, en el que no se reconozca el origen intelectual del mismo, puede llevar a sanciones legales por parte de los autores intelectuales.
+
+Bucaramanga, Santander, Colombia.
+31.05.2022
