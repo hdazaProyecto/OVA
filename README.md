@@ -25,5 +25,6 @@ gsanchez1@udi.edu.co
 
 Recuerda que este ejercicio académico es de libre desarrollo y por tanto puede ser adaptado y mejorado por cualquier usuario, generando nuevas versiones, conservando la integridad intelectual de quienes han contribuido al aprendizaje propio y a este proyecto que de seguro pueda ser la base de un reto para aquel que vea en su propio aporte, la posibilidad de llevar adelante el trabajo que aquí se ha iniciado, lo cual os convierte en compañeros de trabajo y desarrollo.
  
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 "Reunirse es el comienzo... Mantenerse juntos es el progreso... Trabajar juntos es el éxito" - Henry Ford
 
