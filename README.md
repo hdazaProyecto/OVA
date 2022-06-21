@@ -6,6 +6,8 @@ Mayo - 31 - 2022
 
 1 Periodo académico 2022
 
+Bucaramanga, Santander, Colombia
+
 Universidad de Investigación y Desarrollo - UDI
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
